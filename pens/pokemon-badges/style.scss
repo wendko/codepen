@@ -1,0 +1,603 @@
+img {
+    width: 100vw;
+    opacity: 0.2;
+    position: fixed;
+    left: 12px; // variable
+  }
+  
+  .container {
+    width: 97vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin: 100px;
+  }
+  
+  .badge {
+    outline: 1px dashed orange; // todo: remove
+    opacity: 1;
+    height: 155px;
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(1.2);
+    }
+    &>*{
+      margin: 40px;
+    }
+  }
+  
+  @function octoangle($index) {
+    @return 45 * ($index - 1);
+  }
+  
+  // -------------- Boulder badge --------------
+  $boulder-color-fill: #86ad9b;
+  $boulder-color-shine: #b1d1c1;
+  $boulder-color-outline: black;
+  $size-inner-octagon: 42px;
+  
+  @mixin boulder-shine-initial {
+     background: linear-gradient(135deg, 
+        $boulder-color-fill, $boulder-color-fill 25%, 
+        $boulder-color-shine 25%, $boulder-color-shine 30%,
+        $boulder-color-fill 30%, $boulder-color-fill 35%,
+        $boulder-color-shine 35%, $boulder-color-shine 50%,
+        $boulder-color-fill 50%, $boulder-color-fill
+      );
+  }
+  
+  @mixin boulder-shine-final {
+         background: linear-gradient(135deg, 
+        $boulder-color-fill, $boulder-color-fill 35%, 
+        $boulder-color-shine 35%, $boulder-color-shine 40%,
+        $boulder-color-fill 40%, $boulder-color-fill 45%,
+        $boulder-color-shine 45%, $boulder-color-shine 60%,
+        $boulder-color-fill 60%, $boulder-color-fill
+      );
+  }
+  
+  @keyframes boulder-shine {
+    0%, 30% {
+      @include boulder-shine-initial;
+    }
+    20% {
+      @include boulder-shine-final;
+    }
+  }
+  
+  .badge-boulder {
+      display: grid;
+      place-items: center;
+    
+    &>* {
+      position: absolute;
+    }
+    
+    &>.center {
+      $dimension: 80px;
+      width: $dimension;
+      height: $dimension;
+      
+      @include boulder-shine-initial;
+      animation: boulder-shine 1s ease-in-out infinite;
+    }
+    
+    &>.sides {
+      margin: -31px 17px;
+      
+      &>.side {
+        $dimension: 30px;
+        transform-origin: 2/3*$dimension 2.2*$dimension;
+        
+        &>div {
+          position: absolute;
+          width: $dimension*13/8;
+          height: $dimension;
+          transform: skewX(20deg);
+          border: 3px solid $boulder-color-outline;
+          border-top-width: 8px;
+        }
+        
+        $colors: (
+          1: #86ad9b,
+          2: #86ad9b,
+          3: #587569,
+          4: #344a42,
+          5: #587569,
+          6: #86ad9b,
+          7: #86ad9b,
+          8: #c1d5ca);
+          
+        @for $index from 1 through 8 {
+          &:nth-child(#{$index}) {
+            transform: rotate(octoangle($index) * 1deg);
+            &>div {
+              background-color: map-get($colors, $index);
+            }
+          }
+        }
+        
+        &:nth-last-child(1)>div {
+          clip-path: polygon(0 0, 100% 0%, 40% 100%, 0% 100%);
+        } 
+      }
+    }
+    
+  }
+  // -------------- Boulder badge --------------
+  
+  
+  
+  // -------------- Cascade badge --------------
+  $cascade-color-fill: #00c7e8;
+  $cascade-color-shine: #ade2f9;
+  $cascade-color-outline: black;
+  $cascade-color-shadow: #52a6d6;
+  
+  @keyframes cascade-shine {
+    0%, 100% {
+      padding: 12px;
+    }
+    20% {
+      padding: 10px;
+    }
+  }
+  
+  .badge-cascade {
+    background-color: $cascade-color-fill;
+    height: 100px;
+    width: 100px;
+    border-radius: 0% 100% 40% 60% / 0% 60% 40% 100%;
+    transform: rotate(45deg);
+    box-shadow: 0px 0px 0px 8px $cascade-color-outline, inset -14px -2px $cascade-color-shadow;
+    
+    &::after {
+      content:"";
+      background-color: $cascade-color-shine;
+      padding: 12px;
+      z-index: 1;
+      border-radius: 50%;
+      position: absolute;
+      margin: 52px 30px;
+      box-shadow: 18px 17px 0px -5px $cascade-color-shine;
+      transform: rotate(-15deg);
+      animation: cascade-shine 2s steps(1) infinite;
+    }
+  }
+  // -------------- Cascade badge --------------
+  
+  // -------------- Thunder badge --------------
+  $thunder-color-fill: #e78024;
+  $thunder-color-petals: #fbfa74;
+  $thunder-color-shine: #f3be7f;
+  $thunder-color-outline: black;
+  
+  @mixin thunder-shine-initial {
+     background: linear-gradient(135deg, 
+        $thunder-color-fill, $thunder-color-fill 25%, 
+        $thunder-color-shine 25%, $thunder-color-shine 30%,
+        $thunder-color-fill 30%, $thunder-color-fill 35%,
+        $thunder-color-shine 35%, $thunder-color-shine 50%,
+        $thunder-color-fill 50%, $thunder-color-fill
+      );
+  }
+  
+  .badge-thunder {
+    
+    &>* {
+      position: absolute;
+    }
+    
+    &>.center {
+      $dimension: 72px;
+      width: $dimension;
+      height: $dimension;
+      
+      @include thunder-shine-initial;
+      // animation: boulder-shine 1s ease-in-out infinite;
+    }
+    
+    &>.sides {
+      margin: -15px 17px;
+      transform: scale(0.6);
+      
+      &>.side {
+        $dimension: 100px;
+        transform-origin: 29px 87px;
+        
+        &>div {
+          position: absolute;
+          width: 65px;
+          height: 20px;
+          transform: skewX(20deg);
+          border: 3px solid $boulder-color-outline;
+          border-top-width: 8px;
+        }
+        
+        $colors: (
+          1: #dfa25e,
+          2: #e78024,
+          3: #84521d,
+          4: #84521d,
+          5: #84521d,
+          6: #e78024,
+          7: #dfa25e,
+          8: #e6be8f);
+          
+        @for $index from 1 through 8 {
+          &:nth-child(#{$index}) {
+            transform: rotate(octoangle($index) * 1deg);
+            &>div {
+              background-color: map-get($colors, $index);
+            }
+          }
+        }
+        
+        &:nth-last-child(1)>div {
+          clip-path: polygon(0 0, 100% 0%, 65% 100%, 0% 100%);
+        } 
+      }
+    }
+    
+    &>.petals {
+      margin: -36px 10px;
+      z-index: -1;
+      
+      @mixin petal {
+        position: absolute;
+        background: $thunder-color-petals;
+        $dimension: 35px;
+        width: $dimension;
+        height: $dimension/3*2;
+        border: 0px solid $thunder-color-outline;
+        border-top-width: 8px;
+      }
+      
+      &>.petal>div {
+        
+        @include petal;
+        
+        border-left-width: 3px;
+        transform: rotate(-40deg) skewX(-20deg);
+        
+        &::before {
+          @include petal;
+          content: "";
+          border-right-width: 3px;
+          transform: rotate(65deg) translateY(-9px) translateX(7px) skewX(10deg);
+          clip-path: polygon(0 0, 100% 0%, 100% 100%, 33% 100%);
+        }
+        
+      }
+      
+      
+      $petal-colors: (
+          1: #dfa25e,
+          2: #e78024,
+          3: #84521d,
+          4: #84521d,
+          5: #84521d,
+          6: #e78024,
+          7: #dfa25e,
+          8: #e6be8f);
+      
+      &>.petal {
+         transform-origin: 24.5px 74px;
+         @for $index from 1 through 8 {
+          &:nth-child(#{$index}) {
+            transform: rotate(octoangle($index) * 1deg);
+          }
+        }
+      }
+    }
+  }
+  
+  // -------------- Thunder badge --------------
+  
+  // -------------- Soul badge --------------
+  $soul-color-fill: #e35ca5;
+  $soul-color-shine: #f5b6d7;
+  $soul-color-outline: black;
+  $soul-color-shadow: #c92382;
+  
+  @mixin badge-soul-half {
+    border: 8px solid $soul-color-outline;
+    clip-path: polygon(0 0, 100% 0%, 100% 25%, 0 90%);
+    background: $soul-color-fill;
+    width: 80px;
+    height: 150px;
+    border-radius: 50% 40% 60% 50% / 25% 20% 80% 75%;
+    margin: 51px -50px;
+  }
+  
+  @keyframes soul-shine-1 {
+    0%, 30% {
+      box-shadow: inset -9px -65px $soul-color-shadow;
+    }
+    20% {
+      box-shadow: inset -2px -50px $soul-color-shadow;
+    }
+  }
+  @keyframes soul-shine-2 {
+    0%, 30% {
+      padding: 5px 9px;
+    }
+    20% {
+      padding: 8px 11px;
+    }
+  }
+  @keyframes soul-shine-3 {
+    0%, 30% {
+      box-shadow: inset 12px 6px $soul-color-shadow,
+          inset -12px -5px $soul-color-shine;
+    }
+    20% {
+      box-shadow: inset 6px 3px $soul-color-shadow,
+          inset -15px -8px $soul-color-shine;
+    }
+  }
+  
+  .badge-soul {
+    display: flex;
+    margin: -50px 90px;
+    
+    &>.soul-half {
+      @include badge-soul-half;
+      &:nth-child(1) {
+        transform: rotate(-42deg);
+        box-shadow: inset -9px -65px $soul-color-shadow;
+        animation: soul-shine-1 2s steps(1, start) infinite;
+        &::before {
+          content: "";
+          padding: 5px 9px;
+          border-radius: 50%;
+          position: absolute;
+          margin: 11px;
+          box-shadow: 34px 0px 0px 7px $soul-color-shine;
+          background-color: $soul-color-shine;
+          animation: soul-shine-2 2s steps(1, start) infinite;
+        }
+      }
+      &:nth-child(2) {
+        margin-left: -30px;
+        transform: rotate(42deg) scaleX(-1);
+        box-shadow: inset 12px 6px $soul-color-shadow,
+          inset -12px -5px $soul-color-shine;
+        animation: soul-shine-3 2s steps(1, start) infinite;
+      }
+    }
+    
+    &::after {
+      content: "";
+      width: 1px;
+      height: 110px;
+      position: absolute;
+      border: 5px solid transparent;
+      border-left-color: black;
+      margin: 73px 5px;
+    }
+    
+  }
+  // -------------- Soul badge --------------
+  
+  
+  // -------------- Marsh badge --------------
+  $marsh-color-fill: #f4c41a;
+  $marsh-color-shine: #fce291;
+  $marsh-color-outline: black;
+  
+  @mixin marsh-outer-initial {
+    box-shadow: inset 5px 5px $marsh-color-shine,
+      0px 0px 0px 8px $marsh-color-outline;
+  }
+  
+  @mixin marsh-outer-final {
+    box-shadow: inset 12px 12px $marsh-color-shine,
+      0px 0px 0px 8px $marsh-color-outline;
+  }
+  
+  @mixin marsh-inner-initial {
+    box-shadow: inset 5px 5px $marsh-color-shine,
+      0px 0px 0px 5px $marsh-color-outline;
+  }
+  
+  @mixin marsh-inner-final {
+    box-shadow: inset 7px 7px $marsh-color-shine,
+      0px 0px 0px 5px $marsh-color-outline;
+  }
+  
+  @keyframes marsh-outer-shine {
+    0%, 15%, 100% {
+      @include marsh-outer-initial;
+    }
+    20%, 30% {
+      @include marsh-outer-final;
+    }
+  }
+  
+  @keyframes marsh-inner-shine {
+    0%, 15%, 100% {
+      @include marsh-inner-initial;
+    }
+    20%, 30% {
+      @include marsh-inner-final;
+    }
+  }
+  
+  .badge-marsh {
+    margin: 20px;
+    $dimension: 120px;
+    $inner-dimension: $dimension - 50px;
+    
+    background: $marsh-color-fill;
+    width: $dimension;
+    height: $dimension;
+    border-radius: 50%;
+    @include marsh-outer-initial;
+    
+    animation: marsh-outer-shine 2s steps(1, start) infinite;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      margin: 25px;
+      background: $marsh-color-fill;
+      width: $inner-dimension;
+      height: $inner-dimension;
+      border-radius: 50%;
+      @include marsh-inner-initial;
+      animation: marsh-inner-shine 2s steps(1, start) infinite;
+    }
+  }
+  // -------------- Marsh badge --------------
+  
+  // -------------- Volcano badge --------------
+  $volcano-color-shadow-dark: #d27c6a;
+  $volcano-color-shadow-light: #d27c6a;
+  $volcano-color-outline: black;
+  $volcano-color-flame: #a3251d;
+  $volcano-color-inner-flame: #cc283b;
+  
+  .badge-volcano {
+    
+    &>.flame-1>div, &>.flame-2>div {
+      transform: rotate(-48deg);
+      background-color: $volcano-color-flame;
+      width: 87px;
+      height: 80px;
+      border-radius: 10% 90% 80% 20% / 45% 0% 100% 55%;
+      box-shadow: -5px -5px 0px 5px $volcano-color-outline,
+        inset 5px 0px $volcano-color-shadow-light;
+      
+      &::before, &::after {
+        content: "";
+        position: absolute;
+        background-color: $volcano-color-flame;
+      }
+      
+      &::before {
+        padding: 20px 15px;
+        margin: -39px 53px;
+        border-radius: 100% 0% 100% 0% / 80% 100% 0% 20%;
+        box-shadow: 0px -6px 0px 5px $volcano-color-outline, inset 0px 5px $volcano-color-shadow-light;
+      }
+      
+      &::after {
+        margin: -17px 98px;
+        padding: 14px 10px;
+        transform: rotate(30deg) skewX(-20deg);
+        border-radius: 100% 0px 0px 0px;
+        box-shadow: -4px -4px 0px 3px, inset 1px 3px $volcano-color-shadow-light;
+      }
+    }
+    
+    &>.flame-1, &>.flame-2 {
+      &::before {
+        content: "";
+        position: absolute;
+        background: $volcano-color-flame;
+        width: 25px;
+        height: 116px;
+        z-index: 10;
+        margin: -28px 60px;
+        border-radius: 10px 30px 0px 0px;
+        box-shadow: 0px 6px $volcano-color-outline, inset 0px -5px $volcano-color-shadow-light;
+      }
+    }
+    
+    &>.flame-2 {
+      transform: scaleX(-1);
+      margin: -80px 40px;
+      position: absolute;
+    }
+  }
+  // -------------- Volcano badge --------------
+  
+  // -------------- Earth badge --------------
+  $earth-color-dark: #6dc94d;
+  $earth-color-light: #a8d889;
+  $earth-color-outline: black;
+  $inner-line-thickness: 3px;
+  $earth-color-stem: #42403a;
+  
+  .badge-earth {
+    &>*{
+      position: absolute;
+    }
+    
+    @mixin leaf-shape {
+        $clip-1: 15%;
+        $clip-2: 65%;
+        $clip-3: 20%;
+        $clip-4: 58%;
+        
+         clip-path: polygon(
+           $clip-1 0%, 
+           $clip-2 0,
+           $clip-2  $clip-3,
+           100% $clip-4,
+           100% 100%, 
+           $clip-4 100%,
+           $clip-3 $clip-2, 
+           0% $clip-2,
+           0 $clip-1)
+      }
+      
+    
+    &>.leaf-1 {
+      background: $earth-color-dark;
+      $dimension: 100px;
+      width: $dimension;
+      height: $dimension;
+      @include leaf-shape;
+      
+      &::before {
+        content: "";
+        padding: 40px;
+        background: $earth-color-light;
+        position: absolute;
+        border-radius: 50%;
+        margin: 35px;
+      }
+    }
+    
+    &>.leaf-2 {
+      background: $earth-color-outline;
+      $dimension: 130px;
+      width: $dimension;
+      height: $dimension;
+      margin: -9px;
+      clip-path: polygon(15% 0%, 65% 0, 65% 20%, 91% 50%, 91% 91%, 50% 91%, 20% 65%, 0% 65%, 0% 15%);
+    }
+    
+    &>.stem {
+      width: 8px;
+      height: 55px;
+      background: $earth-color-stem;
+      border-radius: 20px;
+      border: 7px solid $earth-color-outline;
+      transform: rotate(-45deg) translateX(15px) translateY(123px);
+    }
+    
+    @mixin leaf-lines {
+      width: 5px;
+      height: 30px;
+      border-radius: 0% 0% 100%;
+      background-color: $earth-color-outline;
+      transform: rotate(0deg) translateX(32px) translateY(-7px);
+      box-shadow: 32px 18px $earth-color-outline,
+        50px 40px $earth-color-outline;
+    }
+    
+    &>.leaf-lines-1 {
+      @include leaf-lines;
+    }
+     &>.leaf-lines-2 {
+      @include leaf-lines;
+       transform: rotate(89deg) translateX(21px) translateY(-6px) scaleY(-1);
+    }
+    
+  }
+  // -------------- Earth badge --------------

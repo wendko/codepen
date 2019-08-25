@@ -2,11 +2,12 @@
 This repo is a playground for my CSS projects before I move the final product onto CodePen.
 
 ## Projects
-Projects are sorted by folders.
-Each folder would have
+Projects or pens are sorted by folders.
+Contents of each pen may have:
 - a .pug file
 - a .scss file
 - from the postprocessing, there would be a .css, .css.map and .html file as well
+- a .js file
 
 Create a new project by running:
 ```
