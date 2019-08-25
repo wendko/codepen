@@ -1,0 +1,35 @@
+link( rel="stylesheet" href="./style.css" type="text/css")
+
+div.text
+  p Fruits & Veggies Spectrum
+    
+div.fruits-and-veggies
+  div
+    div.apple
+  div
+    div.orange
+      span.orange-slice
+      span.orange-slice
+      span.orange-slice
+      span.orange-slice
+  div
+    div.corn
+      each $val in [1, 2, 3, 4, 5]
+        div.corn-leaf(class="leaf-" + $val)
+  div
+    div.broccoli
+      each $val in [1, 2]
+        div.broccoli-stem(class="stem-" + $val)
+      div.broccoli-floret
+  div
+    div.blueberries
+      each $val in [1, 2, 3, 4, 5]
+        div.blueberry(class="blueberry-" + $val)
+  div
+    div.eggplant
+      each $val in [1, 2, 3]
+        div.eggplant-leaf(class="leaf-" + $val)
+      div.eggplant-stem
+  div
+    div.plum
+      span.plum-seed

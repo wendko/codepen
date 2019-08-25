@@ -1,0 +1,309 @@
+@import url("https://fonts.googleapis.com/css?family=Dosis:800&display=swap");
+@keyframes teeter {
+  0%, 100% {
+    transform: scale(2) rotateZ(0deg);
+  }
+  50% {
+    transform: scale(2) rotateZ(5deg);
+  }
+}
+* {
+  position: fixed;
+  transition: all 0.15s ease-in;
+}
+
+.rainbow {
+  -webkit-appearance: none;
+  width: 780px;
+  height: 20px;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  position: relative;
+  top: 130px;
+  left: 60px;
+  border-radius: 10px;
+}
+
+.fruits-and-veggies > div {
+  transform-origin: center center;
+}
+.fruits-and-veggies > div:hover {
+  transform: scale(2);
+  z-index: 1;
+  animation: teeter 5s 0.15s infinite;
+}
+.fruits-and-veggies > div:nth-child(1) {
+  margin: 185px 65px;
+}
+.fruits-and-veggies > div:nth-child(2) {
+  margin: 185px 165px;
+}
+.fruits-and-veggies > div:nth-child(3) {
+  margin: 165px 270px;
+}
+.fruits-and-veggies > div:nth-child(4) {
+  margin: 205px 420px;
+}
+.fruits-and-veggies > div:nth-child(5) {
+  margin: 220px 500px;
+}
+.fruits-and-veggies > div:nth-child(6) {
+  margin: 200px 630px;
+}
+.fruits-and-veggies > div:nth-child(7) {
+  margin: 190px 730px;
+}
+
+.text {
+  font-family: "Dosis", sans-serif;
+  font-size: 3.5rem;
+  color: #546E7A;
+  top: 0px;
+  left: 150px;
+}
+
+.basket {
+  margin: 250px 50px;
+  width: 800px;
+  height: 100px;
+  border-radius: 0 0 80px 80px;
+  background: linear-gradient(teal, #2365a3);
+}
+.basket:before {
+  right: 35px;
+}
+.basket:after {
+  right: -710px;
+}
+.basket:before, .basket:after {
+  content: "";
+  padding: 2px 30px;
+  background: teal;
+  border-radius: 10px;
+  position: relative;
+  top: 2px;
+}
+
+.apple {
+  background: linear-gradient(to right, orange 10%, red, orange 95%);
+  width: 80px;
+  height: 80px;
+  border-radius: 15rem 15rem 10rem 10rem/15rem 15rem 20rem 20rem;
+  transform: rotate(-10deg);
+}
+.apple:after {
+  content: "";
+  padding: 0.1px 3px;
+  background: white;
+  border-radius: 10px;
+  position: relative;
+  top: 30px;
+  left: 45px;
+}
+.apple:before {
+  content: "";
+  padding: 2px 10px;
+  background: linear-gradient(lightgreen, darkgreen);
+  position: relative;
+  top: -10px;
+  left: 35px;
+  border-radius: 10px 0px;
+  box-shadow: -5px 10px 7px darkred;
+}
+
+.orange {
+  background: #ffebc6;
+  width: 80px;
+  height: 80px;
+  border: 3px solid orange;
+  border-radius: 18rem 18rem 20rem 20rem/20rem 20rem 18rem 18rem;
+}
+.orange:before {
+  content: "";
+  position: relative;
+  top: 31px;
+  left: 5px;
+  background: radial-gradient(#ffebc6 8%, orange 25%, darkorange 60%);
+  padding: 27px 35px;
+  border-radius: 50px;
+}
+.orange-slice {
+  padding: 38px 0.5px;
+  background: #ffebc6;
+  position: absolute;
+  left: 40px;
+  top: 3px;
+}
+.orange-slice:nth-child(2) {
+  transform: rotate(45deg);
+}
+.orange-slice:nth-child(3) {
+  transform: rotate(90deg);
+}
+.orange-slice:nth-child(4) {
+  transform: rotate(-45deg);
+}
+
+.corn {
+  background: #edc91a;
+  background: repeating-linear-gradient(transparent, yellow 5px), repeating-linear-gradient(0.25turn, white, #c49e01 8px);
+  width: 50px;
+  height: 120px;
+  border-radius: 100px 100px 100px 100px/200px 200px 100px 100px;
+  transform: rotate(20deg);
+}
+.corn-leaf {
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+.corn-leaf.leaf-1 {
+  transform: rotate(-10deg);
+  top: 0px;
+  left: -10px;
+  border-bottom: 120px solid darkgreen;
+}
+.corn-leaf.leaf-2 {
+  transform: rotate(-20deg);
+  top: 10px;
+  left: -10px;
+  border-bottom: 120px solid green;
+}
+.corn-leaf.leaf-3 {
+  transform: rotate(22deg);
+  top: 5px;
+  right: -10px;
+  border-bottom: 120px solid darkgreen;
+}
+.corn-leaf.leaf-4 {
+  transform: rotate(8deg);
+  top: 5px;
+  right: -10px;
+  border-bottom: 120px solid green;
+}
+
+.broccoli-stem.stem-1 {
+  padding: 38px 15px;
+  background: #85c191;
+  transform: rotate(10deg);
+}
+.broccoli-stem.stem-2 {
+  padding: 15px 10px;
+  background: #529660;
+  margin: -2px;
+  transform: rotate(-10deg);
+}
+.broccoli-floret {
+  padding: 20px;
+  background: darkgreen;
+  border-radius: 50px;
+  margin-top: -35px;
+  box-shadow: 20px 10px 0px 5px green, -20px -5px 0px 3px darkgreen, -35px 5px 0px 8px green, -55px 10px 0px 8px darkgreen, -30px -25px 0px 1px darkgreen, 0px -20px 0px 7px green, 30px -25px 0px 4px darkgreen, 50px 0px 0px 6px green;
+}
+
+.blueberries > .blueberry {
+  padding: 20px;
+  background: #2373ce;
+  border-radius: 9em;
+}
+.blueberries > .blueberry:before {
+  content: "";
+  padding: 3px;
+  border-radius: 20px;
+  position: absolute;
+  box-shadow: -2px -1px 0px -3px #1258a8, 2px -1px 0px -3px #1258a8, 2px 1px 0px -3px #1258a8, -2px 1px 0px -3px #1258a8, 0px 1px 0px -3px #1258a8, 0px -1px 0px -3px #1258a8, 3px 2px #094182, -3px 2px #094182, 3px -2px #094182, -3px -2px #094182, 0px -4px #094182, 0px 4px #094182;
+  background: #1258a8;
+}
+.blueberries > .blueberry.blueberry-1 {
+  margin: 0px 0px;
+  transform: rotate(10deg);
+}
+.blueberries > .blueberry.blueberry-2 {
+  margin: 7px 42px;
+  transform: rotate(95deg);
+}
+.blueberries > .blueberry.blueberry-3 {
+  margin: 5px 88px;
+  transform: rotate(130deg);
+}
+.blueberries > .blueberry.blueberry-4 {
+  margin: -28px 28px;
+  transform: rotate(230deg);
+}
+.blueberries > .blueberry.blueberry-5 {
+  margin: -23px 65px;
+  transform: rotate(310deg);
+}
+
+.eggplant {
+  padding: 50px;
+  background: linear-gradient(purple 30%, indigo);
+  border-radius: 50px 100px 100px 100px;
+  transform: rotate(45deg) skewX(30deg);
+}
+.eggplant:after {
+  content: "";
+  background: white;
+  padding: 10px;
+  position: absolute;
+  top: 15px;
+  border-radius: 10px;
+}
+.eggplant-leaf {
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 35px solid green;
+  content: "";
+}
+.eggplant-leaf.leaf-1 {
+  margin: -50px -50px;
+  transform: rotate(70deg);
+}
+.eggplant-leaf.leaf-2 {
+  margin: -60px -40px;
+  transform: rotate(15deg) skewX(-30deg);
+}
+.eggplant-leaf.leaf-3 {
+  margin: -45px -60px;
+  transform: rotate(-1deg) skewX(-30deg);
+}
+.eggplant-stem {
+  padding: 12px;
+  content: "";
+  background: green;
+  margin: -65px -50px;
+  transform: rotate(40deg) skewX(0deg);
+}
+
+.plum {
+  padding: 40px 0px 32px 10px;
+  background: linear-gradient(#72255f, #93013c);
+  border-radius: 135px 135px 150px 150px;
+  transform: rotate(20deg);
+}
+.plum:after, .plum:before {
+  content: "";
+  padding: 24px;
+  background: linear-gradient(#f7b12e 10%, #c18b24 45%, #f7b12e 90%);
+}
+.plum:after {
+  position: relative;
+  left: -25px;
+  border-radius: 100px 100px 150px 50px;
+}
+.plum:before {
+  border-radius: 100px 100px 50px 150px;
+}
+.plum-seed {
+  width: 10px;
+  height: 10px;
+  padding: 8px;
+  background: #825b13;
+  position: absolute;
+  top: 35px;
+  left: 30px;
+  z-index: 1;
+  border-radius: 20px 0px;
+  box-shadow: 0px 0px 10px 5px #c18b24;
+  transform: rotate(-40deg);
+}
+
+/*# sourceMappingURL=style.css.map */
