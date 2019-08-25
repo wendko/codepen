@@ -1,0 +1,87 @@
+.item {
+    $dimension: 150px;
+    width: $dimension;
+    height: $dimension;
+    border-radius: 50%;
+    margin: 10px;
+  }
+  
+  .rlg-1 {
+    $color-1:#FFA726;
+    $color-2:#43A047;
+    // setting 20% -> this will repeat 5 times
+    background: repeating-linear-gradient(45deg, $color-1 0%, $color-1 10%, $color-2 10%, $color-2 20%);
+  }
+  
+  
+  .rlg-2 {
+    $color-1:#FFA726;
+    $color-2:#43A047;
+    // setting 5% -> this will repeat 20 times
+    background: repeating-linear-gradient(-45deg, $color-1 0%, $color-1 2%, $color-2 2%, $color-2 5%);
+  }
+  
+  .rlg-3 {
+    $color-bot: #FFA726; // yellow
+    $color-top-left: black;
+    $color-top-right: #43A047; // green
+    $cell-width: 20%; // horizontal part will repeat 5 times
+    $cell-height: 25%; // vertical part will repeat 4 times
+    
+    background: repeating-linear-gradient(transparent, $color-bot $cell-height),
+              repeating-linear-gradient(90deg, $color-top-left, $color-top-right $cell-width);;
+  }
+  
+  
+  .rg-1 {
+    $color-1: #D81B60;
+    $color-2: #880E4F;
+    background: radial-gradient(circle, $color-1 20%, $color-2 20%);
+  }
+  
+  .rg-2 {
+    width: 250px;
+    $color-1: #D81B60;
+    $color-2: #880E4F;
+    background: radial-gradient(circle, $color-1 20%, $color-2 20%);
+  }
+  
+  
+  .rg-3 {
+    width: 250px;
+    $color-1: #D81B60;
+    $color-2: #880E4F;
+    background: radial-gradient(ellipse, $color-1 20%, $color-2 20%);
+  }
+  
+  .rg-4 {
+    $color-1: #D81B60;
+    $color-2: #880E4F;
+    background: radial-gradient(circle at top, $color-1 50%, $color-2 50%);
+  }
+  
+  .rg-5 {
+    $color-1: #D81B60;
+    $color-2: #880E4F;
+    background: radial-gradient(farthest-corner at 20%, $color-1 10%, transparent 10%),
+      radial-gradient(ellipse at 75%, transparent 10%, $color-2 10%),
+      radial-gradient(ellipse at 70%, $color-1 5%, transparent 5%);
+  }
+  
+  .rg-6 {
+    $color-1: #D81B60;
+    background: radial-gradient($color-1 20%, transparent 30%);
+    background-size: 10px 10px;
+  }
+  
+  .rrg-1 {
+    $color-1: #0091EA;
+    $color-2: #AA00FF;
+    background: repeating-radial-gradient(circle at top, $color-1 0%, $color-1 10%, $color-2 10%, $color-2 20%);
+  }
+  
+  .rrg-2 {
+    $color-1: #0091EA;
+    $color-2: transparent;
+    background: repeating-radial-gradient(circle at 120% 90%, $color-1 0%, $color-1 10%, $color-2 10%, $color-2 15%);
+  }

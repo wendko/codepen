@@ -1,0 +1,55 @@
+.item {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+.rlg-1 {
+  background: repeating-linear-gradient(45deg, #FFA726 0%, #FFA726 10%, #43A047 10%, #43A047 20%);
+}
+
+.rlg-2 {
+  background: repeating-linear-gradient(-45deg, #FFA726 0%, #FFA726 2%, #43A047 2%, #43A047 5%);
+}
+
+.rlg-3 {
+  background: repeating-linear-gradient(transparent, #FFA726 25%), repeating-linear-gradient(90deg, black, #43A047 20%);
+}
+
+.rg-1 {
+  background: radial-gradient(circle, #D81B60 20%, #880E4F 20%);
+}
+
+.rg-2 {
+  width: 250px;
+  background: radial-gradient(circle, #D81B60 20%, #880E4F 20%);
+}
+
+.rg-3 {
+  width: 250px;
+  background: radial-gradient(ellipse, #D81B60 20%, #880E4F 20%);
+}
+
+.rg-4 {
+  background: radial-gradient(circle at top, #D81B60 50%, #880E4F 50%);
+}
+
+.rg-5 {
+  background: radial-gradient(farthest-corner at 20%, #D81B60 10%, transparent 10%), radial-gradient(ellipse at 75%, transparent 10%, #880E4F 10%), radial-gradient(ellipse at 70%, #D81B60 5%, transparent 5%);
+}
+
+.rg-6 {
+  background: radial-gradient(#D81B60 20%, transparent 30%);
+  background-size: 10px 10px;
+}
+
+.rrg-1 {
+  background: repeating-radial-gradient(circle at top, #0091EA 0%, #0091EA 10%, #AA00FF 10%, #AA00FF 20%);
+}
+
+.rrg-2 {
+  background: repeating-radial-gradient(circle at 120% 90%, #0091EA 0%, #0091EA 10%, transparent 10%, transparent 15%);
+}
+
+/*# sourceMappingURL=style.css.map */

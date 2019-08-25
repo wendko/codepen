@@ -15,6 +15,26 @@ npm run pen -- {pen-name}
 This will create a folder under pens/
 COMING SOON: create `index.pug` and `index.scss`
 
+### Temporary process until I figure out how to make this easier:
+
+1. Create folder and cd into the directory
+    ```
+    npm run pen -- {pen-name}
+    cd pens/{pen-name}
+    ```
+2. Create the pug and scss files
+    ```
+    touch index.pug style.scss
+    ```
+3. Start coding! Remember to add the css reference in the pug file
+    ```
+    link( rel="stylesheet" href="./style.css" type="text/css")
+    ```
+4. Run the preprocessors to generate the html and css files
+    ```
+    pug index.pug && sass style.scss style.css
+    ```
+
 ## Pug file dependencies
 CSS: Include the stylesheet at the top of the pug file
 ```
