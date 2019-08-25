@@ -1,0 +1,71 @@
+link(rel="stylesheet" href="./style.css" type="text/css")
+
+.header
+  strong Visualisation of script async/defer
+  p Based on&nbsp;
+    a(href="https://flaviocopes.com/javascript-async-defer/")  flaviocopes.com/javascript-async-defer/
+  button.btn-replay-all(onclick="replayAll()") Replay all
+
+    
+strong.title Script is in the middle of 
+  pre= ' <body>'
+  button.btn-replay(onclick="replay('scenarioMiddleBody')") Replay
+.timeline#scenarioMiddleBody
+  .block.block-html-content.order-0 Parsing HTML
+  //- p.eyes.order-1 😒
+  .concurrent
+    .block.block-waiting-fetch-execute.order-1 Waiting
+    .timeline
+      .block.block-script-fetch.order-1 Fetching script
+      .block.block-script-execute.order-2 Executing script
+  .block.block-html-content.order-3 Resume parsing HTML
+  //- p.eyes.order-3 😁
+
+  
+strong.title Script is at the end of
+  pre= ' <body>'
+  button.btn-replay(onclick="replay('scenarioEndBody')") Replay
+.timeline#scenarioEndBody
+  .block.block-html-content-long.order-0 Parsing HTML
+  //- p.eyes.order-0 😁
+  .block.block-script-fetch.order-1 Fetching script
+  .block.block-script-execute.order-2 Executing script
+  
+strong.title Script async in
+  pre= ' <head>'
+  button.btn-replay(onclick="replay('scenarioAsync')") Replay
+.timeline#scenarioAsync 
+  .concurrent.concurrent-end
+    .block.block-html-content.order-0 Parsing HTML
+    .block.block-script-fetch.order-0 Fetching script
+  //- p.eyes.order-0 😒
+  .concurrent
+    .block.block-waiting-execute.order-1 Waiting
+    .block.block-script-execute.order-1 Executing script
+  .block.block-html-content.order-2 Resume parsing HTML
+  //- p.eyes.order-0 😁
+  
+strong.title Script defer in
+  pre= ' <head>'
+  button.btn-replay(onclick="replay('scenarioDefer')") Replay
+.timeline#scenarioDefer 
+  .concurrent.concurrent-center
+    .block.block-html-content-long.order-0 Parsing HTML
+    .block.block-script-fetch.order-0 Fetching script
+  //- p.eyes.order-0 😁
+  .block.block-script-execute.order-1 Executing script
+
+strong.title Script without async nor defer in
+  pre= ' <head>'
+  button.btn-replay(onclick="replay('scenarioMiddleBody')") Replay
+.timeline#scenarioMiddleBody
+  .concurrent
+    .block.block-waiting-fetch-execute.order-1 Waiting
+    .timeline
+      .block.block-script-fetch.order-1 Fetching script
+      .block.block-script-execute.order-2 Executing script
+  .block.block-html-content-long.order-3 Parsing HTML
+  //- p.eyes.order-3 😁
+
+
+script(src="index.js")

@@ -1,0 +1,257 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+@keyframes loading-block {
+  0% {
+    width: 0px;
+    color: transparent;
+  }
+  30% {
+    color: transparent;
+  }
+}
+@keyframes popout {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.header {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  color: #455A64;
+  display: flex;
+  flex-direction: column;
+}
+.header > strong {
+  font-size: 30px;
+  margin: 10px auto 0px;
+}
+
+button {
+  margin-left: 10px;
+  color: white;
+  border: none;
+  transition: background 0.1s ease-in;
+}
+button.btn-replay {
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: #455A64;
+  text-decoration: underline;
+  font-size: 15px;
+}
+button.btn-replay:hover {
+  font-weight: bolder;
+  color: #5C6BC0;
+}
+button.btn-replay-all {
+  position: fixed;
+  right: 10px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 18px;
+  background: #F06292;
+  margin: 8px auto auto;
+}
+button.btn-replay-all:hover {
+  background: #E91E63;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  color: #455A64;
+  font-size: 20px;
+  justify-content: left;
+  margin: 10px 0px 15px;
+  z-index: 3;
+}
+
+.block {
+  border-radius: 5px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  color: #455A64;
+  justify-content: center;
+}
+.block-html-content {
+  width: 200px;
+  background: #80D8FF;
+  animation: loading-block 3s both;
+}
+.block-html-content-long {
+  width: 400px;
+  background: #80D8FF;
+  animation: loading-block 3s both;
+}
+.block-script-fetch {
+  width: 120px;
+  background: #FFD180;
+  animation: loading-block 3s both;
+}
+.block-script-execute {
+  width: 120px;
+  background: #FF80AB;
+  animation: loading-block 3s both;
+}
+.block-waiting-fetch-execute {
+  width: 240px;
+  background: #CFD8DC;
+  animation: loading-block 3s both;
+}
+.block-waiting-execute {
+  width: 120px;
+  background: #CFD8DC;
+  animation: loading-block 3s both;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: row;
+}
+
+.order {
+  outline: 10px solid red;
+}
+.order-1 {
+  animation-delay: 1s;
+}
+.order-2 {
+  animation-delay: 2s;
+}
+.order-3 {
+  animation-delay: 3s;
+}
+.order-4 {
+  animation-delay: 4s;
+}
+.order-5 {
+  animation-delay: 5s;
+}
+
+.concurrent {
+  display: flex;
+  flex-direction: column;
+}
+.concurrent-end {
+  align-items: flex-end;
+}
+.concurrent-center {
+  align-items: center;
+}
+
+.eyes {
+  position: relative;
+  font-size: 45px;
+  align-items: flex-start;
+  animation: popout 1s both;
+  left: -22px;
+  margin-top: -30px;
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+.picture {
+  left: 0px;
+  width: 100px;
+  margin: 0px 0px;
+}
+.picture::before {
+  position: absolute;
+  font-size: 80px;
+  content: "🖼";
+  z-index: -1;
+}
+.picture::after {
+  content: "";
+  position: absolute;
+  background: white;
+  opacity: 1;
+  z-index: 2;
+  margin-top: 48px;
+  box-shadow: 40px 0px 10px 40px white;
+}
+
+.scenario-middle-body::after {
+  animation: scenario-middle-body 6s both;
+}
+.scenario-end-body::after {
+  animation: scenario-end-body 5s both;
+}
+.scenario-async::after {
+  animation: scenario-async 5s both;
+}
+.scenario-defer::after {
+  animation: scenario-defer 5s both;
+}
+.scenario-head-none::after {
+  animation: scenario-head-none 5s both;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+@keyframes scenario-middle-body {
+  0% {
+    box-shadow: 40px 0px 10px 40px white;
+  }
+  50% {
+    box-shadow: 40px 40px 10px 40px white;
+  }
+  100% {
+    box-shadow: 40px 80px 10px 40px white;
+    z-index: -1;
+  }
+}
+@keyframes scenario-end-body {
+  0% {
+    box-shadow: 40px 0px 10px 40px white;
+  }
+  20%, 100% {
+    box-shadow: 40px 80px 10px 40px white;
+  }
+}
+@keyframes scenario-async {
+  0% {
+    box-shadow: 40px 0px 10px 40px white;
+  }
+  10%, 20% {
+    box-shadow: 40px 40px 10px 40px white;
+  }
+  30%, 100% {
+    box-shadow: 40px 80px 10px 40px white;
+  }
+}
+@keyframes scenario-defer {
+  0% {
+    box-shadow: 40px 0px 10px 40px white;
+  }
+  20%, 100% {
+    box-shadow: 40px 80px 10px 40px white;
+  }
+}
+@keyframes scenario-head-none {
+  0%, 10%, 20% {
+    box-shadow: 40px 0px 10px 40px white;
+  }
+  30%, 100% {
+    box-shadow: 40px 80px 10px 40px white;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

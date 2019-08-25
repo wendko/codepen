@@ -1,0 +1,322 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+
+// ***** BLOCK VARIABLES ***** //
+$block-name-list: 
+  "html-content",
+  "html-content-long",
+  "script-fetch",
+  "script-execute",
+  "waiting-fetch-execute",
+  "waiting-execute"
+  ;
+$width-map: (
+    "html-content": 200px,
+    "html-content-long": 400px,
+    "script-fetch" : 120px,
+    "script-execute" : 120px,
+    "waiting-fetch-execute" : 240px,
+    "waiting-execute" : 120px
+);
+$color-map: (
+    "html-content": #80D8FF,
+    "html-content-long": #80D8FF,
+    "script-fetch": #FFD180,
+    "script-execute": #FF80AB,
+    "waiting-fetch-execute": #CFD8DC,
+    "waiting-execute": #CFD8DC
+);
+
+// ***** COLOR VARIABLES ***** //
+$btn-color-replay: #9FA8DA;
+$btn-color-hover-replay: #5C6BC0;
+$btn-color-replay-all: #F06292;
+$btn-color-hover-replay-all: #E91E63;
+$color-text: #455A64;
+$rank-background-map: (1: #FFCA28, 2: #B0BEC5, 3: #A1887F);
+
+// ***** OTHER VARIABLES ***** //
+$loading-speed: 3s;
+$height-block: 45px;
+$border-radius-block: 5px;
+$font-size-replay:15px;
+$font-size-replay-all:18px;
+$rank-animation-delay-map: (1: 2s, 2: 3s, 3: 3.8s);
+
+// ***** MIXINS ***** //
+@mixin text-body {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  color: $color-text;
+}
+
+// ***** FUNCTIONS ***** //
+@function get-loading-speed($block-name) {
+  // @if $block-name === "" {
+  //    @return $result;
+  // }
+  @return $loading-speed;
+}
+
+// ***** ANIMATION ***** //
+@keyframes loading-block {
+  0% {
+    width: 0px;
+    color: transparent
+  }
+  30% { 
+    color: transparent 
+  }
+}
+
+@keyframes popout {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+// ***** CLASSES ***** //
+.header {
+  @include text-body;
+  &>strong {
+    font-size: 30px;
+    margin: 10px auto 0px;
+  }
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin-left: 10px;
+  color: white;
+  border: none;
+  transition: background 0.1s ease-in;
+ 
+  &.btn-replay {
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: $color-text;
+    text-decoration: underline;
+    font-size: $font-size-replay;
+    &:hover{
+      font-weight: bolder;
+      color: $btn-color-hover-replay;
+    }
+  }
+  
+  &.btn-replay-all {
+      position: fixed;
+      right: 10px;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: $font-size-replay-all;
+      background: $btn-color-replay-all;
+      margin: 8px auto auto;
+      &:hover{
+        background: $btn-color-hover-replay-all;
+      }
+  }
+}
+
+.title {
+  @include text-body;
+  font-size: 20px;
+  justify-content: left;
+  margin: 10px 0px 15px;
+  z-index: 3;
+}
+
+.block {
+  border-radius: $border-radius-block;
+  height: $height-block;
+  @include text-body;
+  justify-content: center;
+  
+  @each $block-name in $block-name-list {
+    &-#{$block-name} {
+      width: map-get($width-map, $block-name);
+      background: map-get($color-map, $block-name);
+      animation: loading-block get-loading-speed($block-name) both;
+    }
+  }
+}
+
+.timeline {
+  display: flex;
+  flex-direction: row;
+}
+
+.order {
+  outline: 10px solid red;
+  @for $order from 1 through 5 {
+    &-#{$order} {
+      animation-delay: #{$order}s;
+    }
+  }
+}
+
+.concurrent {
+  display: flex;
+  flex-direction: column;
+  &-end {
+    align-items: flex-end;
+  }
+  &-center {
+    align-items: center;
+  }
+}
+
+// .ranking {
+//   @include text-body;
+//   font-size: 20px;
+//   display: flex;
+//   flex-direction: column;
+//   margin: 10px 20px;
+//   animation: popout 1s both;
+
+//   &:before {
+//     content: "";
+//     position: absolute;
+//     padding: 20px;
+//     border-radius: 50px;
+//     z-index: -1;
+//     margin: -10px 0px;
+//   }
+  
+//   @for $rank from 1 through 3 {
+//     &.order-#{$rank} {
+//       animation-delay: map-get($rank-animation-delay-map, $rank);
+//       &:before {
+//         background: map-get($rank-background-map, $rank);
+//       }
+//     }
+//   }
+// }
+
+.eyes {
+  position: relative;
+  font-size: 45px;
+  align-items: flex-start;
+  animation: popout 1s both;
+  left: -22px;
+  margin-top: -30px;
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+
+
+
+
+$font-size-emoji: 80px;
+$size-mask: 0.5*$font-size-emoji;
+$color-mask: white;
+
+
+
+.picture {
+  left: 0px;
+  width: 100px;
+  
+  margin: 0px 0px;
+   &::before {
+    position: absolute;
+    font-size: $font-size-emoji;
+    content:"🖼";
+    z-index: -1;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    background: $color-mask;
+    opacity: 1;
+    z-index: 2;
+    margin-top: 1.2*$size-mask;
+    box-shadow: $size-mask 0px 10px $size-mask $color-mask;
+  }
+}
+
+.scenario {
+  &-middle-body::after {
+    animation: scenario-middle-body 6s both;
+  }
+  &-end-body::after {
+    animation: scenario-end-body 5s both;
+  }
+  &-async::after {
+    animation: scenario-async 5s both;
+  }
+  &-defer::after {
+    animation: scenario-defer 5s both;
+  }
+  &-head-none::after {
+    animation: scenario-head-none 5s both;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+@keyframes scenario-middle-body {
+  0%  {
+    box-shadow: $size-mask 0px 10px $size-mask $color-mask
+  }
+  50% {
+    box-shadow: $size-mask $size-mask 10px $size-mask $color-mask;
+  }
+  100% {
+      box-shadow: $size-mask 2*$size-mask 10px $size-mask $color-mask;
+    z-index: -1;
+  }
+}
+
+@keyframes scenario-end-body {
+  0%  {
+    box-shadow: $size-mask 0px 10px $size-mask $color-mask
+  }
+  20%, 100%  {
+      box-shadow: $size-mask 2*$size-mask 10px $size-mask $color-mask;
+  }
+}
+
+
+@keyframes scenario-async {
+  0%  {
+    box-shadow: $size-mask 0px 10px $size-mask $color-mask
+  }
+  10%, 20% {
+    box-shadow: $size-mask $size-mask 10px $size-mask $color-mask;
+  }
+  30%, 100% {
+      box-shadow: $size-mask 2*$size-mask 10px $size-mask $color-mask;
+  }
+}
+
+@keyframes scenario-defer {
+  0%  {
+    box-shadow: $size-mask 0px 10px $size-mask $color-mask
+  }
+  20%, 100%  {
+      box-shadow: $size-mask 2*$size-mask 10px $size-mask $color-mask;
+  }
+}
+
+@keyframes scenario-head-none {
+  0%, 10%, 20%  {
+    box-shadow: $size-mask 0px 10px $size-mask $color-mask
+  }
+  30%, 100%  {
+      box-shadow: $size-mask 2*$size-mask 10px $size-mask $color-mask;
+  }
+}

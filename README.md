@@ -8,10 +8,15 @@ Each folder would have
 - a .scss file
 - from the postprocessing, there would be a .css, .css.map and .html file as well
 
-## Pug file
-Include the stylesheet in the pug file
+## Pug file dependencies
+CSS: Include the stylesheet at the top of the pug file
 ```
-link( rel="stylesheet" href="./template.css" type="text/css")
+link(rel="stylesheet" href="./template.css" type="text/css")
+```
+
+Javascript: Include the script tag in the bottom of the pug file
+```
+script(src="index.js")
 ```
 
 ## Preprocessing
