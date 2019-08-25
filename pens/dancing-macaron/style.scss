@@ -1,0 +1,376 @@
+.container {
+    padding: 10px 20px;
+  }
+  
+  .background {
+    $alt-1: #FFFF8D;
+    $alt-0: #FFCDD2;
+    
+    $grid-size: 140;
+    $grid-size-double: $grid-size * 2;
+    
+    background: $alt-0;
+    width: #{$grid-size}px;
+    height: #{$grid-size - 10 }px;
+    position: fixed;
+    margin-top: 50px;
+    z-index: -1;
+    border-radius: 10px;
+    box-shadow:
+      155px 0px 0px $alt-1,
+      310px 0px 0px $alt-0,
+      0px 155px 0px $alt-1,
+      155px 155px 0px $alt-0,
+      310px 155px 0px $alt-1,
+      0px 310px 0px $alt-0,
+      155px 310px 0px $alt-1,
+      310px 310px 0px $alt-0
+      ;
+  }
+  
+  .row {
+    display:flex;
+    flex-direction: row;
+  }
+  
+  @keyframes blob {
+    0% , 80% {
+      opacity: 0
+    }
+    10%, 100% {
+      opacity: 0.5;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes blink {
+    0%,21%,100% {
+      height:10px;
+    }
+    20% {
+      height:1px;
+    }
+  }
+  
+  @keyframes closedEyesAnim {
+    0%, 50%, 100% {
+      transform: translateY(0px);
+    }
+    30% {
+      transform: translateX(1px) translateY(-3px);
+    }
+    80% {
+      transform: translateX(-1px) translateY(-3px);
+    }
+  }
+  
+  @keyframes closedMouthAnim {
+    0%, 100% {
+      width:20px;
+      height:5px;
+    }
+    50% {
+      margin-left:55px;
+      width:10px;
+      height:0px;
+    }
+  }
+  
+  @keyframes openMouthAnim {
+    0%,100% {
+      height:20px;
+    }
+    20% {
+      height:18px;
+    }
+  }
+  
+  @keyframes dance1 {
+    30%, 50%, 70% {
+      transform: skewX(5deg);
+    }
+    20%, 40%, 60% {
+      transform: skewX(-5deg);
+    }
+    0%, 60%, 100% {
+      transform: skewX(0deg);
+    }
+  }
+  
+  @keyframes dance2 {
+    80% {
+      transform: skewY(8deg);
+    }
+    30% {
+      transform: skewY(-8deg);
+    }
+    0%, 50%, 100% {
+      transform: skewY(0deg);
+    }
+  }
+  
+  @keyframes dance3 {
+    0%, 25%, 55%, 85%, 100% {
+        transform: translateY(0px);
+    }
+    20%, 50%, 80%{
+      transform: translateY(-5px);
+    }
+  }
+  
+  @mixin eye {
+    background:black;
+    width:10px;
+    height:10px;
+    border-radius:20px;
+    position:absolute;
+    animation: blink 1.5s infinite alternate;
+  }
+  
+  @mixin eye-closed {
+    background:transparent;
+    width:10px;
+    height:5px;
+    border-radius:20px 20px 0px 0px;
+    border: 2px solid black;
+    border-bottom: 2px solid transparent;
+    position:absolute;
+    animation: closedEyesAnim 2s infinite;
+  }
+  
+  @mixin eye-half-closed {
+    background:black;
+    width:12px;
+    height:10px;
+    border-radius:0px 0px 20px 20px;
+    position:absolute;
+  }
+  
+  @mixin mouth-open {
+      width:20px;
+      height:20px;
+      border: 2px solid black;
+      border-radius: 10px 10px 50px 50px;
+      background: #F50057;
+      position: absolute;
+      margin-top:60px;
+      margin-left:50px;
+      animation: openMouthAnim 3s infinite;
+  }
+  
+  @mixin mouth-closed {
+      width:15px;
+      height:2px;
+      border-radius: 20px 20px 50px 50px;
+      background:black;
+      position: absolute;
+      margin-top:60px;
+      margin-left:55px;
+  }
+  
+  @mixin mouth-half-closed {
+      width:20px;
+      height:5px;
+      border-radius: 20px 20px 50px 50px;
+      background:#F06292;
+      border: 2px solid black;
+      position: absolute;
+      margin-top:60px;
+      margin-left:50px;
+      animation: closedMouthAnim 1s infinite;
+  }
+  
+  @mixin blushes($blush-color) {
+      &>.blush-left {
+        @include blush($blush-color);
+        margin-left:20px;
+        margin-top: 60px;
+      }
+  
+      &>.blush-right {
+        @include blush($blush-color);
+        margin-left:95px;
+        margin-top:60px;
+      }
+  }
+  
+  @mixin blush($blush-color) {
+    background: $blush-color;
+    width:5px;
+    height:2px;
+    box-shadow: 0px 0px 10px 10px $blush-color;
+    border-radius:20px;
+    position:absolute;
+  }
+  
+  @mixin face-happy($blush-color) {
+      &>.mouth {
+        @include mouth-open;
+      }
+  
+      &>.eye-left {
+        @include eye;
+        margin-left: 25px;
+        margin-top: 40px;
+      }
+  
+      &>.eye-right {
+        @include eye;
+        margin-left:85px;
+        margin-top:40px;
+      }
+  
+     @include blushes($blush-color);
+  }
+  
+  @mixin face-smiley($blush-color) {
+      &>.mouth {
+        @include mouth-half-closed;
+      }
+  
+      &>.eye-left {
+        @include eye-closed;
+        margin-left: 25px;
+        margin-top: 40px;
+      }
+  
+      &>.eye-right {
+        @include eye-closed;
+        margin-left:85px;
+        margin-top:40px;
+      }
+    
+     @include blushes($blush-color);
+  }
+  
+  @mixin face-cool($blush-color) {
+      &>.mouth {
+        @include mouth-closed;
+      }
+  
+      &>.eye-left {
+        @include eye-half-closed;
+        margin-left: 25px;
+        margin-top: 40px;
+      }
+  
+      &>.eye-right {
+        @include eye-half-closed;
+        margin-left:85px;
+        margin-top:40px;
+      }
+  
+     @include blushes($blush-color);
+  }
+  
+  @mixin macaroon($color, $filling-color, $shadow-color) {
+    width: 120px;
+    height: 110px;
+    background: $color;
+    margin-bottom:50px;
+    margin-left:15px;
+    margin-right:15px;
+    border-radius: 200px;
+    box-shadow: inset 0px -12px 5px  $shadow-color,
+      0px 12px 0px 1px $filling-color,
+      0px 22px 5px 0px $color,
+      0px 30px 0px 0px $shadow-color,
+      0px 35px 10px 0px black,
+     ;
+    
+    &>.face-happy {
+      @include face-happy($shadow-color);
+    }
+    
+    &>.face-smiley {
+      @include face-smiley($shadow-color);
+    }
+    
+    &>.face-cool {
+      @include face-cool($shadow-color);
+    }
+  }
+  
+  .macaroon { 
+    &.strawberry {
+      $shadow-color: #F48FB1;
+      $filling-color: #F06292;
+      $color: #F8BBD0;
+      @include macaroon($color, $filling-color, $shadow-color)
+    }
+    
+     &.blueberry {
+      $shadow-color: #03A9F4;
+      $filling-color: #1565C0;
+      $color: #4FC3F7;
+      @include macaroon($color, $filling-color, $shadow-color)
+    }
+     
+    &.pineapple {
+      $shadow-color: #FDD835;
+      $filling-color: #F9A825;
+      $color: #FFF176;
+      @include macaroon($color, $filling-color, $shadow-color)
+    }
+    
+      &.lavender {
+      $shadow-color: #CE93D8;
+      $filling-color: #AB47BC;
+      $color: #E1BEE7;
+      @include macaroon($color, $filling-color, $shadow-color)
+    }
+    
+     &.matcha {
+      $shadow-color: #8BC34A;
+      $filling-color: #388E3C;
+      $color: #A5D6A7;
+      @include macaroon($color, $filling-color, $shadow-color)
+    }
+    
+     &.chocolate {
+      $shadow-color: #8D6E63;
+      $filling-color: #5D4037;
+      $color: #A1887F;
+      @include macaroon($color, $filling-color, $shadow-color)
+    }
+    
+    
+    &.bubblegum {
+      $shadow-color: #64B5F6;
+      $filling-color: #F48FB1;
+      $color: #BBDEFB;
+      @include macaroon($color, $filling-color, $shadow-color)
+    }
+  
+      &.sesame {
+      $shadow-color: #BDBDBD;
+      $filling-color: #616161;
+      $color: #E0E0E0;
+      @include macaroon($color, $filling-color, $shadow-color)
+    }
+    
+    &.orange {
+      $shadow-color: #FF9800;
+      $filling-color: #E65100;
+      $color: #FFB74D;
+      @include macaroon($color, $filling-color, $shadow-color)
+    }
+  }
+  
+  .dance-1 {
+     animation: dance1 2s infinite;
+  }
+  
+  .dance-2 {
+     animation: dance2 2s infinite;
+  }
+  
+  .dance-3 {
+    &>.face-cool>* {
+         animation: dance3 2s infinite;
+    }
+  }

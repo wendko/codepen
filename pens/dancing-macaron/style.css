@@ -1,0 +1,1582 @@
+.container {
+  padding: 10px 20px;
+}
+
+.background {
+  background: #FFCDD2;
+  width: 140px;
+  height: 130px;
+  position: fixed;
+  margin-top: 50px;
+  z-index: -1;
+  border-radius: 10px;
+  box-shadow: 155px 0px 0px #FFFF8D, 310px 0px 0px #FFCDD2, 0px 155px 0px #FFFF8D, 155px 155px 0px #FFCDD2, 310px 155px 0px #FFFF8D, 0px 310px 0px #FFCDD2, 155px 310px 0px #FFFF8D, 310px 310px 0px #FFCDD2;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+@keyframes blob {
+  0%, 80% {
+    opacity: 0;
+  }
+  10%, 100% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+@keyframes blink {
+  0%, 21%, 100% {
+    height: 10px;
+  }
+  20% {
+    height: 1px;
+  }
+}
+@keyframes closedEyesAnim {
+  0%, 50%, 100% {
+    transform: translateY(0px);
+  }
+  30% {
+    transform: translateX(1px) translateY(-3px);
+  }
+  80% {
+    transform: translateX(-1px) translateY(-3px);
+  }
+}
+@keyframes closedMouthAnim {
+  0%, 100% {
+    width: 20px;
+    height: 5px;
+  }
+  50% {
+    margin-left: 55px;
+    width: 10px;
+    height: 0px;
+  }
+}
+@keyframes openMouthAnim {
+  0%, 100% {
+    height: 20px;
+  }
+  20% {
+    height: 18px;
+  }
+}
+@keyframes dance1 {
+  30%, 50%, 70% {
+    transform: skewX(5deg);
+  }
+  20%, 40%, 60% {
+    transform: skewX(-5deg);
+  }
+  0%, 60%, 100% {
+    transform: skewX(0deg);
+  }
+}
+@keyframes dance2 {
+  80% {
+    transform: skewY(8deg);
+  }
+  30% {
+    transform: skewY(-8deg);
+  }
+  0%, 50%, 100% {
+    transform: skewY(0deg);
+  }
+}
+@keyframes dance3 {
+  0%, 25%, 55%, 85%, 100% {
+    transform: translateY(0px);
+  }
+  20%, 50%, 80% {
+    transform: translateY(-5px);
+  }
+}
+.macaroon.strawberry {
+  width: 120px;
+  height: 110px;
+  background: #F8BBD0;
+  margin-bottom: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 200px;
+  box-shadow: inset 0px -12px 5px #F48FB1, 0px 12px 0px 1px #F06292, 0px 22px 5px 0px #F8BBD0, 0px 30px 0px 0px #F48FB1, 0px 35px 10px 0px black;
+}
+.macaroon.strawberry > .face-happy > .mouth {
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 10px 10px 50px 50px;
+  background: #F50057;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: openMouthAnim 3s infinite;
+}
+.macaroon.strawberry > .face-happy > .eye-left {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.strawberry > .face-happy > .eye-right {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.strawberry > .face-happy > .blush-left {
+  background: #F48FB1;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #F48FB1;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.strawberry > .face-happy > .blush-right {
+  background: #F48FB1;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #F48FB1;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.strawberry > .face-smiley > .mouth {
+  width: 20px;
+  height: 5px;
+  border-radius: 20px 20px 50px 50px;
+  background: #F06292;
+  border: 2px solid black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: closedMouthAnim 1s infinite;
+}
+.macaroon.strawberry > .face-smiley > .eye-left {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.strawberry > .face-smiley > .eye-right {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.strawberry > .face-smiley > .blush-left {
+  background: #F48FB1;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #F48FB1;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.strawberry > .face-smiley > .blush-right {
+  background: #F48FB1;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #F48FB1;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.strawberry > .face-cool > .mouth {
+  width: 15px;
+  height: 2px;
+  border-radius: 20px 20px 50px 50px;
+  background: black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 55px;
+}
+.macaroon.strawberry > .face-cool > .eye-left {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.strawberry > .face-cool > .eye-right {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.strawberry > .face-cool > .blush-left {
+  background: #F48FB1;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #F48FB1;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.strawberry > .face-cool > .blush-right {
+  background: #F48FB1;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #F48FB1;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.blueberry {
+  width: 120px;
+  height: 110px;
+  background: #4FC3F7;
+  margin-bottom: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 200px;
+  box-shadow: inset 0px -12px 5px #03A9F4, 0px 12px 0px 1px #1565C0, 0px 22px 5px 0px #4FC3F7, 0px 30px 0px 0px #03A9F4, 0px 35px 10px 0px black;
+}
+.macaroon.blueberry > .face-happy > .mouth {
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 10px 10px 50px 50px;
+  background: #F50057;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: openMouthAnim 3s infinite;
+}
+.macaroon.blueberry > .face-happy > .eye-left {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.blueberry > .face-happy > .eye-right {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.blueberry > .face-happy > .blush-left {
+  background: #03A9F4;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #03A9F4;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.blueberry > .face-happy > .blush-right {
+  background: #03A9F4;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #03A9F4;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.blueberry > .face-smiley > .mouth {
+  width: 20px;
+  height: 5px;
+  border-radius: 20px 20px 50px 50px;
+  background: #F06292;
+  border: 2px solid black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: closedMouthAnim 1s infinite;
+}
+.macaroon.blueberry > .face-smiley > .eye-left {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.blueberry > .face-smiley > .eye-right {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.blueberry > .face-smiley > .blush-left {
+  background: #03A9F4;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #03A9F4;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.blueberry > .face-smiley > .blush-right {
+  background: #03A9F4;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #03A9F4;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.blueberry > .face-cool > .mouth {
+  width: 15px;
+  height: 2px;
+  border-radius: 20px 20px 50px 50px;
+  background: black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 55px;
+}
+.macaroon.blueberry > .face-cool > .eye-left {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.blueberry > .face-cool > .eye-right {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.blueberry > .face-cool > .blush-left {
+  background: #03A9F4;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #03A9F4;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.blueberry > .face-cool > .blush-right {
+  background: #03A9F4;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #03A9F4;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.pineapple {
+  width: 120px;
+  height: 110px;
+  background: #FFF176;
+  margin-bottom: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 200px;
+  box-shadow: inset 0px -12px 5px #FDD835, 0px 12px 0px 1px #F9A825, 0px 22px 5px 0px #FFF176, 0px 30px 0px 0px #FDD835, 0px 35px 10px 0px black;
+}
+.macaroon.pineapple > .face-happy > .mouth {
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 10px 10px 50px 50px;
+  background: #F50057;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: openMouthAnim 3s infinite;
+}
+.macaroon.pineapple > .face-happy > .eye-left {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.pineapple > .face-happy > .eye-right {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.pineapple > .face-happy > .blush-left {
+  background: #FDD835;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #FDD835;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.pineapple > .face-happy > .blush-right {
+  background: #FDD835;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #FDD835;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.pineapple > .face-smiley > .mouth {
+  width: 20px;
+  height: 5px;
+  border-radius: 20px 20px 50px 50px;
+  background: #F06292;
+  border: 2px solid black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: closedMouthAnim 1s infinite;
+}
+.macaroon.pineapple > .face-smiley > .eye-left {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.pineapple > .face-smiley > .eye-right {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.pineapple > .face-smiley > .blush-left {
+  background: #FDD835;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #FDD835;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.pineapple > .face-smiley > .blush-right {
+  background: #FDD835;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #FDD835;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.pineapple > .face-cool > .mouth {
+  width: 15px;
+  height: 2px;
+  border-radius: 20px 20px 50px 50px;
+  background: black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 55px;
+}
+.macaroon.pineapple > .face-cool > .eye-left {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.pineapple > .face-cool > .eye-right {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.pineapple > .face-cool > .blush-left {
+  background: #FDD835;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #FDD835;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.pineapple > .face-cool > .blush-right {
+  background: #FDD835;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #FDD835;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.lavender {
+  width: 120px;
+  height: 110px;
+  background: #E1BEE7;
+  margin-bottom: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 200px;
+  box-shadow: inset 0px -12px 5px #CE93D8, 0px 12px 0px 1px #AB47BC, 0px 22px 5px 0px #E1BEE7, 0px 30px 0px 0px #CE93D8, 0px 35px 10px 0px black;
+}
+.macaroon.lavender > .face-happy > .mouth {
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 10px 10px 50px 50px;
+  background: #F50057;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: openMouthAnim 3s infinite;
+}
+.macaroon.lavender > .face-happy > .eye-left {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.lavender > .face-happy > .eye-right {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.lavender > .face-happy > .blush-left {
+  background: #CE93D8;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #CE93D8;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.lavender > .face-happy > .blush-right {
+  background: #CE93D8;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #CE93D8;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.lavender > .face-smiley > .mouth {
+  width: 20px;
+  height: 5px;
+  border-radius: 20px 20px 50px 50px;
+  background: #F06292;
+  border: 2px solid black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: closedMouthAnim 1s infinite;
+}
+.macaroon.lavender > .face-smiley > .eye-left {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.lavender > .face-smiley > .eye-right {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.lavender > .face-smiley > .blush-left {
+  background: #CE93D8;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #CE93D8;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.lavender > .face-smiley > .blush-right {
+  background: #CE93D8;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #CE93D8;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.lavender > .face-cool > .mouth {
+  width: 15px;
+  height: 2px;
+  border-radius: 20px 20px 50px 50px;
+  background: black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 55px;
+}
+.macaroon.lavender > .face-cool > .eye-left {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.lavender > .face-cool > .eye-right {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.lavender > .face-cool > .blush-left {
+  background: #CE93D8;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #CE93D8;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.lavender > .face-cool > .blush-right {
+  background: #CE93D8;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #CE93D8;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.matcha {
+  width: 120px;
+  height: 110px;
+  background: #A5D6A7;
+  margin-bottom: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 200px;
+  box-shadow: inset 0px -12px 5px #8BC34A, 0px 12px 0px 1px #388E3C, 0px 22px 5px 0px #A5D6A7, 0px 30px 0px 0px #8BC34A, 0px 35px 10px 0px black;
+}
+.macaroon.matcha > .face-happy > .mouth {
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 10px 10px 50px 50px;
+  background: #F50057;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: openMouthAnim 3s infinite;
+}
+.macaroon.matcha > .face-happy > .eye-left {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.matcha > .face-happy > .eye-right {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.matcha > .face-happy > .blush-left {
+  background: #8BC34A;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #8BC34A;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.matcha > .face-happy > .blush-right {
+  background: #8BC34A;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #8BC34A;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.matcha > .face-smiley > .mouth {
+  width: 20px;
+  height: 5px;
+  border-radius: 20px 20px 50px 50px;
+  background: #F06292;
+  border: 2px solid black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: closedMouthAnim 1s infinite;
+}
+.macaroon.matcha > .face-smiley > .eye-left {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.matcha > .face-smiley > .eye-right {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.matcha > .face-smiley > .blush-left {
+  background: #8BC34A;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #8BC34A;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.matcha > .face-smiley > .blush-right {
+  background: #8BC34A;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #8BC34A;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.matcha > .face-cool > .mouth {
+  width: 15px;
+  height: 2px;
+  border-radius: 20px 20px 50px 50px;
+  background: black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 55px;
+}
+.macaroon.matcha > .face-cool > .eye-left {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.matcha > .face-cool > .eye-right {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.matcha > .face-cool > .blush-left {
+  background: #8BC34A;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #8BC34A;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.matcha > .face-cool > .blush-right {
+  background: #8BC34A;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #8BC34A;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.chocolate {
+  width: 120px;
+  height: 110px;
+  background: #A1887F;
+  margin-bottom: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 200px;
+  box-shadow: inset 0px -12px 5px #8D6E63, 0px 12px 0px 1px #5D4037, 0px 22px 5px 0px #A1887F, 0px 30px 0px 0px #8D6E63, 0px 35px 10px 0px black;
+}
+.macaroon.chocolate > .face-happy > .mouth {
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 10px 10px 50px 50px;
+  background: #F50057;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: openMouthAnim 3s infinite;
+}
+.macaroon.chocolate > .face-happy > .eye-left {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.chocolate > .face-happy > .eye-right {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.chocolate > .face-happy > .blush-left {
+  background: #8D6E63;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #8D6E63;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.chocolate > .face-happy > .blush-right {
+  background: #8D6E63;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #8D6E63;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.chocolate > .face-smiley > .mouth {
+  width: 20px;
+  height: 5px;
+  border-radius: 20px 20px 50px 50px;
+  background: #F06292;
+  border: 2px solid black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: closedMouthAnim 1s infinite;
+}
+.macaroon.chocolate > .face-smiley > .eye-left {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.chocolate > .face-smiley > .eye-right {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.chocolate > .face-smiley > .blush-left {
+  background: #8D6E63;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #8D6E63;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.chocolate > .face-smiley > .blush-right {
+  background: #8D6E63;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #8D6E63;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.chocolate > .face-cool > .mouth {
+  width: 15px;
+  height: 2px;
+  border-radius: 20px 20px 50px 50px;
+  background: black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 55px;
+}
+.macaroon.chocolate > .face-cool > .eye-left {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.chocolate > .face-cool > .eye-right {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.chocolate > .face-cool > .blush-left {
+  background: #8D6E63;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #8D6E63;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.chocolate > .face-cool > .blush-right {
+  background: #8D6E63;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #8D6E63;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.bubblegum {
+  width: 120px;
+  height: 110px;
+  background: #BBDEFB;
+  margin-bottom: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 200px;
+  box-shadow: inset 0px -12px 5px #64B5F6, 0px 12px 0px 1px #F48FB1, 0px 22px 5px 0px #BBDEFB, 0px 30px 0px 0px #64B5F6, 0px 35px 10px 0px black;
+}
+.macaroon.bubblegum > .face-happy > .mouth {
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 10px 10px 50px 50px;
+  background: #F50057;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: openMouthAnim 3s infinite;
+}
+.macaroon.bubblegum > .face-happy > .eye-left {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.bubblegum > .face-happy > .eye-right {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.bubblegum > .face-happy > .blush-left {
+  background: #64B5F6;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #64B5F6;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.bubblegum > .face-happy > .blush-right {
+  background: #64B5F6;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #64B5F6;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.bubblegum > .face-smiley > .mouth {
+  width: 20px;
+  height: 5px;
+  border-radius: 20px 20px 50px 50px;
+  background: #F06292;
+  border: 2px solid black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: closedMouthAnim 1s infinite;
+}
+.macaroon.bubblegum > .face-smiley > .eye-left {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.bubblegum > .face-smiley > .eye-right {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.bubblegum > .face-smiley > .blush-left {
+  background: #64B5F6;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #64B5F6;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.bubblegum > .face-smiley > .blush-right {
+  background: #64B5F6;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #64B5F6;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.bubblegum > .face-cool > .mouth {
+  width: 15px;
+  height: 2px;
+  border-radius: 20px 20px 50px 50px;
+  background: black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 55px;
+}
+.macaroon.bubblegum > .face-cool > .eye-left {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.bubblegum > .face-cool > .eye-right {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.bubblegum > .face-cool > .blush-left {
+  background: #64B5F6;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #64B5F6;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.bubblegum > .face-cool > .blush-right {
+  background: #64B5F6;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #64B5F6;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.sesame {
+  width: 120px;
+  height: 110px;
+  background: #E0E0E0;
+  margin-bottom: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 200px;
+  box-shadow: inset 0px -12px 5px #BDBDBD, 0px 12px 0px 1px #616161, 0px 22px 5px 0px #E0E0E0, 0px 30px 0px 0px #BDBDBD, 0px 35px 10px 0px black;
+}
+.macaroon.sesame > .face-happy > .mouth {
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 10px 10px 50px 50px;
+  background: #F50057;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: openMouthAnim 3s infinite;
+}
+.macaroon.sesame > .face-happy > .eye-left {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.sesame > .face-happy > .eye-right {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.sesame > .face-happy > .blush-left {
+  background: #BDBDBD;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #BDBDBD;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.sesame > .face-happy > .blush-right {
+  background: #BDBDBD;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #BDBDBD;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.sesame > .face-smiley > .mouth {
+  width: 20px;
+  height: 5px;
+  border-radius: 20px 20px 50px 50px;
+  background: #F06292;
+  border: 2px solid black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: closedMouthAnim 1s infinite;
+}
+.macaroon.sesame > .face-smiley > .eye-left {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.sesame > .face-smiley > .eye-right {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.sesame > .face-smiley > .blush-left {
+  background: #BDBDBD;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #BDBDBD;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.sesame > .face-smiley > .blush-right {
+  background: #BDBDBD;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #BDBDBD;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.sesame > .face-cool > .mouth {
+  width: 15px;
+  height: 2px;
+  border-radius: 20px 20px 50px 50px;
+  background: black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 55px;
+}
+.macaroon.sesame > .face-cool > .eye-left {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.sesame > .face-cool > .eye-right {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.sesame > .face-cool > .blush-left {
+  background: #BDBDBD;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #BDBDBD;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.sesame > .face-cool > .blush-right {
+  background: #BDBDBD;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #BDBDBD;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.orange {
+  width: 120px;
+  height: 110px;
+  background: #FFB74D;
+  margin-bottom: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 200px;
+  box-shadow: inset 0px -12px 5px #FF9800, 0px 12px 0px 1px #E65100, 0px 22px 5px 0px #FFB74D, 0px 30px 0px 0px #FF9800, 0px 35px 10px 0px black;
+}
+.macaroon.orange > .face-happy > .mouth {
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 10px 10px 50px 50px;
+  background: #F50057;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: openMouthAnim 3s infinite;
+}
+.macaroon.orange > .face-happy > .eye-left {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.orange > .face-happy > .eye-right {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  position: absolute;
+  animation: blink 1.5s infinite alternate;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.orange > .face-happy > .blush-left {
+  background: #FF9800;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #FF9800;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.orange > .face-happy > .blush-right {
+  background: #FF9800;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #FF9800;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.orange > .face-smiley > .mouth {
+  width: 20px;
+  height: 5px;
+  border-radius: 20px 20px 50px 50px;
+  background: #F06292;
+  border: 2px solid black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  animation: closedMouthAnim 1s infinite;
+}
+.macaroon.orange > .face-smiley > .eye-left {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.orange > .face-smiley > .eye-right {
+  background: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 20px 20px 0px 0px;
+  border: 2px solid black;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  animation: closedEyesAnim 2s infinite;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.orange > .face-smiley > .blush-left {
+  background: #FF9800;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #FF9800;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.orange > .face-smiley > .blush-right {
+  background: #FF9800;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #FF9800;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+.macaroon.orange > .face-cool > .mouth {
+  width: 15px;
+  height: 2px;
+  border-radius: 20px 20px 50px 50px;
+  background: black;
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 55px;
+}
+.macaroon.orange > .face-cool > .eye-left {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.macaroon.orange > .face-cool > .eye-right {
+  background: black;
+  width: 12px;
+  height: 10px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+.macaroon.orange > .face-cool > .blush-left {
+  background: #FF9800;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #FF9800;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+.macaroon.orange > .face-cool > .blush-right {
+  background: #FF9800;
+  width: 5px;
+  height: 2px;
+  box-shadow: 0px 0px 10px 10px #FF9800;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 95px;
+  margin-top: 60px;
+}
+
+.dance-1 {
+  animation: dance1 2s infinite;
+}
+
+.dance-2 {
+  animation: dance2 2s infinite;
+}
+
+.dance-3 > .face-cool > * {
+  animation: dance3 2s infinite;
+}
+
+/*# sourceMappingURL=style.css.map */
