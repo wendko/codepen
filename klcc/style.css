@@ -1,0 +1,142 @@
+.line {
+  width: 15px;
+  height: 300px;
+  position: fixed;
+  margin: 100px 118px;
+  border: 2px solid red;
+}
+
+.spike {
+  width: 80px;
+  height: 0px;
+  border: 1px solid black;
+  transform: rotate(-88deg);
+  margin: 30px -4px 28px;
+}
+.spike::before {
+  content: "";
+  width: 80px;
+  border: 1px solid black;
+  position: absolute;
+  transform: rotate(-5deg);
+  margin: 4px -1px;
+}
+
+.cherry {
+  background: white;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid black;
+  margin: 10px 32px 6px;
+}
+
+.tower-piece {
+  width: 15px;
+  height: 12px;
+  border-radius: 7px 7px 0px 0px;
+  border: 2px solid black;
+  background: white;
+  margin-top: -8px;
+}
+
+.tower-column {
+  position: relative;
+  margin: 0px -1px;
+}
+
+.tower-top-2 {
+  margin: 0px 30px;
+}
+
+.tower-top-3 {
+  margin: 0px 27px;
+}
+
+.tower-mid-0 > .tower-column > .tower-piece, .tower-top-3 > .tower-column > .tower-piece, .tower-top-2 > .tower-column > .tower-piece {
+  width: 5px;
+}
+
+.tower-mid-0 {
+  margin: 0px 24px;
+}
+
+.tower-mid-1 {
+  margin: 0px 19px;
+}
+.tower-mid-1 > .tower-column > .tower-piece {
+  width: 7px;
+}
+
+.tower-mid-2 {
+  margin: 0px 15px;
+}
+.tower-mid-2 > .tower-column > .tower-piece {
+  width: 9px;
+}
+
+.tower-mid-3 {
+  margin: 0px 10px;
+}
+.tower-mid-3 > .tower-column > .tower-piece {
+  width: 11px;
+}
+
+.tower-mid-4 {
+  margin: 0px 5px;
+}
+.tower-mid-4 > .tower-column > .tower-piece {
+  width: 13px;
+}
+
+.tower-level {
+  display: flex;
+}
+
+.tower {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px auto;
+  zoom: 1;
+}
+
+.tower-single {
+  display: flex;
+  flex-direction: column;
+}
+
+.bridge {
+  width: 80px;
+  height: 10px;
+  background: white;
+  position: relative;
+  margin: 380px 0px;
+  border: 2px solid black;
+  box-shadow: 0px -2px 0px -1px white, 0px -4px 0px -1px black, 0px 2px 0px -1px white, 0px 4px 0px -1px black;
+}
+.bridge::before {
+  content: "";
+  background: white;
+  width: 10px;
+  height: 100px;
+  position: absolute;
+  z-index: -1;
+  border: 2px solid black;
+  transform: skewX(-30deg);
+  margin: 13px -11px;
+}
+.bridge::after {
+  content: "";
+  content: "";
+  background: white;
+  width: 10px;
+  height: 100px;
+  position: absolute;
+  z-index: -1;
+  border: 2px solid black;
+  transform: skewX(30deg);
+  margin: 13px 78px;
+}
+
+/*# sourceMappingURL=style.css.map */
