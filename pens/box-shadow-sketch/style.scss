@@ -1,0 +1,84 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  $color-outline: black;
+  
+  .face {
+    width: 150px; height: 150px;
+    background: white;
+    border-radius: 48% 52% 45% 55% / 67% 42% 58% 33% ;
+    box-shadow: -6px 0px 0px 0px $color-outline,
+      6px -2px 0px 0px $color-outline,
+      3px 2px 0px 0px $color-outline;
+  }
+  
+  .smile {
+    width: 20px; height: 15px;
+    background: white;
+    border-radius: 52% 48% 50% 50% / 32% 31% 69% 68% ;
+    box-shadow: 0px 5px $color-outline;
+    transform: rotate(10deg);
+    margin: 65px 42px;
+  }
+  
+  .eye {
+    position: relative;
+    width: 15px; height: 15px;
+    background: $color-outline;
+    border-radius: 52% 48% 49% 51% / 67% 67% 33% 33%;
+    &-left {
+      top: 70px;
+      left: 25px;
+    }
+    &-right {
+      top: 60px;
+      left: 80px;
+    }
+  }
+  
+  .hair {
+    position: absolute;
+    &>.fringe-1 {
+    width: 50px; height: 50px;
+    background: transparent;
+    border-radius: 10% 90%;
+    box-shadow: -4px 4px 0px -1px $color-outline,
+      -25px -5px 0px -2px white,
+      -30px -5px 0px -2px $color-outline,
+      -50px -15px 0px -5px white,
+      -55px -15px 0px -5px $color-outline,
+      -70px -22px 0px -8px white,
+      -75px -22px 0px -8px $color-outline
+      ;
+    margin: 30px 110px;
+    }
+    &>.fringe-2 {
+    width: 40px; height: 50px;
+    background: transparent;
+    border-radius: 90% 10%;
+    box-shadow: 0px 7px 0px -2px $color-outline,
+      12px 0px 0px -5px white,
+      16px 1px 0px -5px $color-outline;
+    margin: -95px -4px;
+    }
+    &>.ponytail {
+      position: relative;
+      width: 60px; height: 80px;
+      background: white;
+      border-radius: 40% 60%;
+      box-shadow: 0px -5px 0px 2px $color-outline,
+      52px 23px 0px -9px white,
+      48px 30px 0px -10px $color-outline,
+      25px 40px 0px -9px white,
+      25px 46px 0px -9px $color-outline,
+      -5px 40px 0px -10px white,
+      -6px 45px 0px -10px $color-outline,
+      ;
+      margin: 45px 130px;
+      z-index: -1;
+    }
+  }

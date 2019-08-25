@@ -1,0 +1,12 @@
+link( rel="stylesheet" href="./style.css" type="text/css")
+
+.flags
+  each flagUrl, stateName in {'Perlis':'https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Flag_of_Perlis.svg/1200px-Flag_of_Perlis.svg.png','Kedah':'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Flag_of_Kedah.svg/1600px-Flag_of_Kedah.svg.png', 'Penang': 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Penang_%28Malaysia%29.svg', 'Perak': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Flag_of_Perak.svg/1600px-Flag_of_Perak.svg.png', 'Kelantan': 'https://upload.wikimedia.org/wikipedia/commons/6/61/Flag_of_Kelantan.svg', 'Terengganu': 'https://upload.wikimedia.org/wikipedia/commons/6/6b/Flag_of_Terengganu.svg', 'Pahang': 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Flag_of_Pahang.svg', 'Selangor': 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Flag_of_Selangor.svg','Negeri Sembilan': 'https://upload.wikimedia.org/wikipedia/commons/d/db/Flag_of_Negeri_Sembilan.svg', 'Melaka': 'https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_Malacca.svg', 'Johor': 'https://upload.wikimedia.org/wikipedia/commons/5/5a/Flag_of_Johor.svg', 'Sarawak': 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Flag_of_Sarawak.svg', 'Sabah': 'https://upload.wikimedia.org/wikipedia/commons/b/b5/Flag_of_Sabah.svg'}
+      div
+        //- p= stateName
+        img(class="flag" src=flagUrl)
+
+img(src="https://simplemaps.com/static/svg/my/my.svg")
+
+//https://d-maps.com/pays.php?num_pay=97&lang=en
+//https://en.wikipedia.org/wiki/List_of_Malaysian_flags
