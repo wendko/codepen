@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+.comic {
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+
+.panel {
+  border: 3px solid black;
+  margin: 10px;
+  width: 250px;
+  height: 250px;
+  box-shadow: 0px 0px 0px 20px #3F51B5;
+}
+
+* {
+  font-family: Raleway, sans-serif;
+}
+
+.text {
+  margin-top: 20px;
+}
+.text:after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  border-top: 1px solid black;
+  margin: 40px -100px;
+}
+.text.left:after {
+  transform: rotate(-50deg);
+}
+.text.right:after {
+  transform: rotate(50deg);
+}
+.text.right2:after {
+  transform: rotate(50deg);
+  margin: 40px -50px;
+}
+
+.friend, .dude {
+  background: #FFCCBC;
+  border-radius: 9em;
+  width: 80px;
+  height: 80px;
+}
+.friend:after, .dude:after {
+  content: "";
+  width: 80px;
+  height: 100px;
+  border-radius: 20px 20px 0px 0px/80px 80px 0px 0px;
+  position: absolute;
+}
+.friend:before, .dude:before {
+  content: "";
+  width: 8px;
+  height: 10px;
+  border-radius: 9em;
+  position: fixed;
+  background: black;
+}
+
+.friend {
+  margin-top: 40px;
+}
+.friend:after {
+  background: #1565C0;
+  margin-top: 71px;
+  margin-left: -40px;
+}
+.friend:before {
+  margin: 25px 15px;
+}
+.friend.talking:before {
+  box-shadow: 15px 20px 0px -1px #B71C1C;
+}
+
+.dude {
+  margin-top: -80px;
+  margin-left: 170px;
+}
+.dude:after {
+  background: #01579B;
+  margin-top: 71px;
+  margin-left: -40px;
+}
+.dude:before {
+  margin: 25px -25px;
+}
+.dude.talking:before {
+  box-shadow: -10px 20px 0px -1px #B71C1C;
+}
+
+.dog {
+  background: #FFCC80;
+  border-radius: 9em 9em 0 0;
+  width: 80px;
+  height: 70px;
+  margin: 21px 85px;
+  position: absolute;
+  z-index: -1;
+}
+.dog > .eyes {
+  width: 10px;
+  height: 10px;
+  background: black;
+  border-radius: 9em;
+  margin: 15px;
+  box-shadow: 40px 0px 0px black;
+}
+.dog > .mouth {
+  width: 15px;
+  height: 15px;
+  background: #FFCC80;
+  border-radius: 9em;
+  border: 2px solid black;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+  transform: rotate(45deg);
+  z-index: 5;
+}
+.dog > .mouth.left {
+  margin: -12px 21px;
+}
+.dog > .mouth.right {
+  margin: -20px 39px;
+}
+.dog > .tongue {
+  width: 20px;
+  height: 20px;
+  background: #EC407A;
+  border-radius: 0px 0px 10px 10px;
+  margin: 15px 30px;
+  transform-origin: center top;
+  z-index: -1;
+}
+.dog > .ears {
+  width: 20px;
+  height: 25px;
+  background: #795548;
+  border-radius: 30px 0px 20px;
+  transform-origin: center top;
+}
+.dog > .ears.left {
+  transform: rotate(25deg);
+  margin: -70px -8px;
+}
+.dog > .ears.right {
+  transform: rotate(-20deg) scaleX(-1);
+  margin: 46px 68px;
+}
+.dog > .paw {
+  width: 25px;
+  height: 30px;
+  margin: -40px 58px;
+  border-radius: 9em 9em 0 0;
+  background: linear-gradient(to top, #FFCC80, #FFA726);
+  transform-origin: center bottom;
+  animation: pawing 0.5s infinite;
+}
+.dog > .paw:after {
+  content: "";
+  position: fixed;
+  margin: 8px -8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 9em;
+  background: #795548;
+  box-shadow: -6px -6px 0px -3px #795548, 1px -10px 0px -3px #795548, 8px -4px 0px -3px #795548;
+}
+
+.blink {
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    height: 10px;
+  }
+  50% {
+    height: 5px;
+  }
+}
+.perspirate {
+  animation: perspirate 1s infinite ease-in;
+}
+
+@keyframes perspirate {
+  0%, 100% {
+    margin: 15px 30px;
+  }
+  50% {
+    margin: 13px 27px;
+  }
+  75% {
+    margin: 13px 33px;
+  }
+}
+@keyframes pawing {
+  0%, 100% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+p {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/*# sourceMappingURL=style.css.map */
