@@ -1,0 +1,89 @@
+@charset "UTF-8";
+.picture {
+  padding: 50px;
+  margin: 30px 50px;
+}
+.picture::before {
+  position: absolute;
+  font-size: 150px;
+  content: "🖼";
+  z-index: -1;
+}
+.picture::after {
+  content: "";
+  position: absolute;
+  background: white;
+  opacity: 0.8;
+  margin-top: 90px;
+  box-shadow: 75px 0px 10px 75px white;
+}
+
+.scenario-middle-body::after {
+  animation: scenario-middle-body 5s both;
+}
+.scenario-end-body::after {
+  animation: scenario-end-body 5s both;
+}
+.scenario-async::after {
+  animation: scenario-async 5s both;
+}
+.scenario-defer::after {
+  animation: scenario-defer 5s both;
+}
+.scenario-head-none::after {
+  animation: scenario-head-none 5s both;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+@keyframes scenario-middle-body {
+  0% {
+    box-shadow: 75px 0px 10px 75px white;
+  }
+  10%, 20%, 30% {
+    box-shadow: 75px 75px 10px 75px white;
+  }
+  40%, 100% {
+    box-shadow: 75px 150px 10px 75px white;
+  }
+}
+@keyframes scenario-end-body {
+  0% {
+    box-shadow: 75px 0px 10px 75px white;
+  }
+  20%, 100% {
+    box-shadow: 75px 150px 10px 75px white;
+  }
+}
+@keyframes scenario-async {
+  0% {
+    box-shadow: 75px 0px 10px 75px white;
+  }
+  10%, 20% {
+    box-shadow: 75px 75px 10px 75px white;
+  }
+  30%, 100% {
+    box-shadow: 75px 150px 10px 75px white;
+  }
+}
+@keyframes scenario-defer {
+  0% {
+    box-shadow: 75px 0px 10px 75px white;
+  }
+  20%, 100% {
+    box-shadow: 75px 150px 10px 75px white;
+  }
+}
+@keyframes scenario-head-none {
+  0%, 10%, 20% {
+    box-shadow: 75px 0px 10px 75px white;
+  }
+  30%, 100% {
+    box-shadow: 75px 150px 10px 75px white;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

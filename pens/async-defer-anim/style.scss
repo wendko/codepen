@@ -1,0 +1,105 @@
+$font-size-emoji: 150px;
+$size-mask: 0.5*150px;
+$color-mask: white;
+
+@function pow($base, $exponent) {
+  $result: 1;
+  @for $_ from 1 through $exponent {
+    $result: $result * $base;
+  }
+  @return $result;
+}
+
+.picture {
+  padding: 50px;
+  margin: 30px 50px;
+   &::before {
+    position: absolute;
+    font-size: $font-size-emoji;
+    content:"🖼";
+    z-index: -1;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    background: $color-mask;
+    opacity: 0.8;
+    margin-top: 1.2*$size-mask;
+    box-shadow: $size-mask 0px 10px $size-mask $color-mask;
+  }
+}
+
+.scenario {
+  &-middle-body::after {
+    animation: scenario-middle-body 5s both;
+  }
+  &-end-body::after {
+    animation: scenario-end-body 5s both;
+  }
+  &-async::after {
+    animation: scenario-async 5s both;
+  }
+  &-defer::after {
+    animation: scenario-defer 5s both;
+  }
+  &-head-none::after {
+    animation: scenario-head-none 5s both;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+@keyframes scenario-middle-body {
+  0%  {
+    box-shadow: $size-mask 0px 10px $size-mask $color-mask
+  }
+  10%, 20%, 30% {
+    box-shadow: $size-mask $size-mask 10px $size-mask $color-mask;
+  }
+  40%, 100% {
+      box-shadow: $size-mask 2*$size-mask 10px $size-mask $color-mask;
+  }
+}
+
+@keyframes scenario-end-body {
+  0%  {
+    box-shadow: $size-mask 0px 10px $size-mask $color-mask
+  }
+  20%, 100%  {
+      box-shadow: $size-mask 2*$size-mask 10px $size-mask $color-mask;
+  }
+}
+
+
+@keyframes scenario-async {
+  0%  {
+    box-shadow: $size-mask 0px 10px $size-mask $color-mask
+  }
+  10%, 20% {
+    box-shadow: $size-mask $size-mask 10px $size-mask $color-mask;
+  }
+  30%, 100% {
+      box-shadow: $size-mask 2*$size-mask 10px $size-mask $color-mask;
+  }
+}
+
+@keyframes scenario-defer {
+  0%  {
+    box-shadow: $size-mask 0px 10px $size-mask $color-mask
+  }
+  20%, 100%  {
+      box-shadow: $size-mask 2*$size-mask 10px $size-mask $color-mask;
+  }
+}
+
+@keyframes scenario-head-none {
+  0%, 10%, 20%  {
+    box-shadow: $size-mask 0px 10px $size-mask $color-mask
+  }
+  30%, 100%  {
+      box-shadow: $size-mask 2*$size-mask 10px $size-mask $color-mask;
+  }
+}

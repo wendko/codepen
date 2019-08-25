@@ -8,6 +8,13 @@ Each folder would have
 - a .scss file
 - from the postprocessing, there would be a .css, .css.map and .html file as well
 
+Create a new project by running:
+```
+npm run pen -- {pen-name}
+```
+This will create a folder under pens/
+COMING SOON: create `index.pug` and `index.scss`
+
 ## Pug file dependencies
 CSS: Include the stylesheet at the top of the pug file
 ```
