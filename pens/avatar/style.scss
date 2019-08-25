@@ -17,6 +17,8 @@ $c-skin-shadow: #d2a170;
 $c-shirt: #f7dc58;
 $c-shirt-shadow: #bba32e;
 $c-pupil-highlight: white;
+$c-hair-highlight-1: white;
+$c-hair-highlight-2: #949494;
 
 @mixin outline {
     border: $w-outline solid $c-outline;
@@ -46,6 +48,53 @@ $c-pupil-highlight: white;
     z-index: 4;
     display: flex;
     margin-top: $mt-fringe;
+}
+
+.hair-highlight {
+    outline: 1px dashed red;
+    &>.highlight {
+        z-index: 4;
+        position: absolute;
+        border-radius: 100%;
+        
+        &:nth-child(even) {
+            background: $c-hair-highlight-2;
+        }
+        
+        &:nth-child(odd) {
+            background: $c-hair-highlight-1;
+        }
+
+        &:nth-child(1) {
+            width: 23px;
+            height: 12px;
+            margin: 11px 15px;
+            transform: rotate(20deg);
+        }
+
+        &:nth-child(2) {
+            width: 15px;
+            height: 10px;
+            margin: 27px 41px;
+            transform: rotate(39deg);
+        }
+
+        &:nth-child(3) {
+            width: 17px;
+            height: 12px;
+            margin: 157px -65px;
+            transform: rotate(55deg);
+        }
+
+        &:nth-child(4) {
+            width: 12px;
+            height: 10px;
+            margin: 139px -70px;
+            transform: rotate(64deg);
+        }
+
+
+    }
 }
 
 .side-fringe {
