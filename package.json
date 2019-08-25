@@ -11,7 +11,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "pen": "cd pens && mkdir",
-        "initpen": "touch index.pug style.scss"
+        "initpen": "touch index.pug style.scss",
+        "process": "pug index.pug && sass style.scss style.css"
     },
     "repository": {
         "type": "git",

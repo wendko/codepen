@@ -1,0 +1,216 @@
+@import url(https://fonts.googleapis.com/css?family=Amatic+SC);
+#galaxy {
+  background-image: url("https://media3.giphy.com/media/UYBDCJjwOd9Re/giphy.gif?cid=790b76115cdefdd24552767941001deb&rid=giphy.gif");
+  width: 100vw;
+  height: 100vh;
+}
+
+planet, #sun, div[class*=orbit] {
+  border-radius: 9em;
+  position: absolute;
+  transition: all 0.4s ease-in;
+}
+
+div[class*=orbit] {
+  transition: all 1s ease-in;
+  position: relative;
+  animation: float 2s infinite linear;
+}
+
+.orbit-one {
+  width: 10px;
+  height: 10px;
+  top: -70%;
+  left: 80%;
+  background: pink;
+}
+
+.orbit-two {
+  width: 13px;
+  height: 13px;
+  top: -5%;
+  left: -50%;
+  background: yellow;
+}
+
+.orbit-three {
+  width: 15px;
+  height: 15px;
+  top: -20%;
+  left: 120%;
+  background: orange;
+}
+
+.orbit-four {
+  width: 7px;
+  height: 7px;
+  top: -15%;
+  left: 180%;
+  background: lightpink;
+}
+
+.orbit-five {
+  width: 18px;
+  height: 18px;
+  top: 150%;
+  left: -20%;
+  background: lightslategray;
+}
+
+.orbit-six {
+  width: 5px;
+  height: 5px;
+  top: 110%;
+  left: 60%;
+  background: cyan;
+}
+
+.orbit-seven {
+  width: 11px;
+  height: 11px;
+  top: -65%;
+  left: -20%;
+  background: aquamarine;
+}
+
+.orbit-eight {
+  width: 14px;
+  height: 14px;
+  top: 110%;
+  left: 150%;
+  background: lightgreen;
+}
+
+.orbit-nine {
+  width: 19px;
+  height: 19px;
+  top: 60px;
+  left: -20%;
+  background: lightblue;
+}
+
+.orbit-ten {
+  width: 8px;
+  height: 8px;
+  top: -10%;
+  left: 160%;
+  background: teal;
+}
+
+#sun {
+  width: 200px;
+  height: 200px;
+  background: rgba(179, 24, 24, 0.5);
+  top: 200px;
+  left: 300px;
+  transition: all 0.4s ease-in;
+  animation: sunny 10s infinite linear;
+}
+#sun:hover {
+  background: rgba(81, 4, 4, 0.5);
+  animation: centerOfGravity 10s infinite linear;
+}
+#sun:hover > .orbit-one {
+  top: 1%;
+  left: 50%;
+}
+#sun:hover > .orbit-two {
+  top: 2%;
+  left: 30%;
+}
+#sun:hover > .orbit-three {
+  top: 3%;
+  left: 10%;
+}
+#sun:hover > .orbit-four {
+  top: 4%;
+  left: 15%;
+}
+#sun:hover > .orbit-five {
+  top: 5%;
+  left: 20%;
+}
+#sun:hover > .orbit-six {
+  top: 6%;
+  left: 25%;
+}
+#sun:hover > .orbit-seven {
+  top: 7%;
+  left: 35%;
+}
+#sun:hover > .orbit-eight {
+  top: 8%;
+  left: 38%;
+}
+#sun:hover > .orbit-nine {
+  top: 9%;
+  left: 45%;
+}
+#sun:hover > .orbit-ten {
+  top: 10%;
+  left: 40%;
+}
+
+p {
+  color: white;
+  font-family: "Amatic SC";
+  font-size: 42px;
+  top: 175px;
+  left: 355px;
+  position: fixed;
+  text-align: center;
+}
+p:after {
+  content: "hover\a for\agravity";
+  white-space: pre;
+}
+
+@keyframes float {
+  0% {
+    margin-top: 0px;
+  }
+  25% {
+    margin-top: 2.5px;
+    margin-left: 5px;
+    box-shadow: 0px 0px 5px 1px yellow;
+  }
+  50% {
+    box-shadow: 0px 0px 10px 5px pink;
+    margin-top: 5px;
+    margin-left: 0px;
+  }
+  75% {
+    margin-top: 2.5px;
+    margin-left: -5px;
+  }
+}
+@keyframes sunny {
+  25% {
+    box-shadow: 0px 0px 10px 5px pink;
+  }
+  50% {
+    box-shadow: 0px 0px 20px 15px orange;
+  }
+  75% {
+    box-shadow: 0px 0px 10px 5px pink;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes centerOfGravity {
+  25% {
+    box-shadow: 10px 10px 20px 25px cyan;
+  }
+  50% {
+    box-shadow: 0px 0px 10px 20px violet;
+  }
+  75% {
+    box-shadow: -10px -10px 20px 25px indigo;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

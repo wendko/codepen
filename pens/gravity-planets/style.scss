@@ -1,0 +1,193 @@
+@import url(https://fonts.googleapis.com/css?family=Amatic+SC);
+
+$indices: "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten";
+
+$startingTop: (
+  "one": -70%,
+  "two": -5%,
+  "three": -20%,
+  "four": -15%,
+  "five": 150%,
+  "six": 110%,
+  "seven": -65%,
+  "eight": 110%,
+  "nine": 60px,
+  "ten": -10%,
+);
+$startingLeft: (
+  "one": 80%,
+  "two": -50%,
+  "three": 120%,
+  "four": 180%,
+  "five": -20%,
+  "six": 60%,
+  "seven": -20%,
+  "eight": 150%,
+  "nine": -20%,
+  "ten": 160%,
+);
+$endingTop: (
+  "one": 1%,
+  "two": 2%,
+  "three": 3%,
+  "four": 4%,
+  "five": 5%,
+  "six": 6%,
+  "seven": 7%,
+  "eight": 8%,
+  "nine": 9%,
+  "ten": 10%,
+);
+$endingLeft: (
+  "one": 50%,
+  "two": 30%,
+  "three": 10%,
+  "four": 15%,
+  "five": 20%,
+  "six": 25%,
+  "seven": 35%,
+  "eight": 38%,
+  "nine": 45%,
+  "ten": 40%,
+);
+$size: (
+  "one": 10px,
+  "two": 13px,
+  "three": 15px,
+  "four": 7px,
+  "five": 18px,
+  "six": 5px,
+  "seven": 11px,
+  "eight": 14px,
+  "nine": 19px,
+  "ten": 8px,
+);
+$color: (
+  "one": pink,
+  "two": yellow,
+  "three": orange,
+  "four": lightpink,
+  "five": lightslategray,
+  "six": cyan,
+  "seven": aquamarine,
+  "eight": lightgreen,
+  "nine": lightblue,
+  "ten": teal,
+);
+
+#galaxy {
+  background-image: url("https://media3.giphy.com/media/UYBDCJjwOd9Re/giphy.gif?cid=790b76115cdefdd24552767941001deb&rid=giphy.gif");
+  width: 100vw;
+  height: 100vh;
+}
+
+planet {
+  border-radius: 9em;
+  position: absolute;
+  transition: all 0.4s ease-in;
+}
+
+div[class*="orbit"] {
+  @extend planet;
+  transition: all 1s ease-in;
+  position: relative;
+  animation: float 2s infinite linear;
+}
+
+@each $index in $indices {
+    .orbit-#{$index} {
+      width: map-get($size, $index);
+      height: map-get($size, $index);
+      top: map-get($startingTop, $index);
+      left: map-get($startingLeft, $index);
+      background: map-get($color, $index);
+    }
+}
+
+#sun {
+  @extend planet;
+  width: 200px;
+  height: 200px;
+  background: rgba(179, 24, 24, 0.50);
+  top: 200px;
+  left: 300px;
+  transition: all 0.4s ease-in;
+  animation: sunny 10s infinite linear;
+
+  &:hover {
+    background: rgba(81,4,4, 0.50);
+    animation: centerOfGravity 10s infinite linear;
+    
+    @each $index in $indices {
+      & > .orbit-#{$index} {
+        top: map-get($endingTop, $index);
+        left: map-get($endingLeft, $index);
+      }
+    }
+  }
+}
+
+p {
+  color: white;
+  font-family: "Amatic SC";
+  font-size: 42px;
+  top:175px;
+  left:355px;
+  position: fixed;
+  text-align: center;
+  
+  &:after{
+    content:"hover\A for\A gravity";
+    white-space: pre;
+  }
+}
+
+@keyframes float {
+  0% {
+    margin-top: 0px;
+  }
+  25% {
+    margin-top: 2.5px;
+    margin-left: 5px;
+    box-shadow: 0px 0px 5px 1px yellow;
+  }
+  50% {
+    box-shadow: 0px 0px 10px 5px pink;
+    margin-top: 5px;
+    margin-left: 0px;
+  }
+  75% {
+    margin-top: 2.5px;
+    margin-left: -5px;
+  }
+}
+
+@keyframes sunny {
+  25% {
+    box-shadow: 0px 0px 10px 5px pink;
+  }
+  50% {
+    box-shadow: 0px 0px 20px 15px orange;
+  }
+  75% {
+    box-shadow: 0px 0px 10px 5px pink;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes centerOfGravity {
+  25% {
+    box-shadow: 10px 10px 20px 25px cyan;
+  }
+  50% {
+    box-shadow: 0px 0px 10px 20px violet;
+  }
+  75% {
+    box-shadow: -10px -10px 20px 25px indigo;
+  }
+   100% {
+    transform: rotate(360deg);
+  }
+}
