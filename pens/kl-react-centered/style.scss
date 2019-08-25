@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+
+$color-react: #61DAFB;
+$color-fill: white;
+$color-outline: #455A64;
+$color-circle: radial-gradient(circle at top right, $color-react, $color-react 35%, #1565C0 80%, #311B92);
+
+$color-text: #263238;
+$tower-translate-y: 0px;
+$tower-translate-x: -0px;
+$tower-zoom: 1;
+$size-logo: 520px;
+
+$tower-margin: -180px 110px; // includes the circle
+$animation-duration: 15s;
+$z-index-logo: 1;
+$logo-opacity: 0.85;
+$logo-fill: white;
+
+$bridge-width: 100px;
+
+
+$tower-single-width: 80px;
+$tower-single-height: 100px;
+
+$offset-bridge: 30px;
+$gap-bridge: 25px;
+$thickness-bridge: 11px;
+
+@mixin showYourself {
+  outline: 1px solid goldenrod;
+}
+
+
+.tower-twins {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  margin: $tower-margin;
+  zoom: $tower-zoom;
+  
+  &::before, &::after {
+    content: "";
+    border-radius: 50% 50%;
+    position: absolute;
+    margin: -245px 0px;
+    padding: 160px;
+  }
+  
+  &::after {
+    content: "";
+    background: $color-circle;
+    z-index: -2;
+    animation: circle-whoohoo $animation-duration linear infinite;
+  }
+  
+  &::before {
+    background: transparent;
+    z-index: 2;
+    box-shadow: 0px 0px 0px 100px white;
+  }
+  
+}
+
+svg {
+  width: $size-logo;
+  height: $size-logo;
+  position: relative;
+  z-index: $z-index-logo;
+  transition: all 0.2s ease-in;
+  &>g>path, &>g>circle{
+    fill: $logo-fill;
+    opacity: $logo-opacity;
+  }
+  animation: whoohoo $animation-duration linear infinite;
+}
+
+.title {
+  font-family: Roboto, sans-serif;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px;
+  color: $color-text;
+}
+
+.tower-left {
+  border-radius: 30px 30px 0px 0px !important;
+}
+
+.tower-right {
+  border-radius: 30px 30px 0px 0px !important;
+}
+
+.bridge {
+  z-index: -1;
+  position: relative;
+  width: $bridge-width;
+  transform: translateY($tower-translate-y - 10px) translateX($tower-translate-x);
+  
+  
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: $thickness-bridge;
+    background: $color-outline;
+  }
+  
+  &::before {
+    margin: 0px $offset-bridge*-1;
+    border-radius: 0px 50px;
+  }
+  
+  &::after {
+    margin: $gap-bridge $offset-bridge;
+    border-radius: 0px 50px;
+  }
+}
+
+
+.tower-single {
+  background: $color-fill;
+  border: 10px solid $color-outline;
+  width:$tower-single-width;
+  height: $tower-single-height;
+  border-radius: 30px 30px 0px 0px;
+  
+  $level-height-1: -$tower-single-height*0.6;
+  $level-height-2: -$tower-single-height*1.1;
+  $level-height-3: -$tower-single-height*1.45;
+  
+  $first-level-size: -5px;
+  $second-level-size: -15px;
+  $third-level-size: -20px;
+
+  
+  box-shadow: 
+    0px $level-height-1 0px $first-level-size*3 $color-fill, // inner 0
+    0px $level-height-1 0px $first-level-size $color-outline, // outer 0
+    0px $level-height-2 0px $second-level-size/0.6 $color-fill, // inner 1
+    0px $level-height-2 0px $second-level-size $color-outline, // outer 1
+    0px $level-height-3 0px $third-level-size*1.5 $color-fill, // inner 2
+    0px $level-height-3 0px $third-level-size $color-outline; // outer 2
+  
+  
+  transform: translateY($tower-translate-y) translateX($tower-translate-x);
+  
+  &::before {
+    content: "";
+    background: $color-fill;
+    padding: 8px;
+    border-radius: 50%;
+    position: absolute;
+    margin: -160px 25px;
+    border: 8px solid $color-outline;
+  }
+  
+  &::after {
+    content: "";
+    background: $color-fill;
+    padding: 30px 1px;
+    border-radius: 50%;
+    position: absolute;
+    margin: -215px 31px;
+    border: 8px solid $color-outline;
+    z-index: -5;
+  }
+}
+
+
+@keyframes whoohoo {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes circle-whoohoo {
+  0%, 100% {transform: rotate(0deg)}
+  10% { transform: rotate(120deg)}
+  30% { transform: rotate(100deg)}
+  50% { transform: rotate(250deg)}
+  70% { transform: rotate(200deg)}
+  90% { transform: rotate(300deg)}
+}
