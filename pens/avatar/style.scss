@@ -1,20 +1,29 @@
 $w-outline: 5px;
-$c-outline: black;
-$c-hair-shadow: blue;
+$w-outline-light: 3px;
+
 $mt-fringe: 25px;
 $mt-face: 35px;
-$mt-ears: 70px;
+$mt-ears: 75px;
+$mt-eyes: 72px;
+$mt-smile: 100px;
 $mt-neck: 130px;
 $mt-shirt: 150px;
 
+$c-outline: black;
 $c-skin: #f3c495;
+$c-eyes: black;
 $c-hair: black;
 $c-skin-shadow: #d2a170;
 $c-shirt: #f7dc58;
 $c-shirt-shadow: #bba32e;
+$c-pupil-highlight: white;
 
 @mixin outline {
     border: $w-outline solid $c-outline;
+}
+
+@mixin outline-light {
+    border: $w-outline-light solid $c-outline;
 }
 
 .avatar {
@@ -69,9 +78,8 @@ $c-shirt-shadow: #bba32e;
     z-index: 2;
     display: flex;
     justify-content: space-between;
-    width: inherit;
-
     margin-top: $mt-ears;
+
     &>.ear {
         width: 20px;
         height: 25px;
@@ -87,6 +95,41 @@ $c-shirt-shadow: #bba32e;
     }
 }
 
+.eyes {
+    z-index: 4;
+    display: flex;
+    justify-content: space-between;
+    margin-top: $mt-eyes;
+    
+    &>.eye {
+        @include outline-light;
+        width: 22px;
+        height: 15px;
+        background: white;
+        border-radius: 100%;
+
+        &:last-child {
+            margin-left: 30px;
+        }
+
+        &>.pupil {
+            width: 15px;
+            height: 12px;
+            background: $c-eyes;
+            border-radius: 100%;
+            &::after {
+                content:"";
+                position: absolute;
+                padding: 2.1px;
+                border-radius: 100%;
+                background: $c-pupil-highlight;
+                margin: 2px;
+            }
+        }
+    }
+
+}
+
 .neck {
     background: $c-skin-shadow;
     width: 30px;
@@ -98,11 +141,22 @@ $c-shirt-shadow: #bba32e;
 }
 
 .shirt {
-    background:  $c-shirt;
+    background: $c-shirt;
     width: 110px;
     height: 60px;
     margin-top: $mt-shirt;
     border-radius: 50px 50px 0px 0px;
     @include outline;
     box-shadow: inset 0px 8px $c-shirt-shadow;
+}
+
+.smile {
+    z-index: 4;
+    background: transparent;
+    width: 20px;
+    height: 10px;
+    @include outline-light;
+    border-top: none;
+    border-radius: 0px 0px 100px 100px;
+    margin-top: $mt-smile;
 }

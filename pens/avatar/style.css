@@ -50,8 +50,7 @@
   z-index: 2;
   display: flex;
   justify-content: space-between;
-  width: inherit;
-  margin-top: 70px;
+  margin-top: 75px;
 }
 .ears > .ear {
   width: 20px;
@@ -65,6 +64,37 @@
 .ears > .ear:last-child {
   transform: scaleX(-1);
   margin-left: 85px;
+}
+
+.eyes {
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 72px;
+}
+.eyes > .eye {
+  border: 3px solid black;
+  width: 22px;
+  height: 15px;
+  background: white;
+  border-radius: 100%;
+}
+.eyes > .eye:last-child {
+  margin-left: 30px;
+}
+.eyes > .eye > .pupil {
+  width: 15px;
+  height: 12px;
+  background: black;
+  border-radius: 100%;
+}
+.eyes > .eye > .pupil::after {
+  content: "";
+  position: absolute;
+  padding: 2.1px;
+  border-radius: 100%;
+  background: white;
+  margin: 2px;
 }
 
 .neck {
@@ -85,6 +115,17 @@
   border-radius: 50px 50px 0px 0px;
   border: 5px solid black;
   box-shadow: inset 0px 8px #bba32e;
+}
+
+.smile {
+  z-index: 4;
+  background: transparent;
+  width: 20px;
+  height: 10px;
+  border: 3px solid black;
+  border-top: none;
+  border-radius: 0px 0px 100px 100px;
+  margin-top: 100px;
 }
 
 /*# sourceMappingURL=style.css.map */
