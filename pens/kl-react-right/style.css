@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+.tower-twins {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  margin: -170px 155px;
+  zoom: 1;
+}
+.tower-twins::before, .tower-twins::after {
+  content: "";
+  border-radius: 50% 50%;
+  position: absolute;
+  margin: -245px 0px;
+  padding: 160px;
+}
+.tower-twins::after {
+  content: "";
+  background: radial-gradient(circle at top right, #61DAFB, #61DAFB 30%, #1565C0 80%, #311B92);
+  z-index: -2;
+}
+.tower-twins::before {
+  background: transparent;
+  z-index: 2;
+  box-shadow: 0px 0px 0px 100px white;
+}
+
+svg {
+  width: 580px;
+  height: 580px;
+  position: relative;
+  z-index: -1;
+  transition: all 0.2s ease-in;
+  animation: whoohoo 15s ease-in-out infinite;
+}
+
+.title {
+  font-family: Roboto, sans-serif;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px;
+  color: #263238;
+  animation: title-whoohoo 15s ease-in-out infinite;
+}
+
+.tower-left {
+  border-radius: 30px 30px 0px 0px !important;
+}
+
+.tower-right {
+  border-radius: 30px 30px 0px 0px !important;
+}
+
+.bridge {
+  z-index: 1;
+  position: relative;
+  width: 35px;
+  height: 25px;
+  transform: translateY(0px) translateX(-55px);
+  background: linear-gradient(#2f5bb9 30%, white 30%, white 70%, #2f5bb9 70%);
+}
+
+.tower-single {
+  background: white;
+  border: 10px solid #2f5bb9;
+  width: 50px;
+  height: 90px;
+  border-radius: 30px 30px 0px 0px;
+  box-shadow: 0px -50px 0px -15px white, 0px -50px 0px -5px #3e79cf, 0px -80px 0px -22px white, 0px -80px 0px -12px #447fd4, 0px -100px 0px -24px white, 0px -100px 0px -16px #4399d1;
+  transform: translateY(-25px) translateX(-55px);
+}
+.tower-single::before {
+  content: "";
+  background: white;
+  padding: 5px;
+  border-radius: 100px 100px 0px 0px;
+  position: absolute;
+  margin: -110px 12px;
+  z-index: -4;
+  border: 7px solid #55aae3;
+  border-bottom: 1px solid #55aae3;
+}
+.tower-single::after {
+  content: "";
+  background: white;
+  padding: 30px 1px;
+  border-radius: 50%;
+  position: absolute;
+  margin: -170px 15px;
+  border: 8px solid #60b3eb;
+  z-index: -5;
+}
+
+@keyframes whoohoo {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes circle-whoohoo {
+  0%, 100% {
+    background: #61DAFB;
+  }
+  20% {
+    background: radial-gradient(circle at top right, #61DAFB, #61DAFB 30%, #1565C0 80%, #311B92);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
