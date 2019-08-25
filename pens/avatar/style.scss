@@ -1,0 +1,108 @@
+$w-outline: 5px;
+$c-outline: black;
+$c-hair-shadow: blue;
+$mt-fringe: 25px;
+$mt-face: 35px;
+$mt-ears: 70px;
+$mt-neck: 130px;
+$mt-shirt: 150px;
+
+$c-skin: #f3c495;
+$c-hair: black;
+$c-skin-shadow: #d2a170;
+$c-shirt: #f7dc58;
+$c-shirt-shadow: #bba32e;
+
+@mixin outline {
+    border: $w-outline solid $c-outline;
+}
+
+.avatar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    &>*{
+        position: absolute;
+    }
+}
+
+.hair {
+    background: $c-hair;
+    width: 150px;
+    height: 200px;
+    border-radius: 100px 100px 80px 80px;
+}
+
+.hair-fringe {
+    z-index: 4;
+    display: flex;
+    margin-top: $mt-fringe;
+}
+
+.side-fringe {
+    height: 50px;
+    &:first-child {
+        background: $c-hair;
+        width: 50px;
+        border-radius: 70% 0% 80% 0%;
+        box-shadow: 6px 1px 1px -1px $c-skin-shadow;
+    }
+    &:last-child {
+        background: $c-hair;
+        width: 80px;
+        border-radius: 0% 60% 0% 80%;
+        box-shadow: -7px 10px 1px -8px $c-skin-shadow;
+    }
+}
+
+.face {
+    @include outline;
+    background: $c-skin;
+    width: 100px;
+    height: 95px;
+    margin-top: $mt-face;
+    border-radius: 10% 10% 100px 100px;
+    z-index:3;
+}
+
+.ears {
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    width: inherit;
+
+    margin-top: $mt-ears;
+    &>.ear {
+        width: 20px;
+        height: 25px;
+        @include outline;
+        border-right-color: transparent;
+        border-radius: 100px 0px 0px 100px;
+        background: $c-skin;
+        box-shadow: inset 5px 3px $c-skin-shadow;
+    }
+    &>.ear:last-child {
+        transform: scaleX(-1);
+        margin-left: 85px;
+    }
+}
+
+.neck {
+    background: $c-skin-shadow;
+    width: 30px;
+    height: 28px;
+    margin-top: $mt-neck;
+    border-radius: 0px 0px 100px 100px;
+    @include outline;
+    box-shadow: inset 0px -12px $c-skin;
+}
+
+.shirt {
+    background:  $c-shirt;
+    width: 110px;
+    height: 60px;
+    margin-top: $mt-shirt;
+    border-radius: 50px 50px 0px 0px;
+    @include outline;
+    box-shadow: inset 0px 8px $c-shirt-shadow;
+}

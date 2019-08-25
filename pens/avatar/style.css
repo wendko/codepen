@@ -1,0 +1,90 @@
+.avatar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.avatar > * {
+  position: absolute;
+}
+
+.hair {
+  background: black;
+  width: 150px;
+  height: 200px;
+  border-radius: 100px 100px 80px 80px;
+}
+
+.hair-fringe {
+  z-index: 4;
+  display: flex;
+  margin-top: 25px;
+}
+
+.side-fringe {
+  height: 50px;
+}
+.side-fringe:first-child {
+  background: black;
+  width: 50px;
+  border-radius: 70% 0% 80% 0%;
+  box-shadow: 6px 1px 1px -1px #d2a170;
+}
+.side-fringe:last-child {
+  background: black;
+  width: 80px;
+  border-radius: 0% 60% 0% 80%;
+  box-shadow: -7px 10px 1px -8px #d2a170;
+}
+
+.face {
+  border: 5px solid black;
+  background: #f3c495;
+  width: 100px;
+  height: 95px;
+  margin-top: 35px;
+  border-radius: 10% 10% 100px 100px;
+  z-index: 3;
+}
+
+.ears {
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  width: inherit;
+  margin-top: 70px;
+}
+.ears > .ear {
+  width: 20px;
+  height: 25px;
+  border: 5px solid black;
+  border-right-color: transparent;
+  border-radius: 100px 0px 0px 100px;
+  background: #f3c495;
+  box-shadow: inset 5px 3px #d2a170;
+}
+.ears > .ear:last-child {
+  transform: scaleX(-1);
+  margin-left: 85px;
+}
+
+.neck {
+  background: #d2a170;
+  width: 30px;
+  height: 28px;
+  margin-top: 130px;
+  border-radius: 0px 0px 100px 100px;
+  border: 5px solid black;
+  box-shadow: inset 0px -12px #f3c495;
+}
+
+.shirt {
+  background: #f7dc58;
+  width: 110px;
+  height: 60px;
+  margin-top: 150px;
+  border-radius: 50px 50px 0px 0px;
+  border: 5px solid black;
+  box-shadow: inset 0px 8px #bba32e;
+}
+
+/*# sourceMappingURL=style.css.map */
