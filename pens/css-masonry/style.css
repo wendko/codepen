@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+* {
+  font-family: Montserrat, sans-serif;
+  color: #AD1457;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.row {
+  display: flex;
+}
+
+.col {
+  width: 30%;
+  height: 100vh;
+  margin-left: 10px;
+}
+
+.item {
+  margin: 10px;
+  border-radius: 10px;
+  transition: box-shadow 0.2s ease-in;
+}
+
+.item-long {
+  height: 50%;
+  background: linear-gradient(to bottom right, #FFCDD2, white);
+}
+.item-long:before {
+  display: flex;
+  justify-content: center;
+  content: " long content";
+  padding-top: 20px;
+}
+.item-long:hover {
+  box-shadow: 5px 5px grey;
+}
+
+.item-short {
+  height: 10%;
+  background: linear-gradient(to bottom right, #FFCCBC, white);
+}
+.item-short:before {
+  display: flex;
+  justify-content: center;
+  content: " short content";
+  padding-top: 20px;
+}
+.item-short:hover {
+  box-shadow: 5px 5px grey;
+}
+
+.item-medium {
+  height: 25%;
+  background: linear-gradient(to bottom right, #FFE0B2, white);
+}
+.item-medium:before {
+  display: flex;
+  justify-content: center;
+  content: " medium content";
+  padding-top: 20px;
+}
+.item-medium:hover {
+  box-shadow: 5px 5px grey;
+}
+
+/*# sourceMappingURL=style.css.map */

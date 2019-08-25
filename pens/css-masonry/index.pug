@@ -1,0 +1,30 @@
+link( rel="stylesheet" href="./style.css" type="text/css")
+
+p.title 
+  strong CSS MASONRY
+
+- var col1 = []
+- var col2 = []
+- var col3 = []
+    
+.row
+  each val, index in ['medium', 'long', 'short', 'medium', 'medium', 'long', 'short', 'medium', 'medium', 'long', 'short', 'medium', 'medium', 'long', 'short', 'medium', 'medium', 'long', 'short']
+    case index%3
+      when 0
+        - col1.push(val)
+      when 1
+        - col2.push(val)
+      when 2
+        - col3.push(val)
+  
+  .col
+    for size in col1
+      .item(class="item-"+size)
+        
+  .col
+    for size in col2
+      .item(class="item-"+size)
+      
+  .col
+    for size in col3
+      .item(class="item-"+size)
