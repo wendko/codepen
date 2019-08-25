@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+
+$color-smiley: #FBC02D;
+$color-heart: #E53935;
+$color-default: #212121;
+$smiley-pos: 25;
+$heart-pos: 50;
+
+.dot, .dots {
+  transition: all 0.2s ease-in;
+}
+
+#instructions {
+  width: 400px;
+  font-size: 30px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+
+.state {
+  height: 400px;
+  width: 400px;
+  padding: 10px;
+  place-items: center;
+}
+
+.state-default {
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+  grid-gap: 10px;
+}
+
+.state-smiley {
+  display: flex;
+  flex-direction: column;
+  
+  &>.dot {
+    position: absolute;
+    background-color: $color-smiley !important;
+
+    @for $index from 1 through 90 {
+      &:nth-child(#{$index}) {
+        transform-origin: 0px 200px;
+        transform: rotate(5deg*$index);
+      }
+    }
+
+    $left-eye-margin: 150px 90px;
+    $right-eye-margin: 150px -100px;
+
+    &:nth-child(91) { margin: $left-eye-margin } 
+    &:nth-child(92) { margin: $right-eye-margin }
+
+    $y-1: 10;
+    $x-1: 17;
+    $y-2: 20;
+    $x-2: 33;
+    $y-3: 35;
+    $x-3: 43;
+    
+    $left-smile-my: 265px;
+    $left-smile-mx: 5px;
+    &:nth-child(93) { margin: $left-smile-my $left-smile-mx }
+    &:nth-child(94) { margin: $left-smile-my - $y-1 $left-smile-mx + $x-1 }
+    &:nth-child(95) { margin: $left-smile-my - $y-2 $left-smile-mx + $x-2 }
+    &:nth-child(96) { margin: $left-smile-my - $y-3 $left-smile-mx + $x-3 }
+
+    $right-smile-my: 265px;
+    $right-smile-mx: -15px;
+    &:nth-child(97) { margin: $right-smile-my $right-smile-mx }
+    &:nth-child(98) { margin: $right-smile-my - $y-1 $right-smile-mx - $x-1 }
+    &:nth-child(99) { margin: $right-smile-my - $y-2 $right-smile-mx - $x-2 }
+    &:nth-child(100) { margin: $right-smile-my - $y-3 $right-smile-mx - $x-3 }
+  }
+}
+
+.state-heart {
+  display: flex;
+  flex-direction: column;
+  &>.dot {
+    @for $index from 1 through 20 {
+      left: 205px;
+      &:nth-child(#{$index}) {
+          top: 100px;
+          transform-origin: 98px 54px;
+          transform: rotate($index * 10deg);
+        }
+      }
+    @for $index from 21 through 30 {
+      &:nth-child(#{$index}) {
+        top: calc(15*#{$index}px - 85px);
+        left: calc(625px - 13*#{$index}px);
+       }
+    }
+    @for $index from 31 through 41 {
+      &:nth-child(#{$index}) {
+        top: calc(782px - 13*#{$index}px);
+        left: calc(686px - 15*#{$index}px);
+       }
+    }
+    @for $index from 42 through 61 {
+      transform-origin: -28px -85px;
+      &:nth-child(#{$index}) {
+        top: 250px;
+        left: 160px;
+        transform: rotate($index * 10deg);
+       }
+    }
+    @for $index from 62 through 100 {
+      &:nth-child(#{$index}) {
+        top: 88px;
+        left: 200px;
+      }
+    }
+    position: absolute;
+    background-color: $color-heart !important;
+  }
+}
+
+@keyframes hovered {
+  0%, 100% {} 50% {box-shadow: 0px 0px 0px 20px pink}
+}
+
+@mixin clickable {
+  &:hover {
+    animation: hovered 2s infinite;
+  }
+}
+
+.dot {
+  border-radius: 50%;
+  padding: 10px;
+  background: $color-default;
+  
+  &:hover {
+    box-shadow: 0px 0px 0px 10px #6d6d6d85;
+  }
+  
+  &:nth-child(50) {
+    background: $color-heart;
+    @include clickable;
+  }
+  
+  &:nth-child(#{$smiley-pos}) {
+    background: $color-smiley;
+    @include clickable;
+  }
+}

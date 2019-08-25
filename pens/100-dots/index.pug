@@ -1,0 +1,15 @@
+link( rel="stylesheet" href="./style.css" type="text/css")
+
+p#instructions Click Me!
+
+.state.state-default(id="dots")
+  - for(var n = 0; n < 100; n++)
+    if n == 49
+      .dot(id="heart")
+    else if n == 24
+      .dot(id="smiley")
+    else
+      .dot
+
+script(src='script.js')
+    
