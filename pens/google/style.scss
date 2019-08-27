@@ -1,0 +1,29 @@
+img {
+    opacity: 0.5;
+    position: fixed;
+    width: 400;
+    margin: 216px 249px;
+}
+
+$yellow: #f0b516;
+$red: #e43e2c;
+$blue: #417ded;
+$green: #4ca24d;
+
+.container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.google {
+    background-color: pink;
+    border-radius: 100px;
+    width: 100px;
+    height: 105px;
+    border: 30px solid $blue;
+    border-bottom-color: $green;
+    border-top-color: $red;
+    border-left-color: $yellow;
+    transform: rotate(-20deg);
+}

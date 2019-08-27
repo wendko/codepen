@@ -1,0 +1,71 @@
+.slack {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    place-items: center;
+    width: 140px;
+    height: 140px;
+}
+
+.container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+@mixin segment {
+    width: 27px;
+    height: 62px;
+    margin: -7px 0px 0px -35px;
+    border-radius: 100px;
+}
+
+$colors: (
+    1:"#62c4f0",
+    2:"#58b77f",
+    3:"#e12d5a",
+    4:"#ebb32d"
+);
+
+.side {
+    @include segment;
+
+    background-color: unquote(map-get($colors, 4));
+
+    &::after {
+        content: "";
+        padding: 14px 14px;
+        border-radius: 100px 100px 100px 0px;
+        margin: 34px 35px;
+        position: absolute; 
+    }
+
+    @mixin bg-color($index) {
+        background-color: unquote(map-get($colors, $index));
+        &::after {
+            background-color: unquote(map-get($colors, $index));
+        }
+    }
+
+    @for $index from 1 through 4 {
+        &:nth-child(#{$index}) {
+            @if $index == 1 {
+                @include bg-color($index);
+                transform: rotate(-90deg);
+                transform-origin: 32px 32px;
+            } @else if $index == 3 {
+                @include bg-color($index);
+                transform: rotate(180deg);
+                transform-origin: 31px 31px;
+            } @else if $index == 4 {
+                @include bg-color($index);
+                transform: rotate(90deg);
+                transform-origin: 32px 31px;
+            } @else {
+                @include bg-color($index);
+            }
+        }
+    } 
+
+  
+}

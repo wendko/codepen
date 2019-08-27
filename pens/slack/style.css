@@ -1,0 +1,61 @@
+.slack {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  place-items: center;
+  width: 140px;
+  height: 140px;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.side {
+  width: 27px;
+  height: 62px;
+  margin: -7px 0px 0px -35px;
+  border-radius: 100px;
+  background-color: #ebb32d;
+}
+.side::after {
+  content: "";
+  padding: 14px 14px;
+  border-radius: 100px 100px 100px 0px;
+  margin: 34px 35px;
+  position: absolute;
+}
+.side:nth-child(1) {
+  background-color: #62c4f0;
+  transform: rotate(-90deg);
+  transform-origin: 32px 32px;
+}
+.side:nth-child(1)::after {
+  background-color: #62c4f0;
+}
+.side:nth-child(2) {
+  background-color: #58b77f;
+}
+.side:nth-child(2)::after {
+  background-color: #58b77f;
+}
+.side:nth-child(3) {
+  background-color: #e12d5a;
+  transform: rotate(180deg);
+  transform-origin: 31px 31px;
+}
+.side:nth-child(3)::after {
+  background-color: #e12d5a;
+}
+.side:nth-child(4) {
+  background-color: #ebb32d;
+  transform: rotate(90deg);
+  transform-origin: 32px 31px;
+}
+.side:nth-child(4)::after {
+  background-color: #ebb32d;
+}
+
+/*# sourceMappingURL=style.css.map */
