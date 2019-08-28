@@ -20,11 +20,13 @@ $color-logo: #072025;
     flex-direction: column;
 }
 
-%btn-shadow {
+@mixin btn-shadow($disable-press) {
     box-shadow: inset 0px -2px $color-btn-shadow;
-    &:active {
-        background-color: $color-btn-pressed;
-        box-shadow: inset 0px -1px $color-btn-shadow;
+    @if $disable-press != true {
+        &:active {
+            background-color: $color-btn-pressed;
+            box-shadow: inset 0px -1px $color-btn-shadow;
+        }
     }
 }
 
@@ -145,11 +147,11 @@ $color-logo: #072025;
 
 @mixin cross-side($layout) {
     @extend %pos-abs;
-    @extend %btn-shadow;
+    @include btn-shadow(false);
     content: "";
     border-radius: 4px;
     background-color: $color-cross;
-    width: 10px;
+    width: 8px;
     height: 10px;
 
     &:active {
@@ -199,7 +201,7 @@ $color-logo: #072025;
 
         }
 
-        @mixin arrow($deg, $margin) {
+        @mixin arrow($deg, $margin, $pos) {
             @extend %pos-abs;
             transform: rotate($deg);
             margin: $margin;
@@ -211,22 +213,44 @@ $color-logo: #072025;
                 $color-btn-text,
                 $color-btn-text 50%,
                 transparent 50%);
+
+            &:active::after {
+                background: linear-gradient(transparent,
+                transparent 10%,
+                $color-btn-pressed 50%);
+            }
+
+            &::after {
+                @extend %pos-abs;
+                @include cross-side(horizontal);
+                content: "";
+                height: 8px;
+                width: 10px;
+                margin: -2px;
+                background: none;
+                padding: 1.5px 0px;
+                box-shadow: none;
+                transform: rotate(45deg);
+                transform-origin: 4px 5px;
+                opacity: 0.3;
+            }
         }
 
         &-up { 
-            @include arrow(135deg, 4px 0px);
+            @include arrow(135deg, 4px 0px, top);
             @include arrow-shadow(top);
+            z-index: 3;
         }
         &-down { 
-            @include arrow(315deg, 22px 0px);
+            @include arrow(315deg, 22px 0px, down);
             @include arrow-shadow(down);
         }
         &-left {
-            @include arrow(45deg, 13px -10px);
+            @include arrow(45deg, 13px -10px, left);
             @include arrow-shadow(left);
         }
         &-right {
-            @include arrow(225deg, 13px 10px);
+            @include arrow(225deg, 13px 10px, right);
             @include arrow-shadow(right);
         }
     }
@@ -253,7 +277,7 @@ $color-logo: #072025;
 }
 
 %letter-btn {
-    @extend %btn-shadow;
+    @include btn-shadow(false);
     content:"";
     padding: 10px;
     border-radius: 50%;
@@ -301,7 +325,7 @@ $color-logo: #072025;
 }
 
 %lower-btn {
-    @extend %btn-shadow;
+    @include btn-shadow(false);
     content:"";
     padding: 5px 12px;
     border-radius: 20px;

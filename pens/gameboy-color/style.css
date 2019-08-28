@@ -5,15 +5,7 @@
   flex-direction: column;
 }
 
-.start::after, .select::after, .a::after, .b::after, .cross::before, .cross::after {
-  box-shadow: inset 0px -2px #332b2c;
-}
-.start:active::after, .select:active::after, .a:active::after, .b:active::after, .cross:active::before, .cross:active::after {
-  background-color: #574245;
-  box-shadow: inset 0px -1px #332b2c;
-}
-
-.on-light::after, .start::before, .select::before, .a::before, .b::before, .cross > .center, .cross > .arrow-right, .cross > .arrow-left, .cross > .arrow-down, .cross > .arrow-up, .cross::before, .cross::after, .nintendo::after, .lower-half, .screen > .screen-text::after, .screen > .screen-text::before, .screen {
+.on-light::after, .start::before, .select::before, .a::before, .b::before, .cross > .center, .cross > .arrow-right::after, .cross > .arrow-right, .cross > .arrow-left::after, .cross > .arrow-left, .cross > .arrow-down::after, .cross > .arrow-down, .cross > .arrow-up::after, .cross > .arrow-up, .cross::before, .cross::after, .nintendo::after, .lower-half, .screen > .screen-text::after, .screen > .screen-text::before, .screen {
   position: absolute;
 }
 
@@ -106,25 +98,35 @@
   padding-left: 21px;
 }
 .cross::after {
+  box-shadow: inset 0px -2px #332b2c;
   content: "";
   border-radius: 4px;
   background-color: #636262;
-  width: 10px;
+  width: 8px;
   height: 10px;
   padding: 12px 2px;
+}
+.cross::after:active {
+  background-color: #574245;
+  box-shadow: inset 0px -1px #332b2c;
 }
 .cross::after:active {
   background-color: #636262 !important;
   margin-top: 2px;
 }
 .cross::before {
+  box-shadow: inset 0px -2px #332b2c;
   content: "";
   border-radius: 4px;
   background-color: #636262;
-  width: 10px;
+  width: 8px;
   height: 10px;
   margin-top: 10px;
   padding: 1.5px 13px;
+}
+.cross::before:active {
+  background-color: #574245;
+  box-shadow: inset 0px -1px #332b2c;
 }
 .cross::before:active {
   background-color: #636262 !important;
@@ -138,6 +140,38 @@
   height: 6px;
   background: linear-gradient(to top right, #332b2c, #332b2c 50%, transparent 50%);
   background: linear-gradient(to top right, #332b2c, #332b2c 50%, #a59698 50%, #a59698 55%, transparent 55%);
+  z-index: 3;
+}
+.cross > .arrow-up:active::after {
+  background: linear-gradient(transparent, transparent 10%, #574245 50%);
+}
+.cross > .arrow-up::after {
+  box-shadow: inset 0px -2px #332b2c;
+  content: "";
+  border-radius: 4px;
+  background-color: #636262;
+  width: 8px;
+  height: 10px;
+  margin-top: 10px;
+  padding: 1.5px 13px;
+  content: "";
+  height: 8px;
+  width: 10px;
+  margin: -2px;
+  background: none;
+  padding: 1.5px 0px;
+  box-shadow: none;
+  transform: rotate(45deg);
+  transform-origin: 4px 5px;
+  opacity: 0.3;
+}
+.cross > .arrow-up::after:active {
+  background-color: #574245;
+  box-shadow: inset 0px -1px #332b2c;
+}
+.cross > .arrow-up::after:active {
+  background-color: #636262 !important;
+  margin-top: 2px;
 }
 .cross > .arrow-down {
   transform: rotate(315deg);
@@ -148,6 +182,37 @@
   background: linear-gradient(to top right, #332b2c, #332b2c 50%, transparent 50%);
   box-shadow: -0.6px 0.6px #a59698;
 }
+.cross > .arrow-down:active::after {
+  background: linear-gradient(transparent, transparent 10%, #574245 50%);
+}
+.cross > .arrow-down::after {
+  box-shadow: inset 0px -2px #332b2c;
+  content: "";
+  border-radius: 4px;
+  background-color: #636262;
+  width: 8px;
+  height: 10px;
+  margin-top: 10px;
+  padding: 1.5px 13px;
+  content: "";
+  height: 8px;
+  width: 10px;
+  margin: -2px;
+  background: none;
+  padding: 1.5px 0px;
+  box-shadow: none;
+  transform: rotate(45deg);
+  transform-origin: 4px 5px;
+  opacity: 0.3;
+}
+.cross > .arrow-down::after:active {
+  background-color: #574245;
+  box-shadow: inset 0px -1px #332b2c;
+}
+.cross > .arrow-down::after:active {
+  background-color: #636262 !important;
+  margin-top: 2px;
+}
 .cross > .arrow-left {
   transform: rotate(45deg);
   margin: 13px -10px;
@@ -157,6 +222,37 @@
   background: linear-gradient(to top right, #332b2c, #332b2c 50%, transparent 50%);
   box-shadow: 0px 0.6px #a59698;
 }
+.cross > .arrow-left:active::after {
+  background: linear-gradient(transparent, transparent 10%, #574245 50%);
+}
+.cross > .arrow-left::after {
+  box-shadow: inset 0px -2px #332b2c;
+  content: "";
+  border-radius: 4px;
+  background-color: #636262;
+  width: 8px;
+  height: 10px;
+  margin-top: 10px;
+  padding: 1.5px 13px;
+  content: "";
+  height: 8px;
+  width: 10px;
+  margin: -2px;
+  background: none;
+  padding: 1.5px 0px;
+  box-shadow: none;
+  transform: rotate(45deg);
+  transform-origin: 4px 5px;
+  opacity: 0.3;
+}
+.cross > .arrow-left::after:active {
+  background-color: #574245;
+  box-shadow: inset 0px -1px #332b2c;
+}
+.cross > .arrow-left::after:active {
+  background-color: #636262 !important;
+  margin-top: 2px;
+}
 .cross > .arrow-right {
   transform: rotate(225deg);
   margin: 13px 10px;
@@ -165,6 +261,37 @@
   height: 6px;
   background: linear-gradient(to top right, #332b2c, #332b2c 50%, transparent 50%);
   box-shadow: -0.6px 0.1px #a59698;
+}
+.cross > .arrow-right:active::after {
+  background: linear-gradient(transparent, transparent 10%, #574245 50%);
+}
+.cross > .arrow-right::after {
+  box-shadow: inset 0px -2px #332b2c;
+  content: "";
+  border-radius: 4px;
+  background-color: #636262;
+  width: 8px;
+  height: 10px;
+  margin-top: 10px;
+  padding: 1.5px 13px;
+  content: "";
+  height: 8px;
+  width: 10px;
+  margin: -2px;
+  background: none;
+  padding: 1.5px 0px;
+  box-shadow: none;
+  transform: rotate(45deg);
+  transform-origin: 4px 5px;
+  opacity: 0.3;
+}
+.cross > .arrow-right::after:active {
+  background-color: #574245;
+  box-shadow: inset 0px -1px #332b2c;
+}
+.cross > .arrow-right::after:active {
+  background-color: #636262 !important;
+  margin-top: 2px;
 }
 .cross > .center {
   z-index: 2;
@@ -184,10 +311,15 @@
 }
 
 .a::after, .b::after {
+  box-shadow: inset 0px -2px #332b2c;
   content: "";
   padding: 10px;
   border-radius: 50%;
   background: #636262;
+}
+.a:active::after, .b:active::after {
+  background-color: #574245;
+  box-shadow: inset 0px -1px #332b2c;
 }
 
 .b {
@@ -221,11 +353,16 @@
 }
 
 .start::after, .select::after {
+  box-shadow: inset 0px -2px #332b2c;
   content: "";
   padding: 5px 12px;
   border-radius: 20px;
   margin-top: 8px;
   background: #636262;
+}
+.start:active::after, .select:active::after {
+  background-color: #574245;
+  box-shadow: inset 0px -1px #332b2c;
 }
 
 .select {
