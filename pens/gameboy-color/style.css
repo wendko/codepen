@@ -1,0 +1,290 @@
+@charset "UTF-8";
+.speaker, .start, .select, .a, .b, .cross, .nintendo, .screen {
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+}
+
+.start::after, .select::after, .a::after, .b::after, .cross::before, .cross::after {
+  box-shadow: inset 0px -2px #332b2c;
+}
+.start:active::after, .select:active::after, .a:active::after, .b:active::after, .cross:active::before, .cross:active::after {
+  background-color: #574245;
+  box-shadow: inset 0px -1px #332b2c;
+}
+
+.on-light::after, .start::before, .select::before, .a::before, .b::before, .cross > .center, .cross > .arrow-right, .cross > .arrow-left, .cross > .arrow-down, .cross > .arrow-up, .cross::before, .cross::after, .nintendo::after, .lower-half, .screen > .screen-text::after, .screen > .screen-text::before, .screen {
+  position: absolute;
+}
+
+.screen::after, .screen, .body {
+  border: 2px solid black;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.gameboy-color {
+  display: flex;
+  justify-content: center;
+}
+
+.body {
+  background: #448d9e;
+  width: 150px;
+  height: 220px;
+  border-radius: 10px 10px 15% 15%;
+}
+
+.screen {
+  width: 127.5px;
+  height: 106px;
+  background-color: #313838;
+  margin-top: 10px;
+  border-radius: 5px 5px 15% 15%;
+}
+.screen::after {
+  content: "";
+  padding: 35px 37.5px;
+  background-color: #b6c1a2;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.screen > .screen-text::before {
+  content: "nintendo®";
+  margin: 60px -20px;
+  text-transform: capitalize;
+  font-size: 8px;
+  font-weight: 900;
+  font-family: monospace;
+}
+.screen > .screen-text::after {
+  content: "game boy";
+  margin: 33px -35px;
+  text-transform: uppercase;
+  font-size: 11.5px;
+  font-weight: 900;
+  font-family: sans-serif;
+  background: linear-gradient(to right, #111e78 40%, #47982b 50%, #d22a69 60%, #d22a69 80%, #faf74d 100%);
+  transform: skewX(-15deg);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lower-half {
+  width: 150px;
+  height: 95px;
+  margin-top: 125px;
+  display: grid;
+  grid-template-areas: "nintendo nintendo nintendo nintendo" "cross cross b a" "select select start start";
+  grid-template-rows: 10px 1fr 1.5fr;
+}
+
+.nintendo {
+  grid-area: nintendo;
+}
+.nintendo::after {
+  content: "nintendo";
+  border: 1px solid #072025;
+  padding: 0px 3px 0px 4px;
+  border-radius: 50px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #072025;
+  font-size: 7.5px;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.cross {
+  grid-area: cross;
+  padding-right: 27px;
+  padding-left: 21px;
+}
+.cross::after {
+  content: "";
+  border-radius: 4px;
+  background-color: #636262;
+  width: 10px;
+  height: 10px;
+  padding: 12px 2px;
+}
+.cross::after:active {
+  background-color: #636262 !important;
+  margin-top: 2px;
+}
+.cross::before {
+  content: "";
+  border-radius: 4px;
+  background-color: #636262;
+  width: 10px;
+  height: 10px;
+  margin-top: 10px;
+  padding: 1.5px 13px;
+}
+.cross::before:active {
+  background-color: #636262 !important;
+  margin-top: 2px;
+}
+.cross > .arrow-up {
+  transform: rotate(135deg);
+  margin: 4px 0px;
+  z-index: 2;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(to top right, #332b2c, #332b2c 50%, transparent 50%);
+  background: linear-gradient(to top right, #332b2c, #332b2c 50%, #a59698 50%, #a59698 55%, transparent 55%);
+}
+.cross > .arrow-down {
+  transform: rotate(315deg);
+  margin: 22px 0px;
+  z-index: 2;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(to top right, #332b2c, #332b2c 50%, transparent 50%);
+  box-shadow: -0.6px 0.6px #a59698;
+}
+.cross > .arrow-left {
+  transform: rotate(45deg);
+  margin: 13px -10px;
+  z-index: 2;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(to top right, #332b2c, #332b2c 50%, transparent 50%);
+  box-shadow: 0px 0.6px #a59698;
+}
+.cross > .arrow-right {
+  transform: rotate(225deg);
+  margin: 13px 10px;
+  z-index: 2;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(to top right, #332b2c, #332b2c 50%, transparent 50%);
+  box-shadow: -0.6px 0.1px #a59698;
+}
+.cross > .center {
+  z-index: 2;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin: 12px 0px;
+  background-color: #332b2c;
+  box-shadow: 0px 1px #a59698;
+}
+
+.a::before, .b::before {
+  font-size: 14px;
+  font-family: monospace;
+  color: #332b2c;
+  text-shadow: 1px 1px #a59698;
+}
+
+.a::after, .b::after {
+  content: "";
+  padding: 10px;
+  border-radius: 50%;
+  background: #636262;
+}
+
+.b {
+  grid-area: b;
+}
+.b::after {
+  align-self: flex-end;
+  margin: 10px 5px 0px;
+}
+.b::before {
+  content: "B";
+  margin: 11px 6.5px;
+}
+
+.a {
+  grid-area: a;
+}
+.a::after {
+  align-self: flex-start;
+}
+.a::before {
+  content: "A";
+  margin: 0px -7px;
+}
+
+.start::before, .select::before {
+  font-family: monospace;
+  text-transform: uppercase;
+  font-size: 6px;
+  font-weight: 900;
+}
+
+.start::after, .select::after {
+  content: "";
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-top: 8px;
+  background: #636262;
+}
+
+.select {
+  grid-area: select;
+}
+.select::after {
+  margin-right: 3px;
+  align-self: flex-end;
+}
+.select::before {
+  content: "select";
+  margin: 18px 23px;
+}
+
+.start {
+  grid-area: start;
+}
+.start::after {
+  margin-left: 3px;
+  align-self: flex-start;
+}
+.start::before {
+  content: "start";
+  margin: 18px -22px;
+}
+
+.speaker {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(black 20%, transparent 34%);
+  background-size: 7px 7px;
+  margin: 183px 50px;
+}
+
+.on-light {
+  position: absolute;
+  padding: 3.5px;
+  background-color: red;
+  border-radius: 50%;
+  margin: 46px -56px;
+  box-shadow: 1px 0px #313838, 3px 0px white, 5px 0px #313838, 7px 0px white, 9px 0px #313838, 11px 0px white;
+  animation: blink 5s ease-in-out infinite;
+}
+@keyframes blink {
+  0%, 40%, 65%, 100% {
+    background-color: red;
+  }
+  50% {
+    background-color: #313838;
+  }
+}
+.on-light::after {
+  content: "power";
+  font-size: 7px;
+  font-family: monospace;
+  color: white;
+  margin: 7px -4px;
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,394 @@
+
+$color-body: #448d9e;
+$color-screen: #b6c1a2;
+$color-screen-bg: #313838;
+$color-outline: black;
+$width-gameboy: 150px;
+$color-cross-inner: #63554b;
+$color-btn: #636262;
+$color-cross: $color-btn;
+$color-btn-shadow: #332b2c;
+$color-btn-pressed: #574245;
+$color-btn-text: #332b2c;
+$color-btn-text-shadow: #a59698;
+$color-on-light: red;
+$color-logo: #072025;
+
+%flex-center{
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+}
+
+%btn-shadow {
+    box-shadow: inset 0px -2px $color-btn-shadow;
+    &:active {
+        background-color: $color-btn-pressed;
+        box-shadow: inset 0px -1px $color-btn-shadow;
+    }
+}
+
+%pos-abs {
+    position: absolute;
+}
+
+%outline {
+    border: 2px solid $color-outline;
+}
+
+.container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.gameboy-color {
+    display: flex;
+    justify-content: center;
+}
+
+.body {
+    @extend %outline;
+    background: $color-body;
+    width: $width-gameboy;
+    height: 220px;
+    border-radius: 10px 10px 15% 15%;  
+}
+
+.screen {
+    @extend %pos-abs;
+    @extend %flex-center;
+    @extend %outline;
+
+    width: $width-gameboy * 0.85;
+    height: 106px;
+    background-color: $color-screen-bg;
+    margin-top: 10px;
+    border-radius: 5px 5px 15% 15%;
+
+    &::after {
+        @extend %outline;
+        content: "";
+        padding: 35px $width-gameboy*0.25;
+        background-color: $color-screen;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    &>.screen-text {
+        &::before {
+            @extend %pos-abs;
+            content:"nintendo®";
+            margin: 60px -20px;
+            text-transform: capitalize;
+            font-size: 8px;
+            font-weight: 900;
+            font-family: monospace;
+        }
+        
+        &::after {
+            @extend %pos-abs;
+            content:"game boy";
+            margin: 33px -35px;
+            text-transform: uppercase;
+            font-size: 11.5px;
+            font-weight: 900;
+            font-family: sans-serif;
+            $blue: #111e78;
+            $green: #47982b;
+            $pink: #d22a69;
+            $red: #d22a69;
+            $yellow: #faf74d;
+            background: linear-gradient(to right, $blue 40%,
+            $green 50%, 
+            $pink 60%, 
+            $red 80%,
+            $yellow 100%);
+            transform: skewX(-15deg);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}
+
+.lower-half {
+    @extend %pos-abs;
+    width: $width-gameboy;
+    height: 95px;
+    margin-top: 125px;
+    display: grid;
+    grid-template-areas: 'nintendo nintendo nintendo nintendo'
+    'cross cross b a'
+    'select select start start';
+    grid-template-rows: 10px 1fr 1.5fr;
+}
+
+.nintendo {
+    @extend %flex-center;
+    grid-area: nintendo;
+
+    &::after {
+        @extend %pos-abs;
+        content: "nintendo";
+        border: 1px solid $color-logo;
+        padding: 0px 3px 0px 4px;
+        border-radius: 50px;
+        text-align: center;
+        text-transform: capitalize;
+        color: $color-logo;
+        font-size: 7.5px;
+        font-family: monospace;
+        font-weight: bold;
+    }
+}
+
+@mixin cross-side($layout) {
+    @extend %pos-abs;
+    @extend %btn-shadow;
+    content: "";
+    border-radius: 4px;
+    background-color: $color-cross;
+    width: 10px;
+    height: 10px;
+
+    &:active {
+        background-color: $color-cross !important;
+        margin-top: 2px;
+    }
+    
+    @if $layout == vertical {
+        padding: 12px 2px;
+    } @else {
+        margin-top: 10px;
+        padding: 1.5px 13px;
+    }
+}
+
+.cross {
+    @extend %flex-center;
+    grid-area: cross;
+    padding-right: 27px;
+    padding-left: 21px;
+
+    &::after {
+        @include cross-side(vertical);
+    }
+
+    &::before {
+        @include cross-side(horizontal);
+    }
+
+    &>.arrow{
+        @mixin arrow-shadow($pos) {
+            @if $pos == top {
+                background: linear-gradient(
+                to top right,
+                $color-btn-text,
+                $color-btn-text 50%,
+                $color-btn-text-shadow 50%,
+                $color-btn-text-shadow 55%,
+                transparent 55%);
+            } @else if $pos == down {
+                box-shadow: -0.6px 0.6px $color-btn-text-shadow;
+            } @else if $pos == left {
+                box-shadow: 0px 0.6px $color-btn-text-shadow;
+            } @else if $pos == right {
+                box-shadow: -0.6px 0.1px $color-btn-text-shadow;
+            } 
+
+        }
+
+        @mixin arrow($deg, $margin) {
+            @extend %pos-abs;
+            transform: rotate($deg);
+            margin: $margin;
+            z-index: 2;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(
+                to top right,
+                $color-btn-text,
+                $color-btn-text 50%,
+                transparent 50%);
+        }
+
+        &-up { 
+            @include arrow(135deg, 4px 0px);
+            @include arrow-shadow(top);
+        }
+        &-down { 
+            @include arrow(315deg, 22px 0px);
+            @include arrow-shadow(down);
+        }
+        &-left {
+            @include arrow(45deg, 13px -10px);
+            @include arrow-shadow(left);
+        }
+        &-right {
+            @include arrow(225deg, 13px 10px);
+            @include arrow-shadow(right);
+        }
+    }
+
+    &>.center {
+        @extend %pos-abs;
+        z-index: 2;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        margin: 12px -0px;
+        background-color: $color-btn-text;
+        box-shadow: 0px 1px $color-btn-text-shadow;
+    }
+}
+
+
+%letter-btn-text {
+    @extend %pos-abs;
+    font-size: 14px;
+    font-family: monospace;
+    color: $color-btn-text;
+    text-shadow: 1px 1px $color-btn-text-shadow;
+}
+
+%letter-btn {
+    @extend %btn-shadow;
+    content:"";
+    padding: 10px;
+    border-radius: 50%;
+    background: $color-btn;
+}
+
+.b {
+    grid-area: b;
+    @extend %flex-center;
+
+    &::after {
+        @extend %letter-btn;
+        align-self: flex-end;
+        margin: 10px 5px 0px;
+    }
+    &::before {
+        @extend %letter-btn-text;
+        content: "B";
+        margin: 11px 6.5px;
+    }
+}
+
+.a {
+    grid-area: a;
+    @extend %flex-center;
+
+    &::after {
+        @extend %letter-btn;
+        align-self: flex-start;
+    }
+
+    &::before {
+        @extend %letter-btn-text;
+        content: "A";
+        margin: 0px -7px;
+    }
+}
+
+%lower-btn-text {
+    @extend %pos-abs;
+    font-family: monospace;
+    text-transform: uppercase;
+    font-size: 6px;
+    font-weight: 900;
+}
+
+%lower-btn {
+    @extend %btn-shadow;
+    content:"";
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-top: 8px;
+    background: $color-btn;
+}
+
+.select {
+    grid-area: select;
+    @extend %flex-center;
+
+    &::after {
+        @extend %lower-btn;
+        margin-right: 3px;
+        align-self: flex-end;
+    }
+
+    &::before {
+        @extend %lower-btn-text;
+        content: "select";
+        margin: 18px 23px;
+    }
+}
+
+.start {
+    grid-area: start;
+    @extend %flex-center;
+
+    &::after {
+        @extend %lower-btn;
+        margin-left: 3px;
+        align-self: flex-start;
+    }
+
+    &::before {
+        @extend %lower-btn-text;
+        content: "start";
+        margin: 18px -22px;
+    }
+}
+
+.speaker {
+    @extend %flex-center;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient($color-outline 20%, transparent 34%);
+    background-size: 7px 7px;
+    margin: 183px 50px;
+}
+
+.on-light {
+    position: absolute;
+    padding: 3.5px;
+    background-color: $color-on-light;
+    border-radius: 50%;
+    margin: 46px -56px;
+
+    $start-shadow-pos: 1px;
+    $shadow-inc: 2px;
+    @function shadow-inc($index) {
+
+    }
+
+    box-shadow: $start-shadow-pos 0px $color-screen-bg,
+    3px 0px white,
+    5px 0px $color-screen-bg,
+    7px 0px white,
+    9px 0px $color-screen-bg,
+    11px 0px white;
+    @keyframes blink {
+        0%, 40%, 65%, 100% {
+            background-color: $color-on-light;
+        } 50% {
+            background-color: $color-screen-bg;
+        }
+    }
+
+    animation: blink 5s ease-in-out infinite;
+
+    &::after {
+        @extend %pos-abs;
+        content: "power";
+        font-size: 7px;
+        font-family: monospace;
+        color: white;
+        margin: 7px -4px;
+        text-transform: uppercase;
+    }
+}
