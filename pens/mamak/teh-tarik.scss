@@ -1,0 +1,103 @@
+@mixin teh-tarik {
+    $c-teh-light: #ffca77;
+    $c-teh-dark: #b36f05;
+    $c-teh-outline: #2f2f2f;
+    $c-cup-shape: #b36f05;
+    $c-teh-bubbles-border: #fff3da;
+    $c-teh-bubbles-bg: #fff3da;
+    &>* {
+        position: absolute;
+    }
+    .cup {
+        height: 150px;
+        width: 120px;
+        border-radius: 20%;
+        background: linear-gradient(
+            $c-teh-light 20%, 
+            $c-teh-dark);
+        margin-left: 14px;
+        border: 5px solid $c-teh-outline;
+    }
+    .cup-shape>.shape {
+        position: absolute;
+        height: 100px;
+        width: 23px;
+        border-radius: 50%;
+        background: linear-gradient($c-cup-shape, transparent);
+
+        $my-start: 55px;
+        $mx-start: 22.5px;
+
+        @for $index from 1 through 4 {
+            &:nth-child(#{$index}) {
+                margin: $my-start $mx-start * $index * 1.2;
+            }
+        }
+    }
+    .handle {
+        height: 52px;
+        width: 16px;
+        background-color: transparent;
+        margin-top: 59px;
+        $br: 50%;
+        border-radius: $br 0px 0px $br;
+        box-shadow: 0px 0px 0px 5px $c-teh-outline,
+        0px 0px 0px 20px $c-teh-light,
+        0px 0px 0px 25px $c-teh-outline;
+    }
+    .mouth-of-cup {
+        height: 19px;
+        width: 93px;
+        border-radius: 25px;
+        border: 5px solid $c-teh-outline;
+        margin: 11px 26px;
+        z-index: 1;
+    }
+    .bubbles {
+        $bubbles-per-row: 15;
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat($bubbles-per-row, 1fr);
+        place-items: center;
+        margin: 3px 19px;
+
+        .bubble-mid {
+            $size: 8px;
+            height: $size;
+            width: $size;
+            border-radius: 50%;
+            background: radial-gradient(
+                transparent 1%,
+                $c-teh-bubbles-border 60%);
+            @each $index in 1, 15 {
+                &:nth-child(#{$index}) {
+                    background: none;
+                }
+            }
+            @each $index in 2, 14, 16, 30 {
+                &:nth-child(#{$index}) {
+                    $size: 7px;
+                    height: $size;
+                    width: $size;
+                }
+            }
+
+            @keyframes bubbly {
+                0%, 100% { } 50% { transform: translateY(2.5px)}
+            }
+
+            animation: bubbly 3s infinite;
+            &:nth-child(even) {
+                animation-delay: 1.5s;
+            }
+            &:nth-child(2n+1) {
+                animation-delay: 1s;
+            }
+            &:nth-child(3n) {
+                animation-delay: 2s;
+            }
+
+    
+        }
+    }
+}
