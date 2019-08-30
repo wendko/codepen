@@ -1,0 +1,17 @@
+link( rel="stylesheet" href="./style.css" type="text/css")
+
+
+.container
+    .teh-tarik
+        .handle
+        .cup
+        .cup-shape
+            - var shapeCount=4
+            - while(shapeCount>0)
+                .shape(id="shape-"+shapeCount--)
+        .mouth-of-cup
+        .bubbles
+            - var bubbleCount=15*6
+            - while(bubbleCount>0)
+                .bubble(class="bubble-mid" id="bubble-"+bubbleCount--)
+    .kopi
