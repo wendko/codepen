@@ -2,6 +2,7 @@
 @import './teh-tarik.scss';
 @import './sirap-bandung.scss';
 @import './kopi.scss';
+@import './limau-ais.scss';
 
 .container {
     @include container;
@@ -16,7 +17,7 @@
 }
 
 .teh-tarik {
-    @include item(20px, 180px);
+    @include item(20px, 175px);
     @include teh-tarik;
 }
 
@@ -28,4 +29,9 @@
 .kopi {
     @include item(35px, 175px);
     @include kopi;
+}
+
+.limau-ais {
+    @include item(35px, 175px);
+    @include limau-ais;
 }

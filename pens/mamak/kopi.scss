@@ -68,21 +68,19 @@
     }
 
     .bubbles {
-        width: 8px;
-        height: 8px;
+        opacity: 0.6;
+        width: 19px;
+        height: 11px;
         background: $c-kopi-bubbles;
-        color: $c-kopi-bubbles;
         border-radius: 50%;
-        box-shadow: 8px 0px 0px -0.5px currentColor,
-        15px 0px currentColor,
-        20px 0px 0px -1px currentColor,
-        25px 0px 0px -0.8px currentColor,
-        30px 0px 0px -0.9px currentColor;
-        margin: 15px 24px;
-        @keyframes rotate {
-            0%, 100% {} 50% { transform: translateX(2px) }
+        margin: 27px 68px;
+        box-shadow: -23px -5px 0px -3px $c-kopi-bubbles,
+        -18px 3px 0px -2px $c-kopi-bubbles;
+
+        @keyframes bubbly {
+            0%, 100% {} 50% { transform: scale(1.2) }
         }
-        animation: rotate 5s infinite;
+        animation: bubbly 3s infinite;
     }
 
 }
