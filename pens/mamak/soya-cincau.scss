@@ -1,0 +1,84 @@
+@import './cup-tall.scss';
+
+$c-dark: #c1b39b;
+$c-light: #f0e2ba;
+$c-outline: #2f2f2f;
+$c-cincau-dark: #382421;
+$c-cincau-light: #370904;
+
+@mixin float($rotation) {
+    $id: unique-id();
+    @keyframes float-#{$id} {
+        0%, 100% {} 50% { transform: rotate($rotation) translateY(3px)}
+    }
+    animation: float-#{$id} 3s infinite;
+}
+
+@mixin soya-cincau {
+    $c-cup-content: linear-gradient(
+                transparent,
+                transparent 20%,
+                $c-light 20%, 
+                $c-light 40%, 
+                $c-dark);
+    @include cup-tall( $c-outline, $c-cup-content, $c-straw );
+
+    .cincau-area {
+        width: 100px;
+        height: 60px;
+        margin: 35px 5px;
+        background: linear-gradient($c-light, transparent);
+        .cincau {
+            position: absolute;
+            padding: 18px;
+            border: 5px solid transparent;
+            border-left-color: $c-cincau-light;
+            border-radius: 50%;
+
+            &:nth-child(1) {
+                margin: -13px 5px;
+                $rotation: -44deg;
+                transform: rotate($rotation);
+                @include float($rotation);
+            }
+            &:nth-child(2) {
+                margin: 7px 19px;
+                $rotation: 77deg;
+                transform: rotate($rotation);
+                @include float($rotation);
+            }
+            &:nth-child(3) {
+                margin: -20px 40px;
+                $rotation: 257deg;
+                transform: rotate($rotation);
+                @include float($rotation);
+            }
+            &:nth-child(4) {
+                margin: 23px 8px;
+                $rotation: 134deg;
+                transform: rotate($rotation);
+                @include float($rotation);
+            }
+            &:nth-child(5) {
+                margin: 1px 50px;
+                $rotation: 163deg;
+                transform: rotate($rotation);
+                @include float($rotation);
+            }
+            &:nth-child(6) {
+                margin: 9px 36px;
+                $rotation: 210deg;
+                transform: rotate($rotation);
+                @include float($rotation);
+            }
+        }
+    }
+
+    .ice-area {
+        $c-self: none;
+        $c-ice: $c-dark;
+        $margin: 65px 5px;
+        $opacity: 0.8;
+        @include ice-area($c-self, $c-ice, $margin, $opacity);
+    }
+}

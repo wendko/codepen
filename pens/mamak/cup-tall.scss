@@ -1,0 +1,36 @@
+@mixin cup-tall(
+    $c-outline,
+    $c-cup-content,
+    $c-straw
+) {
+    .cup {
+        width: 100px;
+        height: 150px;
+        border-radius: 10% 10% 20% 20%;
+        border: 5px solid $c-outline;
+        background: $c-cup-content;
+    }
+
+    .cup-mouth {
+        width: 90px;
+        height: 10px;
+        border-radius: 100px;
+        border: 5px solid $c-outline;
+        border-top: none;
+        z-index: 2;
+        margin: 0px 6px;
+    }
+
+    .straw {
+        width: 10px;
+        height: 60px;
+        margin: -21px 66px;
+        transform: rotate(20deg);
+        transform-origin: bottom;
+        background: $c-straw;
+        @keyframes move {
+            0%, 100% {} 50% { transform: rotate(10deg)}
+        }
+        animation: move 3s infinite;
+    }
+}

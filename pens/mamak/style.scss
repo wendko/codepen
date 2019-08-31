@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Chilanka&display=swap');
 @import '../../common/container.scss';
 @import './teh-tarik.scss';
 @import './sirap-bandung.scss';
 @import './kopi.scss';
 @import './limau-ais.scss';
+@import './soya-cincau.scss';
 
 .container {
     @include container;
+    font-family: 'Chilanka', cursive;
+    grid-auto-flow: column;
+    text-align: center;
+    grid-template-rows: repeat(3, 1fr);
 }
 
 @mixin item($pt, $pr) {
@@ -32,6 +38,11 @@
 }
 
 .limau-ais {
-    @include item(35px, 175px);
+    @include item(20px, 175px);
     @include limau-ais;
+}
+
+.soya-cincau {
+    @include item(20px, 175px);
+    @include soya-cincau;
 }

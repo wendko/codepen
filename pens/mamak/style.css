@@ -1,7 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Chilanka&display=swap");
 .container {
   display: grid;
   place-items: center;
   height: 100vh;
+  font-family: "Chilanka", cursive;
+  grid-auto-flow: column;
+  text-align: center;
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .teh-tarik {
@@ -131,9 +136,10 @@
   margin: 35px 5px;
 }
 .sirap-bandung .ice-area .ice {
-  opacity: 0.8;
+  opacity: 0.3;
   position: absolute;
-  background: linear-gradient(to bottom right, transparent 30%, #be2a47);
+  background: #be2a47;
+  border-radius: 3px;
 }
 .sirap-bandung .ice-area .ice:nth-child(1) {
   margin: 10px 7px;
@@ -235,11 +241,11 @@
 }
 .kopi .saucer {
   width: 166px;
-  height: 60px;
+  height: 80px;
   background: #bea16b;
   border-radius: 50%;
   border: 5px solid #2f2f2f;
-  margin: 77px -31px;
+  margin: 55px -31px;
   box-shadow: inset 0px -13px #fdd7de;
 }
 .kopi .pattern {
@@ -268,7 +274,7 @@
 
 .limau-ais {
   outline: 1px dashed black;
-  padding: 35px 175px 165px 55px;
+  padding: 20px 175px 180px 55px;
 }
 .limau-ais > * {
   position: absolute;
@@ -310,9 +316,9 @@
 }
 .limau-ais .limaus > .limau:nth-child(1) {
   margin: 40px 33px;
-  animation: bob-uz7u33r 3s infinite;
+  animation: bob-ukfl78l 3s infinite;
 }
-@keyframes bob-uz7u33r {
+@keyframes bob-ukfl78l {
   50% {
     transform: rotate(0deg) translateY(-5px);
   }
@@ -320,9 +326,9 @@
 .limau-ais .limaus > .limau:nth-child(2) {
   margin: 33px 78px;
   transform: rotate(200deg);
-  animation: bob-uz7u34k 3s infinite;
+  animation: bob-ukfl798 3s infinite;
 }
-@keyframes bob-uz7u34k {
+@keyframes bob-ukfl798 {
   50% {
     transform: rotate(200deg) translateY(-5px);
   }
@@ -334,9 +340,10 @@
   margin: 57px 26px;
 }
 .limau-ais .ice-area .ice {
-  opacity: 1;
+  opacity: 0.45;
   position: absolute;
-  background: linear-gradient(to bottom right, transparent 30%, #a7a7a7);
+  background: #a7a7a7;
+  border-radius: 3px;
 }
 .limau-ais .ice-area .ice:nth-child(1) {
   margin: 10px 7px;
@@ -394,6 +401,195 @@
   }
 }
 .limau-ais .ice-area .ice:nth-child(6) {
+  margin: 26px 75px;
+  padding: 8px;
+  transform: rotate(-20deg);
+  animation: float-6 2s infinite;
+}
+@keyframes float-6 {
+  50% {
+    transform: rotate(-20deg) translateY(2.5px);
+  }
+}
+
+.soya-cincau {
+  outline: 1px dashed black;
+  padding: 20px 175px 180px 55px;
+}
+.soya-cincau > * {
+  position: absolute;
+}
+.soya-cincau .cup {
+  width: 100px;
+  height: 150px;
+  border-radius: 10% 10% 20% 20%;
+  border: 5px solid #2f2f2f;
+  background: linear-gradient(transparent, transparent 20%, #f0e2ba 20%, #f0e2ba 40%, #c1b39b);
+}
+.soya-cincau .cup-mouth {
+  width: 90px;
+  height: 10px;
+  border-radius: 100px;
+  border: 5px solid #2f2f2f;
+  border-top: none;
+  z-index: 2;
+  margin: 0px 6px;
+}
+.soya-cincau .straw {
+  width: 10px;
+  height: 60px;
+  margin: -21px 66px;
+  transform: rotate(20deg);
+  transform-origin: bottom;
+  background: #000000d9;
+  animation: move 3s infinite;
+}
+@keyframes move {
+  50% {
+    transform: rotate(10deg);
+  }
+}
+.soya-cincau .cincau-area {
+  width: 100px;
+  height: 60px;
+  margin: 35px 5px;
+  background: linear-gradient(#f0e2ba, transparent);
+}
+.soya-cincau .cincau-area .cincau {
+  position: absolute;
+  padding: 18px;
+  border: 5px solid transparent;
+  border-left-color: #370904;
+  border-radius: 50%;
+}
+.soya-cincau .cincau-area .cincau:nth-child(1) {
+  margin: -13px 5px;
+  transform: rotate(-44deg);
+  animation: float-ukfl79c 3s infinite;
+}
+@keyframes float-ukfl79c {
+  50% {
+    transform: rotate(-44deg) translateY(3px);
+  }
+}
+.soya-cincau .cincau-area .cincau:nth-child(2) {
+  margin: 7px 19px;
+  transform: rotate(77deg);
+  animation: float-ukfl79j 3s infinite;
+}
+@keyframes float-ukfl79j {
+  50% {
+    transform: rotate(77deg) translateY(3px);
+  }
+}
+.soya-cincau .cincau-area .cincau:nth-child(3) {
+  margin: -20px 40px;
+  transform: rotate(257deg);
+  animation: float-ukfl79m 3s infinite;
+}
+@keyframes float-ukfl79m {
+  50% {
+    transform: rotate(257deg) translateY(3px);
+  }
+}
+.soya-cincau .cincau-area .cincau:nth-child(4) {
+  margin: 23px 8px;
+  transform: rotate(134deg);
+  animation: float-ukfl7ad 3s infinite;
+}
+@keyframes float-ukfl7ad {
+  50% {
+    transform: rotate(134deg) translateY(3px);
+  }
+}
+.soya-cincau .cincau-area .cincau:nth-child(5) {
+  margin: 1px 50px;
+  transform: rotate(163deg);
+  animation: float-ukfl7ae 3s infinite;
+}
+@keyframes float-ukfl7ae {
+  50% {
+    transform: rotate(163deg) translateY(3px);
+  }
+}
+.soya-cincau .cincau-area .cincau:nth-child(6) {
+  margin: 9px 36px;
+  transform: rotate(210deg);
+  animation: float-ukfl7b3 3s infinite;
+}
+@keyframes float-ukfl7b3 {
+  50% {
+    transform: rotate(210deg) translateY(3px);
+  }
+}
+.soya-cincau .ice-area {
+  width: 100px;
+  height: 60px;
+  background: none;
+  margin: 65px 5px;
+}
+.soya-cincau .ice-area .ice {
+  opacity: 0.8;
+  position: absolute;
+  background: #c1b39b;
+  border-radius: 3px;
+}
+.soya-cincau .ice-area .ice:nth-child(1) {
+  margin: 10px 7px;
+  padding: 10px;
+  transform: rotate(10deg);
+  animation: float-1 2s infinite;
+}
+@keyframes float-1 {
+  50% {
+    transform: rotate(10deg) translateY(2.5px);
+  }
+}
+.soya-cincau .ice-area .ice:nth-child(2) {
+  margin: 20px 21px;
+  padding: 12px;
+  transform: rotate(-20deg);
+  animation: float-2 2s infinite;
+}
+@keyframes float-2 {
+  50% {
+    transform: rotate(-20deg) translateY(2.5px);
+  }
+}
+.soya-cincau .ice-area .ice:nth-child(3) {
+  margin: 11px 40px;
+  padding: 8px;
+  transform: rotate(-50deg);
+  animation: float-3 2s infinite;
+}
+@keyframes float-3 {
+  50% {
+    transform: rotate(-50deg) translateY(2.5px);
+  }
+}
+.soya-cincau .ice-area .ice:nth-child(4) {
+  margin: 15px 53px;
+  padding: 12px;
+  transform: rotate(15deg);
+  animation: float-4 2s infinite;
+}
+@keyframes float-4 {
+  50% {
+    transform: rotate(15deg) translateY(2.5px);
+  }
+}
+.soya-cincau .ice-area .ice:nth-child(5) {
+  margin: 9px 78px;
+  padding: 7px;
+  transform: rotate(-120deg);
+  animation: float-5 2s infinite;
+}
+@keyframes float-5 {
+  50% {
+    transform: rotate(-120deg) translateY(2.5px);
+  }
+}
+.soya-cincau .ice-area .ice:nth-child(6) {
   margin: 26px 75px;
   padding: 8px;
   transform: rotate(-20deg);

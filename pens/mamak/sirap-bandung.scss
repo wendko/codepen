@@ -1,65 +1,25 @@
 @import './ice-area.scss';
+@import './cup-tall.scss';
 
-@mixin floating($index, $rotate) {
-    $offset: 2.5px;
-    @keyframes float-#{$index} {
-        0%, 100% { } 50% {
-            transform: rotate($rotate) translateY($offset)
-        }
-    }
-    animation: float-#{$index} 2s infinite;
-}
+$c-sirap-dark: #be2a47;
+$c-sirap-light: #e898cf;
+$c-sirap-outline: #2f2f2f; 
+$c-straw: #000000d9;
 
 @mixin sirap-bandung {
-    $c-sirap-dark: #be2a47;
-    $c-sirap-light: #e898cf;
-    $c-sirap-outline: #2f2f2f; 
-    $c-straw: #000000d9;
-    
-    .cup {
-        width: 100px;
-        height: 150px;
-        border-radius: 10% 10% 20% 20%;
-        border: 5px solid $c-sirap-outline;
-        background: linear-gradient(
-            transparent,
-            transparent 20%,
-            $c-sirap-light 20%, 
-            $c-sirap-light 40%, 
-            $c-sirap-dark)
-    }
-
-    .cup-mouth {
-        width: 90px;
-        height: 10px;
-        border-radius: 100px;
-        border: 5px solid $c-sirap-outline;
-        border-top: none;
-        z-index: 2;
-        margin: 0px 6px;
-    }
-
-    .straw {
-        width: 10px;
-        height: 60px;
-        margin: -21px 66px;
-        transform: rotate(20deg);
-        transform-origin: bottom;
-        background: $c-straw;
-        @keyframes move {
-            0%, 100% {} 50% { transform: rotate(10deg)}
-        }
-        animation: move 3s infinite;
-    }
+    $c-cup-content: linear-gradient(
+                transparent,
+                transparent 20%,
+                $c-sirap-light 20%, 
+                $c-sirap-light 40%, 
+                $c-sirap-dark);
+    @include cup-tall( $c-outline, $c-cup-content, $c-straw );
 
     .ice-area {
         $c-self: linear-gradient($c-sirap-light 30%, transparent);
-        $c-ice: linear-gradient(
-            to bottom right, 
-            transparent 30%,
-            $c-sirap-dark);
+        $c-ice:$c-sirap-dark;
         $margin: 35px 5px;
-        $opacity: 0.8;
+        $opacity: 0.3;
         @include ice-area($c-self, $c-ice, $margin, $opacity);
     }
 }

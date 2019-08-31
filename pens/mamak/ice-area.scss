@@ -1,4 +1,13 @@
-    
+@mixin floating($index, $rotate) {
+    $offset: 2.5px;
+    @keyframes float-#{$index} {
+        0%, 100% { } 50% {
+            transform: rotate($rotate) translateY($offset)
+        }
+    }
+    animation: float-#{$index} 2s infinite;
+}
+
 @mixin ice-area(
     $c-self,
     $c-ice,
@@ -14,6 +23,7 @@
         opacity: $opacity;
         position: absolute;
         background: $c-ice;
+        border-radius: 3px;
 
         &:nth-child(1) {
             margin: 10px 7px;

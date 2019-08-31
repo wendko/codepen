@@ -2,58 +2,72 @@ link( rel="stylesheet" href="./style.css" type="text/css")
 
 
 .container
-    p Teh Tarik
-    
-    .teh-tarik
-        .cup
-            .handle
-            .cup-body
+    .drink
+        p Teh Tarik
+        .teh-tarik
+            .cup
+                .handle
+                .cup-body
+                .cup-mouth
+            .cup-shape
+                - var shapeCount=4
+                - while(shapeCount>0)
+                    .shape(id="shape-"+shapeCount--)
+            .bubbles
+                - var bubbleCount=11*3
+                - while(bubbleCount>0)
+                    .bubble(id="bubble-"+bubbleCount--)
+        
+    .drink
+        p Sirap Bandung
+        .sirap-bandung
+            .cup
             .cup-mouth
-        .cup-shape
-            - var shapeCount=4
-            - while(shapeCount>0)
-                .shape(id="shape-"+shapeCount--)
-        .bubbles
-            - var bubbleCount=11*3
-            - while(bubbleCount>0)
-                .bubble(id="bubble-"+bubbleCount--)
-    
-    p Sirap Bandung
-    .sirap-bandung
-        .cup
-        .cup-mouth
-        .straw
-        .ice-area
-            - var iceCount = 6
-            - while(iceCount > 0)
-                .ice(id="ice-" + iceCount--)
+            .straw
+            .ice-area
+                - var iceCount = 6
+                - while(iceCount > 0)
+                    .ice(id="ice-" + iceCount--)
 
-
-    p Kopi
-    .kopi
-        .handle
-        .saucer
-        .cup
-        .cup-mouth
-        .pattern
-        .bubbles
-
-    p Limau Ais
-    .limau-ais
-        .cup
+    .drink
+        p Kopi
+        .kopi
+            .saucer
             .handle
-            .cup-body
+            .cup
             .cup-mouth
-        .limaus
-            .limau
-            .limau
-        .ice-area
-            - var iceCount = 6
-            - while(iceCount > 0)
-                .ice(id="ice-" + iceCount--)
+            .pattern
+            .bubbles
 
+    .drink
+        p Limau Ais
+        .limau-ais
+            .cup
+                .handle
+                .cup-body
+                .cup-mouth
+            .limaus
+                .limau
+                .limau
+            .ice-area
+                - var iceCount = 6
+                - while(iceCount > 0)
+                    .ice(id="ice-" + iceCount--)
 
-    .soya-cincau
+    .drink
+        p Soya Cincau
+        .soya-cincau
+            .cup
+            .cup-mouth
+            .straw
+            .cincau-area
+                - var cincauCount = 6
+                - while(cincauCount > 0)
+                    .cincau(id="cincau-" + cincauCount--)
+            .ice-area
+                - var iceCount = 6
+                - while(iceCount > 0)
+                    .ice(id="ice-" + iceCount--)
 
     .asam-laksa
     .ayam-rendang

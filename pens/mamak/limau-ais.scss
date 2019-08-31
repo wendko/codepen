@@ -62,12 +62,9 @@ $c-handle: #cfcfcf;
 
     .ice-area {
         $c-self: none;
-        $c-ice: linear-gradient(
-            to bottom right, 
-            transparent 30%,
-            $c-ice-cube);
+        $c-ice: $c-ice-cube;
         $margin: 57px 26px;
-        $opacity: 1;
+        $opacity: 0.45;
         @include ice-area($c-self, $c-ice, $margin, $opacity);
     }
 }
