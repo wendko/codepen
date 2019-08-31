@@ -1,7 +1,73 @@
-@mixin limau {
+$c-limau-skin: #739023;
+$c-limau-flesh-light: #e5eb86;
+$c-limau-flesh-dark: #cbc126;
+$c-limau-flesh-border: #f7f8c3;
+$size: 35px;
+$skin-offset: $size * 0.3;
+$flesh-border-offset: $size * 0.35;
+$c-outline: #2f2f2f;
+$c-ice-cube: #a7a7a7;
+$c-cup-content: linear-gradient(
+    transparent 18%,
+    #cfcfcf 18%,
+    white
+);
+$c-handle: #cfcfcf;
 
+@mixin limau {
+    position: absolute;
+
+    width: $size;
+    height: $size;
+    border-radius: 50% 50%;
+    background: repeating-linear-gradient(
+        $c-limau-flesh-light 20%,
+        $c-limau-flesh-dark 30%
+    );
+    box-shadow: inset $skin-offset $skin-offset $c-limau-skin,
+    inset $flesh-border-offset $flesh-border-offset $c-limau-flesh-border;
+}
+
+@mixin limau-bob($rotation, $y) {
+    $id: unique-id();
+    @keyframes bob-#{$id} {
+        0%, 100% {}
+        50% { transform: rotate($rotation) translateY($y)}
+    }
+    animation: bob-#{$id} 3s infinite;
 }
 
 @mixin limau-ais {
+    .cup {
+        @include cup(
+            $c-outline,
+            $c-handle,
+            $c-cup-content
+        );
+    }
 
+    .limaus>.limau {
+        @include limau;
+        &:nth-child(1) {
+            margin: 40px 33px;
+            @include limau-bob(0deg, -5px);
+        }
+        &:nth-child(2) {
+            margin: 33px 78px;
+            $rotation: 200deg;
+            transform: rotate($rotation);
+            @include limau-bob($rotation, -5px);
+        }
+    }
+
+    .ice-area {
+        $c-self: none;
+        $c-ice: linear-gradient(
+            to bottom right, 
+            transparent 30%,
+            $c-ice-cube);
+        $margin: 57px 26px;
+        $opacity: 1;
+        @include ice-area($c-self, $c-ice, $margin, $opacity);
+    }
 }

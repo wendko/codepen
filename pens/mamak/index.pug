@@ -5,13 +5,14 @@ link( rel="stylesheet" href="./style.css" type="text/css")
     p Teh Tarik
     
     .teh-tarik
-        .handle
         .cup
+            .handle
+            .cup-body
+            .cup-mouth
         .cup-shape
             - var shapeCount=4
             - while(shapeCount>0)
                 .shape(id="shape-"+shapeCount--)
-        .cup-mouth
         .bubbles
             - var bubbleCount=11*3
             - while(bubbleCount>0)
@@ -40,8 +41,16 @@ link( rel="stylesheet" href="./style.css" type="text/css")
     p Limau Ais
     .limau-ais
         .cup
-        .limau
-        .limau
+            .handle
+            .cup-body
+            .cup-mouth
+        .limaus
+            .limau
+            .limau
+        .ice-area
+            - var iceCount = 6
+            - while(iceCount > 0)
+                .ice(id="ice-" + iceCount--)
 
 
     .soya-cincau

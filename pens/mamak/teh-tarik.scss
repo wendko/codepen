@@ -1,3 +1,5 @@
+@import './cup.scss';
+
 @mixin teh-tarik {
     $c-teh-light: #ffca77;
     $c-teh-dark: #b36f05;
@@ -5,17 +7,19 @@
     $c-cup-shape: #794c05;
     $c-teh-bubbles-border: #fff3da;
     $c-teh-bubbles-bg: #fff3da;
+    
     .cup {
-        height: 150px;
-        width: 110px;
-        border-radius: 15px 15px 30% 30%;
-        background: linear-gradient(
+        $c-cup-content: linear-gradient(
             transparent 10%, 
             $c-teh-light 10%, 
             $c-teh-light 20%, 
             $c-teh-dark);
-        margin-left: 14px;
-        border: 5px solid $c-teh-outline;
+
+        @include cup(
+            $c-teh-outline,
+            $c-teh-light,
+            $c-cup-content
+        );
     }
     .cup-shape>.shape {
         position: absolute;
@@ -40,25 +44,6 @@
         &:nth-child(4) {
             margin: $my-start $mx-start + ($distance * 3);
         }
-    }
-    .handle {
-        height: 45px;
-        width: 16px;
-        background-color: transparent;
-        margin-top: 59px;
-        $br: 50%;
-        border-radius: $br 0px 0px $br;
-        box-shadow: 0px 0px 0px 5px $c-teh-outline,
-        0px 0px 0px 20px $c-teh-light,
-        0px 0px 0px 25px $c-teh-outline;
-    }
-    .cup-mouth {
-        height: 8px;
-        width: 90px;
-        border-radius: 50px;
-        border: 5px solid $c-teh-outline;
-        margin: 7px 24px;
-        z-index: 1;
     }
     .bubbles {
         $bubbles-per-row: 11;

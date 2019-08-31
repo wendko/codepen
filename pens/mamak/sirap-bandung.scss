@@ -1,3 +1,5 @@
+@import './ice-area.scss';
+
 @mixin floating($index, $rotate) {
     $offset: 2.5px;
     @keyframes float-#{$index} {
@@ -51,61 +53,13 @@
     }
 
     .ice-area {
-        width: 100px;
-        height: 60px;
-        background: linear-gradient($c-sirap-light 30%, transparent);
-        margin: 35px 5px;
-        
-        .ice {
-            opacity: 0.8;
-            position: absolute;
-            background: linear-gradient(
-                to bottom right, 
-                transparent 30%,
-                $c-sirap-dark);
-
-            &:nth-child(1) {
-                margin: 10px 7px;
-                padding: 10px;
-                $rotate: 10deg;
-                transform: rotate($rotate);
-                @include floating(1, $rotate);
-            }
-            &:nth-child(2) {
-                margin: 20px 21px;
-                padding: 12px;
-                $rotate: -20deg;
-                transform: rotate($rotate);
-                @include floating(2, $rotate);
-            }
-            &:nth-child(3) {
-                margin: 11px 40px;
-                padding: 8px;
-                $rotate: -50deg;
-                transform: rotate($rotate);
-                @include floating(3, $rotate);
-            }
-            &:nth-child(4) {
-                margin: 15px 53px;
-                padding: 12px;
-                $rotate: 15deg;
-                transform: rotate($rotate);
-                @include floating(4, $rotate);
-            }
-            &:nth-child(5) {
-                margin: 9px 78px;
-                padding: 7px;
-                $rotate: -120deg;
-                transform: rotate($rotate);
-                @include floating(5, $rotate);
-            }
-            &:nth-child(6) {
-                margin: 26px 75px;
-                padding: 8px;
-                $rotate: -20deg;
-                transform: rotate($rotate);
-                @include floating(6, $rotate);
-            }
-        }
+        $c-self: linear-gradient($c-sirap-light 30%, transparent);
+        $c-ice: linear-gradient(
+            to bottom right, 
+            transparent 30%,
+            $c-sirap-dark);
+        $margin: 35px 5px;
+        $opacity: 0.8;
+        @include ice-area($c-self, $c-ice, $margin, $opacity);
     }
 }
