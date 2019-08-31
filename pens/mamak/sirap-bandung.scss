@@ -1,9 +1,9 @@
 @mixin sirap-bandung {
-    $c-sirap-darker: #861f21;
     $c-sirap-dark: #be2a47;
     $c-sirap-light: #e898cf;
     $c-sirap-outline: #2f2f2f; 
     $c-straw: #000000d9;
+    
     .cup {
         width: 100px;
         height: 150px;
@@ -18,13 +18,13 @@
     }
 
     .cup-mouth {
-        width: 80px;
-        height: 15px;
-        border-radius: 50%;
+        width: 90px;
+        height: 10px;
+        border-radius: 100px;
         border: 5px solid $c-sirap-outline;
         border-top: none;
         z-index: 2;
-        margin: 0px 10px;
+        margin: 0px 6px;
     }
 
     .straw {
@@ -35,10 +35,45 @@
         background: $c-straw;
     }
 
-    .ice {
+    .ice-area {
         width: 100px;
         height: 60px;
         background: linear-gradient($c-sirap-light 30%, transparent);
         margin: 35px 5px;
+        
+        .ice {
+            opacity: 0.8;
+            position: absolute;
+            background: linear-gradient(
+                to bottom right, 
+                transparent 30%,
+                $c-sirap-dark);
+
+            &:nth-child(1) {
+                transform: rotate(10deg);
+                margin: 10px 7px;
+                padding: 10px;
+            }
+            &:nth-child(2) {
+                transform: rotate(-20deg);
+                margin: 20px 21px;
+                padding: 12px;
+            }
+            &:nth-child(3) {
+                transform: rotate(-50deg);
+                margin: 11px 40px;
+                padding: 8px;
+            }
+            &:nth-child(4) {
+                transform: rotate(-50deg);
+                margin: 15px 59px;
+                padding: 12px;
+            }
+            &:nth-child(5) {
+                transform: rotate(-120deg);
+                margin: 9px 78px;
+                padding: 7px;
+            }
+        }
     }
 }

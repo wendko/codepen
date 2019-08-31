@@ -15,7 +15,7 @@
   height: 150px;
   width: 120px;
   border-radius: 20%;
-  background: linear-gradient(#ffca77 20%, #b36f05);
+  background: linear-gradient(transparent 10%, #ffca77 10%, #ffca77 20%, #b36f05);
   margin-left: 14px;
   border: 5px solid #2f2f2f;
 }
@@ -60,7 +60,7 @@
   place-items: center;
   grid-template-columns: repeat(15, 1fr);
   place-items: center;
-  margin: 3px 19px;
+  margin: 16px 19px;
 }
 .teh-tarik .bubbles .bubble-mid {
   height: 8px;
@@ -69,27 +69,13 @@
   background: radial-gradient(transparent 1%, #fff3da 60%);
   animation: bubbly 3s infinite;
 }
-.teh-tarik .bubbles .bubble-mid:nth-child(1) {
-  background: none;
-}
-.teh-tarik .bubbles .bubble-mid:nth-child(15) {
-  background: none;
-}
-.teh-tarik .bubbles .bubble-mid:nth-child(2) {
+.teh-tarik .bubbles .bubble-mid:nth-child(15n), .teh-tarik .bubbles .bubble-mid:nth-child(15n+1) {
   height: 7px;
   width: 7px;
 }
-.teh-tarik .bubbles .bubble-mid:nth-child(14) {
-  height: 7px;
-  width: 7px;
-}
-.teh-tarik .bubbles .bubble-mid:nth-child(16) {
-  height: 7px;
-  width: 7px;
-}
-.teh-tarik .bubbles .bubble-mid:nth-child(30) {
-  height: 7px;
-  width: 7px;
+.teh-tarik .bubbles .bubble-mid:nth-child(15n-1), .teh-tarik .bubbles .bubble-mid:nth-child(15n+2) {
+  height: 7.5px;
+  width: 7.5px;
 }
 @keyframes bubbly {
   50% {
@@ -121,13 +107,13 @@
   background: linear-gradient(transparent, transparent 20%, #e898cf 20%, #e898cf 40%, #be2a47);
 }
 .sirap-bandung .cup-mouth {
-  width: 80px;
-  height: 15px;
-  border-radius: 50%;
+  width: 90px;
+  height: 10px;
+  border-radius: 100px;
   border: 5px solid #2f2f2f;
   border-top: none;
   z-index: 2;
-  margin: 0px 10px;
+  margin: 0px 6px;
 }
 .sirap-bandung .straw {
   width: 10px;
@@ -136,11 +122,41 @@
   transform: rotate(20deg);
   background: #000000d9;
 }
-.sirap-bandung .ice {
+.sirap-bandung .ice-area {
   width: 100px;
   height: 60px;
   background: linear-gradient(#e898cf 30%, transparent);
   margin: 35px 5px;
+}
+.sirap-bandung .ice-area .ice {
+  opacity: 0.8;
+  position: absolute;
+  background: linear-gradient(to bottom right, transparent 30%, #be2a47);
+}
+.sirap-bandung .ice-area .ice:nth-child(1) {
+  transform: rotate(10deg);
+  margin: 10px 7px;
+  padding: 10px;
+}
+.sirap-bandung .ice-area .ice:nth-child(2) {
+  transform: rotate(-20deg);
+  margin: 20px 21px;
+  padding: 12px;
+}
+.sirap-bandung .ice-area .ice:nth-child(3) {
+  transform: rotate(-50deg);
+  margin: 11px 40px;
+  padding: 8px;
+}
+.sirap-bandung .ice-area .ice:nth-child(4) {
+  transform: rotate(-50deg);
+  margin: 15px 59px;
+  padding: 12px;
+}
+.sirap-bandung .ice-area .ice:nth-child(5) {
+  transform: rotate(-120deg);
+  margin: 9px 78px;
+  padding: 7px;
 }
 
 .kopi {

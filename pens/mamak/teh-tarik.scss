@@ -10,6 +10,8 @@
         width: 120px;
         border-radius: 20%;
         background: linear-gradient(
+            transparent 10%, 
+            $c-teh-light 10%, 
             $c-teh-light 20%, 
             $c-teh-dark);
         margin-left: 14px;
@@ -57,7 +59,7 @@
         place-items: center;
         grid-template-columns: repeat($bubbles-per-row, 1fr);
         place-items: center;
-        margin: 3px 19px;
+        margin: 16px 19px;
 
         .bubble-mid {
             $size: 8px;
@@ -67,17 +69,16 @@
             background: radial-gradient(
                 transparent 1%,
                 $c-teh-bubbles-border 60%);
-            @each $index in 1, 15 {
-                &:nth-child(#{$index}) {
-                    background: none;
-                }
+            $row-end: #{$bubbles-per-row}n;
+            &:nth-child(#{$row-end}), &:nth-child(#{$row-end} + 1) {
+                $size: 7px;
+                height: $size;
+                width: $size;
             }
-            @each $index in 2, 14, 16, 30 {
-                &:nth-child(#{$index}) {
-                    $size: 7px;
-                    height: $size;
-                    width: $size;
-                }
+            &:nth-child(#{$row-end} - 1), &:nth-child(#{$row-end} + 2) {
+                $size: 7.5px;
+                height: $size;
+                width: $size;
             }
 
             @keyframes bubbly {
