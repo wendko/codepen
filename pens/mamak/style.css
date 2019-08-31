@@ -14,32 +14,33 @@
 .teh-tarik .cup {
   height: 150px;
   width: 120px;
-  border-radius: 20%;
+  border-radius: 15px 15px 30% 30%;
   background: linear-gradient(transparent 10%, #ffca77 10%, #ffca77 20%, #b36f05);
   margin-left: 14px;
   border: 5px solid #2f2f2f;
 }
 .teh-tarik .cup-shape > .shape {
   position: absolute;
-  height: 100px;
-  width: 23px;
+  height: 85px;
+  width: 20px;
   border-radius: 50%;
-  background: linear-gradient(#b36f05, transparent);
+  border: 3px solid #794c05;
+  background: linear-gradient(#b36f05, #ffca77);
 }
 .teh-tarik .cup-shape > .shape:nth-child(1) {
-  margin: 55px 27px;
+  margin: 59px 25px;
 }
 .teh-tarik .cup-shape > .shape:nth-child(2) {
-  margin: 55px 54px;
+  margin: 64px 53px;
 }
 .teh-tarik .cup-shape > .shape:nth-child(3) {
-  margin: 55px 81px;
+  margin: 64px 81px;
 }
 .teh-tarik .cup-shape > .shape:nth-child(4) {
-  margin: 55px 108px;
+  margin: 59px 109px;
 }
 .teh-tarik .handle {
-  height: 52px;
+  height: 45px;
   width: 16px;
   background-color: transparent;
   margin-top: 59px;
@@ -47,13 +48,12 @@
   box-shadow: 0px 0px 0px 5px #2f2f2f, 0px 0px 0px 20px #ffca77, 0px 0px 0px 25px #2f2f2f;
 }
 .teh-tarik .cup-mouth {
-  height: 14px;
-  width: 88px;
-  border-radius: 50%;
+  height: 8px;
+  width: 100px;
+  border-radius: 50px;
   border: 5px solid #2f2f2f;
-  margin: 1px 29px;
+  margin: 7px 24px;
   z-index: 1;
-  border-top: none;
 }
 .teh-tarik .bubbles {
   display: grid;
@@ -120,7 +120,14 @@
   height: 60px;
   margin: -21px 66px;
   transform: rotate(20deg);
+  transform-origin: bottom;
   background: #000000d9;
+  animation: move 3s infinite;
+}
+@keyframes move {
+  50% {
+    transform: rotate(10deg);
+  }
 }
 .sirap-bandung .ice-area {
   width: 100px;
@@ -134,29 +141,70 @@
   background: linear-gradient(to bottom right, transparent 30%, #be2a47);
 }
 .sirap-bandung .ice-area .ice:nth-child(1) {
-  transform: rotate(10deg);
   margin: 10px 7px;
   padding: 10px;
+  transform: rotate(10deg);
+  animation: float-1 2s infinite;
+}
+@keyframes float-1 {
+  50% {
+    transform: rotate(10deg) translateY(2.5px);
+  }
 }
 .sirap-bandung .ice-area .ice:nth-child(2) {
-  transform: rotate(-20deg);
   margin: 20px 21px;
   padding: 12px;
+  transform: rotate(-20deg);
+  animation: float-2 2s infinite;
+}
+@keyframes float-2 {
+  50% {
+    transform: rotate(-20deg) translateY(2.5px);
+  }
 }
 .sirap-bandung .ice-area .ice:nth-child(3) {
-  transform: rotate(-50deg);
   margin: 11px 40px;
   padding: 8px;
+  transform: rotate(-50deg);
+  animation: float-3 2s infinite;
+}
+@keyframes float-3 {
+  50% {
+    transform: rotate(-50deg) translateY(2.5px);
+  }
 }
 .sirap-bandung .ice-area .ice:nth-child(4) {
-  transform: rotate(-50deg);
-  margin: 15px 59px;
+  margin: 15px 53px;
   padding: 12px;
+  transform: rotate(15deg);
+  animation: float-4 2s infinite;
+}
+@keyframes float-4 {
+  50% {
+    transform: rotate(15deg) translateY(2.5px);
+  }
 }
 .sirap-bandung .ice-area .ice:nth-child(5) {
-  transform: rotate(-120deg);
   margin: 9px 78px;
   padding: 7px;
+  transform: rotate(-120deg);
+  animation: float-5 2s infinite;
+}
+@keyframes float-5 {
+  50% {
+    transform: rotate(-120deg) translateY(2.5px);
+  }
+}
+.sirap-bandung .ice-area .ice:nth-child(6) {
+  margin: 26px 75px;
+  padding: 8px;
+  transform: rotate(-20deg);
+  animation: float-6 2s infinite;
+}
+@keyframes float-6 {
+  50% {
+    transform: rotate(-20deg) translateY(2.5px);
+  }
 }
 
 .kopi {
@@ -196,7 +244,7 @@
   background: #bea16b;
   border-radius: 50%;
   border: 5px solid #2f2f2f;
-  margin: 77px -28px;
+  margin: 77px -31px;
   box-shadow: inset 0px -13px #fdd7de;
 }
 .kopi .pattern {
@@ -206,6 +254,21 @@
   margin: 62px 22px;
   background: #283010;
   box-shadow: 8px 8px 0px 3px #677c34, 22px -1px 0px 5px #283010, 28px 13px 0px 8px #677c34, 11px 21px #283010, 42px 3px 0px 6px #283010, 50px 13px 0px 4px #677c34, 60px 2px #677c34;
+}
+.kopi .bubbles {
+  width: 8px;
+  height: 8px;
+  background: #250d00;
+  color: #250d00;
+  border-radius: 50%;
+  box-shadow: 8px 0px 0px -0.5px currentColor, 15px 0px currentColor, 20px 0px 0px -1px currentColor, 25px 0px 0px -0.8px currentColor, 30px 0px 0px -0.9px currentColor;
+  margin: 15px 24px;
+  animation: rotate 5s infinite;
+}
+@keyframes rotate {
+  50% {
+    transform: translateX(2px);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

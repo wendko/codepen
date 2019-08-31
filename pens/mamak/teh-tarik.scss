@@ -2,13 +2,13 @@
     $c-teh-light: #ffca77;
     $c-teh-dark: #b36f05;
     $c-teh-outline: #2f2f2f;
-    $c-cup-shape: #b36f05;
+    $c-cup-shape: #794c05;
     $c-teh-bubbles-border: #fff3da;
     $c-teh-bubbles-bg: #fff3da;
     .cup {
         height: 150px;
         width: 120px;
-        border-radius: 20%;
+        border-radius: 15px 15px 30% 30%;
         background: linear-gradient(
             transparent 10%, 
             $c-teh-light 10%, 
@@ -19,22 +19,35 @@
     }
     .cup-shape>.shape {
         position: absolute;
-        height: 100px;
-        width: 23px;
+        height: 85px;
+        width: 20px;
         border-radius: 50%;
-        background: linear-gradient($c-cup-shape, transparent);
+        border: 3px solid $c-cup-shape;
+        background: linear-gradient($c-teh-dark, $c-teh-light);
 
-        $my-start: 55px;
-        $mx-start: 22.5px;
-
-        @for $index from 1 through 4 {
-            &:nth-child(#{$index}) {
-                margin: $my-start $mx-start * $index * 1.2;
-            }
+        $my-start: 59px;
+        $mx-start: 25px;
+        &:nth-child(1) {
+            margin: $my-start $mx-start;
         }
+        &:nth-child(2) {
+            margin: $my-start + 5px $mx-start + 28px;
+        }
+        &:nth-child(3) {
+            margin: $my-start + 5px $mx-start + 56px;
+        }
+        &:nth-child(4) {
+            margin: $my-start $mx-start + 84px;
+        }
+
+        // @for $index from 1 through 4 {
+        //     &:nth-child(#{$index}) {
+        //         margin: $my-start $mx-start * $index * 1.32;
+        //     }
+        // }
     }
     .handle {
-        height: 52px;
+        height: 45px;
         width: 16px;
         background-color: transparent;
         margin-top: 59px;
@@ -45,13 +58,12 @@
         0px 0px 0px 25px $c-teh-outline;
     }
     .cup-mouth {
-        height: 14px;
-        width: 88px;
-        border-radius: 50%;
+        height: 8px;
+        width: 100px;
+        border-radius: 50px;
         border: 5px solid $c-teh-outline;
-        margin: 1px 29px;
+        margin: 7px 24px;
         z-index: 1;
-        border-top: none;
     }
     .bubbles {
         $bubbles-per-row: 15;

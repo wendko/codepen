@@ -23,14 +23,9 @@ link( rel="stylesheet" href="./style.css" type="text/css")
         .cup-mouth
         .straw
         .ice-area
-            //- - var num = 3
-            //- - while(num > 0)
-            //-     .ice(id="ice-" + num)
-            .ice
-            .ice
-            .ice
-            .ice
-            .ice
+            - var iceCount = 6
+            - while(iceCount > 0)
+                .ice(id="ice-" + iceCount--)
 
 
     p Kopi
@@ -40,6 +35,7 @@ link( rel="stylesheet" href="./style.css" type="text/css")
         .cup
         .cup-mouth
         .pattern
+        .bubbles
 
 
     .limau-ais

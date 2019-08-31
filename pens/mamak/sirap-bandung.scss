@@ -1,3 +1,13 @@
+@mixin floating($index, $rotate) {
+    $offset: 2.5px;
+    @keyframes float-#{$index} {
+        0%, 100% { } 50% {
+            transform: rotate($rotate) translateY($offset)
+        }
+    }
+    animation: float-#{$index} 2s infinite;
+}
+
 @mixin sirap-bandung {
     $c-sirap-dark: #be2a47;
     $c-sirap-light: #e898cf;
@@ -32,7 +42,12 @@
         height: 60px;
         margin: -21px 66px;
         transform: rotate(20deg);
+        transform-origin: bottom;
         background: $c-straw;
+        @keyframes move {
+            0%, 100% {} 50% { transform: rotate(10deg)}
+        }
+        animation: move 3s infinite;
     }
 
     .ice-area {
@@ -50,29 +65,46 @@
                 $c-sirap-dark);
 
             &:nth-child(1) {
-                transform: rotate(10deg);
                 margin: 10px 7px;
                 padding: 10px;
+                $rotate: 10deg;
+                transform: rotate($rotate);
+                @include floating(1, $rotate);
             }
             &:nth-child(2) {
-                transform: rotate(-20deg);
                 margin: 20px 21px;
                 padding: 12px;
+                $rotate: -20deg;
+                transform: rotate($rotate);
+                @include floating(2, $rotate);
             }
             &:nth-child(3) {
-                transform: rotate(-50deg);
                 margin: 11px 40px;
                 padding: 8px;
+                $rotate: -50deg;
+                transform: rotate($rotate);
+                @include floating(3, $rotate);
             }
             &:nth-child(4) {
-                transform: rotate(-50deg);
-                margin: 15px 59px;
+                margin: 15px 53px;
                 padding: 12px;
+                $rotate: 15deg;
+                transform: rotate($rotate);
+                @include floating(4, $rotate);
             }
             &:nth-child(5) {
-                transform: rotate(-120deg);
                 margin: 9px 78px;
                 padding: 7px;
+                $rotate: -120deg;
+                transform: rotate($rotate);
+                @include floating(5, $rotate);
+            }
+            &:nth-child(6) {
+                margin: 26px 75px;
+                padding: 8px;
+                $rotate: -20deg;
+                transform: rotate($rotate);
+                @include floating(6, $rotate);
             }
         }
     }

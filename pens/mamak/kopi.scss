@@ -8,7 +8,7 @@
     $c-outline: #2f2f2f;
     $c-pattern-dark: #283010;
     $c-pattern-light: #677c34;
-
+    $c-kopi-bubbles: #250d00;
 
     .cup {
         width: 100px;
@@ -47,7 +47,7 @@
         background: $c-cup-dark;
         border-radius: 50%;
         border: 5px solid $c-outline;
-        margin: 77px -28px;
+        margin: 77px -31px;
         box-shadow: inset 0px -13px $c-cup-light;
     }
 
@@ -66,4 +66,23 @@
         50px 13px 0px 4px $c-pattern-light,
         60px 2px $c-pattern-light;
     }
+
+    .bubbles {
+        width: 8px;
+        height: 8px;
+        background: $c-kopi-bubbles;
+        color: $c-kopi-bubbles;
+        border-radius: 50%;
+        box-shadow: 8px 0px 0px -0.5px currentColor,
+        15px 0px currentColor,
+        20px 0px 0px -1px currentColor,
+        25px 0px 0px -0.8px currentColor,
+        30px 0px 0px -0.9px currentColor;
+        margin: 15px 24px;
+        @keyframes rotate {
+            0%, 100% {} 50% { transform: translateX(2px) }
+        }
+        animation: rotate 5s infinite;
+    }
+
 }
