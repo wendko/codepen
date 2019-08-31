@@ -4,11 +4,10 @@
   height: 100vh;
 }
 
-.sirap-bandung, .teh-tarik {
-  padding: 20px 180px 180px 50px;
+.teh-tarik {
   outline: 1px dashed black;
+  padding: 20px 180px 180px 50px;
 }
-
 .teh-tarik > * {
   position: absolute;
 }
@@ -47,13 +46,14 @@
   border-radius: 50% 0px 0px 50%;
   box-shadow: 0px 0px 0px 5px #2f2f2f, 0px 0px 0px 20px #ffca77, 0px 0px 0px 25px #2f2f2f;
 }
-.teh-tarik .mouth-of-cup {
-  height: 19px;
-  width: 93px;
-  border-radius: 25px;
+.teh-tarik .cup-mouth {
+  height: 14px;
+  width: 88px;
+  border-radius: 50%;
   border: 5px solid #2f2f2f;
-  margin: 11px 26px;
+  margin: 1px 29px;
   z-index: 1;
+  border-top: none;
 }
 .teh-tarik .bubbles {
   display: grid;
@@ -106,101 +106,90 @@
   animation-delay: 2s;
 }
 
+.sirap-bandung {
+  outline: 1px dashed black;
+  padding: 25px 165px 175px 65px;
+}
 .sirap-bandung > * {
   position: absolute;
 }
 .sirap-bandung .cup {
+  width: 100px;
   height: 150px;
-  width: 120px;
-  border-radius: 20%;
-  background: linear-gradient(#ffca77 20%, #b36f05);
-  margin-left: 14px;
+  border-radius: 10% 10% 20% 20%;
   border: 5px solid #2f2f2f;
+  background: linear-gradient(transparent, transparent 20%, #e898cf 20%, #e898cf 40%, #be2a47);
 }
-.sirap-bandung .cup-shape > .shape {
+.sirap-bandung .cup-mouth {
+  width: 80px;
+  height: 15px;
+  border-radius: 50%;
+  border: 5px solid #2f2f2f;
+  border-top: none;
+  z-index: 2;
+  margin: 0px 10px;
+}
+.sirap-bandung .straw {
+  width: 10px;
+  height: 60px;
+  margin: -21px 66px;
+  transform: rotate(20deg);
+  background: #000000d9;
+}
+.sirap-bandung .ice {
+  width: 100px;
+  height: 60px;
+  background: linear-gradient(#e898cf 30%, transparent);
+  margin: 35px 5px;
+}
+
+.kopi {
+  outline: 1px dashed black;
+  padding: 35px 175px 165px 55px;
+}
+.kopi > * {
   position: absolute;
+}
+.kopi .cup {
+  width: 100px;
   height: 100px;
-  width: 23px;
-  border-radius: 50%;
-  background: linear-gradient(#b36f05, transparent);
-}
-.sirap-bandung .cup-shape > .shape:nth-child(1) {
-  margin: 55px 27px;
-}
-.sirap-bandung .cup-shape > .shape:nth-child(2) {
-  margin: 55px 54px;
-}
-.sirap-bandung .cup-shape > .shape:nth-child(3) {
-  margin: 55px 81px;
-}
-.sirap-bandung .cup-shape > .shape:nth-child(4) {
-  margin: 55px 108px;
-}
-.sirap-bandung .handle {
-  height: 52px;
-  width: 16px;
-  background-color: transparent;
-  margin-top: 59px;
-  border-radius: 50% 0px 0px 50%;
-  box-shadow: 0px 0px 0px 5px #2f2f2f, 0px 0px 0px 20px #ffca77, 0px 0px 0px 25px #2f2f2f;
-}
-.sirap-bandung .mouth-of-cup {
-  height: 19px;
-  width: 93px;
-  border-radius: 25px;
+  background: #e9e4d1;
+  border-radius: 30%;
   border: 5px solid #2f2f2f;
-  margin: 11px 26px;
-  z-index: 1;
 }
-.sirap-bandung .bubbles {
-  display: grid;
-  place-items: center;
-  grid-template-columns: repeat(15, 1fr);
-  place-items: center;
-  margin: 3px 19px;
+.kopi .cup-mouth {
+  width: 79px;
+  height: 35px;
+  background: linear-gradient(to bottom right, #351503 40%, #9a663d);
+  border-radius: 50px;
+  margin: 10px 15px;
+  box-shadow: inset 0px 7px #bea16b;
 }
-.sirap-bandung .bubbles .bubble-mid {
-  height: 8px;
-  width: 8px;
+.kopi .handle {
+  width: 15px;
+  height: 15px;
+  background: transparent;
+  border-radius: 30px;
+  border: 5px solid #2f2f2f;
+  box-shadow: 0px 0px 0px 10px #e9e4d1, 0px 0px 0px 15px #2f2f2f;
+  margin: 45px 105px;
+}
+.kopi .saucer {
+  width: 166px;
+  height: 60px;
+  background: #bea16b;
   border-radius: 50%;
-  background: radial-gradient(transparent 1%, #fff3da 60%);
-  animation: bubbly 3s infinite;
+  border: 5px solid #2f2f2f;
+  margin: 77px -28px;
+  box-shadow: inset 0px -13px #fdd7de;
 }
-.sirap-bandung .bubbles .bubble-mid:nth-child(1) {
-  background: none;
-}
-.sirap-bandung .bubbles .bubble-mid:nth-child(15) {
-  background: none;
-}
-.sirap-bandung .bubbles .bubble-mid:nth-child(2) {
-  height: 7px;
-  width: 7px;
-}
-.sirap-bandung .bubbles .bubble-mid:nth-child(14) {
-  height: 7px;
-  width: 7px;
-}
-.sirap-bandung .bubbles .bubble-mid:nth-child(16) {
-  height: 7px;
-  width: 7px;
-}
-.sirap-bandung .bubbles .bubble-mid:nth-child(30) {
-  height: 7px;
-  width: 7px;
-}
-@keyframes bubbly {
-  50% {
-    transform: translateY(2.5px);
-  }
-}
-.sirap-bandung .bubbles .bubble-mid:nth-child(even) {
-  animation-delay: 1.5s;
-}
-.sirap-bandung .bubbles .bubble-mid:nth-child(2n+1) {
-  animation-delay: 1s;
-}
-.sirap-bandung .bubbles .bubble-mid:nth-child(3n) {
-  animation-delay: 2s;
+.kopi .pattern {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 62px 22px;
+  background: #283010;
+  box-shadow: 8px 8px 0px 3px #677c34, 22px -1px 0px 5px #283010, 28px 13px 0px 8px #677c34, 11px 21px #283010, 42px 3px 0px 6px #283010, 50px 13px 0px 4px #677c34, 60px 2px #677c34;
 }
 
 /*# sourceMappingURL=style.css.map */

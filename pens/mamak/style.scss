@@ -1,29 +1,31 @@
 @import '../../common/container.scss';
 @import './teh-tarik.scss';
+@import './sirap-bandung.scss';
+@import './kopi.scss';
 
 .container {
     @include container;
 }
 
-%item {
-    padding: 20px 180px 180px 50px;
+@mixin item($pt, $pr) {
     outline: 1px dashed black;
+    &>* {
+        position: absolute;
+    }
+    padding: $pt $pr (200px - $pt) (230px - $pr);
 }
 
 .teh-tarik {
-    @extend %item;
+    @include item(20px, 180px);
     @include teh-tarik;
 }
 
-
 .sirap-bandung {
-    @extend %item;
-    @include teh-tarik;
-    
-    
-    // $c-teh-dark: brown;
-    // $c-teh-handle: pink;
-    // width: 10px;
-    // height: 10px;
-    // outline: 1px dashed brown;
+    @include item(25px, 165px);
+    @include sirap-bandung;
+}
+
+.kopi {
+    @include item(35px, 175px);
+    @include kopi;
 }

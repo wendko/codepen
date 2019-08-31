@@ -1,0 +1,44 @@
+@mixin sirap-bandung {
+    $c-sirap-darker: #861f21;
+    $c-sirap-dark: #be2a47;
+    $c-sirap-light: #e898cf;
+    $c-sirap-outline: #2f2f2f; 
+    $c-straw: #000000d9;
+    .cup {
+        width: 100px;
+        height: 150px;
+        border-radius: 10% 10% 20% 20%;
+        border: 5px solid $c-sirap-outline;
+        background: linear-gradient(
+            transparent,
+            transparent 20%,
+            $c-sirap-light 20%, 
+            $c-sirap-light 40%, 
+            $c-sirap-dark)
+    }
+
+    .cup-mouth {
+        width: 80px;
+        height: 15px;
+        border-radius: 50%;
+        border: 5px solid $c-sirap-outline;
+        border-top: none;
+        z-index: 2;
+        margin: 0px 10px;
+    }
+
+    .straw {
+        width: 10px;
+        height: 60px;
+        margin: -21px 66px;
+        transform: rotate(20deg);
+        background: $c-straw;
+    }
+
+    .ice {
+        width: 100px;
+        height: 60px;
+        background: linear-gradient($c-sirap-light 30%, transparent);
+        margin: 35px 5px;
+    }
+}

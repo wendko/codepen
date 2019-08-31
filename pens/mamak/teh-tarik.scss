@@ -5,9 +5,6 @@
     $c-cup-shape: #b36f05;
     $c-teh-bubbles-border: #fff3da;
     $c-teh-bubbles-bg: #fff3da;
-    &>* {
-        position: absolute;
-    }
     .cup {
         height: 150px;
         width: 120px;
@@ -45,13 +42,14 @@
         0px 0px 0px 20px $c-teh-light,
         0px 0px 0px 25px $c-teh-outline;
     }
-    .mouth-of-cup {
-        height: 19px;
-        width: 93px;
-        border-radius: 25px;
+    .cup-mouth {
+        height: 14px;
+        width: 88px;
+        border-radius: 50%;
         border: 5px solid $c-teh-outline;
-        margin: 11px 26px;
+        margin: 1px 29px;
         z-index: 1;
+        border-top: none;
     }
     .bubbles {
         $bubbles-per-row: 15;
