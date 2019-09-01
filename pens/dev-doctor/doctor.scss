@@ -27,10 +27,10 @@
             border-top-color: $c-eyebrow;
         }
         &::before {
-            margin: -78px 57px;
+            margin: -85px 57px;
             @keyframes up {
-                0%, 100% { transform: translateY(-6px) } 
-                50% {transform: translateY(0px) }
+                0%, 100% { transform: translateY(0px) } 
+                50% {transform: translateY(6px) }
             }
             @if $animated {
                 animation: up 3s infinite;
@@ -191,7 +191,7 @@
         $m-start:  $my $mx;
         $m-mid: $my + 10px $mx - 40px;
         $m-end: $my + 20px $mx - 10px;
-        margin: $m-mid;
+        margin: $m-start;
         
         @keyframes scanning {
             0%, 100% {
@@ -205,12 +205,10 @@
             }
             45% {
                 box-shadow: 0px 0px 0px 0px,
-                0px 0px $scan-blur $scan-spread $c-scan-spread-2;
+                0px 0px $scan-blur $scan-spread * 3 $c-scan-spread-2;
             }
             60% {
                 margin: $m-end;
-            }
-            90% {
                 box-shadow: 0px 0px 0px 0px,
                 0px 0px 0px 0px,
                 0px 0px $scan-blur $scan-spread $c-scan-spread-3,

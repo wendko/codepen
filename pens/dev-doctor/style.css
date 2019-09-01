@@ -7,7 +7,6 @@
 .scene {
   display: flex;
   padding: 150px 220px;
-  outline: 1px dashed red;
 }
 .scene > * {
   position: absolute;
@@ -101,15 +100,15 @@
   border-top-color: black;
 }
 .doctor .eyebrows::before {
-  margin: -78px 57px;
+  margin: -85px 57px;
   animation: up 3s infinite;
 }
 @keyframes up {
   0%, 100% {
-    transform: translateY(-6px);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(0px);
+    transform: translateY(6px);
   }
 }
 .doctor .eyebrows::after {
@@ -235,11 +234,11 @@
 }
 .doctor .scan {
   position: absolute;
-  background: radial-gradient(#ffb62e 35%, #3f3f3f 35%, #3f3f3f 50%, #ffb62e 50%);
+  background: radial-gradient(#5278a3 35%, #3f3f3f 35%, #3f3f3f 50%, #5278a3 50%);
   border: 5px solid #3f3f3f;
   padding: 10px;
   border-radius: 50%;
-  margin: -141px -115px;
+  margin: -151px -75px;
   animation: scanning 3s infinite;
 }
 @keyframes scanning {
@@ -253,12 +252,10 @@
     margin: -141px -115px;
   }
   45% {
-    box-shadow: 0px 0px 0px 0px, 0px 0px 2px 10px rgba(255, 178, 147, 0.5);
+    box-shadow: 0px 0px 0px 0px, 0px 0px 2px 30px rgba(255, 178, 147, 0.5);
   }
   60% {
     margin: -131px -85px;
-  }
-  90% {
     box-shadow: 0px 0px 0px 0px, 0px 0px 0px 0px, 0px 0px 2px 10px rgba(255, 190, 147, 0.5);
   }
 }
