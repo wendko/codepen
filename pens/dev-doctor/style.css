@@ -1,0 +1,66 @@
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.scene {
+  display: flex;
+  padding: 150px 220px;
+  outline: 1px dashed red;
+}
+.scene > * {
+  position: absolute;
+}
+
+.patient .head, .doctor .head {
+  padding: 60px;
+  background-color: pink;
+  border-radius: 50%;
+}
+.patient .head::after, .doctor .head::after {
+  content: "";
+  position: absolute;
+  padding: 20px;
+  background-color: pink;
+  margin: 51px -20px;
+}
+.patient .eyes, .doctor .eyes {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: black;
+  border-radius: 50%;
+  box-shadow: 50px 0px black;
+}
+.patient .body, .doctor .body {
+  background-color: pink;
+  padding: 60px;
+  border-radius: 40% 40% 0% 0%;
+  margin-top: 10px;
+}
+
+.patient {
+  margin: -100px -180px;
+}
+.patient .eyes {
+  margin: -70px 41px;
+  animation: blink 3s infinite;
+}
+@keyframes blink {
+  0%, 17%, 23%, 100% {
+    height: 10px;
+  }
+  20% {
+    height: 5px;
+  }
+}
+
+.doctor {
+  margin: -100px 60px;
+}
+.doctor .eyes {
+  margin: -70px 15px;
+}
+
+/*# sourceMappingURL=style.css.map */
