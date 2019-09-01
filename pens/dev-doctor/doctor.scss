@@ -2,7 +2,14 @@
 @mixin doctor(
     $c-eyebrow,
     $c-arm,
-    $c-stethoscope
+    $c-stethoscope,
+    $c-scan,
+    $c-scan-spread-1,
+    $c-scan-spread-2,
+    $c-scan-spread-3,
+    $c-outline,
+    $scan-spread,
+    $scan-blur,
 ) {
     margin: -100px 60px;
     .eyes {
@@ -185,8 +192,7 @@
         $m-mid: $my + 10px $mx - 40px;
         $m-end: $my + 20px $mx - 10px;
         margin: $m-mid;
-        $scan-spread: 10px;
-        $scan-blur: 2px;
+        
         @keyframes scanning {
             0%, 100% {
                 margin: $m-start;
