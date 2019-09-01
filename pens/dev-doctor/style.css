@@ -229,8 +229,7 @@
     transform: skewY(-145deg);
   }
 }
-
-.scan {
+.doctor .scan {
   position: absolute;
   background: radial-gradient(orange 35%, #2f2f2f 35%, #2f2f2f 50%, orange 50%);
   border: 5px solid #2f2f2f;

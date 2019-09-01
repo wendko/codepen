@@ -1,0 +1,34 @@
+
+@mixin patient($height, $c-arm) {
+    margin: -100px -180px;
+    .eyes {
+        margin: -70px 41px;
+    }
+
+    .arm-left {
+        // $height: 147px - $laptop-y;
+        position: absolute;
+        height: $height;
+        width: 39px;
+        background: $c-arm;
+        margin: -$height 26px;
+        transform: skewX(-14deg);
+        &::after {
+            content: '';
+            padding: 15px 32px;
+            background: $c-arm;
+            position: absolute;
+            border-radius: 40%;
+            margin: 4px -3px;
+            transform: rotate(23deg);
+        }
+    }
+
+    .thumb {
+        padding: 7px 6px;
+        background: $c-arm;
+        margin: 139px 39px;
+        border-radius: 30% 50% 0% 0%;
+        transform: rotate(32deg);
+    }
+}
