@@ -55,12 +55,56 @@
     height: 5px;
   }
 }
+.patient .arm-left {
+  position: absolute;
+  height: 112px;
+  width: 39px;
+  background: #c2717e;
+  margin: -112px 26px;
+  transform: skewX(-14deg);
+}
+.patient .arm-left::after {
+  content: "";
+  padding: 15px 32px;
+  background: #c2717e;
+  position: absolute;
+  border-radius: 40%;
+  margin: 4px -3px;
+  transform: rotate(23deg);
+}
+.patient .thumb {
+  padding: 7px 6px;
+  background: #c2717e;
+  margin: 139px 39px;
+  border-radius: 30% 50% 0% 0%;
+  transform: rotate(32deg);
+}
 
 .doctor {
   margin: -100px 60px;
 }
 .doctor .eyes {
   margin: -70px 15px;
+}
+
+.laptop {
+  padding: 18px 65px;
+  background: grey;
+  transform: skew(50deg);
+  border-radius: 10px 0px;
+  margin: 35px -132px;
+  box-shadow: inset 10px -6px #5f5f5f;
+}
+.laptop::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 81px;
+  background: grey;
+  margin: -69px 5px;
+  transform: skewX(-56deg);
+  border-radius: 5px 5px 0% 0%;
+  box-shadow: inset 6px 6px #5f5f5f;
 }
 
 /*# sourceMappingURL=style.css.map */

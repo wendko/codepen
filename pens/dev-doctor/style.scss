@@ -14,8 +14,12 @@
 }
 
 $c-skin: pink;
+$c-skin-dark: #c2717e;
 $c-eye: black;
+$c-laptop: grey;
+$c-laptop-shadow: #5f5f5f;
 $animated: true;
+$laptop-y: 35px;
 
 %person {
     .head {
@@ -63,6 +67,35 @@ $animated: true;
             animation: blink 3s infinite;
         }
     }
+    %arm {
+
+    }
+    .arm-left {
+        $height: 147px - $laptop-y;
+        position: absolute;
+        height: $height;
+        width: 39px;
+        background: $c-skin-dark;
+        margin: -$height 26px;
+        transform: skewX(-14deg);
+        &::after {
+            content: "";
+            padding: 15px 32px;
+            background: $c-skin-dark;
+            position: absolute;
+            border-radius: 40%;
+            margin: 4px -3px;
+            transform: rotate(23deg);
+        }
+    }
+
+    .thumb {
+        padding: 7px 6px;
+        background: $c-skin-dark;
+        margin: 139px 39px;
+        border-radius: 30% 50% 0% 0%;
+        transform: rotate(32deg);
+    }
 }
 
 .doctor {
@@ -70,5 +103,25 @@ $animated: true;
     .eyes {
         margin: -70px 15px;
     }
+}
 
+.laptop {
+    padding: 18px 65px;
+    background: $c-laptop;
+    transform: skew(50deg);
+    border-radius: 10px 0px;
+    margin: $laptop-y -132px;
+    box-shadow: inset 10px -6px $c-laptop-shadow;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 120px;
+        height: 81px;
+        background: $c-laptop;
+        margin: -69px 5px;
+        transform: skewX(-56deg);
+        border-radius: 5px 5px 0% 0%;
+        box-shadow: inset 6px 6px $c-laptop-shadow;
+    }
 }
