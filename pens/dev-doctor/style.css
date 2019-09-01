@@ -32,6 +32,15 @@
   background-color: black;
   border-radius: 50%;
   box-shadow: 50px 0px black;
+  animation: blink 3s infinite;
+}
+@keyframes blink {
+  0%, 17%, 23%, 100% {
+    height: 10px;
+  }
+  20% {
+    height: 5px;
+  }
 }
 .patient .body, .doctor .body {
   background-color: pink;
@@ -45,15 +54,6 @@
 }
 .patient .eyes {
   margin: -70px 41px;
-  animation: blink 3s infinite;
-}
-@keyframes blink {
-  0%, 17%, 23%, 100% {
-    height: 10px;
-  }
-  20% {
-    height: 5px;
-  }
 }
 .patient .arm-left {
   position: absolute;
@@ -85,6 +85,76 @@
 }
 .doctor .eyes {
   margin: -70px 15px;
+  animation-delay: 1s;
+}
+.doctor .stethoscope {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: transparent;
+  border-radius: 50% 50% 50% 50%/10% 10% 90% 90%;
+  margin: -212px 0px;
+  box-shadow: 0px 6px 0px 3px #2f2f2f;
+}
+.doctor .stethoscope::after {
+  content: "";
+  position: absolute;
+  background: transparent;
+  border: 6px solid #2f2f2f;
+  border-radius: 0px 0px 100px 100px;
+  border-top: none;
+  border-left-color: transparent;
+  height: 79px;
+  width: 118px;
+  margin: 65px -74px;
+  transform: skewY(-137deg);
+  animation: stethomove 3s infinite;
+}
+@keyframes stethomove {
+  0%, 100% {
+    width: 118px;
+    margin: 65px -74px;
+    transform: skewY(-137deg);
+  }
+  30% {
+    width: 167px;
+    margin: 76px -121px;
+    transform: skewY(-150deg);
+  }
+  60% {
+    width: 129px;
+    margin: 79px -86px;
+    transform: skewY(-145deg);
+  }
+}
+
+.scan {
+  background: radial-gradient(orange 35%, #2f2f2f 35%, #2f2f2f 50%, orange 50%);
+  border: 5px solid #2f2f2f;
+  padding: 10px;
+  border-radius: 50%;
+  margin: 20px -25px;
+  animation: scanning 3s infinite;
+}
+@keyframes scanning {
+  0%, 100% {
+    margin: 0px -15px;
+  }
+  25% {
+    box-shadow: 0px 0px 2px 10px pink;
+  }
+  30% {
+    margin: 10px -55px;
+  }
+  45% {
+    box-shadow: 0px 0px 0px 0px, 0px 0px 2px 10px orange;
+  }
+  60% {
+    margin: 20px -25px;
+  }
+  90% {
+    box-shadow: 0px 0px 0px 0px, 0px 0px 0px 0px, 0px 0px 2px 10px yellow;
+  }
 }
 
 .laptop {
