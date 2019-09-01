@@ -109,6 +109,125 @@ $c-stethoscope: $c-outline;
         margin: -70px 15px;
         animation-delay: 1s;
     }
+    .eyebrows {
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            padding: 10px;
+            background: transparent;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: black;
+        }
+        &::before {
+            margin: -78px 57px;
+            @keyframes up {
+                0%, 100% { transform: translateY(-6px) } 
+                50% {transform: translateY(0px) }
+            }
+            @if $animated {
+                animation: up 3s infinite;
+            }
+        }
+        &::after {
+            margin: -98px 0px;
+            transform: rotate(160deg);
+        }
+    }
+    .arm-right {
+        $height: 130px;
+        position: absolute;
+        height: $height;
+        width: 39px;
+        background: $c-skin-dark;
+        margin: -$height 61px;
+        transform: skewX(10deg);
+        &::after, &::before {
+            content: "";
+            position: absolute;
+            background: $c-skin-dark;
+        }
+        &::before {
+            padding: 15px 6px;
+            margin: -20px 27px;
+            border-radius: 50px;
+        }
+        &::after {
+            padding: 9px 23px;
+            margin: -11px -11px;
+            border-radius: 50px;
+            @keyframes pondering {
+                0%, 60%, 100% {margin: -11px -8px}
+                40%, 80% {margin: -11px -14px}
+            }
+            @if $animated {
+                animation: pondering 3s infinite;
+            }
+        }
+    }
+    .arm-left {
+        position: absolute;
+        width: 39px;
+        background: $c-skin-dark;
+        border-radius: 0px 40% 0px 0px;
+        
+        &::after, &::before {
+            position: absolute;
+            content:'';
+            background: $c-skin-dark;
+        }
+        &::after {
+            margin: -39px 1px;
+            border-radius: 30px 100px 70px 10px;
+            transform: rotate(-14deg);
+            padding: 21px 13px;
+        }
+        &::before {
+            padding: 14px 6px;
+            margin: -22px -6px;
+            border-radius: 50px 50px 0px 0px;
+            transform: rotate(-31deg)
+        }
+
+        $height: 120px;
+        height: $height;
+        margin: -$height -35px;
+        transform: skewX(10deg);
+
+
+        // $height: 105px;
+        // height: $height;
+        // margin: -$height -72px;
+
+
+        @keyframes handmove {
+            0%, 100% {
+                $height: 120px;
+                height: $height;
+                margin: -$height -35px;
+            }
+            30% {
+                $height: 105px;
+                height: $height;
+                margin: -$height -51px;
+                transform: skewX(24deg);
+            }
+            58% {
+                transform: skewX(10deg);
+            }
+            60% {
+                $height: 95px;
+                height: $height;
+                margin: -$height -43px;
+            }
+        }
+
+        @if $animated {
+            animation: handmove 3s infinite;
+        }
+
+
+    }
     .stethoscope {
         position: absolute;
         width: 120px;
@@ -158,6 +277,7 @@ $c-stethoscope: $c-outline;
 }
 
 .scan {
+    position: absolute;
     background: radial-gradient(
         $c-scan 35%,
         $c-outline 35%,
@@ -167,10 +287,12 @@ $c-stethoscope: $c-outline;
     border: 5px solid $c-outline;
     padding: 10px;
     border-radius: 50%;
-    $m-start: 0px -15px;
-    $m-mid: 10px -55px;
-    $m-end: 20px -25px;
-    margin: $m-end;
+    $my: -151px;
+    $mx: -75px;
+    $m-start:  $my $mx;
+    $m-mid: $my + 10px $mx - 40px;
+    $m-end: $my + 20px $mx - 10px;
+    margin: $m-mid;
     $scan-spread: 10px;
     $scan-blur: 2px;
     @keyframes scanning {
