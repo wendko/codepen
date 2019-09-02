@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS projects by wendko</title>
+    <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .title,
+        .pen-item {
+            font-family: 'Livvic', sans-serif;
+            text-align: center;
+        }
+
+        .pen-item {
+            margin: 10px 0px 10px 0px;
+            padding: 15px 5px 15px 5px;
+            border-radius: 5px;
+            font-weight: 900;
+            border: 2px dotted #e48bff;
+            color: #750b95;
+        }
+
+        div.pen-item:nth-child(2n) {
+            border-color: #ffd7a2;
+            color: #bb6a01;
+        }
+
+        .pen-item:hover {
+            box-shadow: 8px 8px currentColor;
+        }
+
+        .pen-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-column-gap: 10px;
+        }
+
+        .label-draft {
+            font-size: 12px;
+            margin-left: 5px;
+            background: bisque;
+            padding: 3px 5px;
+            border-radius: 5px;
+        }
+
+        .title {
+            color: #a16161;
+        }
+
+        .link {
+            color: #e08b8b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">
+        CSS projects by <a href="https://github.com/wendko" class="link">@wendko</a>
+    </h1>
+    <div id="penList" class="pen-list">
+        <div v-for="pen in pens" :key="pen.id" class="pen-item" v-on:click="goToPen(pen.name)">
+            <div>{{ pen.name | dekebab }}</div>
+            <span v-if="pen.draft" class="label-draft">draft</span>
+        </div>
+    </div>
+
+    <script>
+        const draftedPens = [
+            'pokemon-badges',
+            'async-defer-anim',
+            'google',
+            'malaysian-states',
+            'mamak',
+            'merdeka-2019',
+            'pokemon-badges',
+            'programming-logos',
+            'resizable-lantern',
+            'sunflower',
+        ];
+
+        const completedPens = [
+            'awkward-pikachu',
+            'background-gradient',
+            'avatar',
+            '100-dots',
+            'async-defer',
+            'KLCC',
+            'dancing-macaron',
+            'box-shadow-sketch',
+            'css-masonry',
+            'dad-joke',
+            'dev-doctor',
+            'emoji-selector',
+            'fruit-veggies-spectrum',
+            'gameboy-color',
+            'gravity-planets',
+            'kl-react-centered',
+            'kl-react-right',
+            'slack',
+        ];
+
+        Vue.filter('dekebab', (value) => {
+            if (!value) return ''
+            return value
+                .split('-')
+                .map(x => `${x.charAt(0).toUpperCase()}${x.slice(1)}`)
+                .join(' ');
+        });
+
+        var vm = new Vue({
+            el: '#penList',
+            data: {
+                pens: [
+                    ...(completedPens.map(x => ({ name: x }))),
+                    ...(draftedPens.map(x => ({ name: x, draft: true }))),
+                ]
+            },
+            methods: {
+                goToPen: function (name) {
+                    window.location.href = window.location.href.replace('/index.html', `/pens/${name}/index.html`);
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
