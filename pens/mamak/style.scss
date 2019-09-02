@@ -5,6 +5,7 @@
 @import './kopi.scss';
 @import './limau-ais.scss';
 @import './soya-cincau.scss';
+@import './satay.scss';
 
 .container {
     @include container;
@@ -45,4 +46,9 @@
 .soya-cincau {
     @include item(20px, 175px);
     @include soya-cincau;
+}
+
+.satay {
+    @include item(15px, 199px);
+    @include satay;
 }

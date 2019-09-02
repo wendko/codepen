@@ -71,7 +71,22 @@ link( rel="stylesheet" href="./style.css" type="text/css")
     
     .drink.empty
 
-    .satay
+    .food
+        p Satay
+        .satay
+            .plate
+            .sauce
+            .satay-sticks
+                - var satayCount = 5
+                - while (satayCount > 0)
+                    .satay-stick(id="satay-"+satayCount--)
+                        .meat
+                        .meat
+                        .meat
+                        .meat
+                        .meat
+                        .skewer
+
     .nasi-lemak
     .roti-canai
     .roti-bakar

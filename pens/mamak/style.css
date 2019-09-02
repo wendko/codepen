@@ -102,7 +102,7 @@
 .sirap-bandung .cup {
   width: 100px;
   height: 150px;
-  border-radius: 10% 10% 20% 20%;
+  border-radius: 10% 10% 40% 40%;
   border: 5px solid #2f2f2f;
   background: linear-gradient(transparent, transparent 20%, #e898cf 20%, #e898cf 40%, #be2a47);
 }
@@ -316,9 +316,9 @@
 }
 .limau-ais .limaus > .limau:nth-child(1) {
   margin: 40px 33px;
-  animation: bob-ukfl78l 3s infinite;
+  animation: bob-uiwfgal 3s infinite;
 }
-@keyframes bob-ukfl78l {
+@keyframes bob-uiwfgal {
   50% {
     transform: rotate(0deg) translateY(-5px);
   }
@@ -326,9 +326,9 @@
 .limau-ais .limaus > .limau:nth-child(2) {
   margin: 33px 78px;
   transform: rotate(200deg);
-  animation: bob-ukfl798 3s infinite;
+  animation: bob-uiwfgb1 3s infinite;
 }
-@keyframes bob-ukfl798 {
+@keyframes bob-uiwfgb1 {
   50% {
     transform: rotate(200deg) translateY(-5px);
   }
@@ -422,7 +422,7 @@
 .soya-cincau .cup {
   width: 100px;
   height: 150px;
-  border-radius: 10% 10% 20% 20%;
+  border-radius: 10% 10% 40% 40%;
   border: 5px solid #2f2f2f;
   background: linear-gradient(transparent, transparent 20%, #f0e2ba 20%, #f0e2ba 40%, #c1b39b);
 }
@@ -465,9 +465,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(1) {
   margin: -13px 5px;
   transform: rotate(-44deg);
-  animation: float-ukfl79c 3s infinite;
+  animation: float-uiwfgbi 3s infinite;
 }
-@keyframes float-ukfl79c {
+@keyframes float-uiwfgbi {
   50% {
     transform: rotate(-44deg) translateY(3px);
   }
@@ -475,9 +475,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(2) {
   margin: 7px 19px;
   transform: rotate(77deg);
-  animation: float-ukfl79j 3s infinite;
+  animation: float-uiwfgc6 3s infinite;
 }
-@keyframes float-ukfl79j {
+@keyframes float-uiwfgc6 {
   50% {
     transform: rotate(77deg) translateY(3px);
   }
@@ -485,9 +485,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(3) {
   margin: -20px 40px;
   transform: rotate(257deg);
-  animation: float-ukfl79m 3s infinite;
+  animation: float-uiwfgcs 3s infinite;
 }
-@keyframes float-ukfl79m {
+@keyframes float-uiwfgcs {
   50% {
     transform: rotate(257deg) translateY(3px);
   }
@@ -495,9 +495,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(4) {
   margin: 23px 8px;
   transform: rotate(134deg);
-  animation: float-ukfl7ad 3s infinite;
+  animation: float-uiwfgdp 3s infinite;
 }
-@keyframes float-ukfl7ad {
+@keyframes float-uiwfgdp {
   50% {
     transform: rotate(134deg) translateY(3px);
   }
@@ -505,9 +505,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(5) {
   margin: 1px 50px;
   transform: rotate(163deg);
-  animation: float-ukfl7ae 3s infinite;
+  animation: float-uiwfgel 3s infinite;
 }
-@keyframes float-ukfl7ae {
+@keyframes float-uiwfgel {
   50% {
     transform: rotate(163deg) translateY(3px);
   }
@@ -515,9 +515,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(6) {
   margin: 9px 36px;
   transform: rotate(210deg);
-  animation: float-ukfl7b3 3s infinite;
+  animation: float-uiwfgep 3s infinite;
 }
-@keyframes float-ukfl7b3 {
+@keyframes float-uiwfgep {
   50% {
     transform: rotate(210deg) translateY(3px);
   }
@@ -599,6 +599,130 @@
   50% {
     transform: rotate(-20deg) translateY(2.5px);
   }
+}
+
+.satay {
+  outline: 1px dashed black;
+  padding: 15px 199px 185px 31px;
+}
+.satay > * {
+  position: absolute;
+}
+.satay .plate {
+  background: radial-gradient(grey 60%, black);
+  border: 5px dotted #a1b4f9;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.satay .plate::before {
+  position: absolute;
+  content: "";
+  padding: 60px;
+  background: repeating-linear-gradient(#5a6c25, #5a6c25 1%, #264e0a 1%, #264e0a 8%);
+  transform: skewY(-8deg);
+  margin: 15px -73px;
+}
+.satay .satay-sticks {
+  margin: 10px 10px;
+}
+.satay .satay-sticks > * {
+  position: absolute;
+}
+.satay .satay-stick:nth-child(1) {
+  margin: 0px -2px;
+  transform: rotate(5deg);
+}
+.satay .satay-stick:nth-child(2) {
+  transform: rotate(-2deg);
+  margin: 5px 11px;
+}
+.satay .satay-stick:nth-child(3) {
+  transform: rotate(5deg);
+  margin: -4px 39px;
+}
+.satay .satay-stick:nth-child(4) {
+  transform: rotate(20deg);
+  margin: -14px 67px;
+}
+.satay .satay-stick:nth-child(5) {
+  transform: rotate(33deg);
+  margin: 0px 94px;
+}
+.satay .satay-stick > * {
+  position: absolute;
+}
+.satay .satay-stick .skewer {
+  height: 55px;
+  width: 4px;
+  background: linear-gradient(#652b0e 30%, #e6a231);
+  transform: skewY(25deg);
+  margin: 109px 14px;
+  box-shadow: 1px 1px 0px 1px #2f1303;
+}
+.satay .satay-stick .meat {
+  padding: 15px;
+  background: #d7ae15;
+  border-radius: 100% 30%;
+}
+.satay .satay-stick .meat::before, .satay .satay-stick .meat::after {
+  position: absolute;
+  content: "";
+}
+.satay .satay-stick .meat::before {
+  background: #ffc310;
+  padding: 3px 4px;
+  border-radius: 50% 30%;
+  margin: -10px 0px;
+}
+.satay .satay-stick .meat::after {
+  background: #b48e03;
+  padding: 2px;
+  border-radius: 40% 50%;
+  margin: -3px 6px;
+  box-shadow: -12px -4px 0px -1px #b48e03, -4px 8px 0px -1px #b48e03;
+}
+.satay .satay-stick .meat:nth-child(1) {
+  transform: rotate(-50deg);
+  background: linear-gradient(157deg, #443804, #d7ae15 43%);
+}
+.satay .satay-stick .meat:nth-child(2) {
+  margin: 20px 0px;
+  transform: rotate(-70deg);
+  background: linear-gradient(155deg, #443804, #d7ae15 45%);
+}
+.satay .satay-stick .meat:nth-child(3) {
+  margin: 35px 5px;
+  transform: rotate(-30deg);
+  background: linear-gradient(106deg, #443804, #d7ae15 40%);
+}
+.satay .satay-stick .meat:nth-child(4) {
+  margin: 60px 0px;
+  transform: rotate(-30deg);
+  background: linear-gradient(136deg, #443804, #d7ae15 46%);
+}
+.satay .satay-stick .meat:nth-child(5) {
+  margin: 78px 0px;
+  transform: rotate(-70deg);
+  background: linear-gradient(151deg, #443804, #d7ae15 48%);
+}
+.satay .sauce {
+  width: 50px;
+  height: 40px;
+  background: #9c4f23;
+  margin: 83px;
+  border-radius: 50%;
+  box-shadow: inset -5px -8px #481909, 0px 2px 0px 3px #383838, 2px 7px 0px 14px #232323;
+  transform: rotate(-38deg);
+}
+.satay .sauce::before {
+  content: "";
+  position: absolute;
+  padding: 3px 4px;
+  background: #ff7815;
+  border-radius: 50%;
+  margin: 3px -9px;
+  box-shadow: 10px 10px 0px 2px #ff9900, -6px 18px 0 1.3px #ff7815, 15px 1px 0px -1px #ff9900, -14px 12px 0px -0.6px #78310f;
 }
 
 /*# sourceMappingURL=style.css.map */

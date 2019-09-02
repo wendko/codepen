@@ -1,0 +1,140 @@
+@import './plate.scss';
+
+$c-sauce: #9c4f23;
+$c-sauce-shadow: #481909;
+$c-sauce-bits-1:#ff7815;
+$c-sauce-bits-2:#78310f;
+$c-sauce-bits-3:#ff9900;
+$c-sauce-bowl: #232323;
+$c-sauce-bowl-shadow: #383838;
+$c-skewer: linear-gradient( #652b0e 30%, #e6a231);
+$c-skewer-shadow: #2f1303;
+$c-satay-meat:  #d7ae15;
+$c-satay-burnt: #b48e03;
+$c-satay-light: #ffc310;
+
+@mixin satay {
+    .plate {
+        $c-plate: radial-gradient(grey 60%, black);
+        $c-plate-deco: 5px dotted #a1b4f9;
+        $leaf-margin: 15px -73px;
+        @include plate(
+            $c-plate,
+            $c-plate-deco,
+            $leaf-margin,
+            );
+    }   
+
+    .satay-sticks {
+        margin: 10px 10px;
+
+        &>* {
+            position: absolute;
+        }
+    }
+    .satay-stick {
+        &:nth-child(1) {
+            margin: 0px -2px;
+            transform: rotate(5deg);
+        }
+        &:nth-child(2) {
+            transform: rotate(-2deg);
+            margin: 5px 11px;
+        }
+        &:nth-child(3) {
+            transform: rotate(5deg);
+            margin: -4px 39px;
+        }
+        &:nth-child(4) {
+            transform: rotate(20deg);
+            margin: -14px 67px;
+        }
+        &:nth-child(5) {
+            transform: rotate(33deg);
+            margin: 0px 94px;
+        }
+        &>*{
+            position: absolute;
+        }
+        .skewer {
+            height: 55px;
+            width: 4px;
+            background: $c-skewer;
+            transform: skewY(25deg);
+            margin: 109px 14px;
+            box-shadow: 1px 1px 0px 1px $c-skewer-shadow;
+        }
+        .meat {
+            padding: 15px;
+            background: $c-satay-meat;
+            border-radius: 100% 30%;
+            &::before, &::after {
+                position: absolute;
+                content:'';
+            }
+            &::before {
+                background: $c-satay-light;
+                padding: 3px 4px;
+                border-radius: 50% 30%;
+                margin: -10px 0px;
+            }
+            &::after {
+                background: $c-satay-burnt;
+                padding: 2px;
+                border-radius: 40% 50%;
+                margin: -3px 6px;
+                box-shadow: -12px -4px 0px -1px $c-satay-burnt,
+                -4px 8px 0px -1px $c-satay-burnt;
+            }
+            $c-satay-shadow: #443804;
+            &:nth-child(1) {
+                transform: rotate(-50deg);
+                background: linear-gradient(157deg, #443804, #d7ae15 43%);
+            }
+            &:nth-child(2) {
+                margin: 20px 0px;
+                transform: rotate(-70deg);
+                background: linear-gradient(155deg, $c-satay-shadow, $c-satay-meat 45%);
+            }
+            &:nth-child(3) {
+                margin: 35px 5px;
+                transform: rotate(-30deg);
+                background: linear-gradient(106deg, #443804, #d7ae15 40%);
+            }
+            &:nth-child(4) {
+                margin: 60px 0px;
+                transform: rotate(-30deg);
+                background: linear-gradient(136deg, #443804, #d7ae15 46%);
+            }
+            &:nth-child(5) {
+                margin: 78px 0px;
+                transform: rotate(-70deg);
+                background: linear-gradient(151deg, #443804, #d7ae15 48%);
+            }
+        }
+    }
+
+    .sauce {
+        width: 50px;
+        height: 40px;
+        background: $c-sauce;
+        margin: 83px;
+        border-radius: 50%;
+        box-shadow: inset -5px -8px $c-sauce-shadow,
+        0px 2px 0px 3px $c-sauce-bowl-shadow,
+        2px 7px 0px 14px $c-sauce-bowl;
+        transform: rotate(-38deg);
+        &::before {
+            content:'';
+            position: absolute;
+            padding: 3px 4px;
+            background: $c-sauce-bits-1;
+            border-radius: 50%;
+            margin: 3px -9px;
+            box-shadow: 10px 10px 0px 2px $c-sauce-bits-3,
+             -6px 18px 0 1.3px $c-sauce-bits-1, 
+             15px 1px 0px -1px $c-sauce-bits-3,
+            -14px 12px 0px -0.6px $c-sauce-bits-2;
+        }
+    }
+}
