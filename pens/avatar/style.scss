@@ -11,13 +11,29 @@ $mt-smile: 100px;
 $mt-neck: 130px;
 $mt-shirt: 150px;
 
+$yellow-theme: (
+    'shirt': #f7dc58, 
+    'shirt-shadow': #bba32e,
+    'glasses': #ff0000,
+);
+$blue-theme: (
+    'shirt': #5898f7, 
+    'shirt-shadow': #2f5f95,
+    'glasses': #dc4444,
+);
+
+$theme: $blue-theme;
+$c-glasses: map-get($theme, 'glasses');
+// $c-glasses: transparent;
+$c-shirt: map-get($theme, 'shirt');
+$c-shirt-shadow: map-get($theme, 'shirt-shadow');
+
+
 $c-outline: black;
 $c-skin: #f3c495;
 $c-eyes: black;
 $c-hair: black;
 $c-skin-shadow: #d2a170;
-$c-shirt: #f7dc58;
-$c-shirt-shadow: #bba32e;
 $c-pupil-highlight: white;
 $c-hair-highlight-1: white;
 $c-hair-highlight-2: #949494;
@@ -213,8 +229,6 @@ $eye-anim-duration: 5s;
     }
 
 }
-
-$c-glasses: red;
 
 .glasses {
     width: 20px;
