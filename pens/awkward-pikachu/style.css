@@ -2,11 +2,15 @@
   position: absolute;
 }
 
+.pikachu {
+  padding-bottom: 360px;
+  padding-right: 490px;
+}
+
 .container {
-  width: 50vw;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   place-items: center;
+  height: 100vh;
 }
 
 .eye-left {
