@@ -6,6 +6,7 @@
 @import './limau-ais.scss';
 @import './soya-cincau.scss';
 @import './satay.scss';
+@import './nasi-lemak.scss';
 
 .container {
     @include container;
@@ -51,4 +52,9 @@
 .satay {
     @include item(15px, 199px);
     @include satay;
+}
+
+.nasi-lemak {
+    @include item(15px, 199px);
+    @include nasi-lemak;
 }

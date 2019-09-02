@@ -1,0 +1,153 @@
+@import './plate.scss';
+
+@mixin nasi-lemak {
+    .plate {
+        $c-plate: radial-gradient(white 40%, grey);
+        $c-plate-deco: 5px solid #9c0128;
+        $leaf-margin: 15px -60px;
+        @include plate(
+            $c-plate,
+            $c-plate-deco,
+            $leaf-margin,
+        );
+    }   
+
+    .rice {
+        padding: 33px;
+        margin: 60px 65px;
+        border-radius:50%;
+        background: white;
+        box-shadow: inset -7px -11px #c8c8c8;
+    }
+
+    $c-egg-yolk: #ffc934;
+    $c-egg-white: white;
+    $c-egg-shadow: #dbdbdb;
+    .eggs {
+        padding: 30px 20px;
+        margin: 89px 27px;
+        transform: rotate(-39deg);
+        &::before, &::after {
+            content: '';
+            padding: 15px 18px;
+            position: absolute;
+            background: $c-egg-yolk;
+            border-radius: 50%;
+            box-shadow: inset 4px 4px $c-egg-shadow,
+            inset 5px 4px 0px 8px $c-egg-white;
+        }
+        &::before {
+            margin: 1px -17px;
+        }
+        &::after {
+            margin: -31px -13px;
+            transform: rotate(55deg);
+        }   
+    }
+
+    $c-timun-skin: green;
+    $c-timun-dark: #89da11;
+    $c-timun-light: #c3ff66;
+
+    %timun-slice {
+        border-radius: 50%;
+        background: radial-gradient($c-timun-dark 50%, $c-timun-light 75%);
+        border: 3.5px dashed $c-timun-skin;
+        border-left: none;
+        border-bottom: none;
+        padding: 12px 15px;
+    }
+
+    .timun {
+        transform: rotate(-13deg);
+        margin: 57px 21px;
+        @extend %timun-slice;
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            @extend %timun-slice;
+        }
+        
+        &::before {
+            margin: -35px -14px;
+            transform: rotate(52deg);
+        }
+        
+        &::after {
+            margin: -47px 1px;
+            transform: rotate(93deg);
+        }
+    }
+
+    $c-sambal: red;
+    $c-sambal-shadow: #8d0000;
+    .sambal {
+        padding: 25px 20px;
+        transform: rotate(100deg);
+        margin: 24px 90px;
+        background: $c-sambal;
+        border-radius: 50%;
+        box-shadow: 
+        inset 14px -9px 10px 0px $c-sambal-shadow,
+        14px -17px 8px -6px  $c-sambal,
+        28px -23px 7px -5px  $c-sambal,
+        12px -21px 0px -3px  $c-sambal-shadow,
+        37px -17px 10px -1px  $c-sambal,
+        37px -20px 0px 4px  $c-sambal-shadow;
+    }
+
+    $c-kacang: brown;
+    $c-kacang-dark: #770b0b;
+    $c-kacang-light: #ca7b12;
+    .kacang {
+        margin: 18px 85px;
+        padding: 4px 5px;
+        background: $c-kacang;
+        border-radius: 50%;
+        box-shadow: 6px 3px $c-kacang-light,
+        16px -6px $c-kacang-dark,
+        13px 0px $c-kacang,
+        24px -2px $c-kacang,
+        22px 5px $c-kacang-light,
+        14px 7px $c-kacang-dark,
+        6px 11px $c-kacang-light,
+        31px 1px $c-kacang-dark,
+        -3px 7px $c-kacang-dark,
+        16px 12px $c-kacang,
+        27px 12px $c-kacang-dark,
+        34px 8px $c-kacang-light,
+        20px 18px $c-kacang-light,
+        -4px 16px $c-kacang;
+    }
+
+    $c-ikan: #420000;
+    $c-ikan-dark: #700101;
+
+    %ikan-piece {
+        padding: 7px 11px;
+        background: transparent;
+        border-radius: 50%;
+        box-shadow:
+        0px 4px 0px 1px $c-ikan,
+        4px -5px $c-ikan-dark;
+    }
+
+    .ikan-bilis {
+        margin: 45px 55px;
+        @extend %ikan-piece;
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            @extend %ikan-piece;
+        }
+        &::before {
+            transform: rotate(124deg);
+            margin: -19px 0px;
+        }
+        &::after {
+            transform: rotate(-135deg);
+            margin: -5px -1px;
+        }
+    }
+}

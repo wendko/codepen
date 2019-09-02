@@ -316,9 +316,9 @@
 }
 .limau-ais .limaus > .limau:nth-child(1) {
   margin: 40px 33px;
-  animation: bob-uiwfgal 3s infinite;
+  animation: bob-uhfxx3x 3s infinite;
 }
-@keyframes bob-uiwfgal {
+@keyframes bob-uhfxx3x {
   50% {
     transform: rotate(0deg) translateY(-5px);
   }
@@ -326,9 +326,9 @@
 .limau-ais .limaus > .limau:nth-child(2) {
   margin: 33px 78px;
   transform: rotate(200deg);
-  animation: bob-uiwfgb1 3s infinite;
+  animation: bob-uhfxx4e 3s infinite;
 }
-@keyframes bob-uiwfgb1 {
+@keyframes bob-uhfxx4e {
   50% {
     transform: rotate(200deg) translateY(-5px);
   }
@@ -465,9 +465,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(1) {
   margin: -13px 5px;
   transform: rotate(-44deg);
-  animation: float-uiwfgbi 3s infinite;
+  animation: float-uhfxx4x 3s infinite;
 }
-@keyframes float-uiwfgbi {
+@keyframes float-uhfxx4x {
   50% {
     transform: rotate(-44deg) translateY(3px);
   }
@@ -475,9 +475,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(2) {
   margin: 7px 19px;
   transform: rotate(77deg);
-  animation: float-uiwfgc6 3s infinite;
+  animation: float-uhfxx5e 3s infinite;
 }
-@keyframes float-uiwfgc6 {
+@keyframes float-uhfxx5e {
   50% {
     transform: rotate(77deg) translateY(3px);
   }
@@ -485,9 +485,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(3) {
   margin: -20px 40px;
   transform: rotate(257deg);
-  animation: float-uiwfgcs 3s infinite;
+  animation: float-uhfxx60 3s infinite;
 }
-@keyframes float-uiwfgcs {
+@keyframes float-uhfxx60 {
   50% {
     transform: rotate(257deg) translateY(3px);
   }
@@ -495,9 +495,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(4) {
   margin: 23px 8px;
   transform: rotate(134deg);
-  animation: float-uiwfgdp 3s infinite;
+  animation: float-uhfxx6h 3s infinite;
 }
-@keyframes float-uiwfgdp {
+@keyframes float-uhfxx6h {
   50% {
     transform: rotate(134deg) translateY(3px);
   }
@@ -505,9 +505,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(5) {
   margin: 1px 50px;
   transform: rotate(163deg);
-  animation: float-uiwfgel 3s infinite;
+  animation: float-uhfxx6o 3s infinite;
 }
-@keyframes float-uiwfgel {
+@keyframes float-uhfxx6o {
   50% {
     transform: rotate(163deg) translateY(3px);
   }
@@ -515,9 +515,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(6) {
   margin: 9px 36px;
   transform: rotate(210deg);
-  animation: float-uiwfgep 3s infinite;
+  animation: float-uhfxx6u 3s infinite;
 }
-@keyframes float-uiwfgep {
+@keyframes float-uhfxx6u {
   50% {
     transform: rotate(210deg) translateY(3px);
   }
@@ -723,6 +723,116 @@
   border-radius: 50%;
   margin: 3px -9px;
   box-shadow: 10px 10px 0px 2px #ff9900, -6px 18px 0 1.3px #ff7815, 15px 1px 0px -1px #ff9900, -14px 12px 0px -0.6px #78310f;
+}
+
+.nasi-lemak {
+  outline: 1px dashed black;
+  padding: 15px 199px 185px 31px;
+}
+.nasi-lemak > * {
+  position: absolute;
+}
+.nasi-lemak .plate {
+  background: radial-gradient(white 40%, grey);
+  border: 5px solid #9c0128;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.nasi-lemak .plate::before {
+  position: absolute;
+  content: "";
+  padding: 60px;
+  background: repeating-linear-gradient(#5a6c25, #5a6c25 1%, #264e0a 1%, #264e0a 8%);
+  transform: skewY(-8deg);
+  margin: 15px -60px;
+}
+.nasi-lemak .rice {
+  padding: 33px;
+  margin: 60px 65px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: inset -7px -11px #c8c8c8;
+}
+.nasi-lemak .eggs {
+  padding: 30px 20px;
+  margin: 89px 27px;
+  transform: rotate(-48deg);
+}
+.nasi-lemak .eggs::before, .nasi-lemak .eggs::after {
+  content: "";
+  padding: 15px 18px;
+  position: absolute;
+  background: #ffc934;
+  border-radius: 50%;
+  box-shadow: inset 4px 4px #dbdbdb, inset 5px 4px 0px 8px white;
+}
+.nasi-lemak .eggs::before {
+  margin: 1px -17px;
+}
+.nasi-lemak .eggs::after {
+  margin: -31px -13px;
+  transform: rotate(55deg);
+}
+.nasi-lemak .timun::before, .nasi-lemak .timun::after, .nasi-lemak .timun {
+  border-radius: 50%;
+  background: radial-gradient(#89da11 50%, #c3ff66 75%);
+  border: 3.5px dashed green;
+  border-left: none;
+  border-bottom: none;
+  padding: 12px 15px;
+}
+.nasi-lemak .timun {
+  transform: rotate(-13deg);
+  margin: 57px 21px;
+}
+.nasi-lemak .timun::before, .nasi-lemak .timun::after {
+  content: "";
+  position: absolute;
+}
+.nasi-lemak .timun::before {
+  margin: -35px -14px;
+  transform: rotate(52deg);
+}
+.nasi-lemak .timun::after {
+  margin: -47px 1px;
+  transform: rotate(93deg);
+}
+.nasi-lemak .sambal {
+  padding: 25px 20px;
+  transform: rotate(100deg);
+  margin: 24px 90px;
+  background: red;
+  border-radius: 50%;
+  box-shadow: inset 14px -9px 10px 0px #8d0000, 14px -17px 8px -6px red, 28px -23px 7px -5px red, 12px -21px 0px -3px #8d0000, 37px -17px 10px -1px red, 37px -20px 0px 4px #8d0000;
+}
+.nasi-lemak .kacang {
+  margin: 18px 85px;
+  padding: 4px 5px;
+  background: brown;
+  border-radius: 50%;
+  box-shadow: 6px 3px #ca7b12, 16px -6px #770b0b, 13px 0px brown, 24px -2px brown, 22px 5px #ca7b12, 14px 7px #770b0b, 6px 11px #ca7b12, 31px 1px #770b0b, -3px 7px #770b0b, 16px 12px brown, 27px 12px #770b0b, 34px 8px #ca7b12, 20px 18px #ca7b12, -4px 16px brown;
+}
+.nasi-lemak .ikan-bilis::before, .nasi-lemak .ikan-bilis::after, .nasi-lemak .ikan-bilis {
+  padding: 7px 11px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 0px 4px 0px 1px #420000, 4px -5px #700101;
+}
+.nasi-lemak .ikan-bilis {
+  margin: 45px 55px;
+}
+.nasi-lemak .ikan-bilis::before, .nasi-lemak .ikan-bilis::after {
+  content: "";
+  position: absolute;
+}
+.nasi-lemak .ikan-bilis::before {
+  transform: rotate(124deg);
+  margin: -19px 0px;
+}
+.nasi-lemak .ikan-bilis::after {
+  transform: rotate(-135deg);
+  margin: -5px -1px;
 }
 
 /*# sourceMappingURL=style.css.map */
