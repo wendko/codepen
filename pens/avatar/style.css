@@ -14,7 +14,22 @@
     height: 12px;
   }
 }
+@keyframes mouth-up {
+  0%, 38%, 63%, 100% {
+    margin-top: 100px;
+  }
+  40%, 61% {
+    margin-top: 95px;
+  }
+}
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
 .avatar {
+  padding: 0px 75px 219px 75px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -151,6 +166,43 @@
   margin: 2px;
 }
 
+.glasses {
+  width: 20px;
+  height: 5px;
+  background: red;
+  margin-top: 80px;
+  z-index: 4;
+}
+.glasses::before, .glasses::after {
+  content: "";
+  position: absolute;
+  background: red;
+  padding: 2.5px 8px;
+}
+.glasses::before {
+  margin: -3px 57px;
+  transform: rotate(-10deg);
+  border-top-right-radius: 10px;
+}
+.glasses::after {
+  margin: -3px -53px;
+  transform: rotate(10deg);
+  border-top-left-radius: 10px;
+}
+.glasses .lens {
+  width: 30px;
+  height: 25px;
+  border: 4px solid red;
+  position: absolute;
+  border-radius: 15px;
+}
+.glasses .lens:nth-child(1) {
+  margin: -14px -38px;
+}
+.glasses .lens:nth-child(2) {
+  margin: -14px 20px;
+}
+
 .neck {
   background: #d2a170;
   width: 30px;
@@ -180,6 +232,7 @@
   border-top: none;
   border-radius: 0px 0px 100px 100px;
   margin-top: 100px;
+  animation: mouth-up 5s infinite;
 }
 
 /*# sourceMappingURL=style.css.map */
