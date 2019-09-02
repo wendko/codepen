@@ -1,8 +1,22 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
+p {
+  font-family: "Nunito", sans-serif;
+  font-weight: 900;
+  text-align: center;
+  font-size: 25px;
+}
+
 .item {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   margin: 10px;
+}
+
+.examples {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
 }
 
 .rlg-1 {

@@ -1,10 +1,16 @@
 link( rel="stylesheet" href="./style.css" type="text/css")
 
-each $val in [1, 2, 3]
-  .item(class="rlg-"+$val)    
+p Repeating Linear Gradient
+.examples
+    each $val in [1, 2, 3]
+        .item(class="rlg-"+$val)    
 
-each $val in [1, 2, 3, 4, 5, 6]
-  .item(class="rg-"+$val)
+p Radial Gradient
+.examples
+    each $val in [1, 2, 3, 4, 5, 6]
+        .item(class="rg-"+$val)
   
-each $val in [1, 2, 3, 4, 5]
-  .item(class="rrg-"+$val)
+p Repeating Radial Gradient
+.examples
+    each $val in [1, 2]
+        .item(class="rrg-"+$val)

@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
+p {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    text-align: center;
+    font-size: 25px;
+}
+
 .item {
     $dimension: 150px;
     width: $dimension;
@@ -6,6 +15,12 @@
     margin: 10px;
   }
   
+  .examples {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+  }
+
   .rlg-1 {
     $color-1:#FFA726;
     $color-2:#43A047;
