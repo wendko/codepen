@@ -9,6 +9,9 @@
 }
 
 .scene {
+    @media only screen and (max-width: 500px) {
+        transform: scale(0.5);
+    }
     display: flex;
     padding: 150px 220px;
     &>*{
