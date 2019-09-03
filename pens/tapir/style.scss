@@ -3,19 +3,34 @@
 .container {
     @include container;
 }
+  
+$c-eyeball: white;
+$c-stripe: bisque;
+$c-laptop: #bbbbcf;
+$c-laptop-shadow: #737a85;
+$c-tapir: #3f3f3f;
+$c-outline: #161616;
+$c-pupil: #161616;
+  $c-tapir-shadow: #161616;
+  $c-logo: linear-gradient(to bottom right, #fbfb3c, #3effff, #f831ff);
+  $c-logo-glow: #fffbe2;
+  $t-glow: 3s;
 
-
+  $t-type: 1s;
+  $t-leg-shake: 2s;
+  $t-ear: 2.5s;
+  $t-eye: 3s;
+  
+.tapir {
+    padding: 26px 172px 216px 73px;
+    background: $c-logo;
+    border-radius: 50%;
+    z-index: -1;
+  }
+  
 .tapir > * {
     position: absolute;
   }
-  
-  .tapir {
-    outline: 1px dashed blue;
-    padding: 9px 133px 206px 20px;
-  }
-  
-  $c-tapir: grey;
-  $c-tapir-shadow: #4b4b4b;
   
   .head {
     background: $c-tapir;
@@ -25,11 +40,8 @@
     border: 3px solid $c-tapir-shadow;
     border-top: none;
     border-bottom: none;
+    box-shadow: -1px -3px $c-tapir-shadow;
   }
-  
-  $c-pupil: black;
-  $c-eyeball: white;
-  $c-outline: #2c2c2c;
   
   .eye {
     padding: 6px;
@@ -37,7 +49,25 @@
     border-radius: 50%;
     margin: 40px;
     box-shadow: -3px -3px 0px 3px $c-eyeball,
-    -3px -3px 0px 4.5px  $c-outline;
+    -3px -3px 0px 5.5px  $c-outline;
+    &::before {
+        position: absolute;
+        content: '';
+        border-radius: 50%;
+        background: $c-tapir;
+        margin: -16px -14px;
+        @keyframes blink-top {
+            0%, 45%, 60%, 100% {
+                padding: 0px 11px;
+                border-bottom: none;
+            }
+            50% {
+                padding: 12px 11px;
+                border-bottom: 3px solid $c-tapir-shadow;
+            }
+        }
+        animation: blink-top $t-eye infinite;
+    }
   }
   
   .ears {
@@ -47,17 +77,25 @@
         border-radius: 50%;
         padding: 14px 12px;
         background: $c-tapir;
-        background: grey;
         border-radius: 20% 60%;
-        box-shadow: inset 7px 7px;
+        box-shadow: inset 7px 7px $c-tapir-shadow;
       }
       &::before {
           margin: 5px 0px;
           transform: rotate(-20deg);
+          transform-origin: bottom right;
+          @keyframes wag-left {
+            0%, 100% { } 50% {transform: rotate(-5deg)}
+            }
+            animation: wag-left $t-ear infinite;
       }
       &::after {
         margin: -8px 49px;
         transform: rotate(53deg) scale(0.9);
+        @keyframes wag-right {
+            0%, 100% {} 50% {transform: rotate(65deg) scale(0.9)}
+            }
+            animation: wag-right $t-ear * 1.1 infinite;
       }
   }
 
@@ -66,9 +104,7 @@
         background: $c-tapir;
         margin: 30px 67px;
         border-radius: 15% 60%;
-        border: 3px solid $c-tapir-shadow;
-        border-top: none;
-        border-left: none;
+        box-shadow: 3px 8px 0px 4px $c-tapir-shadow;
         &::before {
             position: absolute;
             content: '';
@@ -83,12 +119,114 @@
         }
   }
   
-
-  $c-body: bisque;
-  
   .body {
-        background: $c-body;
-        padding: 53px 55px;
-        margin: 64px -12px;
-        border-radius: 100% 60% 47% 57%;
+        background: $c-stripe;
+        padding: 60px 58px;
+        margin: 27px -19px;
+        border-radius: 50% 50% 30% 50%;
+        border: 3px solid $c-tapir-shadow;
+        border-bottom: none;
+  }
+
+  .torso {
+        background: $c-tapir;
+        border: 3px solid $c-tapir-shadow;
+        border-radius: 50% 50% 32% 43%;
+        padding: 68px 65px;
+        margin: 40px -30px
+  }
+
+  .feet {
+      &::before, &::after {
+          background: $c-tapir;
+          content: '';
+          position: absolute;
+          padding: 17px 13px;
+          border-radius: 60% 40%;
+          border: 3px solid $c-tapir-shadow;
+          border-left: none;
+          box-shadow: -22px -12px 0px 7px $c-tapir,
+          -21px -8px 0px 7px $c-tapir-shadow,
+          -19px -15px 0px 8px $c-tapir-shadow;
+          transform-origin: top left;
+          @keyframes shaking {
+            0%, 100% {} 50% {transform: rotate(15deg)}
+          }
+          animation: shaking $t-leg-shake infinite;
+      }
+      &::before {
+          margin: 146px 28px;
+      }
+      &::after {
+            margin: 136px 104px;
+            z-index: -1;
+            animation-delay: $t-leg-shake/2;
+      }
+  }
+
+  .laptop {
+        border-radius: 20%;
+        padding: 16px 42px;
+        background: $c-laptop;
+        margin: 109px 32px;
+        transform: skew(49deg);
+        box-shadow: inset 10px -5px $c-laptop-shadow;
+        &::before, &::after {
+            position: absolute;
+            content: '';
+        }
+        &::before {
+            background: $c-laptop;
+            padding: 30px 42px;
+            transform: skewX(-57deg);
+            margin: -46px 6px;
+            border-radius: 10%;
+            box-shadow: inset 5px 5px $c-laptop-shadow;
+        }
+        &::after {
+            border-radius: 25%;
+            padding: 3px 9px;
+            background: $c-laptop-shadow;
+            position: absolute;
+            margin: -13px -28px;
+            border-radius: 25%;
+            @keyframes tapped {
+                0%, 100% {opacity: 0.2} 50% {opacity: 1}
+            }
+            animation: tapped $t-type infinite;
+        }
+  }
+
+  .laptop-logo {
+    padding: 4.3px;
+    background:$c-logo;
+    border-radius: 50%;
+    margin: 109px 105px;
+    box-shadow: 0px 0px 3px 3px $c-logo-glow;
+    @keyframes glow {
+        0%, 100% {}
+        50% {box-shadow: 0px 0px 9px 9px $c-logo-glow;}
+    }
+    animation: glow $t-glow infinite;
+  }
+
+  .bicep {
+        background: $c-tapir;
+        padding: 30px 17px;
+        border-radius: 36% 31% 88% 0%;
+        transform: rotate(-136deg);
+        margin: 80px 0px;
+        box-shadow: 4px 4px 0px 0px $c-tapir-shadow;
+  }
+
+  .paw {
+    border-radius: 42% 48%;
+    padding: 11px 15px;
+    background: $c-tapir;
+    box-shadow: 3px 0px 0px 2px $c-tapir-shadow;
+    margin: 89px 18px;
+    @keyframes typing {
+        0%, 100% {} 20% {transform: rotate(14deg)}
+    }
+    animation: typing  $t-type  infinite;
   }
