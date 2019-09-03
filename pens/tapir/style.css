@@ -1,0 +1,78 @@
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.tapir > * {
+  position: absolute;
+}
+
+.tapir {
+  outline: 1px dashed blue;
+  padding: 9px 133px 206px 20px;
+}
+
+.head {
+  background: grey;
+  padding: 50px 42px;
+  border-radius: 50% 50% 70% 50%;
+  margin: 10px 10px;
+  border: 3px solid #4b4b4b;
+  border-top: none;
+  border-bottom: none;
+}
+
+.eye {
+  padding: 6px;
+  background: black;
+  border-radius: 50%;
+  margin: 40px;
+  box-shadow: -3px -3px 0px 3px white, -3px -3px 0px 4.5px #2c2c2c;
+}
+
+.ears::before, .ears::after {
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+  padding: 14px 12px;
+  background: grey;
+  background: grey;
+  border-radius: 20% 60%;
+  box-shadow: inset 7px 7px;
+}
+.ears::before {
+  margin: 5px 0px;
+  transform: rotate(-20deg);
+}
+.ears::after {
+  margin: -8px 49px;
+  transform: rotate(53deg) scale(0.9);
+}
+
+.snout {
+  padding: 40px 18px;
+  background: grey;
+  margin: 30px 67px;
+  border-radius: 15% 60%;
+  border: 3px solid #4b4b4b;
+  border-top: none;
+  border-left: none;
+}
+.snout::before {
+  position: absolute;
+  content: "";
+  padding: 10px 17px;
+  margin: 14px -15px;
+  border-radius: 50% 20%;
+  box-shadow: 2.5px -7px 0px -3px #4b4b4b, -2px -24px grey, 0.5px -31px 0px -3px #4b4b4b, -8px -45px grey, -6.5px -51px 0px -3px #4b4b4b;
+}
+
+.body {
+  background: bisque;
+  padding: 53px 55px;
+  margin: 64px -12px;
+  border-radius: 100% 60% 47% 57%;
+}
+
+/*# sourceMappingURL=style.css.map */

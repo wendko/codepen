@@ -1,0 +1,20 @@
+@mixin roti-canai {
+    .plate {
+        $c-plate: linear-gradient(grey 41%, silver 41%, silver 45%, gray 45%);
+        $c-plate-deco: 5px solid silver;
+        $leaf-margin: 15px -73px;
+        @include plate(
+            $c-plate,
+            $c-plate-deco,
+            false
+        );
+    }   
+
+    $c-sauce-1: #7f0e04;
+    $c-sauce-2: #c5880a;
+    $c-sauce-3: #cc5c00;
+
+    .sauces {
+
+    }
+}

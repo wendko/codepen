@@ -11,13 +11,15 @@ $c-leaf: #264e0a;
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    &::before{
-        position: absolute;
-        content: '';
-        padding: 60px;
-        background: repeating-linear-gradient(
-            $c-leaf-vein, $c-leaf-vein 1%, $c-leaf 1%, $c-leaf 8%);
-        transform: skewY(-8deg);
-        margin: $leaf-margin;
+    @if ($leaf-margin) {
+        &::before{
+            position: absolute;
+            content: '';
+            padding: 60px;
+            background: repeating-linear-gradient(
+                $c-leaf-vein, $c-leaf-vein 1%, $c-leaf 1%, $c-leaf 8%);
+            transform: skewY(-8deg);
+            margin: $leaf-margin;
+        }
     }
 }
