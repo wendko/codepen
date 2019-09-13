@@ -52,6 +52,7 @@ $c-satay-light: #ffc310;
         &:nth-child(5) {
             transform: rotate(33deg);
             margin: 0px 94px;
+            background: $c-satay-meat;
         }
         &>*{
             position: absolute;
@@ -66,7 +67,6 @@ $c-satay-light: #ffc310;
         }
         .meat {
             padding: 15px;
-            background: $c-satay-meat;
             border-radius: 100% 30%;
             &::before, &::after {
                 position: absolute;

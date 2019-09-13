@@ -12,7 +12,7 @@ $c-tapir: #3f3f3f;
 $c-outline: #161616;
 $c-pupil: #161616;
   $c-tapir-shadow: #161616;
-  $c-logo: linear-gradient(to bottom right, #fbfb3c, #3effff, #f831ff);
+  $c-logo: linear-gradient(to bottom right, #fbfb3c, #3effff);
   $c-logo-glow: #fffbe2;
   $t-glow: 3s;
 
@@ -136,11 +136,8 @@ $c-pupil: #161616;
         margin: 40px -30px
   }
 
-  .feet {
-      &::before, &::after {
+  .foot {
           background: $c-tapir;
-          content: '';
-          position: absolute;
           padding: 17px 13px;
           border-radius: 60% 40%;
           border: 3px solid $c-tapir-shadow;
@@ -153,15 +150,12 @@ $c-pupil: #161616;
             0%, 100% {} 50% {transform: rotate(15deg)}
           }
           animation: shaking $t-leg-shake infinite;
-      }
-      &::before {
-          margin: 146px 28px;
-      }
-      &::after {
+        &.left {
+            margin: 146px 28px;
+        }
+        &.right {
             margin: 136px 104px;
-            z-index: -1;
-            animation-delay: $t-leg-shake/2;
-      }
+        }
   }
 
   .laptop {

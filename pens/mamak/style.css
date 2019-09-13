@@ -316,9 +316,9 @@
 }
 .limau-ais .limaus > .limau:nth-child(1) {
   margin: 40px 33px;
-  animation: bob-ulkm5qq 3s infinite;
+  animation: bob-ugjnj39 3s infinite;
 }
-@keyframes bob-ulkm5qq {
+@keyframes bob-ugjnj39 {
   50% {
     transform: rotate(0deg) translateY(-5px);
   }
@@ -326,9 +326,9 @@
 .limau-ais .limaus > .limau:nth-child(2) {
   margin: 33px 78px;
   transform: rotate(200deg);
-  animation: bob-ulkm5rq 3s infinite;
+  animation: bob-ugjnj3t 3s infinite;
 }
-@keyframes bob-ulkm5rq {
+@keyframes bob-ugjnj3t {
   50% {
     transform: rotate(200deg) translateY(-5px);
   }
@@ -465,9 +465,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(1) {
   margin: -13px 5px;
   transform: rotate(-44deg);
-  animation: float-ulkm5sl 3s infinite;
+  animation: float-ugjnj43 3s infinite;
 }
-@keyframes float-ulkm5sl {
+@keyframes float-ugjnj43 {
   50% {
     transform: rotate(-44deg) translateY(3px);
   }
@@ -475,9 +475,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(2) {
   margin: 7px 19px;
   transform: rotate(77deg);
-  animation: float-ulkm5t9 3s infinite;
+  animation: float-ugjnj4q 3s infinite;
 }
-@keyframes float-ulkm5t9 {
+@keyframes float-ugjnj4q {
   50% {
     transform: rotate(77deg) translateY(3px);
   }
@@ -485,9 +485,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(3) {
   margin: -20px 40px;
   transform: rotate(257deg);
-  animation: float-ulkm5tc 3s infinite;
+  animation: float-ugjnj52 3s infinite;
 }
-@keyframes float-ulkm5tc {
+@keyframes float-ugjnj52 {
   50% {
     transform: rotate(257deg) translateY(3px);
   }
@@ -495,9 +495,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(4) {
   margin: 23px 8px;
   transform: rotate(134deg);
-  animation: float-ulkm5tf 3s infinite;
+  animation: float-ugjnj5s 3s infinite;
 }
-@keyframes float-ulkm5tf {
+@keyframes float-ugjnj5s {
   50% {
     transform: rotate(134deg) translateY(3px);
   }
@@ -505,9 +505,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(5) {
   margin: 1px 50px;
   transform: rotate(163deg);
-  animation: float-ulkm5tx 3s infinite;
+  animation: float-ugjnj6f 3s infinite;
 }
-@keyframes float-ulkm5tx {
+@keyframes float-ugjnj6f {
   50% {
     transform: rotate(163deg) translateY(3px);
   }
@@ -515,9 +515,9 @@
 .soya-cincau .cincau-area .cincau:nth-child(6) {
   margin: 9px 36px;
   transform: rotate(210deg);
-  animation: float-ulkm5tz 3s infinite;
+  animation: float-ugjnj6k 3s infinite;
 }
-@keyframes float-ulkm5tz {
+@keyframes float-ugjnj6k {
   50% {
     transform: rotate(210deg) translateY(3px);
   }
@@ -648,6 +648,7 @@
 .satay .satay-stick:nth-child(5) {
   transform: rotate(33deg);
   margin: 0px 94px;
+  background: #d7ae15;
 }
 .satay .satay-stick > * {
   position: absolute;
@@ -662,7 +663,6 @@
 }
 .satay .satay-stick .meat {
   padding: 15px;
-  background: #d7ae15;
   border-radius: 100% 30%;
 }
 .satay .satay-stick .meat::before, .satay .satay-stick .meat::after {
