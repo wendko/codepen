@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Righteous|ZCOOL+KuaiLe&display=swap");
 :root {
   --border-weight: 5px;
   --c-stem-border: brown;
@@ -7,6 +8,10 @@
   --c-flesh-container: #72a072;
   --c-flesh: #ffe600;
   --c-flesh-border: black;
+  --translate-flesh-long: translate(-15px, -3px);
+  --translate-flesh-short: translate(-15px, -42px);
+  --scale-flesh-left: scaleX(-1);
+  --translate-flesh-left-after: scaleX(-1) translate(-15px, -42px);
 }
 
 .colored {
@@ -15,6 +20,37 @@
   --c-stem: brown;
   --c-durian: green;
   --c-flesh-border: black;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.title {
+  grid-column: 1/span 2;
+  font-family: "Righteous", cursive;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: end;
+  grid-column-gap: 15px;
+}
+.title > p {
+  margin: 0px;
+}
+.title .en {
+  font-size: 70px;
+  grid-column: 1/span 2;
+}
+.title .zh {
+  font-size: 30px;
+  font-family: "ZCOOL KuaiLe", cursive;
+}
+.title .sc {
+  font-size: 25px;
 }
 
 .shell {
@@ -27,7 +63,6 @@
 
 .durian {
   padding: 35px 42px 121px 96px;
-  outline: 1px dashed red;
 }
 
 .stem {
@@ -191,6 +226,44 @@
   transform: rotate(308.5714285714deg);
 }
 
+@keyframes fadein {
+  0%, 100% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+}
+.loader .flesh::before, .loader .flesh::after {
+  animation: fadein 2s infinite;
+}
+.loader .flesh-left::before {
+  animation-delay: 0.5s;
+}
+.loader .flesh-right::after {
+  animation-delay: 1s;
+}
+.loader .flesh-right::before {
+  animation-delay: 1.5s;
+}
+.loader .flesh-left::after {
+  animation-delay: 2s;
+}
+@keyframes teeter {
+  0%, 50%, 55%, 60%, 100% {
+    transform: rotate(0deg);
+  }
+  52% {
+    transform: rotate(5deg);
+  }
+  58% {
+    transform: rotate(-5deg);
+  }
+}
+.loader.durian {
+  animation: teeter 2s linear infinite;
+}
+
 :not(spikey) .spike {
   position: absolute;
   background: var(--c-durian);
@@ -316,20 +389,20 @@
   transform: translate(-31px, 4px);
 }
 .opened > .flesh.flesh-right::before {
-  transform: translate(-15px, -3px);
+  transform: var(--translate-flesh-long);
 }
 .opened > .flesh.flesh-right::after {
-  transform: translate(-15px, -42px);
+  transform: var(--translate-flesh-short);
 }
 .opened > .flesh.flesh-left {
   border-radius: 100px 30px 30px 100px;
   transform: translate(-74px, 4px) scaleY(-1);
 }
 .opened > .flesh.flesh-left::before {
-  transform: scaleX(-1) translate(15px, -3px);
+  transform: var(--translate-flesh-long) var(--scale-flesh-left);
 }
 .opened > .flesh.flesh-left::after {
-  transform: scaleX(-1) translate(15px, -42px);
+  transform: var(--translate-flesh-short) var(--scale-flesh-left);
 }
 .opened > .flesh::after, .opened > .flesh::before {
   content: "";
@@ -344,13 +417,6 @@
 .opened > .flesh::before {
   padding: 20px 16px;
   border-radius: 30px 50px 100px 30px;
-}
-
-.container {
-  display: grid;
-  place-items: center;
-  height: 100vh;
-  grid-template-columns: repeat(2, 1fr);
 }
 
 /*# sourceMappingURL=style.css.map */

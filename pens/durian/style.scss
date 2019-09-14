@@ -1,4 +1,5 @@
 @import '../../common/container.scss';
+@import url('https://fonts.googleapis.com/css?family=Righteous|ZCOOL+KuaiLe&display=swap');
 
 :root {
     --border-weight: 5px;
@@ -9,6 +10,10 @@
     --c-flesh-container: #72a072;
     --c-flesh: #ffe600;
     --c-flesh-border: black;
+    --translate-flesh-long: translate(-15px, -3px);
+    --translate-flesh-short: translate(-15px, -42px);
+    --scale-flesh-left: scaleX(-1);
+    --translate-flesh-left-after: scaleX(-1) translate(-15px, -42px);
 }
 
 .colored {
@@ -18,30 +23,6 @@
     --c-durian: green;
     --c-flesh-border: black;
 }
-
-.shell {
-    padding: 55px;
-    background: black;
-    position: absolute;
-    border-radius: 50%;
-    transform: translate(-81px, -2px);
-}
-
-.durian {
-    padding: 35px 42px 121px 96px;
-    outline: 1px dashed red;
-}
-
-.stem {
-    position: absolute;
-    padding: 12px 5px;
-    background: var(--c-stem);
-    transform: translate(-37px, -35px);
-    border-radius: 8px;
-    border: var(--border-weight) solid var(--c-stem-border);
-    border-bottom: none;
-}
-
 
 @mixin spike($count, $transform-origin, $c-border, $padding) {
     position: absolute;
@@ -63,6 +44,57 @@
     }
 }
 
+.container {
+    @include container;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.title {
+    grid-column: 1 / span 2;
+    font-family: 'Righteous', cursive;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: end;
+    grid-column-gap: 15px;
+
+    &>p {
+        margin: 0px;
+    }
+    .en {
+        font-size: 70px;
+        grid-column: 1 / span 2;
+    }
+    .zh {
+        font-size: 30px;
+        font-family: 'ZCOOL KuaiLe', cursive;
+    }
+    .sc {
+        font-size: 25px;
+    }
+}
+
+.shell {
+    padding: 55px;
+    background: black;
+    position: absolute;
+    border-radius: 50%;
+    transform: translate(-81px, -2px);
+}
+
+.durian {
+    padding: 35px 42px 121px 96px;
+}
+
+.stem {
+    position: absolute;
+    padding: 12px 5px;
+    background: var(--c-stem);
+    transform: translate(-37px, -35px);
+    border-radius: 8px;
+    border: var(--border-weight) solid var(--c-stem-border);
+    border-bottom: none;
+}
 
 .spikey {
     .spike {
@@ -83,6 +115,34 @@
             box-shadow: none;
         }
     }
+}
+
+.loader {
+    @keyframes fadein {
+        0%, 100% { opacity: 0 }
+        10% { opacity: 1 }
+    }
+    .flesh::before, .flesh::after {
+        animation: fadein 2s infinite;
+    }
+    .flesh-left::before { animation-delay: 0.5s }
+    .flesh-right::after { animation-delay: 1s }
+    .flesh-right::before { animation-delay: 1.5s }
+    .flesh-left::after { animation-delay: 2s }
+
+    $rotate-deg: 5deg;
+    
+    @keyframes teeter {
+        0%, 50%, 55%, 60%, 100% { transform: rotate(0deg) }
+        52% { transform: rotate($rotate-deg) }
+        58% { transform: rotate(-$rotate-deg) }
+    }
+    &.durian {
+        animation: teeter 2s linear infinite;
+    }
+    
+    
+    
 }
 
 :not(spikey) {
@@ -106,29 +166,29 @@
     }
 }
 
-
 .opened>.flesh {
     background: var(--c-flesh-container);
     padding: 51px 26px 46px 25px;
     position: absolute;
+
     &.flesh-right {
         border-radius: 30px 100px 100px 30px;
         transform: translate(-31px, 4px);
         &::before {
-            transform: translate(-15px, -3px);
+            transform: var(--translate-flesh-long);
         }
         &::after {
-            transform: translate(-15px, -42px);
+            transform: var(--translate-flesh-short);
         }
     }
     &.flesh-left {
         border-radius: 100px 30px 30px 100px;
         transform: translate(-74px, 4px) scaleY(-1);
         &::before {
-            transform: scaleX(-1) translate(15px, -3px);
+            transform: var(--translate-flesh-long) var(--scale-flesh-left);
         }
         &::after {
-            transform: scaleX(-1) translate(15px, -42px);
+            transform: var(--translate-flesh-short) var(--scale-flesh-left);
         }
     }
     $w-border: 5px;
@@ -146,9 +206,4 @@
         padding: 20px 16px;
         border-radius: 30px 50px 100px 30px;
     }
-}
-
-.container {
-    @include container;
-    grid-template-columns: repeat(2, 1fr);
 }

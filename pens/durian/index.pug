@@ -2,6 +2,11 @@ link( rel="stylesheet" href="./style.css" type="text/css")
 
 
 .container
+    div.title
+        p.en Durian
+        p.zh 榴莲
+        p.sc Durio zibethinus
+
     .durian.default
         .stem
         - var spikeCount = 12;
@@ -9,13 +14,6 @@ link( rel="stylesheet" href="./style.css" type="text/css")
         - while(n < spikeCount)
             .spike(id="spike"+ n++)
 
-    .durian.colored
-        .stem
-        - var spikeCount = 12;
-        - var n = 0
-        - while(n < spikeCount)
-            .spike(id="spike"+ n++)
-    
     .durian.default.opened
         .stem
         - var spikeCount = 12;
@@ -25,6 +23,22 @@ link( rel="stylesheet" href="./style.css" type="text/css")
         .flesh.flesh-right
         .flesh.flesh-left
 
+    .durian.default.opened.colored
+        .stem
+        - var spikeCount = 12;
+        - var n = 0
+        - while(n < spikeCount)
+            .spike(id="spike"+ n++)
+        .flesh.flesh-right
+        .flesh.flesh-left
+
+    .durian.colored
+        .stem
+        - var spikeCount = 12;
+        - var n = 0
+        - while(n < spikeCount)
+            .spike(id="spike"+ n++)
+    
     .durian.colored
         .stem
         - var spikeCount = 12;
@@ -42,15 +56,6 @@ link( rel="stylesheet" href="./style.css" type="text/css")
             - while(n < spikeCountInner2)
                 .spike(id="spike"+ n++)
 
-    .durian.default.opened.colored
-        .stem
-        - var spikeCount = 12;
-        - var n = 0
-        - while(n < spikeCount)
-            .spike(id="spike"+ n++)
-        .flesh.flesh-right
-        .flesh.flesh-left
-
     .durian.colored.spikey
         .stem
         - var spikeCount = 20;
@@ -67,3 +72,12 @@ link( rel="stylesheet" href="./style.css" type="text/css")
             - var n = 0
             - while(n < spikeCountInner2)
                 .spike(id="spike"+ n++)
+
+    .durian.default.opened.colored.loader
+        .stem
+        - var spikeCount = 12;
+        - var n = 0
+        - while(n < spikeCount)
+            .spike(id="spike"+ n++)
+        .flesh.flesh-right
+        .flesh.flesh-left
