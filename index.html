@@ -84,6 +84,7 @@
         ];
 
         const completedPens = [
+            'durian',
             'tapir',
             'awkward-pikachu',
             'background-gradient',
@@ -123,7 +124,7 @@
             },
             methods: {
                 goToPen: function (name) {
-                    window.location.href = window.location.href.replace('/index.html', `/pens/${name}/index.html`);
+                    location.href = location.href.replace('/index.html', `/pens/${name}/index.html`);
                 }
             }
         });
