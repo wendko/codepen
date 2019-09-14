@@ -1,5 +1,11 @@
 link( rel="stylesheet" href="./style.css" type="text/css")
 
+- var normalSpikeCount = 12;
+- var normalInner1SpikeCount = 7;
+- var normalInner2SpikeCount = 6;
+- var spikeySpikeCount = 20;
+- var spikeyInner1SpikeCount = 10;
+- var spikeyInner2SpikeCount = 7;
 
 .container
     div.title
@@ -7,77 +13,94 @@ link( rel="stylesheet" href="./style.css" type="text/css")
         p.zh 榴莲
         p.sc Durio zibethinus
 
-    .durian.default
+    .durian
         .stem
-        - var spikeCount = 12;
         - var n = 0
-        - while(n < spikeCount)
+        - while(n < normalSpikeCount)
             .spike(id="spike"+ n++)
 
     .durian.colored
         .stem
-        - var spikeCount = 12;
         - var n = 0
-        - while(n < spikeCount)
+        - while(n < normalSpikeCount)
             .spike(id="spike"+ n++)
 
-    .durian.default.opened
+    .durian.opened
         .stem
-        - var spikeCount = 12;
         - var n = 0
-        - while(n < spikeCount)
+        - while(n < normalSpikeCount)
             .spike(id="spike"+ n++)
         .flesh.flesh-right
         .flesh.flesh-left
 
-    .durian.default.opened.colored
+    .durian.opened.colored
         .stem
-        - var spikeCount = 12;
         - var n = 0
-        - while(n < spikeCount)
+        - while(n < normalSpikeCount)
             .spike(id="spike"+ n++)
         .flesh.flesh-right
         .flesh.flesh-left
 
     .durian.colored
         .stem
-        - var spikeCount = 12;
-        - var spikeCountInner1 = 7;
-        - var spikeCountInner2 = 6;
         - var n = 0
-        - while(n < spikeCount)
+        - while(n < normalSpikeCount)
             .spike(id="spike"+ n++)
         .inner-spikes.inner-level-1
             - var n = 0
-            - while(n < spikeCountInner1)
+            - while(n < normalInner1SpikeCount)
                 .spike(id="spike"+ n++)
         .inner-spikes.inner-level-2
             - var n = 0
-            - while(n < spikeCountInner2)
+            - while(n < normalInner2SpikeCount)
                 .spike(id="spike"+ n++)
 
     .durian.colored.spikey
         .stem
-        - var spikeCount = 20;
-        - var spikeCountInner1 = 10;
-        - var spikeCountInner2 = 7;
         - var n = 0
-        - while(n < spikeCount)
+        - while(n < spikeySpikeCount)
             .spike(id="spike"+ n++)
         .inner-spikes.inner-level-1
             - var n = 0
-            - while(n < spikeCountInner1)
+            - while(n < spikeyInner1SpikeCount)
                 .spike(id="spike"+ n++)
         .inner-spikes.inner-level-2
             - var n = 0
-            - while(n < spikeCountInner2)
+            - while(n < spikeyInner2SpikeCount)
                 .spike(id="spike"+ n++)
 
-    .durian.default.opened.colored.loader
+    .durian.spikey
         .stem
-        - var spikeCount = 12;
         - var n = 0
-        - while(n < spikeCount)
+        - while(n < spikeySpikeCount)
+            .spike(id="spike"+ n++)
+
+    .durian.spikey
+        .stem
+        - var n = 0
+        - while(n < spikeySpikeCount)
+            .spike(id="spike"+ n++)
+        .inner-spikes.inner-level-1
+            - var n = 0
+            - while(n < spikeyInner1SpikeCount)
+                .spike(id="spike"+ n++)
+        .inner-spikes.inner-level-2
+            - var n = 0
+            - while(n < spikeyInner2SpikeCount)
+                .spike(id="spike"+ n++)
+
+    .durian.colored.opened.spikey
+        .stem
+        - var n = 0
+        - while(n < spikeySpikeCount)
+            .spike(id="spike"+ n++)
+        .flesh.flesh-right
+        .flesh.flesh-left
+
+    .durian.spikey.opened.colored.loader
+        .stem
+        - var n = 0
+        - while(n < spikeySpikeCount)
             .spike(id="spike"+ n++)
         .flesh.flesh-right
         .flesh.flesh-left

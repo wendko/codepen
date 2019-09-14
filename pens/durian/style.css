@@ -67,10 +67,10 @@
 
 .stem {
   position: absolute;
-  padding: 12px 5px;
+  padding: 11px 5px;
   background: var(--c-stem);
   transform: translate(-37px, -35px);
-  border-radius: 8px;
+  border-radius: 10px 0px 8px;
   border: var(--border-weight) solid var(--c-stem-border);
   border-bottom: none;
 }
@@ -78,7 +78,7 @@
 .spikey .spike {
   position: absolute;
   background: var(--c-durian);
-  padding: 7.5px;
+  padding: 7px;
   border-radius: 0px 5px 0px 0px;
   border: var(--border-weight) solid var(--c-spike-border);
   border-bottom: none;

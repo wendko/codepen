@@ -88,17 +88,17 @@
 
 .stem {
     position: absolute;
-    padding: 12px 5px;
+    padding: 11px 5px;
     background: var(--c-stem);
     transform: translate(-37px, -35px);
-    border-radius: 8px;
+    border-radius: 10px 0px 8px;
     border: var(--border-weight) solid var(--c-stem-border);
     border-bottom: none;
 }
 
 .spikey {
     .spike {
-        @include spike(20, -27px 53px, var(--c-spike-border), 7.5px);
+        @include spike(20, -27px 53px, var(--c-spike-border), 7px);
         box-shadow: -22px 18px 0px 17px var(--c-durian);
     }
     &>.inner-spikes.inner-level-1 {
