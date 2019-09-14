@@ -1,0 +1,69 @@
+link( rel="stylesheet" href="./style.css" type="text/css")
+
+
+.container
+    .durian.default
+        .stem
+        - var spikeCount = 12;
+        - var n = 0
+        - while(n < spikeCount)
+            .spike(id="spike"+ n++)
+
+    .durian.colored
+        .stem
+        - var spikeCount = 12;
+        - var n = 0
+        - while(n < spikeCount)
+            .spike(id="spike"+ n++)
+    
+    .durian.default.opened
+        .stem
+        - var spikeCount = 12;
+        - var n = 0
+        - while(n < spikeCount)
+            .spike(id="spike"+ n++)
+        .flesh.flesh-right
+        .flesh.flesh-left
+
+    .durian.colored
+        .stem
+        - var spikeCount = 12;
+        - var spikeCountInner1 = 7;
+        - var spikeCountInner2 = 6;
+        - var n = 0
+        - while(n < spikeCount)
+            .spike(id="spike"+ n++)
+        .inner-spikes.inner-level-1
+            - var n = 0
+            - while(n < spikeCountInner1)
+                .spike(id="spike"+ n++)
+        .inner-spikes.inner-level-2
+            - var n = 0
+            - while(n < spikeCountInner2)
+                .spike(id="spike"+ n++)
+
+    .durian.default.opened.colored
+        .stem
+        - var spikeCount = 12;
+        - var n = 0
+        - while(n < spikeCount)
+            .spike(id="spike"+ n++)
+        .flesh.flesh-right
+        .flesh.flesh-left
+
+    .durian.colored.spikey
+        .stem
+        - var spikeCount = 20;
+        - var spikeCountInner1 = 10;
+        - var spikeCountInner2 = 7;
+        - var n = 0
+        - while(n < spikeCount)
+            .spike(id="spike"+ n++)
+        .inner-spikes.inner-level-1
+            - var n = 0
+            - while(n < spikeCountInner1)
+                .spike(id="spike"+ n++)
+        .inner-spikes.inner-level-2
+            - var n = 0
+            - while(n < spikeCountInner2)
+                .spike(id="spike"+ n++)

@@ -1,0 +1,153 @@
+@import '../../common/container.scss';
+
+:root {
+    --border-weight: 5px;
+    --c-stem-border: brown;
+    --c-spike-border: green;
+    --c-stem: transparent;
+    --c-durian: transparent;
+    --c-flesh-container: green;
+    --c-flesh: #e0ca00;
+    --c-flesh-border: #b8a500;
+}
+
+.colored {
+    --c-stem-border: black;
+    --c-spike-border: black;
+    --c-stem: brown;
+    --c-durian: green;
+    --c-flesh-border: transparent;
+}
+
+.shell {
+    padding: 55px;
+    background: black;
+    position: absolute;
+    border-radius: 50%;
+    transform: translate(-81px, -2px);
+}
+
+.durian {
+    padding: 35px 42px 121px 96px;
+    outline: 1px dashed red;
+}
+
+.stem {
+    position: absolute;
+    padding: 12px 5px;
+    background: var(--c-stem);
+    transform: translate(-37px, -35px);
+    border-radius: 8px;
+    border: var(--border-weight) solid var(--c-stem-border);
+    border-bottom: none;
+}
+
+
+@mixin spike($count, $transform-origin, $c-border, $padding) {
+    position: absolute;
+    background: var(--c-durian);
+    padding: $padding;
+    border-radius: 0px 5px 0px 0px;
+    border: var(--border-weight) solid $c-border;
+    border: {
+        bottom: none;
+        left: none;
+    }
+    transform-origin: $transform-origin;
+
+    $rotate-deg: 360deg / $count;
+    @for $i from 1 through $count {
+        &:nth-child(#{$i}) {
+            transform: rotate(($i - 1) * $rotate-deg);
+        }
+    }
+}
+
+
+.spikey {
+    .spike {
+        @include spike(20, -27px 53px, var(--c-spike-border), 7.5px);
+        box-shadow: -22px 18px 0px 17px var(--c-durian);
+    }
+    &>.inner-spikes.inner-level-1 {
+        transform: translate(2px, 18px) rotate(11deg);
+        &>.spike {
+            @include spike(10, -22px 40px, var(--c-spike-border), 5px);
+            box-shadow: none;
+        }
+    }
+    &>.inner-spikes.inner-level-2 {
+        transform: translate(-10px, 28px) rotate(7deg);
+        &>.spike {
+            @include spike(7, -13px 26px, var(--c-spike-border), 3.5px);
+            box-shadow: none;
+        }
+    }
+}
+
+:not(spikey) {
+    .spike {
+        @include spike(12, -27px 52px, var(--c-spike-border), 10px);
+        box-shadow: -22px 22px 0px 17px var(--c-durian);
+    }
+    .inner-spikes.inner-level-1 {
+        transform: translate(2px, 19px) rotate(20deg);
+        &>.spike {
+            @include spike(7, -16px 41px, var(--c-spike-border), 8px);
+            box-shadow: none;
+        }
+    }
+    .inner-spikes.inner-level-2 {
+        transform: translate(-23px, 23px) rotate(-11deg);
+        &>.spike {
+            @include spike(6, -10px 27px, var(--c-spike-border), 5px);
+            box-shadow: none;
+        }
+    }
+}
+
+
+.opened>.flesh {
+    padding: 44px 22px;
+    position: absolute;
+    &.flesh-right {
+        border-radius: 30px 100px 100px 30px;
+        transform: translate(-28px,7px);
+        &::before {
+            transform: translate(-18px, 0px);
+        }
+        &::after {
+            transform: translate(-18px, -43px);
+        }
+    }
+    &.flesh-left {
+        border-radius: 100px 30px 30px 100px;
+        transform: translate(-73px, 7px) scaleY(-1);
+        &::before {
+            transform: scaleX(-1) translate(16px, -3px);
+        }
+        &::after {
+            transform: scaleX(-1) translate(16px, -45px);
+        }
+    }
+    $w-border: 5px;
+    &::after, &::before {
+        content: '';
+        position: absolute;
+        background: var(--c-flesh);
+        border: $w-border solid var(--c-flesh-border);
+    }    
+    &::after {
+        padding: 19px - $w-border;
+        border-radius: 20px 50px 25px 20px;
+    }
+    &::before {
+        padding: 23px - $w-border  19px - $w-border;
+        border-radius: 30px 50px 100px 30px;
+    }
+}
+
+.container {
+    @include container;
+    grid-template-columns: repeat(2, 1fr);
+}
