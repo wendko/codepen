@@ -6,9 +6,9 @@
     --c-spike-border: green;
     --c-stem: transparent;
     --c-durian: transparent;
-    --c-flesh-container: green;
-    --c-flesh: #e0ca00;
-    --c-flesh-border: #b8a500;
+    --c-flesh-container: #72a072;
+    --c-flesh: #ffe600;
+    --c-flesh-border: black;
 }
 
 .colored {
@@ -16,7 +16,7 @@
     --c-spike-border: black;
     --c-stem: brown;
     --c-durian: green;
-    --c-flesh-border: transparent;
+    --c-flesh-border: black;
 }
 
 .shell {
@@ -108,26 +108,27 @@
 
 
 .opened>.flesh {
-    padding: 44px 22px;
+    background: var(--c-flesh-container);
+    padding: 51px 26px 46px 25px;
     position: absolute;
     &.flesh-right {
         border-radius: 30px 100px 100px 30px;
-        transform: translate(-28px,7px);
+        transform: translate(-31px, 4px);
         &::before {
-            transform: translate(-18px, 0px);
+            transform: translate(-15px, -3px);
         }
         &::after {
-            transform: translate(-18px, -43px);
+            transform: translate(-15px, -42px);
         }
     }
     &.flesh-left {
         border-radius: 100px 30px 30px 100px;
-        transform: translate(-73px, 7px) scaleY(-1);
+        transform: translate(-74px, 4px) scaleY(-1);
         &::before {
-            transform: scaleX(-1) translate(16px, -3px);
+            transform: scaleX(-1) translate(15px, -3px);
         }
         &::after {
-            transform: scaleX(-1) translate(16px, -45px);
+            transform: scaleX(-1) translate(15px, -42px);
         }
     }
     $w-border: 5px;
@@ -135,14 +136,14 @@
         content: '';
         position: absolute;
         background: var(--c-flesh);
-        border: $w-border solid var(--c-flesh-border);
+        box-shadow: 0px 0px 0px 2px var(--c-flesh-border);
     }    
     &::after {
-        padding: 19px - $w-border;
+        padding: 16px;
         border-radius: 20px 50px 25px 20px;
     }
     &::before {
-        padding: 23px - $w-border  19px - $w-border;
+        padding: 20px 16px;
         border-radius: 30px 50px 100px 30px;
     }
 }

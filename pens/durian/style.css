@@ -4,9 +4,9 @@
   --c-spike-border: green;
   --c-stem: transparent;
   --c-durian: transparent;
-  --c-flesh-container: green;
-  --c-flesh: #e0ca00;
-  --c-flesh-border: #b8a500;
+  --c-flesh-container: #72a072;
+  --c-flesh: #ffe600;
+  --c-flesh-border: black;
 }
 
 .colored {
@@ -14,7 +14,7 @@
   --c-spike-border: black;
   --c-stem: brown;
   --c-durian: green;
-  --c-flesh-border: transparent;
+  --c-flesh-border: black;
 }
 
 .shell {
@@ -307,41 +307,42 @@
 }
 
 .opened > .flesh {
-  padding: 44px 22px;
+  background: var(--c-flesh-container);
+  padding: 51px 26px 46px 25px;
   position: absolute;
 }
 .opened > .flesh.flesh-right {
   border-radius: 30px 100px 100px 30px;
-  transform: translate(-28px, 7px);
+  transform: translate(-31px, 4px);
 }
 .opened > .flesh.flesh-right::before {
-  transform: translate(-18px, 0px);
+  transform: translate(-15px, -3px);
 }
 .opened > .flesh.flesh-right::after {
-  transform: translate(-18px, -43px);
+  transform: translate(-15px, -42px);
 }
 .opened > .flesh.flesh-left {
   border-radius: 100px 30px 30px 100px;
-  transform: translate(-73px, 7px) scaleY(-1);
+  transform: translate(-74px, 4px) scaleY(-1);
 }
 .opened > .flesh.flesh-left::before {
-  transform: scaleX(-1) translate(16px, -3px);
+  transform: scaleX(-1) translate(15px, -3px);
 }
 .opened > .flesh.flesh-left::after {
-  transform: scaleX(-1) translate(16px, -45px);
+  transform: scaleX(-1) translate(15px, -42px);
 }
 .opened > .flesh::after, .opened > .flesh::before {
   content: "";
   position: absolute;
   background: var(--c-flesh);
-  border: 5px solid var(--c-flesh-border);
+  box-shadow: 0px 0px 0px 2px var(--c-flesh-border);
 }
 .opened > .flesh::after {
-  padding: 14px;
+  padding: 16px;
   border-radius: 20px 50px 25px 20px;
 }
 .opened > .flesh::before {
-  padding: 18px 14px;
+  padding: 20px 16px;
   border-radius: 30px 50px 100px 30px;
 }
 
