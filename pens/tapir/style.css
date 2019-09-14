@@ -136,6 +136,7 @@
 }
 .foot.right {
   margin: 136px 104px;
+  animation-delay: 1s;
 }
 
 .laptop {
