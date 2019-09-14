@@ -23,6 +23,8 @@
             font-weight: 900;
             border: 2px dotted #e48bff;
             color: #750b95;
+            transition-property: box-shadow;
+            transition: box-shadow 0.1s ease-in-out;
         }
 
         div.pen-item:nth-child(2n) {
@@ -77,7 +79,6 @@
             'malaysian-states',
             'mamak',
             'merdeka-2019',
-            'pokemon-badges',
             'programming-logos',
             'resizable-lantern',
             'sunflower',
@@ -124,8 +125,10 @@
             },
             methods: {
                 goToPen: function (name) {
-                    location.href = location.href.replace('/index.html', `/pens/${name}/index.html`);
-                    return false;
+                    const currentUrl = window.location.href;
+                    window.location.href = currentUrl.match('/index.html') ? 
+                                        currentUrl.replace('/index.html', `/pens/${name}/index.html`)
+                                        : `${currentUrl}/pens/${name}`;
                 }
             }
         });
