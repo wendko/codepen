@@ -125,6 +125,7 @@
             methods: {
                 goToPen: function (name) {
                     location.href = location.href.replace('/index.html', `/pens/${name}/index.html`);
+                    return false;
                 }
             }
         });
