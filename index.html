@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CSS projects by wendko</title>
     <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <style>
         .title,
-        .pen-item {
+        .pen-item,
+        .footer {
             font-family: 'Livvic', sans-serif;
             text-align: center;
         }
@@ -50,7 +50,7 @@
             border-radius: 5px;
         }
 
-        .title {
+        .title, .footer {
             color: #a16161;
         }
 
@@ -62,7 +62,8 @@
 
 <body>
     <h1 class="title">
-        CSS projects by <a href="https://github.com/wendko" class="link">@wendko</a>
+        CSS projects by 
+        <a href="https://github.com/wendko" class="link" target="_blank">@wendko</a>
     </h1>
     <div id="penList" class="pen-list">
         <div v-for="pen in pens" :key="pen.id" class="pen-item" v-on:click="goToPen(pen.name)">
@@ -70,6 +71,12 @@
             <span v-if="pen.draft" class="label-draft">draft</span>
         </div>
     </div>
+    <h3 class="footer">Made with 
+        <a href="https://vuejs.org" class="link" target="_blank">Vue.js</a>, 
+        <a href="https://sass-lang.com" class="link" target="_blank">Sass</a>
+        and 
+        <a href="https://pugjs.org" class="link" target="_blank">Pug</a>
+    </h3> 
 
     <script>
         const draftedPens = [
