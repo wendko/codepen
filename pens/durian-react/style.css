@@ -1,0 +1,352 @@
+@import url("https://fonts.googleapis.com/css?family=Righteous|ZCOOL+KuaiLe&display=swap");
+:root {
+  --border-weight: 5px;
+  --c-stem-border: brown;
+  --c-spike-border: green;
+  --c-stem: transparent;
+  --c-durian: transparent;
+  --c-flesh-container: #72a072;
+  --c-flesh: #ffe600;
+  --c-flesh-border: black;
+  --translate-flesh-long: translate(-15px, -3px);
+  --translate-flesh-short: translate(-15px, -42px);
+  --scale-flesh-left: scaleX(-1);
+  --translate-flesh-left-after: scaleX(-1) translate(-15px, -42px);
+  --c-react-color: #3f883d;
+}
+
+.colored {
+  --c-stem-border: black;
+  --c-spike-border: black;
+  --c-stem: brown;
+  --c-durian: green;
+  --c-flesh-border: black;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.shell {
+  padding: 55px;
+  background: black;
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-81px, -2px);
+}
+
+.durian {
+  padding: 35px 42px 121px 96px;
+}
+
+.stem {
+  position: absolute;
+  padding: 11px 5px;
+  background: var(--c-stem);
+  transform: translate(-37px, -35px);
+  border-radius: 10px 0px 8px;
+  border: var(--border-weight) solid var(--c-stem-border);
+  border-bottom: none;
+}
+
+.spikey .spike {
+  position: absolute;
+  background: var(--c-durian);
+  padding: 7px;
+  border-radius: 0px 5px 0px 0px;
+  border: var(--border-weight) solid var(--c-spike-border);
+  border-bottom: none;
+  border-left: none;
+  transform-origin: -27px 53px;
+  box-shadow: -22px 18px 0px 17px var(--c-durian);
+}
+.spikey .spike:nth-child(1) {
+  transform: rotate(0deg);
+}
+.spikey .spike:nth-child(2) {
+  transform: rotate(18deg);
+}
+.spikey .spike:nth-child(3) {
+  transform: rotate(36deg);
+}
+.spikey .spike:nth-child(4) {
+  transform: rotate(54deg);
+}
+.spikey .spike:nth-child(5) {
+  transform: rotate(72deg);
+}
+.spikey .spike:nth-child(6) {
+  transform: rotate(90deg);
+}
+.spikey .spike:nth-child(7) {
+  transform: rotate(108deg);
+}
+.spikey .spike:nth-child(8) {
+  transform: rotate(126deg);
+}
+.spikey .spike:nth-child(9) {
+  transform: rotate(144deg);
+}
+.spikey .spike:nth-child(10) {
+  transform: rotate(162deg);
+}
+.spikey .spike:nth-child(11) {
+  transform: rotate(180deg);
+}
+.spikey .spike:nth-child(12) {
+  transform: rotate(198deg);
+}
+.spikey .spike:nth-child(13) {
+  transform: rotate(216deg);
+}
+.spikey .spike:nth-child(14) {
+  transform: rotate(234deg);
+}
+.spikey .spike:nth-child(15) {
+  transform: rotate(252deg);
+}
+.spikey .spike:nth-child(16) {
+  transform: rotate(270deg);
+}
+.spikey .spike:nth-child(17) {
+  transform: rotate(288deg);
+}
+.spikey .spike:nth-child(18) {
+  transform: rotate(306deg);
+}
+.spikey .spike:nth-child(19) {
+  transform: rotate(324deg);
+}
+.spikey .spike:nth-child(20) {
+  transform: rotate(342deg);
+}
+.spikey > .inner-spikes.inner-level-1 {
+  transform: translate(2px, 18px) rotate(11deg);
+}
+.spikey > .inner-spikes.inner-level-1 > .spike {
+  position: absolute;
+  background: var(--c-durian);
+  padding: 5px;
+  border-radius: 0px 5px 0px 0px;
+  border: var(--border-weight) solid var(--c-spike-border);
+  border-bottom: none;
+  border-left: none;
+  transform-origin: -22px 40px;
+  box-shadow: none;
+}
+.spikey > .inner-spikes.inner-level-1 > .spike:nth-child(1) {
+  transform: rotate(0deg);
+}
+.spikey > .inner-spikes.inner-level-1 > .spike:nth-child(2) {
+  transform: rotate(36deg);
+}
+.spikey > .inner-spikes.inner-level-1 > .spike:nth-child(3) {
+  transform: rotate(72deg);
+}
+.spikey > .inner-spikes.inner-level-1 > .spike:nth-child(4) {
+  transform: rotate(108deg);
+}
+.spikey > .inner-spikes.inner-level-1 > .spike:nth-child(5) {
+  transform: rotate(144deg);
+}
+.spikey > .inner-spikes.inner-level-1 > .spike:nth-child(6) {
+  transform: rotate(180deg);
+}
+.spikey > .inner-spikes.inner-level-1 > .spike:nth-child(7) {
+  transform: rotate(216deg);
+}
+.spikey > .inner-spikes.inner-level-1 > .spike:nth-child(8) {
+  transform: rotate(252deg);
+}
+.spikey > .inner-spikes.inner-level-1 > .spike:nth-child(9) {
+  transform: rotate(288deg);
+}
+.spikey > .inner-spikes.inner-level-1 > .spike:nth-child(10) {
+  transform: rotate(324deg);
+}
+.spikey > .inner-spikes.inner-level-2 {
+  transform: translate(-10px, 28px) rotate(7deg);
+}
+.spikey > .inner-spikes.inner-level-2 > .spike {
+  position: absolute;
+  background: var(--c-durian);
+  padding: 3.5px;
+  border-radius: 0px 5px 0px 0px;
+  border: var(--border-weight) solid var(--c-spike-border);
+  border-bottom: none;
+  border-left: none;
+  transform-origin: -13px 26px;
+  box-shadow: none;
+}
+.spikey > .inner-spikes.inner-level-2 > .spike:nth-child(1) {
+  transform: rotate(0deg);
+}
+.spikey > .inner-spikes.inner-level-2 > .spike:nth-child(2) {
+  transform: rotate(51.4285714286deg);
+}
+.spikey > .inner-spikes.inner-level-2 > .spike:nth-child(3) {
+  transform: rotate(102.8571428571deg);
+}
+.spikey > .inner-spikes.inner-level-2 > .spike:nth-child(4) {
+  transform: rotate(154.2857142857deg);
+}
+.spikey > .inner-spikes.inner-level-2 > .spike:nth-child(5) {
+  transform: rotate(205.7142857143deg);
+}
+.spikey > .inner-spikes.inner-level-2 > .spike:nth-child(6) {
+  transform: rotate(257.1428571429deg);
+}
+.spikey > .inner-spikes.inner-level-2 > .spike:nth-child(7) {
+  transform: rotate(308.5714285714deg);
+}
+
+.opened > .flesh {
+  background: var(--c-flesh-container);
+  padding: 51px 26px 46px 25px;
+  position: absolute;
+}
+.opened > .flesh.flesh-right {
+  border-radius: 30px 100px 100px 30px;
+  transform: translate(-31px, 4px);
+}
+.opened > .flesh.flesh-right::before {
+  transform: var(--translate-flesh-long);
+}
+.opened > .flesh.flesh-right::after {
+  transform: var(--translate-flesh-short);
+}
+.opened > .flesh.flesh-left {
+  border-radius: 100px 30px 30px 100px;
+  transform: translate(-74px, 4px) scaleY(-1);
+}
+.opened > .flesh.flesh-left::before {
+  transform: var(--translate-flesh-long) var(--scale-flesh-left);
+}
+.opened > .flesh.flesh-left::after {
+  transform: var(--translate-flesh-short) var(--scale-flesh-left);
+}
+.opened > .flesh::after, .opened > .flesh::before {
+  content: "";
+  position: absolute;
+  background: var(--c-flesh);
+  box-shadow: 0px 0px 0px 2px var(--c-flesh-border);
+}
+.opened > .flesh::after {
+  padding: 16px;
+  border-radius: 20px 50px 25px 20px;
+}
+.opened > .flesh::before {
+  padding: 20px 16px;
+  border-radius: 30px 50px 100px 30px;
+}
+
+.logo {
+  transform: scale(0.75);
+  padding: 100px 246px 218px 100px;
+}
+
+.react-logo, .durian {
+  position: absolute;
+}
+
+.react-logo {
+  padding: 108px 325px 210px 20px;
+  transform: translate(-100px, -100px);
+}
+.react-logo > .path {
+  position: absolute;
+  background: transparent;
+  padding: 53px 153px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 15px var(--c-react-color);
+}
+.react-logo > .path:nth-child(1) {
+  transform: rotate(60deg);
+}
+.react-logo > .path:nth-child(2) {
+  transform: rotate(120deg);
+}
+.react-logo > .path:nth-child(3) {
+  transform: rotate(180deg);
+}
+
+.durian {
+  transform: scale(0.8) translate(5px, -30px);
+}
+
+.animated.logo > .react-logo > .path:nth-child(1) {
+  transform: rotate(60deg);
+}
+.animated.logo > .react-logo > .path:nth-child(2) {
+  transform: rotate(120deg);
+}
+.animated.logo > .react-logo > .path:nth-child(3) {
+  transform: rotate(180deg);
+}
+@keyframes spin {
+  50% {
+    padding: 58px 153px;
+  }
+}
+
+.animated-durian-shake > .durian {
+  animation: shake 2s linear infinite;
+}
+@keyframes shake {
+  0%, 50%, 55%, 60%, 65%, 70%, 100% {
+    transform: scale(0.8) translate(5px, -30px) rotate(0deg);
+  }
+  52%, 62% {
+    transform: scale(0.8) translate(5px, -30px) rotate(5deg);
+  }
+  58%, 68% {
+    transform: scale(0.8) translate(5px, -30px) rotate(-5deg);
+  }
+}
+
+.animated-durian-traverse > .durian {
+  animation: traverse 8s linear infinite;
+}
+@keyframes traverse {
+  0%, 100% {
+    transform: scale(0.8) translate(-80px, -190px);
+  }
+  8% {
+    transform: scale(0.8) translate(70px, -50px);
+  }
+  16% {
+    transform: scale(0.8) translate(90px, 120px);
+  }
+  24% {
+    transform: scale(0.8) translate(-80px, -20px);
+  }
+  32% {
+    transform: scale(0.8) translate(90px, -180px);
+  }
+  40% {
+    transform: scale(0.8) translate(70px, 0px);
+  }
+  48% {
+    transform: scale(0.8) translate(-90px, 120px);
+  }
+  56% {
+    transform: scale(0.8) translate(-110px, 30px);
+  }
+  64% {
+    transform: scale(0.8) translate(-180px, -40px);
+  }
+  72% {
+    transform: scale(0.8) translate(5px, -100px);
+  }
+  80% {
+    transform: scale(0.8) translate(180px, -35px);
+  }
+  88% {
+    transform: scale(0.8) translate(-50px, 20px);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

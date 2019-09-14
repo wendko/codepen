@@ -1,0 +1,243 @@
+@import '../../common/container.scss';
+@import url('https://fonts.googleapis.com/css?family=Righteous|ZCOOL+KuaiLe&display=swap');
+
+:root {
+    --border-weight: 5px;
+    --c-stem-border: brown;
+    --c-spike-border: green;
+    --c-stem: transparent;
+    --c-durian: transparent;
+    --c-flesh-container: #72a072;
+    --c-flesh: #ffe600;
+    --c-flesh-border: black;
+    --translate-flesh-long: translate(-15px, -3px);
+    --translate-flesh-short: translate(-15px, -42px);
+    --scale-flesh-left: scaleX(-1);
+    --translate-flesh-left-after: scaleX(-1) translate(-15px, -42px);
+    --c-react-color: #3f883d;
+}
+
+.colored {
+    --c-stem-border: black;
+    --c-spike-border: black;
+    --c-stem: brown;
+    --c-durian: green;
+    --c-flesh-border: black;
+}
+
+@mixin spike($count, $transform-origin, $c-border, $padding) {
+    position: absolute;
+    background: var(--c-durian);
+    padding: $padding;
+    border-radius: 0px 5px 0px 0px;
+    border: var(--border-weight) solid $c-border;
+    border: {
+        bottom: none;
+        left: none;
+    }
+    transform-origin: $transform-origin;
+
+    $rotate-deg: 360deg / $count;
+    @for $i from 1 through $count {
+        &:nth-child(#{$i}) {
+            transform: rotate(($i - 1) * $rotate-deg);
+        }
+    }
+}
+
+.container {
+    @include container;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.shell {
+    padding: 55px;
+    background: black;
+    position: absolute;
+    border-radius: 50%;
+    transform: translate(-81px, -2px);
+}
+
+.durian {
+    padding: 35px 42px 121px 96px;
+}
+
+.stem {
+    position: absolute;
+    padding: 11px 5px;
+    background: var(--c-stem);
+    transform: translate(-37px, -35px);
+    border-radius: 10px 0px 8px;
+    border: var(--border-weight) solid var(--c-stem-border);
+    border-bottom: none;
+}
+
+.spikey {
+    .spike {
+        @include spike(20, -27px 53px, var(--c-spike-border), 7px);
+        box-shadow: -22px 18px 0px 17px var(--c-durian);
+    }
+    &>.inner-spikes.inner-level-1 {
+        transform: translate(2px, 18px) rotate(11deg);
+        &>.spike {
+            @include spike(10, -22px 40px, var(--c-spike-border), 5px);
+            box-shadow: none;
+        }
+    }
+    &>.inner-spikes.inner-level-2 {
+        transform: translate(-10px, 28px) rotate(7deg);
+        &>.spike {
+            @include spike(7, -13px 26px, var(--c-spike-border), 3.5px);
+            box-shadow: none;
+        }
+    }
+}
+
+.opened>.flesh {
+    background: var(--c-flesh-container);
+    padding: 51px 26px 46px 25px;
+    position: absolute;
+
+    &.flesh-right {
+        border-radius: 30px 100px 100px 30px;
+        transform: translate(-31px, 4px);
+        &::before {
+            transform: var(--translate-flesh-long);
+        }
+        &::after {
+            transform: var(--translate-flesh-short);
+        }
+    }
+    &.flesh-left {
+        border-radius: 100px 30px 30px 100px;
+        transform: translate(-74px, 4px) scaleY(-1);
+        &::before {
+            transform: var(--translate-flesh-long) var(--scale-flesh-left);
+        }
+        &::after {
+            transform: var(--translate-flesh-short) var(--scale-flesh-left);
+        }
+    }
+    $w-border: 5px;
+    &::after, &::before {
+        content: '';
+        position: absolute;
+        background: var(--c-flesh);
+        box-shadow: 0px 0px 0px 2px var(--c-flesh-border);
+    }    
+    &::after {
+        padding: 16px;
+        border-radius: 20px 50px 25px 20px;
+    }
+    &::before {
+        padding: 20px 16px;
+        border-radius: 30px 50px 100px 30px;
+    }
+}
+
+.logo {
+    transform: scale(0.75);
+    padding: 100px 246px 218px 100px;
+}
+
+.react-logo, .durian {
+    position: absolute;
+}
+
+.react-logo {
+    $offset: -100px;
+    padding: 108px 325px 210px 20px;
+    transform: translate($offset, $offset);
+    &>.path {
+        position: absolute;
+        background: transparent;
+        padding: 53px 153px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 0px 15px var(--c-react-color);
+        &:nth-child(1) {
+            transform: rotate(60deg);
+        }
+        &:nth-child(2) {
+            transform: rotate(120deg);
+        }
+        &:nth-child(3) {
+            transform: rotate(180deg);
+        }
+        
+    }
+}
+
+.durian {
+    transform: scale(0.8) translate(5px, -30px);
+}
+
+.animated.logo > .react-logo > .path {
+    &:nth-child(1) {
+        transform: rotate(60deg);
+    }
+    &:nth-child(2) {
+        transform: rotate(120deg);
+    }
+    &:nth-child(3) {
+        transform: rotate(180deg);
+    }
+
+    @keyframes spin {
+        0%, 100% {} 50% {padding: 58px 153px}
+    }
+}
+
+.animated-durian-shake > .durian {
+    $durian-default: scale(0.8) translate(5px, -30px);
+    $rotate-deg: 5deg;
+    @keyframes shake {
+        0%, 50%, 55%, 60%, 65%, 70%, 100% { transform: $durian-default rotate(0deg) }
+        52%, 62% { transform: $durian-default rotate($rotate-deg) }
+        58%, 68% { transform: $durian-default rotate(-$rotate-deg) }
+    }
+    animation: shake 2s linear infinite;
+}
+
+.animated-durian-traverse > .durian {
+    $durian-default: scale(0.8);
+    $n: 8%;
+    @keyframes traverse {
+        0%, 100% {
+            transform: $durian-default translate(-80px, -190px);
+        } 
+        #{$n} {
+            transform: $durian-default translate(70px, -50px);
+        }
+        #{2 * $n} {
+            transform: $durian-default translate(90px, 120px);
+        }
+        #{3 * $n} {
+            transform: $durian-default translate(-80px, -20px);
+        }
+        #{4 * $n} {
+            transform: $durian-default translate(90px, -180px);
+        }
+        #{5 * $n} {
+            transform: $durian-default translate(70px, 0px);
+        }
+        #{6 * $n} {
+            transform: $durian-default translate(-90px, 120px);
+        }
+        #{7 * $n} {
+            transform: $durian-default translate(-110px, 30px);
+        }
+        #{8 * $n} {
+            transform: $durian-default translate(-180px, -40px);
+        }
+        #{9 * $n} {
+            transform: $durian-default translate(5px, -100px);
+        }
+        #{10 * $n} {
+            transform: $durian-default translate(180px, -35px);
+        }
+        #{11 * $n} {
+            transform: $durian-default translate(-50px, 20px);
+        }
+    }
+    animation: traverse 8s linear infinite;
+}
