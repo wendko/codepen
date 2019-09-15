@@ -8,6 +8,8 @@ $h: 80px;
 $w: 150px;
 
 $c-focus: #6d7bcc;
+$c-bg-dark: #140d1c;
+$c-bg-light: #fdffdf;
 
 $c-moon: #e7d87f;
 $c-crater: #bf9147;
@@ -31,6 +33,10 @@ $c-sun: radial-gradient(
 $c-day-sky: #bed1ff;
 $c-cloud-1: #e5ecff;
 $c-cloud-2: #e9e2ff;
+
+:root {
+    --c-bg: #140d1c;
+}
 
 %night {
     background: $c-night-sky;
@@ -89,6 +95,11 @@ $c-cloud-2: #e9e2ff;
         36px 36px 0px -4px $c-cloud-1
         ;
     }
+}
+
+body {
+    background-color: var(--c-bg);
+    transition: background-color 0.3s ease-in-out;
 }
 
 .checkbox, .toggle {
