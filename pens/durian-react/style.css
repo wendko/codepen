@@ -12,7 +12,7 @@
   --translate-flesh-short: translate(-15px, -42px);
   --scale-flesh-left: scaleX(-1);
   --translate-flesh-left-after: scaleX(-1) translate(-15px, -42px);
-  --c-react-color: #3f883d;
+  --c-react-color: #0fd7ba;
 }
 
 .colored {
