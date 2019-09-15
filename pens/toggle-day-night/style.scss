@@ -24,10 +24,10 @@ $c-star-1: rgb(243, 175, 255);
 $c-star-2: rgb(190, 240, 255);
 $c-night-sky: rgb(35, 36, 59);
 
-$c-sun-glow: yellow;
-$c-sun: radial-gradient(white 30%, yellow);
-$c-day-sky: #c2c2ff;
-$c-cloud: white;
+$c-sun: #ffffa9;
+$c-day-sky: #bed1ff;
+$c-cloud-1: #e5ecff;
+$c-cloud-2: #e9e2ff;;
 
 %night {
     background: $c-night-sky;
@@ -69,21 +69,23 @@ $c-cloud: white;
     background: $c-day-sky;
     &>.celestial {
         background:$c-sun;
-        box-shadow: 0px 0px 10px 5px $c-sun-glow;
+        box-shadow: 
+            inset -10px -10px 20px orange,
+            inset -20px -30px 20px yellow;
         &::before {
             content: none;
         }
     }
     &>.scenery {
         padding: 10px 20px;
-        background: $c-cloud;
+        background: $c-cloud-1;
         border-radius: 20px 20px 0px 0px;
         transform: translate(2px, 10px);
         box-shadow: 
-        25px 3px 0px -3px $c-cloud,
-        0px 36px 0px -4px $c-cloud,
-        17px 32px $c-cloud,
-        36px 36px 0px -4px $c-cloud
+        25px 3px 0px -3px $c-cloud-2,
+        0px 36px 0px -4px $c-cloud-2,
+        17px 32px $c-cloud-2,
+        36px 36px 0px -4px $c-cloud-1
         ;
     }
 }
