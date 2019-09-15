@@ -15,7 +15,19 @@ $c-star-1: #f3afff;
 $c-star-2: #bef0ff;
 $c-night-sky: #23243b;
 
-$c-sun: #ffffa9;
+$c-sun-inner-1: #ff9d00;
+$c-sun-inner-2: #ffc400;
+$c-sun-inner-3: #ffee00;
+$c-sun-glow: $c-sun-inner-3;
+
+$c-sun: radial-gradient(
+    $c-sun-inner-1 55%,
+    $c-sun-inner-2 55%,
+    $c-sun-inner-2 70%,
+    $c-sun-inner-3 70%,
+    $c-sun-inner-3 90%,
+    $c-sun-inner-3
+    );
 $c-day-sky: #bed1ff;
 $c-cloud-1: #e5ecff;
 $c-cloud-2: #e9e2ff;
@@ -60,9 +72,7 @@ $c-cloud-2: #e9e2ff;
     background: $c-day-sky;
     &>.celestial {
         background:$c-sun;
-        box-shadow: 
-            inset -10px -10px 20px orange,
-            inset -20px -30px 20px yellow;
+        box-shadow: 0px 0px 6px 4px $c-sun-glow;
         &::before {
             content: none;
         }

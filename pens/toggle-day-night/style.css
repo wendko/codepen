@@ -30,8 +30,8 @@
   background: #bed1ff;
 }
 .checkbox:checked + .toggle > .celestial {
-  background: #ffffa9;
-  box-shadow: inset -10px -10px 20px orange, inset -20px -30px 20px yellow;
+  background: radial-gradient(#ff9d00 55%, #ffc400 55%, #ffc400 70%, #ffee00 70%, #ffee00 90%, #ffee00);
+  box-shadow: 0px 0px 6px 4px #ffee00;
 }
 .checkbox:checked + .toggle > .celestial::before {
   content: none;
