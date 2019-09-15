@@ -4,30 +4,21 @@
     @include container;
 }
 
-// .test {
-//     animation-timing-function: cubic-bezier(0.650, -0.550, 0.250, 1.500);
-//     animation-timing-function: steps(10);
-//     animation-name: scroll;
-//     animation-duration: 1.5s;
-//     animation-timing-function: cubic-bezier(0.650, -0.550, 0.250, 1.500);
-//     animation-iteration-count: infinite;
-//     transform-origin: 50% 20.5px;
-//     will-change: transform;
-// }
-
 $h: 80px;
 $w: 150px;
 
-$c-moon: rgb(231, 216, 127);
-$c-crater: rgb(191, 145, 71);
-$c-star-1: rgb(243, 175, 255);
-$c-star-2: rgb(190, 240, 255);
-$c-night-sky: rgb(35, 36, 59);
+$c-focus: #6d7bcc;
+
+$c-moon: #e7d87f;
+$c-crater: #bf9147;
+$c-star-1: #f3afff;
+$c-star-2: #bef0ff;
+$c-night-sky: #23243b;
 
 $c-sun: #ffffa9;
 $c-day-sky: #bed1ff;
 $c-cloud-1: #e5ecff;
-$c-cloud-2: #e9e2ff;;
+$c-cloud-2: #e9e2ff;
 
 %night {
     background: $c-night-sky;
@@ -138,4 +129,8 @@ $c-cloud-2: #e9e2ff;;
     &>.celestial {
         transform: translate(80px, 10px);
     }
+}
+
+.checkbox:focus + .toggle {
+    box-shadow: 0px 0px 0px 10px $c-focus;
 }

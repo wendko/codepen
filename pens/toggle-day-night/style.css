@@ -82,4 +82,8 @@
   transform: translate(80px, 10px);
 }
 
+.checkbox:focus + .toggle {
+  box-shadow: 0px 0px 0px 10px #6d7bcc;
+}
+
 /*# sourceMappingURL=style.css.map */
