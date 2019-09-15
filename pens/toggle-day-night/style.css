@@ -1,0 +1,85 @@
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.toggle {
+  background: #23243b;
+}
+.toggle > .celestial {
+  background: #e7d87f;
+}
+.toggle > .celestial::before {
+  content: "";
+  position: absolute;
+  padding: 3px;
+  border-radius: 50%;
+  background: #bf9147;
+  box-shadow: 16px -19px #bf9147, -6px -25px #bf9147, -2px 20px #bf9147, 19px 7px #bf9147, 7px 12px 0px 3px #bf9147, 5px -21px 0px 3px #bf9147, 15px -6px 0px 5px #bf9147, -4px -12px 0px 2px #bf9147;
+}
+.toggle > .scenery {
+  padding: 2px;
+  background: #f3afff;
+  border-radius: 50%;
+  transform: translate(100px, 15px);
+  box-shadow: 15px 10px 0px 2px #f3afff, 10px 30px 0px 1px #bef0ff, 25px 40px 0px 1px #f3afff, 5px 47px #bef0ff, 33px 20px 0px 2px #bef0ff, 28px 3px #bef0ff;
+}
+
+.checkbox:checked + .toggle {
+  background: #c2c2ff;
+}
+.checkbox:checked + .toggle > .celestial {
+  background: radial-gradient(white 30%, yellow);
+  box-shadow: 0px 0px 10px 5px yellow;
+}
+.checkbox:checked + .toggle > .celestial::before {
+  content: none;
+}
+.checkbox:checked + .toggle > .scenery {
+  padding: 10px 20px;
+  background: white;
+  border-radius: 20px 20px 0px 0px;
+  transform: translate(2px, 10px);
+  box-shadow: 25px 3px 0px -3px white, 0px 36px 0px -4px white, 17px 32px white, 36px 36px 0px -4px white;
+}
+
+.checkbox, .toggle {
+  position: absolute;
+}
+
+.checkbox {
+  height: 80px;
+  width: 150px;
+  z-index: 1;
+  opacity: 0;
+}
+
+.toggle-container {
+  display: contents;
+}
+
+.toggle {
+  height: 80px;
+  width: 150px;
+  margin: 3px 4px;
+  border-radius: 50px;
+}
+.toggle > * {
+  position: absolute;
+}
+.toggle > .celestial {
+  padding: 30px;
+  border-radius: 50%;
+  transform: translate(10px, 10px);
+  transition: transform 0.2s ease-in-out;
+}
+.toggle > .scenery {
+  transition: padding 0.2s ease-in-out, background 0.2s ease-in-out, border-radius 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.checkbox:checked + .toggle > .celestial {
+  transform: translate(80px, 10px);
+}
+
+/*# sourceMappingURL=style.css.map */
