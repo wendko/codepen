@@ -1,4 +1,4 @@
-const draftedPens = [
+const draftedPens = !!window.location.href.match(/draft/g) ? [
     'pokemon-badges',
     'async-defer-anim',
     'google',
@@ -8,7 +8,7 @@ const draftedPens = [
     'programming-logos',
     'resizable-lantern',
     'sunflower',
-];
+] : [];
 
 const completedPens = [
     'drink-more-water',
