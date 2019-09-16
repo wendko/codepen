@@ -1,5 +1,6 @@
 @import '../../common/container.scss';
 @import url('https://fonts.googleapis.com/css?family=Righteous');
+@import 'durian.scss';
 
 :root {
     --border-weight: 5px;
@@ -22,164 +23,31 @@
     --w-radio: 40px;
 }
 
-@mixin spike($count, $transform-origin, $c-border, $padding) {
-    position: absolute;
-    background: var(--c-durian);
-    padding: $padding;
-    border-radius: 0px 5px 0px 0px;
-    border: var(--border-weight) solid $c-border;
-    border: {
-        bottom: none;
-        left: none;
-    }
-    transform-origin: $transform-origin;
-
-    $rotate-deg: 360deg / $count;
-    @for $i from 1 through $count {
-        &:nth-child(#{$i}) {
-            transform: rotate(($i - 1) * $rotate-deg);
-        }
-    }
-}
-
-@keyframes shake {
-    0%, 5%, 10%, 15%, 20%, 100% { 
-        transform: scale(0.3) translate(-0px, -87px) rotate(0deg) 
-    }
-    2%, 12% { 
-        transform: scale(0.3) translate(-0px, -87px) rotate(5deg) 
-    }
-    8%, 18% { 
-        transform: scale(0.3) translate(-0px, -87px) rotate(-5deg) 
-    }
-}
+.durian {
+    @include durian;
+ }
 
 .container {
     @include container;
     grid-auto-flow: row;
-    // grid-template-rows: repeat(3, 1fr);
 }
 
-.option-text, .question-text {
+.option-text, .question-text, .footer-text {
     font-family: 'Righteous', cursive;
 }
 
 .question-text {
-    font-size: 25px;
+    font-size: 40px;
+    margin: 10px 0px 30px 0px;
 }
 
 .option-text {
     font-size: 20px;
 }
 
-// .title {
-//     grid-column: 1 / span 2;
-//     display: grid;
-//     grid-auto-flow: row;
-//     grid-template-columns: repeat(2, 1fr);
-//     place-items: end;
-//     grid-column-gap: 15px;
-
-//     &>p {
-//         margin: 0px;
-//     }
-//     .en {
-//         font-size: 70px;
-//         grid-column: 1 / span 2;
-//     }
-//     .zh {
-//         font-size: 30px;
-//         font-family: 'ZCOOL KuaiLe', cursive;
-//     }
-//     .sc {
-//         font-size: 25px;
-//     }
-// }
-
-.durian {
-    transform: var(--scale-durian) var(--translate-durian);
-    transform-origin: 0px 0px;
-
-    .shell {
-        padding: 55px;
-        background: black;
-        position: absolute;
-        border-radius: 50%;
-        transform: translate(-81px, -2px);
-    }
-
-    .stem {
-        position: absolute;
-        padding: 11px 5px;
-        background: var(--c-stem);
-        transform: translate(-37px, -35px);
-        border-radius: 10px 0px 8px;
-        border: var(--border-weight) solid var(--c-stem-border);
-        border-bottom: none;
-    }
-    
-    .spike {
-        @include spike(20, -27px 53px, var(--c-spike-border), 7px);
-        box-shadow: -22px 18px 0px 17px var(--c-durian);
-    }
-
-    &>.inner-spikes.inner-level-1 {
-        transform: translate(2px, 18px) rotate(11deg);
-        &>.spike {
-            @include spike(10, -22px 40px, var(--c-spike-border), 5px);
-            box-shadow: none;
-        }
-    }
-
-    &>.inner-spikes.inner-level-2 {
-        transform: translate(-10px, 28px) rotate(7deg);
-        &>.spike {
-            @include spike(7, -13px 26px, var(--c-spike-border), 3.5px);
-            box-shadow: none;
-        }
-    }
-    
-    .flesh {
-        background: var(--c-flesh-container);
-        padding: 51px 26px 46px 25px;
-        position: absolute;
-    
-        &.flesh-right {
-            border-radius: 30px 100px 100px 30px;
-            transform: translate(-31px, 4px);
-            &::before {
-                transform: var(--translate-flesh-long);
-            }
-            &::after {
-                transform: var(--translate-flesh-short);
-            }
-        }
-        &.flesh-left {
-            border-radius: 100px 30px 30px 100px;
-            transform: translate(-74px, 4px) scaleY(-1);
-            &::before {
-                transform: var(--translate-flesh-long) var(--scale-flesh-left);
-            }
-            &::after {
-                transform: var(--translate-flesh-short) var(--scale-flesh-left);
-            }
-        }
-        $w-border: 5px;
-        &::after, &::before {
-            content: '';
-            position: absolute;
-            background: var(--c-flesh);
-            box-shadow: 0px 0px 0px 2px var(--c-flesh-border);
-        }    
-        &::after {
-            padding: 16px;
-            border-radius: 20px 50px 25px 20px;
-        }
-        &::before {
-            padding: 20px 16px;
-            border-radius: 30px 50px 100px 30px;
-        }
-    }
+.footer-text {
+    font-size: 15px;
+    text-align: center;
 }
 
 .radio {
@@ -189,7 +57,6 @@
     width: var(--w-radio); 
     z-index: 1;
     opacity: 0;
-    // outline: 1px dashed red;
 
     & + .durian {
         &>.inner-spikes { display: block }
@@ -197,9 +64,17 @@
     }
     
     &:checked + .durian {
-        animation: shake 2s linear 0s 1;
+        animation: shake 0.5s linear 0s 1;
         &>.inner-spikes { display: none }
         &>.flesh { display: block }
+    }
+
+    &:not(:focus), &:checked {
+        --c-spike-border: black;
+    }
+
+    &:focus + .durian {
+        --c-spike-border: rgb(37, 163, 75);
     }
 }
 
@@ -214,19 +89,36 @@
     text-align: center;
     display: grid;
     place-items: center;
+    padding: 0px 38px 30px;
 }
 
 .options-list {
     display: grid;
     place-items: start;
     row-gap: 30px;
+    margin-bottom: 20px;
+    @media only screen and (min-width: 600px) {
+        column-gap: 50px;
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .emphasis {
     color: var(--c-durian);
     text-transform: uppercase;
-    text-shadow: 1.5px 1.5px black;
     font-weight: 900;
+    text-shadow: 
+        0.2px 0.2px black, 
+        0.6px 0.6px black, 
+        1px 1px black, 
+        1.2px 1.2px black, 
+        1.6px 1.6px black, 
+        2px 2px black,
+        2.2px 2.2px black, 
+        2.6px 2.6px black, 
+        3px 3px black, 
+        3.2px 3.2px black, 
+        3.6px 3.6px black;
 }
 
 body {

@@ -1,4 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Righteous");
+@keyframes shake {
+  0%, 30%, 50%, 70%, 100% {
+    transform: scale(0.3) translate(0px, -87px) rotate(0deg);
+  }
+  20%, 60% {
+    transform: scale(0.3) translate(0px, -87px) rotate(5deg);
+  }
+  40%, 80% {
+    transform: scale(0.3) translate(0px, -87px) rotate(-5deg);
+  }
+}
 :root {
   --border-weight: 5px;
   --c-flesh-container: #72a072;
@@ -17,36 +28,6 @@
   --m-durian: -26px 19px 0px 0px;
   --h-radio: 47px;
   --w-radio: 40px;
-}
-
-@keyframes shake {
-  0%, 5%, 10%, 15%, 20%, 100% {
-    transform: scale(0.3) translate(0px, -87px) rotate(0deg);
-  }
-  2%, 12% {
-    transform: scale(0.3) translate(0px, -87px) rotate(5deg);
-  }
-  8%, 18% {
-    transform: scale(0.3) translate(0px, -87px) rotate(-5deg);
-  }
-}
-.container {
-  display: grid;
-  place-items: center;
-  height: 100vh;
-  grid-auto-flow: row;
-}
-
-.option-text, .question-text {
-  font-family: "Righteous", cursive;
-}
-
-.question-text {
-  font-size: 25px;
-}
-
-.option-text {
-  font-size: 20px;
 }
 
 .durian {
@@ -259,6 +240,31 @@
   border-radius: 30px 50px 100px 30px;
 }
 
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  grid-auto-flow: row;
+}
+
+.option-text, .question-text, .footer-text {
+  font-family: "Righteous", cursive;
+}
+
+.question-text {
+  font-size: 40px;
+  margin: 10px 0px 30px 0px;
+}
+
+.option-text {
+  font-size: 20px;
+}
+
+.footer-text {
+  font-size: 15px;
+  text-align: center;
+}
+
 .radio {
   position: absolute;
   transform: translate(-33px, -40px);
@@ -274,13 +280,19 @@
   display: none;
 }
 .radio:checked + .durian {
-  animation: shake 2s linear 0s 1;
+  animation: shake 0.5s linear 0s 1;
 }
 .radio:checked + .durian > .inner-spikes {
   display: none;
 }
 .radio:checked + .durian > .flesh {
   display: block;
+}
+.radio:not(:focus), .radio:checked {
+  --c-spike-border: black;
+}
+.radio:focus + .durian {
+  --c-spike-border: rgb(37, 163, 75);
 }
 
 .option {
@@ -294,19 +306,27 @@
   text-align: center;
   display: grid;
   place-items: center;
+  padding: 0px 38px 30px;
 }
 
 .options-list {
   display: grid;
   place-items: start;
   row-gap: 30px;
+  margin-bottom: 20px;
+}
+@media only screen and (min-width: 600px) {
+  .options-list {
+    column-gap: 50px;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .emphasis {
   color: var(--c-durian);
   text-transform: uppercase;
-  text-shadow: 1.5px 1.5px black;
   font-weight: 900;
+  text-shadow: 0.2px 0.2px black, 0.6px 0.6px black, 1px 1px black, 1.2px 1.2px black, 1.6px 1.6px black, 2px 2px black, 2.2px 2.2px black, 2.6px 2.6px black, 3px 3px black, 3.2px 3.2px black, 3.6px 3.6px black;
 }
 
 body {
