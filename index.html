@@ -6,143 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CSS projects by wendko</title>
-    <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <style>
-        .title,
-        .pen-item,
-        .footer {
-            font-family: 'Livvic', sans-serif;
-            text-align: center;
-        }
-
-        .pen-item {
-            margin: 10px 0px 10px 0px;
-            padding: 15px 5px 15px 5px;
-            border-radius: 5px;
-            font-weight: 900;
-            border: 2px dotted #e48bff;
-            color: #750b95;
-            transition-property: box-shadow;
-            transition: box-shadow 0.1s ease-in-out;
-        }
-
-        div.pen-item:nth-child(2n) {
-            border-color: #ffd7a2;
-            color: #bb6a01;
-        }
-
-        .pen-item:hover {
-            box-shadow: 8px 8px currentColor;
-        }
-
-        .pen-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-column-gap: 10px;
-        }
-
-        .label-draft {
-            font-size: 12px;
-            margin-left: 5px;
-            background: bisque;
-            padding: 3px 5px;
-            border-radius: 5px;
-        }
-
-        .title, .footer {
-            color: #a16161;
-        }
-
-        .link {
-            color: #e08b8b;
-        }
-    </style>
 </head>
 
 <body>
-    <h1 class="title">
-        CSS projects by 
-        <a href="https://github.com/wendko" class="link" target="_blank">@wendko</a>
-    </h1>
-    <div id="penList" class="pen-list">
-        <div v-for="pen in pens" :key="pen.id" class="pen-item" v-on:click="goToPen(pen.name)">
-            <div>{{ pen.name | dekebab }}</div>
-            <span v-if="pen.draft" class="label-draft">draft</span>
-        </div>
+    <div class="content" id="app">
+        <div v-for="index in 6" class="star"></div>
+        <div class="title">CSS projects</div>
+        <div class="subtitle">by <a href="https://wendko.com">wendko</a></div>
+        <pen-list v-bind:pens="pens"></pen-list>
+        <footer-section></footer-section>
     </div>
-    <h3 class="footer">Made with 
-        <a href="https://vuejs.org" class="link" target="_blank">Vue.js</a>, 
-        <a href="https://sass-lang.com" class="link" target="_blank">Sass</a>
-        and 
-        <a href="https://pugjs.org" class="link" target="_blank">Pug</a>
-    </h3> 
-
-    <script>
-        const draftedPens = [
-            'pokemon-badges',
-            'async-defer-anim',
-            'google',
-            'malaysian-states',
-            'mamak',
-            'merdeka-2019',
-            'programming-logos',
-            'resizable-lantern',
-            'sunflower',
-        ];
-        
-        const completedPens = [
-            'toggle-day-night',
-            'durian-react',
-            'durian',
-            'tapir',
-            'awkward-pikachu',
-            'background-gradient',
-            'avatar',
-            '100-dots',
-            'async-defer',
-            'KLCC',
-            'dancing-macaron',
-            'box-shadow-sketch',
-            'css-masonry',
-            'dad-joke',
-            'dev-doctor',
-            'emoji-selector',
-            'fruit-veggies-spectrum',
-            'gameboy-color',
-            'gravity-planets',
-            'kl-react-centered',
-            'kl-react-right',
-            'slack',
-        ];
-
-        Vue.filter('dekebab', (value) => {
-            if (!value) return ''
-            return value
-                .split('-')
-                .map(x => `${x.charAt(0).toUpperCase()}${x.slice(1)}`)
-                .join(' ');
-        });
-
-        var vm = new Vue({
-            el: '#penList',
-            data: {
-                pens: [
-                    ...(completedPens.map(x => ({ name: x }))),
-                    ...(draftedPens.map(x => ({ name: x, draft: true }))),
-                ]
-            },
-            methods: {
-                goToPen: function (name) {
-                    const currentUrl = window.location.href;
-                    window.location.href = currentUrl.match('/index.html') ? 
-                                        currentUrl.replace('/index.html', `/pens/${name}/index.html`)
-                                        : `${currentUrl}/pens/${name}`;
-                }
-            }
-        });
-
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
