@@ -1,69 +1,76 @@
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<link rel="stylesheet" href="./style.css" type="text/css" />
-
-<div class="container" id="app">
-    <div class="question">
-        <p class="question-text">Mirror mirror on the wall,
-            <br>
-            who's the <span class="emphasis">durian king</span> of them all?</p>
-        <div class="options-list">
-            <durian-radio
-            v-for="(option, index) in options"
-            v-bind:label="option"
-            v-bind:value="option | toValue"
-            v-bind:id="'option-'+index"
-            name="preferences"
-            ></durian-radio>
-        </div>
-    </div>
-    <footer class="footer-text">Built using SCSS, Pug & Vue
-        <br> 
-        <a href="https://wendko.com">@wendko</a> | <a href="https://twitter.com/wendko" target="_blank">twitter</a> | <a href="https://github.com/wendko" target="_blank">github</a></footer> 
-</div>
-
-
-<script>
-    Vue.component('durian', {
-        template: `<div class="durian spikey"><div class="stem"></div><div class="spike" id="spike0"></div><div class="spike" id="spike1"></div><div class="spike" id="spike2"></div><div class="spike" id="spike3"></div><div class="spike" id="spike4"></div><div class="spike" id="spike5"></div><div class="spike" id="spike6"></div><div class="spike" id="spike7"></div><div class="spike" id="spike8"></div><div class="spike" id="spike9"></div><div class="spike" id="spike10"></div><div class="spike" id="spike11"></div><div class="spike" id="spike12"></div><div class="spike" id="spike13"></div><div class="spike" id="spike14"></div><div class="spike" id="spike15"></div><div class="spike" id="spike16"></div><div class="spike" id="spike17"></div><div class="spike" id="spike18"></div><div class="spike" id="spike19"></div><div class="inner-spikes inner-level-1"><div class="spike" id="spike0"></div><div class="spike" id="spike1"></div><div class="spike" id="spike2"></div><div class="spike" id="spike3"></div><div class="spike" id="spike4"></div><div class="spike" id="spike5"></div><div class="spike" id="spike6"></div><div class="spike" id="spike7"></div><div class="spike" id="spike8"></div><div class="spike" id="spike9"></div></div><div class="inner-spikes inner-level-2"><div class="spike" id="spike0"></div><div class="spike" id="spike1"></div><div class="spike" id="spike2"></div><div class="spike" id="spike3"></div><div class="spike" id="spike4"></div><div class="spike" id="spike5"></div><div class="spike" id="spike6"></div></div><div class="flesh flesh-right"></div><div class="flesh flesh-left"></div></div>`
-    });
-
-    Vue.component('durian-radio', {
-        props: ['label', 'value', 'id', 'name'],
-        template: `
-        <div class="option">
-            <div>
-                <input type="radio" class="radio" v-bind:id="id" v-bind:name="name" v-bind:value="value">
-                <durian></durian>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="./style.css" type="text/css" />
+    <title>Durian Radio</title>
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="question">
+            <p class="question-text">Mirror mirror on the wall,
+                <br>
+                who's the <span class="emphasis">durian king</span> of them all?</p>
+            <div class="options-list">
+                <durian-radio
+                v-for="(option, index) in options"
+                v-bind:label="option"
+                v-bind:value="option | toValue"
+                v-bind:id="'option-'+index"
+                name="preferences"
+                ></durian-radio>
             </div>
-            <label class="option-text" v-bind:for="id">{{label}}</label>
-        </div>`
-    });
+        </div>
+        <footer class="footer-text">Built using SCSS, Pug & Vue
+            <br> 
+            <a href="https://wendko.com">@wendko</a> | <a href="https://twitter.com/wendko" target="_blank">twitter</a> | <a href="https://github.com/wendko" target="_blank">github</a></footer> 
+    </div>
 
-    Vue.filter('toValue', (label) => 
-        label ? label.toLowerCase().replace(/\s+/g, '-') : ''
-    );
+    <script>
+        Vue.component('durian', {
+            template: `<div class="durian spikey"><div class="stem"></div><div class="spike" id="spike0"></div><div class="spike" id="spike1"></div><div class="spike" id="spike2"></div><div class="spike" id="spike3"></div><div class="spike" id="spike4"></div><div class="spike" id="spike5"></div><div class="spike" id="spike6"></div><div class="spike" id="spike7"></div><div class="spike" id="spike8"></div><div class="spike" id="spike9"></div><div class="spike" id="spike10"></div><div class="spike" id="spike11"></div><div class="spike" id="spike12"></div><div class="spike" id="spike13"></div><div class="spike" id="spike14"></div><div class="spike" id="spike15"></div><div class="spike" id="spike16"></div><div class="spike" id="spike17"></div><div class="spike" id="spike18"></div><div class="spike" id="spike19"></div><div class="inner-spikes inner-level-1"><div class="spike" id="spike0"></div><div class="spike" id="spike1"></div><div class="spike" id="spike2"></div><div class="spike" id="spike3"></div><div class="spike" id="spike4"></div><div class="spike" id="spike5"></div><div class="spike" id="spike6"></div><div class="spike" id="spike7"></div><div class="spike" id="spike8"></div><div class="spike" id="spike9"></div></div><div class="inner-spikes inner-level-2"><div class="spike" id="spike0"></div><div class="spike" id="spike1"></div><div class="spike" id="spike2"></div><div class="spike" id="spike3"></div><div class="spike" id="spike4"></div><div class="spike" id="spike5"></div><div class="spike" id="spike6"></div></div><div class="flesh flesh-right"></div><div class="flesh flesh-left"></div></div>`
+        });
 
-    const options = [
-        'Black Pearl',
-        'Black Thorn',
-        'Tekka',
-        'Golden Phoenix',
-        'Hor Lor',
-        'D1',
-        'D2',
-        'D13',
-        'D17',
-        'D24',
-        'D88',
-        'D96',
-        'D101',
-        'Musang King',
-        'Red Prawn',
-        'Tawa',
-        'XO',
-    ];
+        Vue.component('durian-radio', {
+            props: ['label', 'value', 'id', 'name'],
+            template: `
+            <div class="option">
+                <div>
+                    <input type="radio" class="radio" v-bind:id="id" v-bind:name="name" v-bind:value="value">
+                    <durian></durian>
+                </div>
+                <label class="option-text" v-bind:for="id">{{label}}</label>
+            </div>`
+        });
 
-    new Vue({
-        el: '#app'
-    });
-</script>
+        Vue.filter('toValue', (label) => 
+            label ? label.toLowerCase().replace(/\s+/g, '-') : ''
+        );
+
+        const options = [
+            'Black Pearl',
+            'Black Thorn',
+            'Tekka',
+            'Golden Phoenix',
+            'Hor Lor',
+            'D1',
+            'D2',
+            'D13',
+            'D17',
+            'D24',
+            'D88',
+            'D96',
+            'D101',
+            'Musang King',
+            'Red Prawn',
+            'Tawa',
+            'XO',
+        ];
+
+        new Vue({ el: '#app' });
+    </script>
+</body>
+</html>
