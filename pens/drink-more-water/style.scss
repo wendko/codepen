@@ -1,0 +1,50 @@
+@import '../../common/container.scss';
+@import 'beverage.scss';
+@import 'table.scss';
+@import 'laptop.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+
+:root {
+    --c-bg: #ebbab9;
+    --c-table: #cc2936;
+    --c-outline: #000000;
+    
+    --c-cup: #ffee93;
+    --c-cup-shadow: #fbdf40;
+    --c-tea: #ae3600;
+    --c-tea-light: #be5d30;
+    --c-coaster-light: #59c3c3;
+    --c-coaster-dark: #52489c;
+    --c-coaster: repeating-radial-gradient(
+        var(--c-coaster-light),
+        var(--c-coaster-light) 4%,
+        var(--c-coaster-dark) 4%, 
+        var(--c-coaster-dark) 10%);
+    --c-tea-bag: #59c3c3;
+
+    --c-computer: #b5ffe1;
+    --c-computer-shadow: #388697;
+    --c-keyboard-clicked: #08415c;
+    --c-screen: #272a3b;
+    --c-cursor: #ff07c1;
+    --c-screen-text: #9a42ff;
+    
+    --z-cup: 2;
+    --z-coaster: 1;
+}
+%pseudo {
+    content: "";
+    position: absolute;
+}
+@keyframes blink { 50% { opacity: 0 } }
+@keyframes breezy { 
+    50% {transform: skew(10deg) translate(15px, 45px) rotate(40deg);}}
+body { margin: 0px; background: var(--c-bg) }
+.container {
+    @include container;
+    height: 100%;
+}
+.table { @include table }
+.table-top { @include table-top }
+.laptop { @include laptop }
+.beverage { @include beverage }

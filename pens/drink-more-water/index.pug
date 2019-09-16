@@ -1,0 +1,24 @@
+link( rel="stylesheet" href="./style.css" type="text/css")
+
+.container
+    .table
+    .table-top
+        .beverage
+            .coaster
+            .cup
+            .tea
+            .tea-bag
+        .laptop
+            .body-lower
+            .keyboard
+                - var numKeys = 59;
+                - while(numKeys > 0)
+                    a.key(id="key-" + numKeys--)
+            .touchpad
+                a.left
+                a.right
+                a.pad
+            .body-upper
+            .webcam
+            .screen
+            .screen-text

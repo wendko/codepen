@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
+:root {
+  --c-bg: #ebbab9;
+  --c-table: #cc2936;
+  --c-outline: #000000;
+  --c-cup: #ffee93;
+  --c-cup-shadow: #fbdf40;
+  --c-tea: #ae3600;
+  --c-tea-light: #be5d30;
+  --c-coaster-light: #59c3c3;
+  --c-coaster-dark: #52489c;
+  --c-coaster: repeating-radial-gradient(
+      var(--c-coaster-light),
+      var(--c-coaster-light) 4%,
+      var(--c-coaster-dark) 4%,
+      var(--c-coaster-dark) 10%);
+  --c-tea-bag: #59c3c3;
+  --c-computer: #b5ffe1;
+  --c-computer-shadow: #388697;
+  --c-keyboard-clicked: #08415c;
+  --c-screen: #272a3b;
+  --c-cursor: #ff07c1;
+  --c-screen-text: #9a42ff;
+  --z-cup: 2;
+  --z-coaster: 1;
+}
+
+.beverage .tea-bag::after, .laptop .screen-text::after {
+  content: "";
+  position: absolute;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes breezy {
+  50% {
+    transform: skew(10deg) translate(15px, 45px) rotate(40deg);
+  }
+}
+body {
+  margin: 0px;
+  background: var(--c-bg);
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  height: 100%;
+}
+
+.table {
+  grid-row: 2/span 3;
+  align-self: start;
+  width: 100%;
+  height: 100%;
+  background: var(--c-table);
+  box-shadow: 0px -3px var(--c-outline);
+}
+
+.table-top {
+  align-self: end;
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 10vw;
+  place-items: end;
+}
+
+.laptop {
+  margin-bottom: -60px;
+  padding: 0px 120px 200px;
+}
+.laptop > * {
+  position: absolute;
+}
+.laptop .body-lower {
+  background: var(--c-computer);
+  padding: 30px 110px;
+  transform: translate(-110px, 140px) skew(-20deg);
+  border-radius: 0px 0px 5px 5px;
+  box-shadow: inset -2px -2px var(--c-computer-shadow), inset -5px -5px var(--c-outline), 0px 0px 0px 2px var(--c-outline);
+}
+.laptop .keyboard {
+  transform: translate(-100px, 143px) skew(-20deg);
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-gap: 2px;
+}
+.laptop .key {
+  padding: 2.5px 5.5px;
+  border-radius: 1.5px;
+  background: var(--c-computer-shadow);
+}
+.laptop .key:nth-child(33) {
+  grid-column: 1/span 2;
+}
+.laptop .key:nth-child(46) {
+  grid-column: 15/span 2;
+}
+.laptop .key:nth-child(53) {
+  grid-column: 7/span 4;
+}
+.laptop .touchpad {
+  transform: translate(-29px, 172px) skew(-20deg);
+  border-radius: 5px;
+  display: grid;
+  grid-gap: 1px;
+}
+.laptop .touchpad > * {
+  background: var(--c-computer-shadow);
+  padding: 5px;
+}
+.laptop .touchpad > .left {
+  padding: 3px 10px;
+  grid-column: 1/span 2;
+  border-radius: 2px 0px 0px;
+}
+.laptop .touchpad > .right {
+  padding: 3px 10px;
+  grid-column: 3/span 2;
+  border-radius: 0px 2px 0px 0px;
+}
+.laptop .touchpad > .pad {
+  grid-row: 2;
+  grid-column: 1/span 4;
+  border-radius: 0px 0px 2px 2px;
+}
+.laptop .touchpad > .left, .laptop .touchpad > .right, .laptop .touchpad > .pad, .laptop .key {
+  transition: background 0.1s ease-in;
+}
+.laptop .touchpad > .left:active, .laptop .touchpad > .right:active, .laptop .touchpad > .pad:active, .laptop .key:active {
+  background: var(--c-keyboard-clicked);
+}
+.laptop .body-upper {
+  background: var(--c-computer);
+  padding: 68px 110px;
+  transform: translate(-99px, 0px);
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: inset -3px 1px var(--c-computer-shadow), inset -5px 3px var(--c-outline), 0px 0px 0px 3px var(--c-outline);
+}
+.laptop .webcam {
+  border-radius: 50%;
+  background: var(--c-computer-shadow);
+  padding: 1px;
+  transform: translate(7px, 6px);
+  box-shadow: 0px 0px 0px 2px var(--c-outline);
+}
+.laptop .screen {
+  border-radius: 5px;
+  background: var(--c-screen);
+  padding: 57px 100px;
+  transform: translate(-92px, 14px);
+  box-shadow: 0px 0px 0px 2px var(--c-outline);
+}
+.laptop .screen-text {
+  color: var(--c-screen-text);
+  transform: translate(-80px, 20px);
+  max-width: 200px;
+}
+.laptop .screen-text::before {
+  content: "> remember to drink more water";
+  overflow: hidden;
+  font-family: "Roboto Mono", monospace;
+  letter-spacing: 0.2rem;
+}
+.laptop .screen-text::after {
+  background: var(--c-cursor);
+  padding: 8px 1.5px;
+  transform: translate(3px, 3px);
+  animation: blink 1.5s infinite;
+}
+
+.beverage {
+  margin-bottom: -60px;
+  padding: 0px 82px 105px 22px;
+}
+.beverage > * {
+  position: absolute;
+}
+.beverage .cup {
+  width: 60px;
+  height: 80px;
+  border-radius: 15px;
+  background: var(--c-cup);
+  box-shadow: inset 7px 7px var(--c-cup-shadow), 0px 0px 0px 3px var(--c-outline);
+}
+.beverage .tea {
+  width: 50px;
+  height: 20px;
+  border-radius: 20px;
+  background: var(--c-tea);
+  transform: translate(5px, 5px);
+  box-shadow: inset 0px 9px var(--c-tea-light), 0px 0px 0px 2px var(--c-outline);
+}
+.beverage .tea-bag {
+  padding: 7px;
+  background: var(--c-tea-bag);
+  border-radius: 0px 3px;
+  transform: skew(10deg) translate(15px, 45px) rotate(30deg);
+  transform-origin: 0px -10px;
+  box-shadow: 0px 0px 0px 2px var(--c-outline);
+  animation: breezy 2s ease-in-out infinite;
+}
+.beverage .tea-bag::after {
+  border-left: 2px solid black;
+  height: 20px;
+  transform: rotate(-20deg) translateY(-28px);
+}
+.beverage .coaster {
+  padding: 25px 45px;
+  background: var(--c-coaster);
+  border-radius: 50%;
+  transform: translate(-15px, 50px);
+  box-shadow: 0px 0px 0px 3px var(--c-outline);
+}
+
+/*# sourceMappingURL=style.css.map */
