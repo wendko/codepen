@@ -1,3 +1,19 @@
+.yellow {
+  --c-shirt: #f7dc58;
+  --c-shirt-shadow: #bba32e;
+  --c-glasses: #ff0000;
+}
+
+.blue {
+  --c-shirt: #5898f7;
+  --c-shirt-shadow: #2f5f95;
+  --c-glasses: #dc4444;
+}
+
+.no-glasses {
+  --c-glasses: transparent;
+}
+
 @keyframes wandering {
   0%, 38%, 62%, 100% {
     margin-left: 0px;
@@ -26,6 +42,7 @@
   display: grid;
   place-items: center;
   height: 100vh;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .avatar {
@@ -169,14 +186,14 @@
 .glasses {
   width: 20px;
   height: 5px;
-  background: #dc4444;
+  background: var(--c-glasses);
   margin-top: 80px;
   z-index: 4;
 }
 .glasses::before, .glasses::after {
   content: "";
   position: absolute;
-  background: #dc4444;
+  background: var(--c-glasses);
   padding: 2.5px 8px;
 }
 .glasses::before {
@@ -192,7 +209,7 @@
 .glasses .lens {
   width: 30px;
   height: 25px;
-  border: 4px solid #dc4444;
+  border: 4px solid var(--c-glasses);
   position: absolute;
   border-radius: 15px;
 }
@@ -214,13 +231,13 @@
 }
 
 .shirt {
-  background: #5898f7;
+  background: var(--c-shirt);
   width: 110px;
   height: 60px;
   margin-top: 150px;
   border-radius: 50px 50px 0px 0px;
   border: 5px solid black;
-  box-shadow: inset 0px 8px #2f5f95;
+  box-shadow: inset 0px 8px var(--c-shirt-shadow);
 }
 
 .smile {

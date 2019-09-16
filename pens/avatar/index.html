@@ -1,1 +1,54 @@
-<link rel="stylesheet" href="./style.css" type="text/css"/><div class="container"><div class="avatar"><div class="hair"></div><div class="hair-fringe"><div class="side-fringe"></div><div class="side-fringe"></div></div><div class="hair-highlight"><div class="highlight"></div><div class="highlight"></div><div class="highlight"></div><div class="highlight"></div></div><div class="shirt"></div><div class="face"></div><div class="ears"><div class="ear"></div><div class="ear"></div></div><div class="neck"></div><div class="glasses"><div class="lens"></div><div class="lens"></div></div><div class="eyes"><div class="eye"><div class="pupil"></div></div><div class="eye"><div class="pupil"></div></div></div><div class="smile"></div></div></div>
+<link rel="stylesheet" href="./style.css" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div class="container" id="app">
+    <avatar classes="[blue]"></avatar>
+    <avatar classes="[yellow]"></avatar>
+    <avatar classes="[blue, no-glasses]"></avatar>
+    <avatar classes="[yellow, no-glasses]"></avatar>
+</div>
+
+<script>
+    Vue.component('avatar', {
+        props: ['classes'],
+        template: `
+        <div class="avatar" v-bind:class="{
+            'blue': classes.includes('blue'),
+            'yellow': classes.includes('yellow'),
+            'no-glasses': classes.includes('no-glasses')}">
+        <div class="hair"></div>
+        <div class="hair-fringe">
+            <div class="side-fringe"></div>
+            <div class="side-fringe"></div>
+        </div>
+        <div class="hair-highlight">
+            <div class="highlight"></div>
+            <div class="highlight"></div>
+            <div class="highlight"></div>
+            <div class="highlight"></div>
+        </div>
+        <div class="shirt"></div>
+        <div class="face"></div>
+        <div class="ears">
+            <div class="ear"></div>
+            <div class="ear"></div>
+        </div>
+        <div class="neck"></div>
+        <div class="glasses">
+            <div class="lens"></div>
+            <div class="lens"></div>
+        </div>
+        <div class="eyes">
+            <div class="eye">
+                <div class="pupil"></div>
+            </div>
+            <div class="eye">
+                <div class="pupil"></div>
+            </div>
+        </div>
+        <div class="smile"></div>
+    </div>`
+    });
+
+    new Vue({ el: '#app'})
+</script>

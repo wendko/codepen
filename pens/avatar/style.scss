@@ -1,5 +1,22 @@
 @import '../../common/container.scss';
 
+.yellow {
+    --c-shirt: #f7dc58;
+    --c-shirt-shadow: #bba32e;
+    --c-glasses: #ff0000;
+}
+
+.blue {
+    --c-shirt: #5898f7;
+    --c-shirt-shadow: #2f5f95;
+    --c-glasses: #dc4444;
+}
+
+
+.no-glasses {
+    --c-glasses: transparent;
+}
+
 $w-outline: 5px;
 $w-outline-light: 3px;
 
@@ -10,24 +27,6 @@ $mt-eyes: 72px;
 $mt-smile: 100px;
 $mt-neck: 130px;
 $mt-shirt: 150px;
-
-$yellow-theme: (
-    'shirt': #f7dc58, 
-    'shirt-shadow': #bba32e,
-    'glasses': #ff0000,
-);
-$blue-theme: (
-    'shirt': #5898f7, 
-    'shirt-shadow': #2f5f95,
-    'glasses': #dc4444,
-);
-
-$theme: $blue-theme;
-$c-glasses: map-get($theme, 'glasses');
-// $c-glasses: transparent;
-$c-shirt: map-get($theme, 'shirt');
-$c-shirt-shadow: map-get($theme, 'shirt-shadow');
-
 
 $c-outline: black;
 $c-skin: #f3c495;
@@ -77,6 +76,7 @@ $eye-anim-duration: 5s;
 
 .container {
     @include container;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .avatar {
@@ -233,13 +233,13 @@ $eye-anim-duration: 5s;
 .glasses {
     width: 20px;
     height: 5px;
-    background: $c-glasses;
+    background: var(--c-glasses);
     margin-top: 80px;
     z-index: 4;
     &::before, &::after {
         content: '';
         position: absolute;    
-        background: $c-glasses;
+        background: var(--c-glasses);
         padding: 2.5px 8px;
     }
     &::before {
@@ -255,7 +255,7 @@ $eye-anim-duration: 5s;
     .lens {
         width: 30px;
         height: 25px;
-        border: 4px solid $c-glasses;
+        border: 4px solid var(--c-glasses);
         position: absolute;
         border-radius: 15px;
         &:nth-child(1){
@@ -278,13 +278,13 @@ $eye-anim-duration: 5s;
 }
 
 .shirt {
-    background: $c-shirt;
+    background: var(--c-shirt);
     width: 110px;
     height: 60px;
     margin-top: $mt-shirt;
     border-radius: 50px 50px 0px 0px;
     @include outline;
-    box-shadow: inset 0px 8px $c-shirt-shadow;
+    box-shadow: inset 0px 8px var(--c-shirt-shadow);
 }
 
 .smile {
