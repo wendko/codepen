@@ -19,13 +19,13 @@
 }
 
 @keyframes shake {
-    0%, 30%, 50%, 70%, 100% { 
+    35%, 60%, 85%, 100% { 
         transform: scale(0.3) translate(-0px, -87px) rotate(0deg) 
     }
-    20%, 60% { 
+    0%, 25% { 
         transform: scale(0.3) translate(-0px, -87px) rotate(5deg) 
     }
-    40%, 80% { 
+    50%, 75% { 
         transform: scale(0.3) translate(-0px, -87px) rotate(-5deg) 
     }
 }
