@@ -11,6 +11,7 @@ const draftedPens = [
 ];
 
 const completedPens = [
+    'drink-more-water',
     'durian-radio',
     'toggle-day-night',
     'durian-react',
