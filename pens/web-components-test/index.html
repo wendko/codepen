@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Components Test</title>
+</head>
+<body>
+
+<!-- Draggable experiment -->
+    <div
+     draggable="true"
+     ondragstart="startDrag()"
+     ondragend="endDrag()"
+     id="test">
+     drag me
+    </div>
+
+
+
+
+
+  <!-- slottables -->
+    <template-test>
+        <ul slot="my-text">
+            <li>Let's have some different text!</li>
+            <li>In a list!</li>
+        </ul>
+    </template-test>
+
+   
+    <template-test>
+        <p slot="my-text">I'm a paragraph!</p>
+    </template-test>
+
+   
+    <template-test> 
+        <!-- fallback -->
+    </template-test>    
+    
+    
+    <!-- another web component -->
+    <template-test1>
+        <p slot="my-text">I'm a paragraph!</p>
+    </template-test1>
+
+
+
+
+    <template id="template-test">
+        <link href="style-grey.css" rel="stylesheet" />
+        <p>
+            <slot name="my-text">This be slot</slot>
+        </p>
+    </template>
+
+    <template id="template-test1">
+        <style>
+            p {
+                color: white;
+                background-color: pink;
+                padding: 5px;
+            }
+        </style>
+        <p>
+            <slot name="my-text">This be slot</slot>
+        </p>
+    </template>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
