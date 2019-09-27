@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animation Demo</title>
+    <style>
+        body {
+            grid-template-columns: 1fr 1fr;
+            height: 100vh;
+            background: #212121;
+        }
+
+        body, body > div {
+            display: grid;
+            place-items: center;
+        }
+
+        p {
+            text-align: center;
+            font-family: monospace;
+            font-size:25px;
+            color:white;
+        }
+
+
+        .circle {
+            width: 120px;
+            height: 120px;
+            background: #dd7e6b;
+            border-radius: 50%;
+        }
+
+
+
+        
+        /* TODO: add animation*/
+        .animated {
+            /*go down 60px, change color to red*/
+        }
+
+        /* TODO: add transition */
+        .transit {
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* backup
+
+        @keyframes descend {
+            0% {
+                
+            }
+            20% {
+                transform: translateY(60px);
+            }
+            100% {
+                transform: translateY(60px);
+                background: red;
+            }
+        }
+
+        .animated {
+            animation: descend 5s infinite;
+        }
+
+        .transition {
+            // step 1
+            transition: all 1s;
+
+            // step 2
+            transition-property: transform, opacity;
+            transition-duration: 1s, 8s;
+
+            // step 3
+            transition: transform 1s, opacity 8s;
+        }
+
+        .transition:hover {
+            transform: translateY(60px);
+            background: red;
+        }
+        
+        */
+
+    </style>
+</head>
+<body>
+
+    <div>
+        <p>Animation</p>
+        <div class="animated circle"></div>
+    </div>
+
+    <div>
+        <p>Transition</p>
+        <div class="transit circle"></div>
+    </div>
+
+
+</body>
+</html>
