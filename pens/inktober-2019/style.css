@@ -95,10 +95,9 @@ body {
 
 /** Day 2: Mindless */
 .phone {
-  --c-phone: #ff00c8;
-  --c-phone-shadow: #a50081;
+  --c-phone: #ff1d1d;
+  --c-phone-shadow: #aa0404;
   --c-phone-screen: white;
-  --c-phone-screen-off: #313131;
   position: absolute;
   background: var(--c-phone);
   height: 50px;
@@ -109,7 +108,7 @@ body {
 }
 .phone::before {
   padding: 20px 18px;
-  background: var(--c-phone-screen-off);
+  background: black;
   transform: translate(4.5px, 10px);
   border-radius: 2px 2px 0px 0px;
   animation: phoneGlow 5s ease-out infinite;
