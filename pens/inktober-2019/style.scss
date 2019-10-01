@@ -1,9 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+@import './day-1-ring.scss';
+@import './day-2-mindless.scss';
 
 :root {
     --c-title: white;
     --c-subtitle: white;
     --c-bg: #272727
+}
+
+%pseudo {
+    position: absolute;
+    content: '';
+}
+
+svg {
+    height: 90%;
 }
 
 body {
@@ -69,25 +80,28 @@ body {
 
 
 /** Day 1: Ring */
-
 .ring {
-    position: absolute;
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    background: transparent;
-    box-shadow: 0px 0px 0px 12px black;
-    transform: translate(100px, 100px);
+    @include ring;
 }
-
 
 .ring-dazzle {
-    stroke-dasharray: 5;
-    animation: dazzle 5s linear infinite;
+   @include ring-dazzle;
 }
 
-@keyframes dazzle {
-    to {
-        stroke-dashoffset: -100;
-    }
+
+/** Day 2: Mindless */
+.phone {
+    @include mindless-phone;
+} 
+
+.eye {
+    @include mindless-eye;
+}
+
+.eyelid {
+    @include mindless-eyelid;
+}
+
+.smile {
+    @include mindless-smile;
 }
