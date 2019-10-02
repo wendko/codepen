@@ -1,0 +1,16 @@
+@mixin day3 {
+    .finger-hooked { z-index: 2}
+    .finger-hooked, .hook { position: absolute }
+    .hook {
+        height: 180px;
+        width: 25px;
+        border: 6px solid black;
+        border-top: none;
+        background: var(--c-red);
+        transform: translate(70px, -50px) skewX(30deg);
+    }
+    @keyframes hand-baited { 20% { transform: rotate(5deg) } }
+    .finger, .hook-end {animation: hand-baited 3s infinite }
+    @keyframes hook-move { 20% { transform: translate(70px, -51px) skewX(20deg) } }
+    .hook { animation: hook-move 3s infinite }
+}

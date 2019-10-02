@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
 @import './day-1-ring.scss';
 @import './day-2-mindless.scss';
+@import './day-3-bait.scss';
 
 :root {
     --c-title: white;
     --c-subtitle: white;
-    --c-bg: #272727
+    --c-bg: #272727;
+    --c-red: #ff1d1d;
+    --c-dark-red: #aa0404;
+    --size-ink: 300px;
 }
 
 %pseudo {
@@ -35,8 +39,8 @@ body {
 .subtitle {
     color: var(--c-subtitle);
     font-size: 2em;
+    margin-bottom: 20px;
 }
-
 
 .ink-title {
     padding: 10px;
@@ -46,73 +50,22 @@ body {
 .inks {
     display: grid;
     place-items: center;
-    grid-gap: 50px;
-}
-
-@media only screen and (max-width: 350px) {
-    .ink {
-        transform: scale(0.8);
-    }
-    .inks {
-        margin: none;
-    }
-}
-
-@media only screen and (min-width: 351px) and (max-width: 975px) {
-    .inks {
-        margin: 15px 0px 0px 15px;
-    }
-}
-
-@media only screen and (min-width: 975px) {
-    .inks {
-        grid-template-columns: repeat(3, 1fr);
-        margin: 15px 0px 0px 15px;
-    }
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(var(--size-ink), 1fr));
 }
 
 .ink {
     background: white;
     box-shadow: 0px 2px 10px 2px;
-    height: 300px;
-    width: 300px;
-}
-
-.hidden {
-    display: none;
+    height: var(--size-ink);
+    width: var(--size-ink);
 }
 
 .current {
     grid-row: 1;
     grid-column: 1;
 }
-/** Day 1: Ring */
-.day-1 {
-    .ring { @include ring }
-    .ring-dazzle { @include ring-dazzle }
-}
 
-/** Day 2: Mindless */
-.day-2 {
-    .phone { @include mindless-phone } 
-    .eye { @include mindless-eye }
-    .eyelid { @include mindless-eyelid }
-    .smile { @include mindless-smile }
-}
-
-.day-3 {
-    .finger-hooked { z-index: 2}
-    .finger-hooked, .hook { position: absolute }
-    .hook {
-        height: 180px;
-        width: 25px;
-        border: 6px solid black;
-        border-top: none;
-        background: red;
-        transform: translate(70px, -50px) skewX(30deg);
-    }
-    @keyframes hand-baited { 20% { transform: rotate(5deg) } }
-    .finger, .hook-end {animation: hand-baited 3s infinite }
-    @keyframes hook-move { 20% { transform: translate(70px, -50px) skewX(20deg) } }
-    .hook { animation: hook-move 3s infinite }
-}
+.day-1 { @include day1 }
+.day-2 { @include day2 }
+.day-3 { @include day3 }
