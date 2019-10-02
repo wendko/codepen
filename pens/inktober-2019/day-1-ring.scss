@@ -17,3 +17,8 @@
     }
     animation: dazzle 5s linear infinite;
 }
+
+@mixin day1 {
+    .ring { @include ring }
+    .ring-dazzle { @include ring-dazzle }
+}

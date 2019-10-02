@@ -1,6 +1,6 @@
 @mixin mindless-phone {
-    --c-phone: #ff1d1d;
-    --c-phone-shadow: #aa0404;
+    --c-phone: var(--c-red);
+    --c-phone-shadow: var(--c-dark-red);
     --c-phone-screen: white;
 
     position: absolute;
@@ -60,4 +60,11 @@
         }
     }
     animation: smile 5s infinite;
+}
+
+@mixin day2 {
+    .phone { @include mindless-phone } 
+    .eye { @include mindless-eye }
+    .eyelid { @include mindless-eyelid }
+    .smile { @include mindless-smile }
 }

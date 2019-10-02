@@ -2,7 +2,10 @@
 :root {
   --c-title: white;
   --c-subtitle: white;
-  --c-bg: #272727 ;
+  --c-bg: #272727;
+  --c-red: #ff1d1d;
+  --c-dark-red: #aa0404;
+  --size-ink: 300px;
 }
 
 .day-2 .phone::before {
@@ -32,6 +35,7 @@ body {
 .subtitle {
   color: var(--c-subtitle);
   font-size: 2em;
+  margin-bottom: 20px;
 }
 
 .ink-title {
@@ -42,38 +46,15 @@ body {
 .inks {
   display: grid;
   place-items: center;
-  grid-gap: 50px;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(var(--size-ink), 1fr));
 }
 
-@media only screen and (max-width: 350px) {
-  .ink {
-    transform: scale(0.8);
-  }
-
-  .inks {
-    margin: none;
-  }
-}
-@media only screen and (min-width: 351px) and (max-width: 975px) {
-  .inks {
-    margin: 15px 0px 0px 15px;
-  }
-}
-@media only screen and (min-width: 975px) {
-  .inks {
-    grid-template-columns: repeat(3, 1fr);
-    margin: 15px 0px 0px 15px;
-  }
-}
 .ink {
   background: white;
   box-shadow: 0px 2px 10px 2px;
-  height: 300px;
-  width: 300px;
-}
-
-.hidden {
-  display: none;
+  height: var(--size-ink);
+  width: var(--size-ink);
 }
 
 .current {
@@ -81,7 +62,6 @@ body {
   grid-column: 1;
 }
 
-/** Day 1: Ring */
 .day-1 .ring {
   position: absolute;
   height: 100px;
@@ -101,10 +81,9 @@ body {
   }
 }
 
-/** Day 2: Mindless */
 .day-2 .phone {
-  --c-phone: #ff1d1d;
-  --c-phone-shadow: #aa0404;
+  --c-phone: var(--c-red);
+  --c-phone-shadow: var(--c-dark-red);
   --c-phone-screen: white;
   position: absolute;
   background: var(--c-phone);
@@ -171,7 +150,7 @@ body {
   width: 25px;
   border: 6px solid black;
   border-top: none;
-  background: red;
+  background: var(--c-red);
   transform: translate(70px, -50px) skewX(30deg);
 }
 @keyframes hand-baited {
@@ -184,7 +163,7 @@ body {
 }
 @keyframes hook-move {
   20% {
-    transform: translate(70px, -50px) skewX(20deg);
+    transform: translate(70px, -51px) skewX(20deg);
   }
 }
 .day-3 .hook {
