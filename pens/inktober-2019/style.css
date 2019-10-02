@@ -5,7 +5,7 @@
   --c-bg: #272727 ;
 }
 
-.phone::before {
+.day-2 .phone::before {
   position: absolute;
   content: "";
 }
@@ -72,8 +72,17 @@ body {
   width: 300px;
 }
 
+.hidden {
+  display: none;
+}
+
+.current {
+  grid-row: 1;
+  grid-column: 1;
+}
+
 /** Day 1: Ring */
-.ring {
+.day-1 .ring {
   position: absolute;
   height: 100px;
   width: 100px;
@@ -82,8 +91,7 @@ body {
   box-shadow: 0px 0px 0px 12px black;
   transform: translate(100px, 100px);
 }
-
-.ring-dazzle {
+.day-1 .ring-dazzle {
   stroke-dasharray: 5;
   animation: dazzle 5s linear infinite;
 }
@@ -94,7 +102,7 @@ body {
 }
 
 /** Day 2: Mindless */
-.phone {
+.day-2 .phone {
   --c-phone: #ff1d1d;
   --c-phone-shadow: #aa0404;
   --c-phone-screen: white;
@@ -106,7 +114,7 @@ body {
   box-shadow: inset -5px 5px var(--c-phone-shadow);
   transform: rotate(10deg) translateX(135px);
 }
-.phone::before {
+.day-2 .phone::before {
   padding: 20px 18px;
   background: black;
   transform: translate(4.5px, 10px);
@@ -124,8 +132,7 @@ body {
     background: black;
   }
 }
-
-.eye {
+.day-2 .eye {
   position: absolute;
   background: black;
   width: 20px;
@@ -133,8 +140,7 @@ body {
   border-radius: 50%;
   transform: translate(110px, 120px);
 }
-
-.eyelid {
+.day-2 .eyelid {
   animation: raise 5s infinite;
 }
 @keyframes raise {
@@ -145,14 +151,44 @@ body {
     transform: translateY(-5px);
   }
 }
-
-.smile {
+.day-2 .smile {
   animation: smile 5s infinite;
 }
 @keyframes smile {
   50% {
     stroke-dashoffset: 50px;
   }
+}
+
+.day-3 .finger-hooked {
+  z-index: 2;
+}
+.day-3 .finger-hooked, .day-3 .hook {
+  position: absolute;
+}
+.day-3 .hook {
+  height: 180px;
+  width: 25px;
+  border: 6px solid black;
+  border-top: none;
+  background: red;
+  transform: translate(70px, -50px) skewX(30deg);
+}
+@keyframes hand-baited {
+  20% {
+    transform: rotate(5deg);
+  }
+}
+.day-3 .finger, .day-3 .hook-end {
+  animation: hand-baited 3s infinite;
+}
+@keyframes hook-move {
+  20% {
+    transform: translate(70px, -50px) skewX(20deg);
+  }
+}
+.day-3 .hook {
+  animation: hook-move 3s infinite;
 }
 
 /*# sourceMappingURL=style.css.map */
