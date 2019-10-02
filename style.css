@@ -82,8 +82,8 @@ body {
 .pen-item::before {
     content: "⭐";
     position: absolute;
-    transform: translate(-120px, -45px);
-    font-size: 30px;
+    transform: translate(-10px, -10px) rotate(-10deg);
+    font-size: 50px;
     opacity: 0;
     transition: transform 0.2s ease-in, opacity 0.2s ease-in;
 }
@@ -93,8 +93,8 @@ body {
 }
 
 .pen-item:hover::before, .pen-item:focus::before {
-    opacity: 1;
-    transform: translate(-120px, -45px) rotate(-10deg);
+    opacity: 0.2;
+    transform: translate(0px, -18px) rotate(0deg);
 }
 
 .label-draft {
