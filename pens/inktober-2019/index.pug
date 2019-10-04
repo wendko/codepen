@@ -87,8 +87,19 @@ div.subtitle by wendko
                 animate(attributeType="XML" attributeName="x2" values="105;115;105" dur="2.5s" repeatCount="indefinite")
                 animate(attributeType="XML" attributeName="y2" values="60;50;60" dur="2.5s" repeatCount="indefinite")
 
-    .ink
+    .ink.day-5.current
         .ink-title Day 5: Build
+        svg
+            rect(x="55" y="-20" width="70" height="70" rx="10" fill="green").base
+            rect(x="155" y="180" width="70" height="70" rx="10").base
+                animate(attributeType="XML" attributeName="y" values="180;-20;-20;-20" to="-20" dur="3s" repeatCount="indefinite")
+                animate(attributeType="XML" attributeName="x" values="155;55;55;55" dur="3s" repeatCount="indefinite")
+
+            rect(x="80" y="70" width="90" height="145" fill="red" rx="5").profile
+                animate(attributeType="XML" attributeName="height" values="10;145;145;145" dur="3s" repeatCount="indefinite")
+
+            rect(x="170" y="85" width="50" height="145" fill="blue" rx="5").side
+
     .ink
         .ink-title Day 6: Husky
     .ink

@@ -170,4 +170,13 @@ body {
   animation: hook-move 3s infinite;
 }
 
+.day-5 .base {
+  transform: rotate(45deg) skewY(-45deg);
+  transform-origin: center center;
+}
+.day-5 .side {
+  transform-origin: center center;
+  transform: skewY(-40deg);
+}
+
 /*# sourceMappingURL=style.css.map */

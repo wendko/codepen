@@ -2,6 +2,7 @@
 @import './day-1-ring.scss';
 @import './day-2-mindless.scss';
 @import './day-3-bait.scss';
+@import './day-5-build.scss';
 
 :root {
     --c-title: white;
@@ -69,3 +70,4 @@ body {
 .day-1 { @include day1 }
 .day-2 { @include day2 }
 .day-3 { @include day3 }
+.day-5 { @include day5 }

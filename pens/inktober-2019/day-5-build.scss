@@ -1,0 +1,10 @@
+@mixin day5 {
+    .base {
+        transform: rotate(45deg) skewY(-45deg);
+        transform-origin: center center;
+    }
+    .side {
+        transform-origin: center center;
+        transform: skewY(-40deg);
+    }
+}
