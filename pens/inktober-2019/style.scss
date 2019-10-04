@@ -67,7 +67,7 @@ body {
     grid-column: 1;
 }
 
-.day-1 { @include day1 }
-.day-2 { @include day2 }
-.day-3 { @include day3 }
-.day-5 { @include day5 }
+.day1 { @include day1 }
+.day2 { @include day2 }
+.day3 { @include day3 }
+.day5 { @include day5 }
