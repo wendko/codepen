@@ -8,7 +8,7 @@
   --size-ink: 300px;
 }
 
-.day-2 .phone::before {
+.day2 .phone::before {
   position: absolute;
   content: "";
 }
@@ -62,7 +62,7 @@ body {
   grid-column: 1;
 }
 
-.day-1 .ring {
+.day1 .ring {
   position: absolute;
   height: 100px;
   width: 100px;
@@ -71,7 +71,7 @@ body {
   box-shadow: 0px 0px 0px 12px black;
   transform: translate(100px, 100px);
 }
-.day-1 .ring-dazzle {
+.day1 .ring-dazzle {
   stroke-dasharray: 5;
   animation: dazzle 5s linear infinite;
 }
@@ -81,7 +81,7 @@ body {
   }
 }
 
-.day-2 .phone {
+.day2 .phone {
   --c-phone: var(--c-red);
   --c-phone-shadow: var(--c-dark-red);
   --c-phone-screen: white;
@@ -93,7 +93,7 @@ body {
   box-shadow: inset -5px 5px var(--c-phone-shadow);
   transform: rotate(10deg) translateX(135px);
 }
-.day-2 .phone::before {
+.day2 .phone::before {
   padding: 20px 18px;
   background: black;
   transform: translate(4.5px, 10px);
@@ -111,7 +111,7 @@ body {
     background: black;
   }
 }
-.day-2 .eye {
+.day2 .eye {
   position: absolute;
   background: black;
   width: 20px;
@@ -119,7 +119,7 @@ body {
   border-radius: 50%;
   transform: translate(110px, 120px);
 }
-.day-2 .eyelid {
+.day2 .eyelid {
   animation: raise 5s infinite;
 }
 @keyframes raise {
@@ -130,7 +130,7 @@ body {
     transform: translateY(-5px);
   }
 }
-.day-2 .smile {
+.day2 .smile {
   animation: smile 5s infinite;
 }
 @keyframes smile {
@@ -139,13 +139,13 @@ body {
   }
 }
 
-.day-3 .finger-hooked {
+.day3 .finger-hooked {
   z-index: 2;
 }
-.day-3 .finger-hooked, .day-3 .hook {
+.day3 .finger-hooked, .day3 .hook {
   position: absolute;
 }
-.day-3 .hook {
+.day3 .hook {
   height: 180px;
   width: 25px;
   border: 6px solid black;
@@ -158,7 +158,7 @@ body {
     transform: rotate(5deg);
   }
 }
-.day-3 .finger, .day-3 .hook-end {
+.day3 .finger, .day3 .hook-end {
   animation: hand-baited 3s infinite;
 }
 @keyframes hook-move {
@@ -166,8 +166,91 @@ body {
     transform: translate(70px, -51px) skewX(20deg);
   }
 }
-.day-3 .hook {
+.day3 .hook {
   animation: hook-move 3s infinite;
+}
+
+.day5 .base {
+  transform: rotate(45deg) skewY(-45deg);
+  transform-origin: center center;
+  width: 70px;
+  height: 70px;
+}
+.day5 .side {
+  transform-origin: center center;
+  transform: skewY(-42deg);
+}
+.day5 .light {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke: var(--c-dark-red);
+  stroke-dasharray: 14;
+}
+.day5 .light-1, .day5 .light-3, .day5 .light-5 {
+  stroke: var(--c-dark-red);
+}
+.day5 .light-2, .day5 .light-4 {
+  stroke: var(--c-red);
+}
+.day5 .light-1 {
+  animation: flicker1 3s infinite;
+}
+@keyframes flicker1 {
+  0%, 40% {
+    stroke-opacity: 0;
+  }
+  60% {
+    stroke-opacity: 1;
+  }
+}
+.day5 .light-2 {
+  stroke-dashoffset: -20px;
+  animation: flicker2 3s infinite;
+}
+@keyframes flicker2 {
+  0%, 50%, 61% {
+    stroke-opacity: 0;
+  }
+  60%, 70% {
+    stroke-opacity: 1;
+  }
+}
+.day5 .light-3 {
+  stroke-dashoffset: 34px;
+  animation: flicker3 3s infinite;
+}
+@keyframes flicker3 {
+  0%, 48% {
+    stroke-opacity: 0;
+  }
+  53% {
+    stroke-opacity: 1;
+  }
+}
+.day5 .light-4 {
+  stroke-dashoffset: 14px;
+  animation: flicker4 3s infinite;
+}
+@keyframes flicker4 {
+  0%, 55% {
+    stroke-opacity: 0;
+  }
+  70% {
+    stroke-opacity: 1;
+  }
+}
+.day5 .light-5 {
+  stroke-dashoffset: 57px;
+  animation: flicker5 3s infinite;
+}
+@keyframes flicker5 {
+  0%, 45%, 51% {
+    stroke-opacity: 0;
+  }
+  50%, 60% {
+    stroke-opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
