@@ -1,0 +1,14 @@
+@mixin earAnim($name, $rotation, $delay) {
+    transform-origin: center center;
+    $animationName: 'husky-ear-'+$name;
+    @keyframes #{$animationName} {
+        50%, 60% { transform: rotate($rotation)}
+        55%, 65% { transform: rotate(0deg)}
+    }
+    animation: #{$animationName} 2s infinite $delay;
+}
+
+@mixin day6 {
+    .ear-right { @include earAnim('right', 5deg, 0s) }
+    .ear-left { @include earAnim('left', -5deg, 0.3s) }
+}

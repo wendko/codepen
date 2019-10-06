@@ -253,4 +253,86 @@ body {
   }
 }
 
+.day6 .ear-right {
+  transform-origin: center center;
+  animation: husky-ear-right 2s infinite 0s;
+}
+@keyframes husky-ear-right {
+  50%, 60% {
+    transform: rotate(5deg);
+  }
+  55%, 65% {
+    transform: rotate(0deg);
+  }
+}
+.day6 .ear-left {
+  transform-origin: center center;
+  animation: husky-ear-left 2s infinite 0.3s;
+}
+@keyframes husky-ear-left {
+  50%, 60% {
+    transform: rotate(-5deg);
+  }
+  55%, 65% {
+    transform: rotate(0deg);
+  }
+}
+
+.day7 .leaf-2 {
+  transform: scale(0.8) rotate(-70deg) translateY(-5px);
+  transform-origin: center;
+}
+.day7 .petal:nth-child(odd) {
+  fill: var(--c-red);
+}
+.day7 .petal:nth-child(even) {
+  fill: var(--c-dark-red);
+}
+.day7 .glass-shadow-1 {
+  fill: none;
+  stroke: black;
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+.day7 .glass-outline {
+  fill: none;
+  stroke: black;
+  stroke-width: 5;
+}
+.day7 .rose-stalk {
+  fill: none;
+  stroke: black;
+  stroke-width: 5;
+}
+.day7 .petal-falling-1 {
+  transform-origin: center center;
+  animation: petalFall1 5s linear infinite;
+}
+@keyframes petalFall1 {
+  30% {
+    transform: translateY(35px) translateX(-50px) rotate(15deg);
+  }
+  60% {
+    transform: translateY(80px) translateX(-60px) rotate(50deg);
+  }
+  100% {
+    transform: translateY(128px) translateX(-30px);
+  }
+}
+.day7 .petal-falling-2 {
+  transform-origin: center center;
+  animation: petalFall2 5s linear 2s infinite;
+}
+@keyframes petalFall2 {
+  30% {
+    transform: translateY(50px) translateX(50px) rotate(-40deg);
+  }
+  60% {
+    transform: translateY(50px) translateX(-20px) rotate(20deg);
+  }
+  100% {
+    transform: translateY(128px);
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
