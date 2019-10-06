@@ -112,11 +112,77 @@ div.subtitle by wendko
             path(d="m95 170 l80 0 l35 -32").light.light-4
             path(d="m95 195 l80 0 l35 -32").light.light-5
 
-    .ink.day-6
+    .ink.day6
         .ink-title Day 6: Husky
+        svg
+            path(d=`M100 80
+            Q 50 170 60 200
+            Q 70 230 90 250
+            l 120 0
+            Q 230 230 240 200
+            Q 250 170 200 80
+            Q 150 60 100 80
+            `).head
+            path(d=`M90 20
+            Q 70 70 80 120
+            L 130 80`).ear-left
+            path(d=`M200 20
+            Q 220 70 210 120
+            L 160 80`).ear-right
+            path(d=`M140 250
+            L 100 250
+            Q 100 240 90 220
+            Q 60 180 90 150
+            C 90 70 210 70 210 150
+            Q 240 180 210 220
+            Q 200 240 200 250`
+            fill="white").face
+            path(d=`M120 91
+            Q 130 90 135 100
+            Q 146 120 160 100
+            Q 165 90 175 91
+            Q 150 80 120 91
+            ` fill="black").notch
+            ellipse(cx="150" cy="160" rx="12" ry="10" fill="black").nose
+            ellipse(cx="145" cy="165" rx="2" ry="5" fill="white").nostril
+            ellipse(cx="155" cy="165" rx="2" ry="5" fill="white").nostril
 
-    .ink
+    .ink.day7.current
         .ink-title Day 7: Enchanted
+        svg
+            path(d=`M 140 70 q 5 5 15 8 t -10 5 t -5 -13`).petal.petal-falling-1
+            path(d=`M 180 75 q 15 6 20 5 t -5 5 t -15 -10` fill="yellow").petal.petal-falling-2
+
+            path(d=`M 150 200
+            C 165 200 165 170 150 150
+            S 135 110 150 100
+            `).rose-stalk
+
+            path(d=`M 150 150 Q 140 120 180 130 Q 175 155 150 150`).leaf.leaf-1
+            path(d=`M 150 150 Q 155 125 180 130 Q 175 160 150 150 `).leaf.leaf-2
+
+            path(d=`M 180 90 q -10 15 -30 15 t -20 -30`).petal
+            path(d=`M 170 90 q 20 5 30 -5 t 0 -20`).petal
+            path(d=`M 160 50 l 35 20 l 5 -5 q -10 -20 -20 -20 T 160 50`).petal
+            path(d=`M 173 47 q -20 5 -35 10 q 0 -15 10 -15 T 173 47`).petal
+            path(d=`M 130 75 l 15 5 l -2 -25 q -8 0 -15 7 T 130 75`).petal
+            path(d=`M 145 80 q 10 10 25 7 l -27 -30 Q 130 65 145 80`).petal
+            path(d=`M 147 65 q -5 -6 -5 -12  t 25 -3`).petal
+            path(d=`M 170 55 q 28 -5 25 15  l -8 8`).petal
+            path(d=`M 155 70 l 32 7  q -8 15 -15 13 T 155 70`).petal
+            path(d=`M 150 70 q -10 -6 -5 -12  q 15 -12 25 -3`).petal
+            path(d=`M 152 69 q 9 -14 18 -14  t 8 12`).petal
+            path(d=`M 150 70 l 37 7  l -8 -12 Q 165 60 150 70`).petal
+
+            path(d=`M 80 200
+            L 80 80
+            C 80 0 220 0 220 80
+            L 220 200
+            Z`).glass-outline
+            path(d=`M 130 35 q -35 10 -35 40 l 0 10`).glass-shadow-1
+            circle(cx="95" cy="100" r="4" fill="black").glass-shadow-2
+            rect(x="65" y="199" width="170" height="25" fill="black" rx="5").base
+
     .ink
         .ink-title Day 8: Frail
     .ink
