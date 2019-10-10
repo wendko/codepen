@@ -335,4 +335,64 @@ body {
   }
 }
 
+.day8 * {
+  transform-origin: center;
+}
+.day8 .right {
+  transform: scaleX(-1);
+}
+.day8 .bug-body {
+  fill: var(--c-red);
+  transform: rotate(-45deg);
+}
+.day8 .wing-left, .day8 .wing-right {
+  fill: var(--c-dark-red);
+}
+.day8 .wing-left {
+  transform: scaleY(-1) rotate(-45deg);
+  animation: "leftWingMove" 3s infinite;
+}
+@keyframes leftWingMove {
+  50% {
+    transform: scaleY(-1) rotate(-110deg) translate(5px, -21px);
+  }
+}
+.day8 .wing-right {
+  transform: rotate(45deg);
+  animation: "rightWingMove" 3s infinite;
+}
+@keyframes rightWingMove {
+  50% {
+    transform: rotate(8deg) translate(8px, -12px);
+  }
+}
+.day8 .antenna-left, .day8 .antenna-right {
+  stroke-width: 3;
+  stroke: var(--c-dark-red);
+  stroke-linecap: round;
+  fill: none;
+}
+.day8 .antenna-left {
+  animation: "leftAntennaMove" 1s infinite;
+}
+@keyframes leftAntennaMove {
+  0%, 55%, 75% {
+    transform: rotate(0deg);
+  }
+  50%, 70% {
+    transform: rotate(-3deg);
+  }
+}
+.day8 .antenna-right {
+  animation: "rightAntennaMove" 1s infinite;
+}
+@keyframes rightAntennaMove {
+  0%, 55%, 75% {
+    transform: rotate(0deg);
+  }
+  50%, 70% {
+    transform: rotate(2deg);
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
