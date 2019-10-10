@@ -1,11 +1,5 @@
-function startDrag() {
-    console.log('startDrag');
-    // document.getElementById("test").style.opacity = 0;
-}
 
-function endDrag() {
-    console.log('endDrag');
-}
+
 
 [
     'template-test',

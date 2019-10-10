@@ -1,0 +1,28 @@
+    <div
+     draggable="true"
+     ondragstart="dragStart(event)" ondragend="dragEnd(event)"
+     id="draggable">
+     drag me
+    </div>
+
+    <style>
+        #draggable {
+            text-transform: uppercase;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            background: pink;
+            transition: background 1s linear;
+        }
+    </style>
+
+    <script>
+        function dragStart(event) {
+            event.originalTarget.style.background = 'indigo'
+            console.log('startDrag');
+        }
+
+        function dragEnd(event) {
+            console.log('endDrag');
+        }
+    </script>
