@@ -183,8 +183,18 @@ div.subtitle by wendko
             circle(cx="95" cy="100" r="4" fill="black").glass-shadow-2
             rect(x="65" y="199" width="170" height="25" fill="black" rx="5").base
 
-    .ink
-        .ink-title Day 8: Frail
+    .ink.day8
+        .ink-title Day 8: Debugging
+        svg
+            path(d=`M 80 45 l 20 0 l -50 80 l 50 80 l -20 0 l -50 -80`).left
+            path(d=`M 80 45 l 20 0 l -50 80 l 50 80 l -20 0 l -50 -80`).right
+            path(d=`M 160 45 l 20 0 l -50 160 l-20 0`).center
+            ellipse(cx="155" cy="125" rx="15" ry="20").bug-body
+            path(d=`M 130 130 c 0 -20 30 -20 30 0`).wing-right
+            path(d=`M 130 140 c 0 -20 30 -20 30 0`).wing-left
+            path(d=`M 132 110 q -8 -10 -15 -8`).antenna-left
+            path(d=`M 140 107 q -5 -8 0 -18`).antenna-right
+
     .ink
         .ink-title Day 9: Swing
     .ink

@@ -5,6 +5,7 @@
 @import './day-5-build.scss';
 @import './day-6-husky.scss';
 @import './day-7-enchanted.scss';
+@import './day-8-debugging.scss';
 
 :root {
     --c-title: white;
@@ -75,3 +76,4 @@ body {
 .day5 { @include day5 }
 .day6 { @include day6 }
 .day7 { @include day7 }
+.day8 { @include day8 }
