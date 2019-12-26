@@ -56,10 +56,9 @@ input[type=color] {
   width: 30px;
   height: 30px;
   padding: 0px;
-  border-radius: 50%;
-  border: none;
+  border: 3px solid black;
+  border-radius: 5px;
   image-orientation: none;
-  outline: 3px solid black;
 }
 
 .container {
