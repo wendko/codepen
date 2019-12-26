@@ -1,0 +1,244 @@
+link(rel="stylesheet" href="./style.css" type="text/css")
+
+div.title Inktober 2019
+div.subtitle by wendko
+
+.inks
+    .ink.day1
+        .ink-title Day 1: Ring
+        .ring
+        svg
+            polygon(points="120,50 100,70 120,95 180,95 200,70 180,50" style="fill:transparent;stroke-width:5;stroke:black;fill-rule:nonzero").diamond
+            path(d="m100 70 l33 0 l -10 -20 l25 0 l -12 20 l25 0 l -10 -20 l25 0 l -12 20 l33 0" fill="none" stroke-width=5 stroke="black")
+           
+            path(d="m133 70 l10 20" fill="none" stroke-width=5 stroke="black")
+            path(d="m164 70 l -10 20" fill="none" stroke-width=5 stroke="black")
+
+            path(d="m80 80 l -20 10" fill="none" stroke-width=2 stroke="black").ring-dazzle
+            path(d="m220 80 l20 10" fill="none" stroke-width=2 stroke="black").ring-dazzle
+            
+            path(d="m80 45 l -20 -10" fill="none" stroke-width=2 stroke="black").ring-dazzle
+            path(d="m220 45 l20 -10" fill="none" stroke-width=2 stroke="black").ring-dazzle
+            
+            path(d="m120 25 l-20 -28" fill="none" stroke-width=2 stroke="black").ring-dazzle
+            path(d="m180 25 l20 -28" fill="none" stroke-width=2 stroke="black").ring-dazzle
+    
+    .ink.day2
+        .ink-title Day 2: Mindless
+        .phone
+        .eye
+        svg
+            ellipse(cx="150" cy="70" rx="80" ry="25")
+            path(d="M 72 70  Q 65 100 72 130 Q 45 165 72 170 Q 72 220 150 220 Q 260 220 228 70" stroke="black" stroke-width=5 fill="transparent")
+            path(d="M 100 132 Q 120 110 140 132" stroke="black" stroke-width=5 fill="none").eyelid
+            path(d="M 95 210 Q 115 210 125 190" stroke="black" stroke-dasharray="100" stroke-dashoffset="100px" stroke-width=5 fill="none").smile
+
+    .ink.day3
+        .ink-title Day 3: Bait
+        .bait
+        svg.finger-hooked
+            path(d=`M 80 100 
+                Q 110 170 130 200
+                L 230 200
+                Q 250 150 250 100
+                C 250 80 220 80 220 100
+                L 220 110
+                L 220 80
+                C 220 60 190 60 190 80
+                L 190 100
+                L 190 60
+                C 190 40 160 40 160 60
+                L 160 90
+                L 160 20
+                C 160 0 130 0 130 20
+                L 130 130
+                L 110 100 
+                C 100 80 80 90 80 100 Z` stroke="black" stroke-width=8 fill="white").finger
+            path(d=`M 170 140
+                Q 205 180 230 130
+                Q 230 200 170 180
+                Q 160 160 170 140
+                Z
+                `
+                stroke="black" stroke-width=5 fill="#ff1d1d").hook-end
+        .hook
+
+    .ink.day4
+        .ink-title Day 4: Freeze
+        svg
+            circle(cx="150" cy="120" r="110" fill="black")
+            circle(cx="150" cy="120" r="95" fill="white")
+            circle(cx="150" cy="120" r="55" fill="transparent" stroke="grey")
+            text(x="140" y="50") 12
+            text(x="180" y="60") 1
+            text(x="210" y="85") 2
+            text(x="220" y="120") 3
+            text(x="210" y="160") 4
+            text(x="185" y="190") 5
+            text(x="150" y="200") 6
+            text(x="110" y="190") 7
+            text(x="80" y="160") 8
+            text(x="70" y="120") 9
+            text(x="80" y="85") 10
+            text(x="105" y="60") 11
+            line(x1="150" y1="120" x2="80" y2="160" stroke-width=3 stroke="black" stroke-linecap="round")
+            line(x1="150" y1="120" x2="175" y2="155" stroke-width=3 stroke="black" stroke-linecap="round")
+            line(x1="150" y1="120" x2="105" y2="60" stroke-width=2 stroke="grey" stroke-linecap="round")
+                animate(attributeType="XML" attributeName="x2" values="105;115;105" dur="2.5s" repeatCount="indefinite")
+                animate(attributeType="XML" attributeName="y2" values="60;50;60" dur="2.5s" repeatCount="indefinite")
+
+    .ink.day5
+        .ink-title Day 5: Build
+        svg
+            rect(x="155" y="180" rx="10").base
+            rect(x="155" y="180" rx="10").base
+                animate(attributeType="XML" attributeName="y" values="180;-20;-20;-20" to="-20" dur="3s" repeatCount="indefinite")
+                animate(attributeType="XML" attributeName="x" values="155;55;55;55" dur="3s" repeatCount="indefinite")
+            polygon(points="81,72 81,212 170,212 170,72" fill="black")
+                animate(attributeType="XML" attributeName="points" dur="3s" repeatCount="indefinite"
+                values=`81,212 81,212 170,212 170,212;
+                81,72 81,212 170,212 170,72;
+                81,72 81,212 170,212 170,72;
+                81,72 81,212 170,212 170,72`)
+            polygon(points="170,92 170,232 219,232 219,92" fill="black").side
+                animate(attributeType="XML" attributeName="points" dur="3s" repeatCount="indefinite"
+                    values=`170,232 170,232 219,232 219,232;
+                    170,92 170,232 219,232 219,92;
+                    170,92 170,232 219,232 219,92;
+                    170,92 170,232 219,232 219,92`)
+            path(d="m95 95 l80 0 l35 -32").light.light-1
+            path(d="m95 120 l80 0 l35 -32").light.light-2
+            path(d="m95 145 l80 0 l35 -32").light.light-3
+            path(d="m95 170 l80 0 l35 -32").light.light-4
+            path(d="m95 195 l80 0 l35 -32").light.light-5
+
+    .ink.day6
+        .ink-title Day 6: Husky
+        svg
+            path(d=`M100 80
+            Q 50 170 60 200
+            Q 70 230 90 250
+            l 120 0
+            Q 230 230 240 200
+            Q 250 170 200 80
+            Q 150 60 100 80
+            `).head
+            path(d=`M90 20
+            Q 70 70 80 120
+            L 130 80`).ear-left
+            path(d=`M200 20
+            Q 220 70 210 120
+            L 160 80`).ear-right
+            path(d=`M140 250
+            L 100 250
+            Q 100 240 90 220
+            Q 60 180 90 150
+            C 90 70 210 70 210 150
+            Q 240 180 210 220
+            Q 200 240 200 250`
+            fill="white").face
+            path(d=`M120 91
+            Q 130 90 135 100
+            Q 146 120 160 100
+            Q 165 90 175 91
+            Q 150 80 120 91
+            ` fill="black").notch
+            ellipse(cx="150" cy="160" rx="12" ry="10" fill="black").nose
+            ellipse(cx="145" cy="165" rx="2" ry="5" fill="white").nostril
+            ellipse(cx="155" cy="165" rx="2" ry="5" fill="white").nostril
+
+    .ink.day7
+        .ink-title Day 7: Enchanted
+        svg
+            path(d=`M 140 70 q 5 5 15 8 t -10 5 t -5 -13`).petal.petal-falling-1
+            path(d=`M 180 75 q 15 6 20 5 t -5 5 t -15 -10` fill="yellow").petal.petal-falling-2
+
+            path(d=`M 150 200
+            C 165 200 165 170 150 150
+            S 135 110 150 100
+            `).rose-stalk
+
+            path(d=`M 150 150 Q 140 120 180 130 Q 175 155 150 150`).leaf.leaf-1
+            path(d=`M 150 150 Q 155 125 180 130 Q 175 160 150 150 `).leaf.leaf-2
+
+            path(d=`M 180 90 q -10 15 -30 15 t -20 -30`).petal
+            path(d=`M 170 90 q 20 5 30 -5 t 0 -20`).petal
+            path(d=`M 160 50 l 35 20 l 5 -5 q -10 -20 -20 -20 T 160 50`).petal
+            path(d=`M 173 47 q -20 5 -35 10 q 0 -15 10 -15 T 173 47`).petal
+            path(d=`M 130 75 l 15 5 l -2 -25 q -8 0 -15 7 T 130 75`).petal
+            path(d=`M 145 80 q 10 10 25 7 l -27 -30 Q 130 65 145 80`).petal
+            path(d=`M 147 65 q -5 -6 -5 -12  t 25 -3`).petal
+            path(d=`M 170 55 q 28 -5 25 15  l -8 8`).petal
+            path(d=`M 155 70 l 32 7  q -8 15 -15 13 T 155 70`).petal
+            path(d=`M 150 70 q -10 -6 -5 -12  q 15 -12 25 -3`).petal
+            path(d=`M 152 69 q 9 -14 18 -14  t 8 12`).petal
+            path(d=`M 150 70 l 37 7  l -8 -12 Q 165 60 150 70`).petal
+
+            path(d=`M 80 200
+            L 80 80
+            C 80 0 220 0 220 80
+            L 220 200
+            Z`).glass-outline
+            path(d=`M 130 35 q -35 10 -35 40 l 0 10`).glass-shadow-1
+            circle(cx="95" cy="100" r="4" fill="black").glass-shadow-2
+            rect(x="65" y="199" width="170" height="25" fill="black" rx="5").base
+
+    .ink.day8
+        .ink-title Day 8: Debugging
+        svg
+            path(d=`M 80 45 l 20 0 l -50 80 l 50 80 l -20 0 l -50 -80`).left
+            path(d=`M 80 45 l 20 0 l -50 80 l 50 80 l -20 0 l -50 -80`).right
+            path(d=`M 160 45 l 20 0 l -50 160 l-20 0`).center
+            ellipse(cx="155" cy="125" rx="15" ry="20").bug-body
+            path(d=`M 130 130 c 0 -20 30 -20 30 0`).wing-right
+            path(d=`M 130 140 c 0 -20 30 -20 30 0`).wing-left
+            path(d=`M 132 110 q -8 -10 -15 -8`).antenna-left
+            path(d=`M 140 107 q -5 -8 0 -18`).antenna-right
+
+    .ink
+        .ink-title Day 9: Swing
+    .ink
+        .ink-title Day 10: Pattern
+    .ink
+        .ink-title Day 11: Snow
+    .ink
+        .ink-title Day 12: Dragon
+    .ink
+        .ink-title Day 13: Ash
+    .ink
+        .ink-title Day 14: Overgrown
+    .ink
+        .ink-title Day 15: Legend
+    .ink
+        .ink-title Day 16: Wild
+    .ink
+        .ink-title Day 17: Ornament
+    .ink
+        .ink-title Day 18: Misfit
+    .ink
+        .ink-title Day 19: Sling
+    .ink
+        .ink-title Day 20: Tread
+    .ink
+        .ink-title Day 21: Treasure
+    .ink
+        .ink-title Day 22: Ghost
+    .ink
+        .ink-title Day 23: Ancient
+    .ink
+        .ink-title Day 24: Dizzy
+    .ink
+        .ink-title Day 25: Tasty
+    .ink
+        .ink-title Day 26: Dark
+    .ink
+        .ink-title Day 27: Coat
+    .ink
+        .ink-title Day 28: Ride
+    .ink
+        .ink-title Day 29: Injured
+    .ink
+        .ink-title Day 30: Catch
+    .ink
+        .ink-title Day 31: Ripe
+    

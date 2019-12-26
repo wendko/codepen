@@ -1,0 +1,398 @@
+@import url("https://fonts.googleapis.com/css?family=Mansalva&display=swap");
+:root {
+  --c-title: white;
+  --c-subtitle: white;
+  --c-bg: #272727;
+  --c-red: #ff1d1d;
+  --c-dark-red: #aa0404;
+  --size-ink: 300px;
+}
+
+.day2 .phone::before {
+  position: absolute;
+  content: "";
+}
+
+svg {
+  height: 90%;
+}
+
+body {
+  background: var(--c-bg);
+  font-family: "Mansalva", cursive;
+  margin: 10px 25px;
+}
+
+.title, .subtitle, .ink-title {
+  text-align: center;
+}
+
+.title {
+  color: var(--c-title);
+  font-size: 3em;
+}
+
+.subtitle {
+  color: var(--c-subtitle);
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.ink-title {
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+.inks {
+  display: grid;
+  place-items: center;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(var(--size-ink), 1fr));
+}
+
+.ink {
+  background: white;
+  box-shadow: 0px 2px 10px 2px;
+  height: var(--size-ink);
+  width: var(--size-ink);
+}
+
+.current {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.day1 .ring {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0px 0px 0px 12px black;
+  transform: translate(100px, 100px);
+}
+.day1 .ring-dazzle {
+  stroke-dasharray: 5;
+  animation: dazzle 5s linear infinite;
+}
+@keyframes dazzle {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+.day2 .phone {
+  --c-phone: var(--c-red);
+  --c-phone-shadow: var(--c-dark-red);
+  --c-phone-screen: white;
+  position: absolute;
+  background: var(--c-phone);
+  height: 50px;
+  width: 50px;
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: inset -5px 5px var(--c-phone-shadow);
+  transform: rotate(10deg) translateX(135px);
+}
+.day2 .phone::before {
+  padding: 20px 18px;
+  background: black;
+  transform: translate(4.5px, 10px);
+  border-radius: 2px 2px 0px 0px;
+  animation: phoneGlow 5s ease-out infinite;
+}
+@keyframes phoneGlow {
+  15%, 49% {
+    background: var(--c-phone-screen);
+  }
+  25% {
+    box-shadow: 0px 0px 10px 2px var(--c-phone-screen);
+  }
+  50% {
+    background: black;
+  }
+}
+.day2 .eye {
+  position: absolute;
+  background: black;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transform: translate(110px, 120px);
+}
+.day2 .eyelid {
+  animation: raise 5s infinite;
+}
+@keyframes raise {
+  0%, 10%, 70% {
+    transform: none;
+  }
+  20%, 50% {
+    transform: translateY(-5px);
+  }
+}
+.day2 .smile {
+  animation: smile 5s infinite;
+}
+@keyframes smile {
+  50% {
+    stroke-dashoffset: 50px;
+  }
+}
+
+.day3 .finger-hooked {
+  z-index: 2;
+}
+.day3 .finger-hooked, .day3 .hook {
+  position: absolute;
+}
+.day3 .hook {
+  height: 180px;
+  width: 25px;
+  border: 6px solid black;
+  border-top: none;
+  background: var(--c-red);
+  transform: translate(70px, -50px) skewX(30deg);
+}
+@keyframes hand-baited {
+  20% {
+    transform: rotate(5deg);
+  }
+}
+.day3 .finger, .day3 .hook-end {
+  animation: hand-baited 3s infinite;
+}
+@keyframes hook-move {
+  20% {
+    transform: translate(70px, -51px) skewX(20deg);
+  }
+}
+.day3 .hook {
+  animation: hook-move 3s infinite;
+}
+
+.day5 .base {
+  transform: rotate(45deg) skewY(-45deg);
+  transform-origin: center center;
+  width: 70px;
+  height: 70px;
+}
+.day5 .side {
+  transform-origin: center center;
+  transform: skewY(-42deg);
+}
+.day5 .light {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke: var(--c-dark-red);
+  stroke-dasharray: 14;
+}
+.day5 .light-1, .day5 .light-3, .day5 .light-5 {
+  stroke: var(--c-dark-red);
+}
+.day5 .light-2, .day5 .light-4 {
+  stroke: var(--c-red);
+}
+.day5 .light-1 {
+  animation: flicker1 3s infinite;
+}
+@keyframes flicker1 {
+  0%, 40% {
+    stroke-opacity: 0;
+  }
+  60% {
+    stroke-opacity: 1;
+  }
+}
+.day5 .light-2 {
+  stroke-dashoffset: -20px;
+  animation: flicker2 3s infinite;
+}
+@keyframes flicker2 {
+  0%, 50%, 61% {
+    stroke-opacity: 0;
+  }
+  60%, 70% {
+    stroke-opacity: 1;
+  }
+}
+.day5 .light-3 {
+  stroke-dashoffset: 34px;
+  animation: flicker3 3s infinite;
+}
+@keyframes flicker3 {
+  0%, 48% {
+    stroke-opacity: 0;
+  }
+  53% {
+    stroke-opacity: 1;
+  }
+}
+.day5 .light-4 {
+  stroke-dashoffset: 14px;
+  animation: flicker4 3s infinite;
+}
+@keyframes flicker4 {
+  0%, 55% {
+    stroke-opacity: 0;
+  }
+  70% {
+    stroke-opacity: 1;
+  }
+}
+.day5 .light-5 {
+  stroke-dashoffset: 57px;
+  animation: flicker5 3s infinite;
+}
+@keyframes flicker5 {
+  0%, 45%, 51% {
+    stroke-opacity: 0;
+  }
+  50%, 60% {
+    stroke-opacity: 1;
+  }
+}
+
+.day6 .ear-right {
+  transform-origin: center center;
+  animation: husky-ear-right 2s infinite 0s;
+}
+@keyframes husky-ear-right {
+  50%, 60% {
+    transform: rotate(5deg);
+  }
+  55%, 65% {
+    transform: rotate(0deg);
+  }
+}
+.day6 .ear-left {
+  transform-origin: center center;
+  animation: husky-ear-left 2s infinite 0.3s;
+}
+@keyframes husky-ear-left {
+  50%, 60% {
+    transform: rotate(-5deg);
+  }
+  55%, 65% {
+    transform: rotate(0deg);
+  }
+}
+
+.day7 .leaf-2 {
+  transform: scale(0.8) rotate(-70deg) translateY(-5px);
+  transform-origin: center;
+}
+.day7 .petal:nth-child(odd) {
+  fill: var(--c-red);
+}
+.day7 .petal:nth-child(even) {
+  fill: var(--c-dark-red);
+}
+.day7 .glass-shadow-1 {
+  fill: none;
+  stroke: black;
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+.day7 .glass-outline {
+  fill: none;
+  stroke: black;
+  stroke-width: 5;
+}
+.day7 .rose-stalk {
+  fill: none;
+  stroke: black;
+  stroke-width: 5;
+}
+.day7 .petal-falling-1 {
+  transform-origin: center center;
+  animation: petalFall1 5s linear infinite;
+}
+@keyframes petalFall1 {
+  30% {
+    transform: translateY(35px) translateX(-50px) rotate(15deg);
+  }
+  60% {
+    transform: translateY(80px) translateX(-60px) rotate(50deg);
+  }
+  100% {
+    transform: translateY(128px) translateX(-30px);
+  }
+}
+.day7 .petal-falling-2 {
+  transform-origin: center center;
+  animation: petalFall2 5s linear 2s infinite;
+}
+@keyframes petalFall2 {
+  30% {
+    transform: translateY(50px) translateX(50px) rotate(-40deg);
+  }
+  60% {
+    transform: translateY(50px) translateX(-20px) rotate(20deg);
+  }
+  100% {
+    transform: translateY(128px);
+  }
+}
+
+.day8 * {
+  transform-origin: center;
+}
+.day8 .right {
+  transform: scaleX(-1);
+}
+.day8 .bug-body {
+  fill: var(--c-red);
+  transform: rotate(-45deg);
+}
+.day8 .wing-left, .day8 .wing-right {
+  fill: var(--c-dark-red);
+}
+.day8 .wing-left {
+  transform: scaleY(-1) rotate(-45deg);
+  animation: "leftWingMove" 3s infinite;
+}
+@keyframes leftWingMove {
+  50% {
+    transform: scaleY(-1) rotate(-110deg) translate(5px, -21px);
+  }
+}
+.day8 .wing-right {
+  transform: rotate(45deg);
+  animation: "rightWingMove" 3s infinite;
+}
+@keyframes rightWingMove {
+  50% {
+    transform: rotate(8deg) translate(8px, -12px);
+  }
+}
+.day8 .antenna-left, .day8 .antenna-right {
+  stroke-width: 3;
+  stroke: var(--c-dark-red);
+  stroke-linecap: round;
+  fill: none;
+}
+.day8 .antenna-left {
+  animation: "leftAntennaMove" 1s infinite;
+}
+@keyframes leftAntennaMove {
+  0%, 55%, 75% {
+    transform: rotate(0deg);
+  }
+  50%, 70% {
+    transform: rotate(-3deg);
+  }
+}
+.day8 .antenna-right {
+  animation: "rightAntennaMove" 1s infinite;
+}
+@keyframes rightAntennaMove {
+  0%, 55%, 75% {
+    transform: rotate(0deg);
+  }
+  50%, 70% {
+    transform: rotate(2deg);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+@import './day-1-ring.scss';
+@import './day-2-mindless.scss';
+@import './day-3-bait.scss';
+@import './day-5-build.scss';
+@import './day-6-husky.scss';
+@import './day-7-enchanted.scss';
+@import './day-8-debugging.scss';
+
+:root {
+    --c-title: white;
+    --c-subtitle: white;
+    --c-bg: #272727;
+    --c-red: #ff1d1d;
+    --c-dark-red: #aa0404;
+    --size-ink: 300px;
+}
+
+%pseudo {
+    position: absolute;
+    content: '';
+}
+
+svg {
+    height: 90%;
+}
+
+body {
+    background: var(--c-bg);
+    font-family: 'Mansalva', cursive;
+    margin: 10px 25px;
+}
+
+.title, .subtitle, .ink-title {
+    text-align: center;
+}
+
+.title {
+    color: var(--c-title);
+    font-size: 3em;
+}
+
+.subtitle {
+    color: var(--c-subtitle);
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.ink-title {
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+.inks {
+    display: grid;
+    place-items: center;
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(var(--size-ink), 1fr));
+}
+
+.ink {
+    background: white;
+    box-shadow: 0px 2px 10px 2px;
+    height: var(--size-ink);
+    width: var(--size-ink);
+}
+
+.current {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.day1 { @include day1 }
+.day2 { @include day2 }
+.day3 { @include day3 }
+.day5 { @include day5 }
+.day6 { @include day6 }
+.day7 { @include day7 }
+.day8 { @include day8 }

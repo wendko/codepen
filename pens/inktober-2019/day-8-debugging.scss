@@ -1,0 +1,56 @@
+
+@mixin antennaMove($side, $deg) {
+    $animName: $side + 'AntennaMove';
+    @keyframes #{$animName} {
+        0%, 55%, 75% {transform: rotate(0deg)}
+        50%, 70% {transform: rotate($deg)}
+    }
+    animation: $animName 1s infinite;
+}
+
+@mixin wingMove($side, $transform) {
+    $animName: $side + 'WingMove';
+    @keyframes #{$animName} {
+        50% {transform: $transform}
+    }
+    animation: $animName 3s infinite;
+}
+
+@mixin day8 {
+    * {
+        transform-origin: center;
+    }
+
+    .right {
+        transform: scaleX(-1);
+    }
+
+    
+    .bug-body {
+        fill: var(--c-red);
+        transform: rotate(-45deg);
+    }
+
+    .wing-left, .wing-right {
+        fill: var(--c-dark-red);
+    }
+
+    .wing-left {
+        transform: scaleY(-1) rotate(-45deg);
+        @include wingMove('left', scaleY(-1) rotate(-110deg) translate(5px, -21px));
+    }
+
+    .wing-right {
+        transform: rotate(45deg);
+        @include wingMove('right', rotate(8deg) translate(8px, -12px));
+    }
+
+    .antenna-left, .antenna-right {
+        stroke-width: 3;
+        stroke:var(--c-dark-red);
+        stroke-linecap: round;
+        fill: none;
+    }
+    .antenna-left { @include antennaMove('left', -3deg) }
+    .antenna-right { @include antennaMove('right', 2deg) }
+}
