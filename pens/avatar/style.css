@@ -1,17 +1,12 @@
-.yellow {
-  --c-shirt: #f7dc58;
-  --c-shirt-shadow: #bba32e;
-  --c-glasses: #ff0000;
-}
-
-.blue {
+:root {
   --c-shirt: #5898f7;
-  --c-shirt-shadow: #2f5f95;
-  --c-glasses: #dc4444;
-}
-
-.no-glasses {
-  --c-glasses: transparent;
+  --c-shirt-shadow: #0f6bf4;
+  --c-glasses: rgb(219, 67, 67);
+  --c-hair: rgb(0, 0, 0);
+  --c-hair-highlight-2: rgb(50, 50, 50);
+  --opacity-glasses: 1;
+  --c-bg: #ffb7c7;
+  font-family: Consolas;
 }
 
 @keyframes wandering {
@@ -38,13 +33,57 @@
     margin-top: 95px;
   }
 }
+body {
+  margin: 0;
+  background-color: var(--c-bg);
+}
+
+.input {
+  display: grid;
+  grid-auto-flow: column;
+  place-items: center;
+  grid-gap: 15px;
+}
+
+.input-group {
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 10px;
+  place-items: start;
+}
+
+input[type=color] {
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  border-radius: 50%;
+  border: none;
+  image-orientation: none;
+  outline: 3px solid black;
+}
+
 .container {
   display: grid;
   place-items: center;
   height: 100vh;
-  grid-template-columns: repeat(2, 1fr);
 }
 
+.content {
+  display: grid;
+}
+
+@media only screen and (max-width: 456px) {
+  .content {
+    grid-auto-flow: row;
+    grid-gap: 30px;
+  }
+}
+@media only screen and (min-width: 456px) {
+  .content {
+    grid-auto-flow: column;
+    grid-gap: 100px;
+  }
+}
 .avatar {
   padding: 0px 75px 219px 75px;
   display: flex;
@@ -56,7 +95,7 @@
 }
 
 .hair {
-  background: black;
+  background: var(--c-hair);
   width: 150px;
   height: 200px;
   border-radius: 100px 100px 80px 80px;
@@ -74,7 +113,7 @@
   border-radius: 100%;
 }
 .hair-highlight > .highlight:nth-child(even) {
-  background: #949494;
+  background: var(--c-hair-highlight-2);
 }
 .hair-highlight > .highlight:nth-child(odd) {
   background: white;
@@ -108,13 +147,13 @@
   height: 50px;
 }
 .side-fringe:first-child {
-  background: black;
+  background: var(--c-hair);
   width: 50px;
   border-radius: 70% 0% 80% 0%;
   box-shadow: 6px 1px 1px -1px #d2a170;
 }
 .side-fringe:last-child {
-  background: black;
+  background: var(--c-hair);
   width: 80px;
   border-radius: 0% 60% 0% 80%;
   box-shadow: -7px 10px 1px -8px #d2a170;
@@ -187,6 +226,7 @@
   width: 20px;
   height: 5px;
   background: var(--c-glasses);
+  opacity: var(--opacity-glasses);
   margin-top: 80px;
   z-index: 4;
 }

@@ -1,20 +1,16 @@
 @import '../../common/container.scss';
 
-.yellow {
-    --c-shirt: #f7dc58;
-    --c-shirt-shadow: #bba32e;
-    --c-glasses: #ff0000;
-}
 
-.blue {
+:root {
     --c-shirt: #5898f7;
-    --c-shirt-shadow: #2f5f95;
-    --c-glasses: #dc4444;
-}
+    --c-shirt-shadow: #{darken(#5898f7, 15%)};
+    --c-glasses: rgb(219, 67, 67);
+    --c-hair: rgb(0, 0, 0);
+    --c-hair-highlight-2: rgb(50, 50, 50);
+    --opacity-glasses: 1;
+    --c-bg: #ffb7c7;
 
-
-.no-glasses {
-    --c-glasses: transparent;
+    font-family: Consolas;
 }
 
 $w-outline: 5px;
@@ -31,11 +27,11 @@ $mt-shirt: 150px;
 $c-outline: black;
 $c-skin: #f3c495;
 $c-eyes: black;
-$c-hair: black;
 $c-skin-shadow: #d2a170;
 $c-pupil-highlight: white;
 $c-hair-highlight-1: white;
-$c-hair-highlight-2: #949494;
+
+$c-hair: black;
 
 $eye-anim-duration: 5s;
 
@@ -74,9 +70,55 @@ $eye-anim-duration: 5s;
     }
 }
 
+body {
+    margin: 0;
+    background-color: var(--c-bg);
+}
+
+.input {
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+    grid-gap: 15px;
+}
+
+.input-group {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 10px;
+    place-items: start;
+}
+
+input[type=color] {
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    border-radius: 50%;
+    border: none;
+    image-orientation: none;
+    outline: 3px solid black;
+}
+
 .container {
     @include container;
-    grid-template-columns: repeat(2, 1fr);
+}
+
+.content {
+    display: grid;
+}
+
+@media only screen and (max-width: 456px) {
+    .content {
+        grid-auto-flow: row;
+        grid-gap: 30px;
+    }
+}
+
+@media only screen and (min-width: 456px) {
+    .content {
+        grid-auto-flow: column;
+        grid-gap: 100px;
+    }
 }
 
 .avatar {
@@ -90,7 +132,7 @@ $eye-anim-duration: 5s;
 }
 
 .hair {
-    background: $c-hair;
+    background: var(--c-hair);
     width: 150px;
     height: 200px;
     border-radius: 100px 100px 80px 80px;
@@ -107,11 +149,11 @@ $eye-anim-duration: 5s;
         z-index: 4;
         position: absolute;
         border-radius: 100%;
-        
+
         &:nth-child(even) {
-            background: $c-hair-highlight-2;
+            background: var(--c-hair-highlight-2);
         }
-        
+
         &:nth-child(odd) {
             background: $c-hair-highlight-1;
         }
@@ -149,13 +191,13 @@ $eye-anim-duration: 5s;
 .side-fringe {
     height: 50px;
     &:first-child {
-        background: $c-hair;
+        background: var(--c-hair);
         width: 50px;
         border-radius: 70% 0% 80% 0%;
         box-shadow: 6px 1px 1px -1px $c-skin-shadow;
     }
     &:last-child {
-        background: $c-hair;
+        background: var(--c-hair);
         width: 80px;
         border-radius: 0% 60% 0% 80%;
         box-shadow: -7px 10px 1px -8px $c-skin-shadow;
@@ -198,7 +240,7 @@ $eye-anim-duration: 5s;
     display: flex;
     justify-content: space-between;
     margin-top: $mt-eyes;
-    
+
     &>.eye {
         @include outline-light;
         width: 22px;
@@ -234,11 +276,12 @@ $eye-anim-duration: 5s;
     width: 20px;
     height: 5px;
     background: var(--c-glasses);
+    opacity: var(--opacity-glasses);
     margin-top: 80px;
     z-index: 4;
     &::before, &::after {
         content: '';
-        position: absolute;    
+        position: absolute;
         background: var(--c-glasses);
         padding: 2.5px 8px;
     }
