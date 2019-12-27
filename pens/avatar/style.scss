@@ -75,9 +75,9 @@ body {
     background-color: var(--c-bg);
 }
 
-.input {
+.input-item {
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: 35px 1fr;
     place-items: center;
     grid-gap: 15px;
 }
@@ -89,6 +89,13 @@ body {
     place-items: start;
 }
 
+%interactionItem {
+    cursor: pointer;
+    &:hover {
+        transform: rotate(-10deg);
+    }
+}
+
 input[type=color] {
     width: 30px;
     height: 30px;
@@ -96,6 +103,33 @@ input[type=color] {
     border: 3px solid black;
     border-radius: 5px;
     image-orientation: none;
+
+    @extend %interactionItem;
+}
+
+.flex {
+    display: flex;
+}
+
+#checkboxGlasses  {
+    position: absolute;
+    width: 2.7rem;
+    height: 2.6rem;
+    opacity: 0;
+    cursor: pointer;
+
+    & + #iconGlasses {
+        font-size: 2rem;
+        z-index: -1;
+    }
+
+    &:checked + #iconGlasses {
+        filter: opacity(0.3);
+    }
+
+    &:hover + #iconGlasses {
+        transform: rotate(-10deg);
+    }
 }
 
 .container {
@@ -119,6 +153,9 @@ input[type=color] {
         grid-gap: 100px;
     }
 }
+
+
+//#region avatar styling
 
 .avatar {
     padding: 0px 75px 219px 75px;
@@ -340,3 +377,5 @@ input[type=color] {
     margin-top: $mt-smile;
     animation: mouth-up $eye-anim-duration infinite;
 }
+
+//#endregion

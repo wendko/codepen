@@ -45,25 +45,28 @@
             <div class="smile"></div>
         </div>
         <div class="input-group">
-            <div class="input">
+            <div class="input-item">
                 <input type="color" id="shirtColor" value="#5898f7">
                 <label for="shirtColor">Shirt</label>
             </div>
-            <div class="input">
+            <div class="input-item">
                 <input type="color" id="glassesColor" value="#dc4444">
                 <label for="glassesColor">Glasses</label>
             </div>
-            <div class="input">
+            <div class="input-item">
                 <input type="color" id="hairColor" value="#000">
                 <label for="hairColor">Hair</label>
             </div>
-            <div class="input">
+            <div class="input-item">
                 <input type="color" id="bgColor" value="#ffb7c7">
                 <label for="bgColor">Background</label>
             </div>
-            <div class="input">
-                <input type="checkbox" id="noGlasses">
-                <label for="noGlasses">No glasses</label>
+            <div class="input-item">
+                <div class="flex">
+                    <input type="checkbox" id="checkboxGlasses">
+                    <span id="iconGlasses">👓</span>
+                </div>
+                <label for="checkboxGlasses">Toggle glasses</label>
             </div>
         </div>
     </div>
@@ -112,9 +115,9 @@
             rgb(r + lightFactor, g + lightFactor, b + lightFactor));
     });
 
-    document.getElementById("noGlasses").addEventListener("change", e => {
-        const noGlasses = e.target.checked;
-        const glassesOpacity = noGlasses ? 0 : 1;
+    document.getElementById("checkboxGlasses").addEventListener("change", e => {
+        const checkboxGlasses = e.target.checked;
+        const glassesOpacity = checkboxGlasses ? 0 : 1;
         document.documentElement.style.setProperty('--opacity-glasses', glassesOpacity);
     });
 </script>

@@ -38,9 +38,9 @@ body {
   background-color: var(--c-bg);
 }
 
-.input {
+.input-item {
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns: 35px 1fr;
   place-items: center;
   grid-gap: 15px;
 }
@@ -53,12 +53,41 @@ body {
 }
 
 input[type=color] {
+  cursor: pointer;
+}
+input[type=color]:hover {
+  transform: rotate(-10deg);
+}
+
+input[type=color] {
   width: 30px;
   height: 30px;
   padding: 0px;
   border: 3px solid black;
   border-radius: 5px;
   image-orientation: none;
+}
+
+.flex {
+  display: flex;
+}
+
+#checkboxGlasses {
+  position: absolute;
+  width: 2.7rem;
+  height: 2.6rem;
+  opacity: 0;
+  cursor: pointer;
+}
+#checkboxGlasses + #iconGlasses {
+  font-size: 2rem;
+  z-index: -1;
+}
+#checkboxGlasses:checked + #iconGlasses {
+  filter: opacity(0.3);
+}
+#checkboxGlasses:hover + #iconGlasses {
+  transform: rotate(-10deg);
 }
 
 .container {
