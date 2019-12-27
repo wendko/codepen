@@ -44,6 +44,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: grab;
+  user-select: none;
 }
 
 .emojis {
