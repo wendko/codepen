@@ -1,6 +1,6 @@
 @import '../../common/container.scss';
 
-
+//#region general styling
 :root {
     --c-shirt: #5898f7;
     --c-shirt-shadow: #{darken(#5898f7, 15%)};
@@ -9,10 +9,104 @@
     --c-hair-highlight-2: rgb(50, 50, 50);
     --opacity-glasses: 1;
     --c-bg: #ffb7c7;
-
-    font-family: Consolas;
 }
 
+$c-font: #47271c;
+$bg-input-group: linear-gradient(150deg, #fdf4fa, #ffb193); 
+
+body {
+    margin: 0;
+    background-color: var(--c-bg);
+    font-family: Consolas;
+    color: $c-font;
+}
+
+.input-item {
+    display: grid;
+    grid-template-columns: 35px 1fr;
+    place-items: center;
+    grid-gap: 15px;
+}
+
+.input-group {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 10px;
+    place-items: start;
+    background: $bg-input-group;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px;
+}
+
+%interactionItem {
+    cursor: pointer;
+    &:hover {
+        transform: rotate(-10deg);
+    }
+}
+
+input[type=color] {
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    border: 3px solid black;
+    border-radius: 5px;
+    image-orientation: none;
+
+    @extend %interactionItem;
+}
+
+.flex {
+    display: flex;
+}
+
+#checkboxGlasses  {
+    position: absolute;
+    width: 2.7rem;
+    height: 2.6rem;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+
+    & + #iconGlasses {
+        font-size: 2rem;
+        z-index: 1;
+    }
+
+    &:checked + #iconGlasses {
+        filter: opacity(0.3);
+    }
+
+    &:hover + #iconGlasses {
+        transform: rotate(-10deg);
+    }
+}
+
+.container {
+    @include container;
+}
+
+.content {
+    display: grid;
+}
+
+@media only screen and (max-width: 456px) {
+    .content {
+        grid-auto-flow: row;
+        grid-gap: 30px;
+    }
+}
+
+@media only screen and (min-width: 456px) {
+    .content {
+        grid-auto-flow: column;
+        grid-gap: 100px;
+    }
+}
+//#endregion
+
+//#region avatar styling
 $w-outline: 5px;
 $w-outline-light: 3px;
 
@@ -30,8 +124,6 @@ $c-eyes: black;
 $c-skin-shadow: #d2a170;
 $c-pupil-highlight: white;
 $c-hair-highlight-1: white;
-
-$c-hair: black;
 
 $eye-anim-duration: 5s;
 
@@ -69,93 +161,6 @@ $eye-anim-duration: 5s;
         margin-top: 95px;
     }
 }
-
-body {
-    margin: 0;
-    background-color: var(--c-bg);
-}
-
-.input-item {
-    display: grid;
-    grid-template-columns: 35px 1fr;
-    place-items: center;
-    grid-gap: 15px;
-}
-
-.input-group {
-    display: grid;
-    grid-auto-flow: row;
-    grid-gap: 10px;
-    place-items: start;
-}
-
-%interactionItem {
-    cursor: pointer;
-    &:hover {
-        transform: rotate(-10deg);
-    }
-}
-
-input[type=color] {
-    width: 30px;
-    height: 30px;
-    padding: 0px;
-    border: 3px solid black;
-    border-radius: 5px;
-    image-orientation: none;
-
-    @extend %interactionItem;
-}
-
-.flex {
-    display: flex;
-}
-
-#checkboxGlasses  {
-    position: absolute;
-    width: 2.7rem;
-    height: 2.6rem;
-    opacity: 0;
-    cursor: pointer;
-
-    & + #iconGlasses {
-        font-size: 2rem;
-        z-index: -1;
-    }
-
-    &:checked + #iconGlasses {
-        filter: opacity(0.3);
-    }
-
-    &:hover + #iconGlasses {
-        transform: rotate(-10deg);
-    }
-}
-
-.container {
-    @include container;
-}
-
-.content {
-    display: grid;
-}
-
-@media only screen and (max-width: 456px) {
-    .content {
-        grid-auto-flow: row;
-        grid-gap: 30px;
-    }
-}
-
-@media only screen and (min-width: 456px) {
-    .content {
-        grid-auto-flow: column;
-        grid-gap: 100px;
-    }
-}
-
-
-//#region avatar styling
 
 .avatar {
     padding: 0px 75px 219px 75px;
