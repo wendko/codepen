@@ -9,15 +9,51 @@
     <style>
         :root {
             --dimension-lion: 308px;
-            --c-lip: rebeccapurple;
             --c-head: pink;
+            
+            /* mouth and beard */
+            --c-lip: rebeccapurple;
+            --c-beard: pink;
+            --c-mouth-base: orange;
+            --c-mouth-outline: springgreen;
+            --middle-left-beard-x-pos: 148px;
+            --beard-y-pos: 288px;
+            --beard-offset: 8px;
+            --h-beard-1: 88px;
+            --h-beard-2: 83px;
+            --h-beard-3: 78px;
+            --h-beard-4: 68px;
+            --h-beard-5: 58px;
+            --h-beard-6: 48px;
+            --h-beard-7: 38px;
+            --h-beard-8: 28px;
+
+            /* eyes */
             --c-eye: blue;
             --c-eyeball-primary: black;
             --c-eyeball-secondary: white;
+            
+            /* horn */
             --c-horn-1: aquamarine;
             --c-horn-2: slateblue;
             --c-horn-3: blue;
 
+            /* ears */
+            --b-rad-ear-left: 58px 28px 0 0;
+            --b-rad-ear-right: 28px 58px 0 0;
+            --c-ear-inside: grey;
+            --c-ear: springgreen;
+
+            /* nose*/
+            --c-nose: springgreen;
+            --c-nose-sides-primary: red;
+            --c-nose-sides-secondary: black;
+            --c-thing-1: yellow;
+            --c-thing-2: limegreen;
+            --c-thing-3: darkorange;
+
+
+            /* diamond */
             --c-diamond: red;
             --c-diamond-border: yellow;
         }
@@ -114,12 +150,7 @@
         .ear {
             width: 78px;
             height: 58px;
-            background: springgreen;
-
-            --b-rad-ear-left: 58px 28px 0 0;
-            --b-rad-ear-right: 28px 58px 0 0;
-
-            --c-ear-inside: grey;
+            background: var(--c-ear);
         }
 
         .ear.ear-left, .ear.ear-left::before { border-radius: var(--b-rad-ear-left) }
@@ -140,7 +171,7 @@
         .nose {
             width: 48px;
             height: 48px;
-            background: springgreen;
+            background: var(--c-nose);
             transform: translate(134px, 168px);
             border-radius: 50%;
         }
@@ -148,7 +179,7 @@
         .nose::before, .nose::after {
             content: '';
             position: absolute;
-            background: red;
+            background: var(--c-nose-sides-primary);
             height: 13px;
             width: 13px;
             border-radius: 50%;
@@ -156,56 +187,47 @@
             
         .nose::before {
             transform: translate(-28px, 18px);
-            box-shadow: 1px 2px 0 5px, 
-            2px 4px 0px 8px red, 
-            3px 6px 0px 10px black;
+            box-shadow: 1px 2px 0 5px var(--c-nose-sides-secondary), 
+            2px 4px 0px 8px var(--c-nose-sides-primary), 
+            3px 6px 0px 10px var(--c-nose-sides-secondary);
         }
 
         .nose::after {
             transform: translate(62px, 18px);
-            box-shadow: -1px 2px 0 5px, 
-            -2px 4px 0px 8px red, 
-            -3px 6px 0px 10px black;
+            box-shadow: -1px 2px 0 5px var(--c-nose-sides-secondary), 
+            -2px 4px 0px 8px var(--c-nose-sides-primary), 
+            -3px 6px 0px 10px var(--c-nose-sides-secondary);
         }
 
         .thing-between-eyes {
             width: 23px;
             height: 23px;
-            background: orange;
+            background: var(--c-thing-1);
             transform: translate(145px, 132px);
             border-radius: 50%;
-            box-shadow: 0 0 0 3px, 0 0 0 10px red;
+            box-shadow: 0 0 0 3px var(--c-thing-2),
+                0 0 0 10px var(--c-thing-3);
         }
     
         .mouth {
             width: 138px;
             height: 38px;
-            background: orange;
             transform: translate(88px, 238px);
             border-radius: 0px 0px 88px 88px;
-            box-shadow: 0 0 0 2px, 
-                0px 7px 0 18px yellow;
-            background: repeating-linear-gradient(90deg,
-             #FFA726 0%, #FFA726 12%, #43A047 12%, #43A047 13%)
+            box-shadow: 0 0 0 2px var(--c-mouth-outline), 
+                0px 7px 0 18px var(--c-lip);
+            background: repeating-linear-gradient(
+                90deg,
+                var(--c-mouth-base) 0%, var(--c-mouth-base) 12%,
+                var(--c-mouth-outline) 12%, var(--c-mouth-outline) 13%
+            );
         }
 
         .beard > div {
             position: absolute;
             width: 8px;
             height: 78px;
-            background: pink;
-            --middle-left-beard-x-pos: 148px;
-            --beard-y-pox: 288px;
-            --beard-offset: 8px;
-
-            --h-beard-1: 88px;
-            --h-beard-2: 83px;
-            --h-beard-3: 78px;
-            --h-beard-4: 68px;
-            --h-beard-5: 58px;
-            --h-beard-6: 48px;
-            --h-beard-7: 38px;
-            --h-beard-8: 28px;
+            background: var(--c-beard);
         }
 
         .beard .beard-left {
@@ -217,82 +239,82 @@
         }
 
         .beard .beard-left:nth-child(1) {
-            transform: translate(var(--middle-left-beard-x-pos), var(--beard-y-pox));
+            transform: translate(var(--middle-left-beard-x-pos), var(--beard-y-pos));
             height: var(--h-beard-1);
         }
         .beard .beard-left:nth-child(2) {
             --x-pos: calc(var(--middle-left-beard-x-pos) - (var(--beard-offset) * 1));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-2);
         }
         .beard .beard-left:nth-child(3) {
             --x-pos: calc(var(--middle-left-beard-x-pos) - (var(--beard-offset) * 2));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-3);
         }
         .beard .beard-left:nth-child(4) {
             --x-pos: calc(var(--middle-left-beard-x-pos) - (var(--beard-offset) * 3));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-4);
         }
         .beard .beard-left:nth-child(5) {
             --x-pos: calc(var(--middle-left-beard-x-pos) - (var(--beard-offset) * 4));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-5);
         }
         .beard > div:nth-child(6) {
             --x-pos: calc(var(--middle-left-beard-x-pos) - (var(--beard-offset) * 5));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-6);
         }
         .beard .beard-left:nth-child(7) {
             --x-pos: calc(var(--middle-left-beard-x-pos) - (var(--beard-offset) * 6));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-7);
         }
         .beard .beard-left:nth-child(8) {
             --x-pos: calc(var(--middle-left-beard-x-pos) - (var(--beard-offset) * 7));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-8);
         }
         .beard .beard-right:nth-child(9) {
             --x-pos: calc(var(--middle-left-beard-x-pos) + (var(--beard-offset) * 1));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-1);
         }
         .beard .beard-right:nth-child(10) {
             --x-pos: calc(var(--middle-left-beard-x-pos) + (var(--beard-offset) * 2));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-2);
         }
         .beard .beard-right:nth-child(11) {
             --x-pos: calc(var(--middle-left-beard-x-pos) + (var(--beard-offset) * 3));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-3);
         }
         .beard .beard-right:nth-child(12) {
             --x-pos: calc(var(--middle-left-beard-x-pos) + (var(--beard-offset) * 4));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-4);
         }
         .beard .beard-right:nth-child(13) {
             --x-pos: calc(var(--middle-left-beard-x-pos) + (var(--beard-offset) * 5));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-5);
         }
         .beard .beard-right:nth-child(14) {
             --x-pos: calc(var(--middle-left-beard-x-pos) + (var(--beard-offset) * 6));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-6);
         }
         .beard .beard-right:nth-child(15) {
             --x-pos: calc(var(--middle-left-beard-x-pos) + (var(--beard-offset) * 7));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-7);
         }
         .beard .beard-right:nth-child(16) {
             --x-pos: calc(var(--middle-left-beard-x-pos) + (var(--beard-offset) * 8));
-            transform: translate(var(--x-pos), var(--beard-y-pox));
+            transform: translate(var(--x-pos), var(--beard-y-pos));
             height: var(--h-beard-8);
         }
 
