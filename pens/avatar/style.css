@@ -11,7 +11,7 @@
 body {
   margin: 0;
   background-color: var(--c-bg);
-  font-family: Consolas;
+  font-family: Consolas, Arial, sans-serif;
   color: #47271c;
 }
 
