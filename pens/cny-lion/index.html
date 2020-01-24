@@ -9,13 +9,13 @@
     <style>
         :root {
             --dimension-lion: 308px;
-            --c-head: pink;
+            --c-head: #ff3c00;
             
             /* mouth and beard */
-            --c-lip: rebeccapurple;
-            --c-beard: pink;
-            --c-mouth-base: orange;
-            --c-mouth-outline: springgreen;
+            --c-lip: yellow;
+            --c-beard: yellow;
+            --c-mouth-base: #ffd586;
+            --c-mouth-outline: orange;
             --middle-left-beard-x-pos: 148px;
             --beard-y-pos: 288px;
             --beard-offset: 8px;
@@ -29,25 +29,25 @@
             --h-beard-8: 28px;
 
             /* eyes */
-            --c-eye: blue;
-            --c-eyeball-primary: black;
-            --c-eyeball-secondary: white;
+            --c-eye: yellow;
+            --c-eyeball-primary: #2a2a2a;
+            --c-eyeball-secondary: #ffecec;
             
             /* horn */
-            --c-horn-1: aquamarine;
-            --c-horn-2: slateblue;
-            --c-horn-3: blue;
+            --c-horn-1: red;
+            --c-horn-2: orange;
+            --c-horn-3: yellow;
 
             /* ears */
             --b-rad-ear-left: 58px 28px 0 0;
             --b-rad-ear-right: 28px 58px 0 0;
-            --c-ear-inside: grey;
-            --c-ear: springgreen;
+            --c-ear-inside: #2e2e2e;
+            --c-ear: yellow;
 
             /* nose*/
-            --c-nose: springgreen;
+            --c-nose: orange;
             --c-nose-sides-primary: red;
-            --c-nose-sides-secondary: black;
+            --c-nose-sides-secondary: orange;
             --c-thing-1: yellow;
             --c-thing-2: limegreen;
             --c-thing-3: darkorange;
@@ -102,7 +102,7 @@
 
         .lion .eye {
             background: var(--c-eye);
-            width: 108px;
+            width: 118px;
             height: 108px;
         }
 
@@ -116,25 +116,18 @@
                 0px -5px 0 15px var(--c-eyeball-primary),
                 0px -8px 0 18px var(--c-eyeball-secondary), 
                 0px -10px 0px 24px var(--c-eyeball-primary);
-        }
-
-        .eye-left .eyeball {
-            transform: translate(38px, 68px);
-        }
-
-        .eye-right .eyeball {
             transform: translate(48px, 68px);
         }
 
         .eye.eye-left {
             border-radius: 38px 58px 48px;
-            transform: translate(38px, 78px) rotate(8deg);
+            transform: translate(18px, 78px) rotate(8deg);
         }
 
 
         .eye.eye-right {
             border-radius: 58px 38px 58px 48px;
-            transform: translate(168px, 78px) rotate(-8deg);
+            transform: translate(178px, 78px) rotate(-8deg);
         }
 
         .horn {
