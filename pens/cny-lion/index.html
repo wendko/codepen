@@ -219,14 +219,19 @@
             box-shadow: inset 0 -8px 18px 8px var(--c-nose-2),
                 0 0 18px;
         }
-        .nose::before {
+        .nose::before { /* left */
             --nose-side-translate: translate(-28px, 18px);
+            --nose-side-translate-2: translate(-30px, 15px);
+            --nose-side-translate-3: translate(-28px, 21px);
             --is-nose-side-left: 1;
+            --wiggle-delay: 0s;
         }
-
-        .nose::after {
+        .nose::after { /* right */
             --nose-side-translate: translate(62px, 18px);
+            --nose-side-translate-2: translate(64px, 15px);
+            --nose-side-translate-3: translate(62px, 21px);
             --is-nose-side-left: -1;
+            --wiggle-delay: 0.3s;
         }
         .nose::before, .nose::after {
             content: '';
@@ -240,14 +245,18 @@
             calc(2px * var(--is-nose-side-left)) 4px 0px 8px var(--c-nose-sides-primary), 
             calc(3px * var(--is-nose-side-left)) 6px 0px 10px var(--c-nose-sides-secondary),
             calc(3px * var(--is-nose-side-left)) 8px 18px 8px;
+            animation: wiggle 2s ease-in var(--wiggle-delay) infinite;
         }
 
-        @keyframes noseSide {
-            0%, 100% {
-                transform: translate(62px, 18px);
+        @keyframes wiggle {
+            0%, 15%, 20%, 100% {
+                transform: var(--nose-side-translate);
             }
-            50% {
-                transform: translate(62px, 18px);
+            5% {
+                transform: var(--nose-side-translate-2);
+            }
+            10%, 17% {
+                transform: var(--nose-side-translate-3);
             }
         }
 
