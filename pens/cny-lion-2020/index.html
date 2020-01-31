@@ -288,7 +288,6 @@
         .mouth {
             width: 138px;
             height: 38px;
-            transform: translate(88px, 238px);
             border-radius: 0px 0px 88px 88px;
             box-shadow: inset 0px 8px 18px grey,
                 0 8px 18px 8px var(--c-mouth-outline),
@@ -299,8 +298,23 @@
                 var(--c-mouth-base) 0%, var(--c-mouth-base) 12%,
                 var(--c-mouth-outline) 12%, var(--c-mouth-outline) 13%
             );
+            transform: translate(88px, 238px);
+            --mouth-translate: translate(88px, 218px);
         }
 
+        .beard {
+            --mouth-translate: translateY(-20px);
+        }
+        
+        .beard, .mouth {
+            animation: gaping 3s infinite;
+        }
+
+        @keyframes gaping {
+            60% {
+                transform: var(--mouth-translate);
+            }   
+        }
 
         .beard-left { border-bottom-left-radius: 88% }
         .beard-left:nth-child(1) { --x-pos: var(--middle-left-beard-x-pos) }
@@ -361,7 +375,6 @@
             height: var(--h-beard);
             box-shadow: inset 0px var(--beard-shadow-y) 8px var(--c-beard-shadow);
         }
-
 
     </style>
 </head>
