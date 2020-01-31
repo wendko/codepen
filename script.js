@@ -11,6 +11,7 @@ const draftedPens = !!window.location.href.match(/draft/g) ? [
 ] : [];
 
 const completedPens = [
+    'cny-lion-2020',
     'inktober-2019',
     'drink-more-water',
     'durian-radio',
