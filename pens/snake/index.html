@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snake</title>
+    <style>
+        /* todo
+
+            make more grids
+            make fonts bigger
+            animate "no"
+
+         */
+        :root {
+            --animation-time: 2;
+        }
+        
+        body {
+            display: grid;
+            place-items: center;
+            color: #0d0d27;
+        }
+
+        .game {
+            display: grid;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+        }
+
+        .grid > div {
+            background: pink;
+            padding: 10px;
+            outline: 1px solid black;
+        }
+
+        .grid > div:not(:nth-child(n+21)) {
+            background: none;
+            /* outline: none; */
+            outline: 1px solid rgba(128, 128, 128, 0.157);
+        }
+
+        #snake-path {
+            position: absolute;
+        }
+
+        .snake > div {
+            padding: 10px;
+            position: absolute;
+            offset-distance: 0%;
+            offset-rotate: 0deg;
+            background: black;
+        }
+
+        .snake > div:nth-child(1) {
+            offset-path: path('m 10, 90 v-80 h40 v180 h-40 Z');
+        }
+        .snake > div:nth-child(2) {
+            offset-path: path('m 10, 110 v-100 h40 v180 h-40 Z');
+        }
+        .snake > div:nth-child(3) {
+            offset-path: path('m 10, 130 v-120 h40 v180 h-40 Z');
+        }
+        .snake > div:nth-child(4) {
+            offset-path: path('m 10, 150 v-140 h40 v180 h-40 Z');
+        }
+
+        @keyframes snakeMove {
+            to {
+                offset-distance: 100%;
+            }
+        }
+
+        .question {
+            text-align: center;
+            margin: 15px;
+        }
+
+
+        .option > label {
+            position: absolute;
+            transform: translate(10px, -10px);
+            padding: 0px 5px;
+        }
+
+        input[name="play"] {
+            position: absolute;
+            transform: translate(-15px, -13px);
+            height: 20px;
+            width: 20px;
+            opacity: 0;
+        }
+
+        input[name="play"] ~ span {
+            position: absolute;
+            padding: 10px;
+            transform: translate(-10px, -10px);
+            z-index: -1;
+            background: none;
+            outline: 1px solid black;
+            box-shadow: inset 5px 5px 0px -1px white,
+                inset -5px -5px 0px -1px white;
+        }
+
+        .snake-moving {
+            animation: snakeMove calc(var(--animation-time) * 1s) ease-out forwards;
+        }
+
+        .checked-yes {
+            --checkbox-color: rgb(145, 145, 0);
+            animation: eaten calc(var(--animation-time) * 1s) linear forwards;
+        }
+
+        .checked-no {
+            --checkbox-color: green;
+            animation: freedom calc(var(--animation-time) * 1s) linear forwards;
+        }
+      
+        @keyframes eaten {
+            0%, 25% { background: var(--checkbox-color) }
+            26%, 100% { background: none };
+        }
+
+        @keyframes freedom {
+            0%, 49% { background: var(--checkbox-color) }
+            50%, 100% { background: black };
+        }
+
+    </style>
+</head>
+<body>
+
+    <p class="question">Play snake?</p>
+
+    <div class="game">
+
+        <div class="snake">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div class="grid">
+            <!-- invisible -->
+
+            <div></div>
+            <div></div>
+            <div class="option">
+                <input type="radio" id="yes" name="play">
+                <span></span>
+                <label>Yes</label>
+            </div>
+            <div></div>
+            <div></div>
+            <div class="option">
+                <input type="radio" id="no" name="play">
+                <span></span>
+                <label>No</label>
+            </div>
+            <!-- #region -->
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+
+            <!-- visible -->
+
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+
+            <!-- #endregion -->
+        </div>
+    </div>
+
+    <script>
+        const inputs = Array.from(document.querySelectorAll('input'));
+        const snakeEls = Array.from(document.querySelector('.snake').children);
+
+        const animTime = getComputedStyle(document.documentElement).getPropertyValue('--animation-time') * 1000;
+
+        inputs.forEach(input => {
+            // console.log(input.id, input.dataset.active);
+
+            input.addEventListener('click', e => {
+
+                if (!input.checked) {
+                    return;
+                }
+
+                const spanClassList = input.nextElementSibling.classList;
+
+                spanClassList.add(`checked-${input.id}`);
+                inputs.forEach(input => input.style.cursor = 'not-allowed');
+
+                if (input.id === 'yes') {
+                    snakeEls.forEach(snakeEl => snakeEl.classList.add('snake-moving'));
+                }
+                
+                setTimeout( ()=> {
+                    inputs.forEach(input => input.style.cursor = 'default');
+                    spanClassList.remove(`checked-${input.id}`);
+
+                    if (input.id === 'yes') {
+                        snakeEls.forEach(snakeEl => snakeEl.classList.remove('snake-moving'));
+                    }
+
+                }, animTime);
+
+                    // questionEl.querySelectorAll("[data-active]").forEach(el => {
+                    //     el.removeAttribute("data-active");
+                    // });
+                    // input.setAttribute('data-active', true);
+                    // if (input.id === 'yes') {
+                    //     console.log('exec behavior for yes'); //TODO
+                    // } else {
+                    //     console.log('exec behavior for no'); //TODO
+                    // }
+            })
+        });
+    </script>
+</body>
+</html>
