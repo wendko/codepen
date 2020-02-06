@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet"> 
     <title>Snake</title>
     <style>
         /* todo
-
-            make more grids
-            make fonts bigger
+            re-animate "yes"
             animate "no"
-
+            add score and hearts UI
          */
         :root {
             --animation-time: 2;
+
+            --c-bg: #8aae64;
+            --c-snake-body: #34361a;
+
         }
         
         body {
+            font-family: 'VT323', monospace;
             display: grid;
             place-items: center;
             color: #0d0d27;
@@ -29,18 +33,17 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(10, 1fr);
+            grid-template-columns: repeat(20, 1fr);
         }
 
         .grid > div {
-            background: pink;
+            background: var(--c-bg);
             padding: 10px;
-            outline: 1px solid black;
+            outline: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        .grid > div:not(:nth-child(n+21)) {
+        .grid > div:not(:nth-child(n+41)) {
             background: none;
-            /* outline: none; */
             outline: 1px solid rgba(128, 128, 128, 0.157);
         }
 
@@ -50,10 +53,11 @@
 
         .snake > div {
             padding: 10px;
+            border-radius: 5px;
             position: absolute;
             offset-distance: 0%;
             offset-rotate: 0deg;
-            background: black;
+            background: var(--c-snake-body);
         }
 
         .snake > div:nth-child(1) {
@@ -83,13 +87,14 @@
 
         .option > label {
             position: absolute;
-            transform: translate(10px, -10px);
+            transform: translate(35px, -29px);
             padding: 0px 5px;
+            font-size: 45px;
         }
 
         input[name="play"] {
             position: absolute;
-            transform: translate(-15px, -13px);
+            transform: translate(5px, -12px);
             height: 20px;
             width: 20px;
             opacity: 0;
@@ -98,7 +103,7 @@
         input[name="play"] ~ span {
             position: absolute;
             padding: 10px;
-            transform: translate(-10px, -10px);
+            transform: translate(10px, -10px);
             z-index: -1;
             background: none;
             outline: 1px solid black;
@@ -130,6 +135,10 @@
             50%, 100% { background: black };
         }
 
+        .question {
+            font-size: 70px;
+        }
+
     </style>
 </head>
 <body>
@@ -137,7 +146,6 @@
     <p class="question">Play snake?</p>
 
     <div class="game">
-
         <div class="snake">
             <div></div>
             <div></div>
@@ -150,11 +158,18 @@
 
             <div></div>
             <div></div>
+            <div></div>
+
             <div class="option">
                 <input type="radio" id="yes" name="play">
                 <span></span>
                 <label>Yes</label>
             </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
             <div></div>
             <div></div>
             <div class="option">
@@ -163,6 +178,22 @@
                 <label>No</label>
             </div>
             <!-- #region -->
+            <div></div>
+            <div></div>
+          
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
             <div></div>
             <div></div>
             <div></div>
@@ -179,7 +210,306 @@
             <div></div>
 
             <!-- visible -->
-
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
             <div></div>
             <div></div>
             <div></div>
@@ -303,7 +633,7 @@
                 const spanClassList = input.nextElementSibling.classList;
 
                 spanClassList.add(`checked-${input.id}`);
-                inputs.forEach(input => input.style.cursor = 'not-allowed');
+                inputs.forEach(input => input.style.cursor = 'none');
 
                 if (input.id === 'yes') {
                     snakeEls.forEach(snakeEl => snakeEl.classList.add('snake-moving'));
