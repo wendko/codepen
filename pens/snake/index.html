@@ -15,6 +15,7 @@
         :root {
             --animation-time: 2;
 
+            --c-checkbox-border: #34361a; 
             --c-bg: #8aae64;
             --c-snake-body: #34361a;
 
@@ -39,13 +40,18 @@
         .grid > div {
             background: var(--c-bg);
             padding: 10px;
-            outline: 1px solid rgba(0, 0, 0, 0.1);
+            /* outline: 1px solid rgba(0, 0, 0, 0.1); */
         }
 
         .grid > div:not(:nth-child(n+41)) {
             background: none;
-            outline: 1px solid rgba(128, 128, 128, 0.157);
+            /* outline: 1px solid rgba(128, 128, 128, 0.157); */
         }
+
+        .grid > div:nth-child(41) { border-top-left-radius: 5px; }
+        .grid > div:nth-child(60) { border-top-right-radius: 5px; }
+        .grid > div:nth-child(421) { border-bottom-left-radius: 5px; }
+        .grid > div:nth-child(440) { border-bottom-right-radius: 5px; }
 
         #snake-path {
             position: absolute;
@@ -106,8 +112,10 @@
             transform: translate(10px, -10px);
             z-index: -1;
             background: none;
-            outline: 1px solid black;
-            box-shadow: inset 5px 5px 0px -1px white,
+            /* outline: 1px solid black; */
+            border-radius: 5px;
+            box-shadow: 0 0 0 3px var(--c-checkbox-border),
+                inset 5px 5px 0px -1px white,
                 inset -5px -5px 0px -1px white;
         }
 
