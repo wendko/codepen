@@ -31,6 +31,10 @@
             height: 100vh;
         }
 
+        label, div, p {
+            user-select: none;
+        }
+
         .game {
             display: grid;
         }
@@ -252,7 +256,7 @@
                     <input type="radio" id="yes" name="play">
                     <span class="checkbox-border"></span>
                     <span class="checkmark"></span>
-                    <label>Yes</label>
+                    <label for="yes">Yes</label>
                 </div>
                 <div></div>
                 <div></div>
@@ -265,7 +269,7 @@
                     <input type="radio" id="no" name="play">
                     <span class="checkbox-border"></span>
                     <span class="checkmark"></span>
-                    <label>No</label>
+                    <label for="no">No</label>
                 </div>
                 <div></div>
                 <div></div>
