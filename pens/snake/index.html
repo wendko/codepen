@@ -7,27 +7,28 @@
     <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet"> 
     <title>Snake</title>
     <style>
-        /* todo
-            re-animate "yes"
-            animate "no"
-            add score and hearts UI
-         */
         :root {
             --animation-time: 2;
+
+            --c-text-primary: #0d0d27;
+            --c-text-secondary: green;
 
             --c-checkbox-border: #34361a; 
             --c-bg: #8aae64;
             --c-snake-body: #34361a;
-
+            --c-checkmark: green;
 
             --grid-size: 8px;
+
         }
 
         body {
             font-family: 'VT323', monospace;
             display: grid;
             place-items: center;
-            color: #0d0d27;
+            color: ;
+            margin: 0;
+            height: 100vh;
         }
 
         .game {
@@ -42,18 +43,16 @@
         .grid > div {
             background: var(--c-bg);
             padding: var(--grid-size);
-            outline: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        .grid > div:not(:nth-child(n+61)) {
+        .grid > div:not(:nth-child(n+41)) {
             background: none;
-            outline: 1px solid rgba(128, 128, 128, 0.157);
         }
 
-        .grid > div:nth-child(61) { border-top-left-radius: 5px; }
-        .grid > div:nth-child(80) { border-top-right-radius: 5px; }
-        .grid > div:nth-child(441) { border-bottom-left-radius: 5px; }
-        .grid > div:nth-child(460) { border-bottom-right-radius: 5px; }
+        .grid > div:nth-child(41) { border-top-left-radius: 5px; }
+        .grid > div:nth-child(60) { border-top-right-radius: 5px; }
+        .grid > div:nth-child(421) { border-bottom-left-radius: 5px; }
+        .grid > div:nth-child(440) { border-bottom-right-radius: 5px; }
 
         #snake-path {
             position: absolute;
@@ -61,43 +60,48 @@
 
         .snake > div {
             padding: var(--grid-size);
-            border-radius: 5px;
+            border-radius: 3px;
             position: absolute;
             offset-distance: 0%;
             offset-rotate: 0deg;
             background: var(--c-snake-body);
+            z-index: 2;
         }
 
         .snake > div:nth-child(1) {
-            offset-path: path('m 10, 90 v-80 h40 v180 h-40 Z');
+            offset-path: path('m 56, 200 v-193 h112 v273 h-113 v-10 Z');
         }
         .snake > div:nth-child(2) {
-            offset-path: path('m 10, 110 v-100 h40 v180 h-40 Z');
+            offset-path: path('m 56, 216 v-209 h113 v273 h-113 v-10 Z');
         }
         .snake > div:nth-child(3) {
-            offset-path: path('m 10, 130 v-120 h40 v180 h-40 Z');
+            offset-path: path('m 56, 232 v-225 h113 v273 h-113 v-10 Z');
         }
         .snake > div:nth-child(4) {
-            offset-path: path('m 10, 150 v-140 h40 v180 h-40 Z');
+            offset-path: path('m 56, 248 v-241 h113 v273 h-113 v-10 Z');
         }
-
-        @keyframes snakeMove {
-            to {
-                offset-distance: 100%;
-            }
+        .snake > div:nth-child(5) {
+            offset-path: path('m 56, 264 v-257 h113 v273 h-113 v-10 Z');
         }
 
         .question {
             text-align: center;
-            margin: 15px;
+            font-size: 45px;
+            margin: 0 0 30px 0;
+            text-transform: uppercase;
+            animation: questionText 3s infinite both;
         }
 
+        @keyframes questionText {
+            80% { color: var(--c-text-secondary)  }
+        }
 
         .option > label {
             position: absolute;
-            transform: translate(35px, -29px);
+            transform: translate(30px, -15px);
             padding: 0px 5px;
-            font-size: 45px;
+            font-size: 30px;
+            text-transform: uppercase;
         }
 
         input[name="play"] {
@@ -109,588 +113,635 @@
             opacity: 0;
         }
 
-        input[name="play"] ~ span {
+        input[name="play"] ~ span.checkbox-border {
+            z-index: -1;
             position: absolute;
             padding: var(--grid-size);
-            transform: translate(10px, -10px);
-            z-index: -1;
+            transform: translate(8px, -8px);
             background: none;
             border-radius: 5px;
-            box-shadow: 0 0 0 3px var(--c-checkbox-border),
-             inset 0 0 0 2px white;
+            box-shadow: 0 0 0 3px var(--c-checkbox-border);
         }
 
-        .snake-moving {
-            animation: snakeMove calc(var(--animation-time) * 1s) ease-out forwards;
+        input[name="play"] ~ span.checkmark {
+            z-index: -1;
+            position: absolute;
+            padding: calc(var(--grid-size) - 1px);
+            transform: translate(9px, -7px);
+            background: var(--c-checkmark);
+            border-radius: 5px;
+            opacity: 0;
         }
 
-        .checked-yes {
-            --checkbox-color: rgb(145, 145, 0);
-            background: var(--checkbox-color);
+        input[name="play"]#yes ~ span.checkbox-border::before {
+            content: "CHOMP!";
+            position: absolute;
+            font-size: 15px;
+            font-weight: bolder;
+            width: max-content;
+            opacity: 0;
+            --translate: translate(-15px, -30px);
+            transform: var(--translate);
+        }
 
+        input[name="play"]#no ~ span.checkmark {
+            offset-path: path('m7,7 v16 h115 v-200');
+            offset-distance: 0%;
+            offset-rotate: 0deg;
+        }
+
+        input[name="play"]#no ~ span.checkmark::before {
+            content: "";
+            position: absolute;
+            font-size: 15px;
+            font-weight: bolder;
+            width: max-content;
+            transform: translate(-20px, -30px);
+        }
+        
+        input[name="play"][data-active]#yes ~ span.checkmark {
             animation: eaten calc(var(--animation-time) * 1s) linear forwards;
         }
 
-        .checked-no {
-            --checkbox-color: green;
-            animation: freedom calc(var(--animation-time) * 1s) linear forwards;
+        input[name="play"][data-active]#yes ~ span.checkbox-border::before {
+            animation: chompText calc(var(--animation-time) * 1s) linear forwards;
         }
-      
+
+        input[name="play"][data-active]#no ~ span.checkmark::before {
+            animation: freedomText calc(var(--animation-time) * 0.4s) linear forwards;
+        }
+
+        input[name="play"][data-active]#no ~ span.checkmark {
+            opacity: 1;
+            animation: freedomMove calc(var(--animation-time) * 1s) linear forwards;
+        }
+
+        .snake-moving {
+            animation: snakeMove calc(var(--animation-time) * 1s) ease-in-out forwards;
+        }
+
+        .score {
+            font-size: 20px;
+            position: absolute;
+            text-transform: uppercase;
+            transform: translate(10px, 38px);
+        }
+
+        @keyframes snakeMove { to { offset-distance: 100% } }
+
         @keyframes eaten {
-            /* 0%, 100% { background: var(--checkbox-color) } */
-            0%, 25% { background: var(--checkbox-color) }
-            26%, 100% { background: none };
+            0%, 35% { opacity: 1 }
+            36%, 100% { opacity: 0 };
         }
 
-        @keyframes freedom {
-            0%, 49% { background: var(--checkbox-color) }
-            50%, 100% { background: black };
+
+        @keyframes chompText {
+            34% { opacity: 0 }
+            35% { opacity: 1 }
+            30%, 55% { transform: var(--translate) }
+            35%, 45% {
+                transform: var(--translate) rotate(10deg);
+            }
+            40%, 50% {
+                transform: var(--translate) rotate(-10deg);
+            }
         }
 
-        .question {
-            font-size: 70px;
+        @keyframes freedomMove {
+            50% { offset-distance: 0% }
+            100% { offset-distance: 100% };
+        }
+
+        @keyframes freedomText {
+            10% { content: "F" }
+            20% { content: "FR" }
+            30% { content: "FRE" }
+            40% { content: "FREE" }
+            50% { content: "FREED" }
+            60% { content: "FREEDO" }
+            70% { content: "FREEDOM" }
+            80% { content: "FREEDOM!" }
+            90% { content: "FREEDOM!!" }
+            100% { content: "FREEDOM!!!" }
         }
 
     </style>
 </head>
 <body>
 
-    <p class="question">Play snake?</p>
+    <div class="content">
 
-    <div class="game">
-        <div class="snake">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+        <p class="question">Play snake?</p>
 
-        <div class="grid">
-            <!-- invisible -->
-
-            <div></div>
-            <div></div>
-            <div></div>
-
-            <div class="option">
-                <input type="radio" id="yes" name="play">
-                <span class="checked-yes"></span>
-                <label>Yes</label>
+        <div class="game">
+            <div class="snake">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div class="option">
-                <input type="radio" id="no" name="play">
-                <span></span>
-                <label>No</label>
+
+            <div class="score">score: <span id="score-count">0</span></div>
+
+            <div class="grid">
+                <!-- invisible -->
+
+                <div></div>
+                <div></div>
+                <div></div>
+
+                <div class="option">
+                    <input type="radio" id="yes" name="play">
+                    <span class="checkbox-border"></span>
+                    <span class="checkmark"></span>
+                    <label>Yes</label>
+                </div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="option">
+                    <input type="radio" id="no" name="play">
+                    <span class="checkbox-border"></span>
+                    <span class="checkmark"></span>
+                    <label>No</label>
+                </div>
+                <!-- #region -->
+                <div></div>
+                <div></div>
+
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+
+                <!-- visible -->
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+
+                <!-- #endregion -->
             </div>
-            <!-- #region -->
-            <div></div>
-            <div></div>
-
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-
-            <!-- visible -->
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-
-            <!-- #endregion -->
         </div>
+    
     </div>
 
     <script>
         const inputs = Array.from(document.querySelectorAll('input'));
         const snakeEls = Array.from(document.querySelector('.snake').children);
-
         const animTime = getComputedStyle(document.documentElement).getPropertyValue('--animation-time') * 1000;
+        const scoreCount = document.querySelector('#score-count');
 
         inputs.forEach(input => {
-            // console.log(input.id, input.dataset.active);
-
             input.addEventListener('click', e => {
-
                 if (!input.checked) {
+                    input.removeAttribute('data-active');
                     return;
                 }
 
-                const spanClassList = input.nextElementSibling.classList;
-
-                spanClassList.add(`checked-${input.id}`);
+                input.setAttribute('data-active', 'true');
                 inputs.forEach(input => input.style.cursor = 'none');
+
+                setTimeout( ()=> {
+                    inputs.forEach(input => input.style.cursor = 'pointer');
+                    input.removeAttribute('data-active');
+                }, animTime);
 
                 if (input.id === 'yes') {
                     snakeEls.forEach(snakeEl => snakeEl.classList.add('snake-moving'));
+
+                    setTimeout( () => {
+                        scoreCount.innerHTML = +scoreCount.innerHTML + 1;
+                    }, animTime * 0.36);
+
+                    setTimeout( ()=> {
+                        snakeEls.forEach(snakeEl => snakeEl.classList.remove('snake-moving'));
+                    }, animTime);
                 }
                 
-                setTimeout( ()=> {
-                    inputs.forEach(input => input.style.cursor = 'pointer');
-                    spanClassList.remove(`checked-${input.id}`);
-
-                    if (input.id === 'yes') {
-                        snakeEls.forEach(snakeEl => snakeEl.classList.remove('snake-moving'));
-                    }
-
-                }, animTime);
-
-                    // questionEl.querySelectorAll("[data-active]").forEach(el => {
-                    //     el.removeAttribute("data-active");
-                    // });
-                    // input.setAttribute('data-active', true);
-                    // if (input.id === 'yes') {
-                    //     console.log('exec behavior for yes'); //TODO
-                    // } else {
-                    //     console.log('exec behavior for no'); //TODO
-                    // }
             })
         });
     </script>
