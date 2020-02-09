@@ -26,7 +26,7 @@
             font-family: 'VT323', monospace;
             display: grid;
             place-items: center;
-            color: ;
+            color: var(--c-text-primary);
             margin: 0;
             height: 100vh;
         }
@@ -722,10 +722,10 @@
                 }
 
                 input.setAttribute('data-active', 'true');
-                inputs.forEach(input => input.style.cursor = 'none');
+                inputs.forEach(input => input.disabled = true);
 
                 setTimeout( ()=> {
-                    inputs.forEach(input => input.style.cursor = 'pointer');
+                    inputs.forEach(input => input.disabled = false);
                     input.removeAttribute('data-active');
                 }, animTime);
 
