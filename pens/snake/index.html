@@ -26,9 +26,13 @@
             font-family: 'VT323', monospace;
             display: grid;
             place-items: center;
-            color: ;
+            color: var(--c-text-primary);
             margin: 0;
             height: 100vh;
+        }
+
+        label, div, p {
+            user-select: none;
         }
 
         .game {
@@ -252,7 +256,7 @@
                     <input type="radio" id="yes" name="play">
                     <span class="checkbox-border"></span>
                     <span class="checkmark"></span>
-                    <label>Yes</label>
+                    <label for="yes">Yes</label>
                 </div>
                 <div></div>
                 <div></div>
@@ -265,7 +269,7 @@
                     <input type="radio" id="no" name="play">
                     <span class="checkbox-border"></span>
                     <span class="checkmark"></span>
-                    <label>No</label>
+                    <label for="no">No</label>
                 </div>
                 <div></div>
                 <div></div>
@@ -718,10 +722,10 @@
                 }
 
                 input.setAttribute('data-active', 'true');
-                inputs.forEach(input => input.style.cursor = 'none');
+                inputs.forEach(input => input.disabled = true);
 
                 setTimeout( ()=> {
-                    inputs.forEach(input => input.style.cursor = 'pointer');
+                    inputs.forEach(input => input.disabled = false);
                     input.removeAttribute('data-active');
                 }, animTime);
 
