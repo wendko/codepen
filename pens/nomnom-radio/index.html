@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nomnom Radio</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
+    <style>
+
+        :root {
+            --size-input: 25px;
+
+            --z-index-mouth: 2;
+            --z-index-input: 1;
+            --z-index-teeth: -1;
+            --z-index-face: -2;
+        }
+
+
+        body {
+            display: grid;
+            place-items: center;
+            background: pink;
+            margin: 0;
+            height: 100vh;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .input-group {
+            font-size: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group > input {
+            display: flex;
+            width: var(--size-input);
+            height: var(--size-input);
+            outline: 1px solid red;
+            z-index: var(--z-index-input);
+            cursor: pointer;
+            
+            opacity: 0;
+        }
+
+        .input-group > span.mouth::after {
+            background: green;
+            padding: 5px 14px;
+            position: absolute;
+            border-radius: 0 0 15px 15px;
+            content: "";
+            transform: translate(-7px, -9px);
+        }
+
+        .input-group > span.mouth {
+            background: white;
+            padding: 4px 3px;
+            position: absolute;
+            z-index: var(--z-index-teeth);
+            transform: translate(7.5px, 0px);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 0 0 1px black,
+                7.5px 2px white, 7.5px 2px 0 1px black,
+                15px 0px white, 15px 0px 0 1px black;
+        }
+
+        .input-group > span.face {
+            background: black;
+            padding: 9px 11px;
+            border-radius: 50%;
+            position: absolute;
+            z-index: var(--z-index-face);
+            transform: translate(6.5px , 4.5px);
+            box-shadow: 0 -3px 0 8px green;
+
+            /* , inset 0 0 0 5px green */
+        }
+
+        .pseudo-input {
+            padding: 5px;
+            background: var(--c-food);
+            position: absolute;
+            border-radius: 50%;
+            transform: translate(12px, 1px);
+            box-shadow: 0 0 0 2px white, 0 0 0 3px black;
+            transition: background 0.2s linear;
+        }
+
+        input[name="nomnom-radio"]:checked ~ .pseudo-input {
+            --c-food: blue;
+        }
+        input[name="nomnom-radio"]:not(:checked) ~ .pseudo-input {
+            --c-food: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="input-group">
+        <input type="radio" name="nomnom-radio" id="test">
+        <span class="pseudo-input"></span>
+        <span class="face"></span>
+        <span class="mouth"></span>
+        <label for="test">Test</label>
+    </div>
+
+    <div class="input-group">
+        <input type="radio" name="nomnom-radio" id="test">
+        <span class="pseudo-input"></span>
+        <span class="face"></span>
+        <span class="mouth"></span>
+        <label for="test">Test</label>
+    </div>
+    
+</body>
+</html>
