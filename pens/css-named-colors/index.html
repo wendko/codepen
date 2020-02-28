@@ -15,6 +15,7 @@
             transition: background 0.2s ease-in;
             background: var(--background);
             font-family: monospace;
+            margin: 0;
         }
 
         input {
@@ -82,21 +83,21 @@
         }
 
         .container {
-            display: flex;
-            justify-content: flex-end;
             padding: 10px 20px;
         }
 
         .title {
-            color: darkslateblue;
-            position: fixed;
-            font-size: 10vw;
-            word-break: break-word;
-            margin: 15px 0 0;
-            writing-mode: vertical-rl;
-            transform: rotate(-180deg);
-            text-align: right;
+            color: var(--background);
+            transition: color 0.2s ease-in;
             text-shadow: 1px 1px white, -1px -1px white, -1px 1px white, 1px -1px white;
+            position: fixed;
+            background: black;
+            margin: 0;
+            text-align: center;
+            z-index: 1;
+            width: 100%;
+            padding: 12px;
+            font-size: 36px;
         }
 
         @media only screen and (max-width: 250px) {
@@ -121,7 +122,8 @@
 </head>
 
 <body>
-    <h1 class="title">css named colors</h1>
+    <p class="title">css named colors</p>
+
     <div class="container">
         <ul id="colorList">
             <li v-for="color in list">
@@ -132,7 +134,7 @@
         </ul>
     </div>
 
-    <a class="source" href="https://www.w3.org/TR/css-color-4/#named-colors">Source</a>
+    <!-- <a class="source" href="https://www.w3.org/TR/css-color-4/#named-colors">Source</a> -->
 
     <script>
         var app = new Vue({
