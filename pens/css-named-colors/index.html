@@ -90,13 +90,19 @@
         .title {
             color: darkslateblue;
             position: fixed;
-            font-size: 20vmin;
+            font-size: 10vw;
             word-break: break-word;
             margin: 15px 0 0;
             writing-mode: vertical-rl;
             transform: rotate(-180deg);
             text-align: right;
             text-shadow: 1px 1px white, -1px -1px white, -1px 1px white, 1px -1px white;
+        }
+
+        @media only screen and (max-width: 250px) {
+            .title, .source {
+                display: none;
+            }
         }
 
         .source {
