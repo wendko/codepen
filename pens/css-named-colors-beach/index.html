@@ -7,6 +7,8 @@
     <style>
         body {
             margin: 0;
+            width: 100vw;
+            overflow: hidden;
         }
         .scene {
             display: grid;
@@ -24,7 +26,7 @@
             grid-template-columns: 1fr 3fr;
         }
         .beach {
-            padding: 20px;
+            padding: 10px;
             background: sandybrown;
             z-index: -1;
         }
@@ -56,18 +58,21 @@
             border-radius: 80px 80px 50px 50px;
             background: var(--bg-1);
             opacity: 0;
-            height: var(--height);
-            width: var(--width);
+            height: var(--cloud-height);
+            width: var(--cloud-width);
             box-shadow: var(--box-shadow);
             animation: var(--cloud-dur) linear var(--cloud-delay) infinite cloudMove;
         }
 
         @keyframes cloudMove {
-            from {
+            0% {
+                opacity: 0;
+            }
+            1% {
                 opacity: 1;
                 transform: translate(-20vw, var(--y-offset));
             }
-            to {
+            100% {
                 opacity: 1;
                 transform: translate(110vw, var(--y-offset));
             }
@@ -79,8 +84,8 @@
             --y-offset: 34px;
             --cloud-dur: 50s;
             --cloud-delay: 0s;
-            --height: 70px;
-            --width: 100px;
+            --cloud-height: 70px;
+            --cloud-width: 100px;
             --box-shadow: 50px 16px 0 -16px var(--bg-2),
             -48px 8px 0 -8px var(--bg-2),
             -86px 19px 0 -19px var(--bg-1);
@@ -92,8 +97,8 @@
             --y-offset: 10px;
             --cloud-dur: 60s;
             --cloud-delay: 10s;
-            --height: 60px;
-            --width: 100px;
+            --cloud-height: 60px;
+            --cloud-width: 100px;
             --box-shadow: 45px 6px 0 -6px var(--bg-2),
                 -62px 12px 0 -12px var(--bg-2);
 
@@ -104,11 +109,48 @@
             --y-offset: 60px;
             --cloud-dur: 45s;
             --cloud-delay: 20s;
-            --height: 70px;
-            --width: 100px;
+            --cloud-height: 70px;
+            --cloud-width: 100px;
             --box-shadow: 52px 5px 0 -5px var(--bg-2),
                 93px 17px 0 -17px var(--bg-1),
                 -55px 10px 0 -10px var(--bg-2);
+        }
+        .coral-group {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            place-items: center;
+            height: 50%;
+        }
+
+        .coral {
+            border-radius: 80px 80px 20px 20px;
+            background: coral;
+            height: 50px;
+            width: 80px;
+        }
+
+        .coral:nth-child(1) {
+            grid-column: 4;
+            grid-row: 2;
+        }
+
+        .coral:nth-child(2) {
+            grid-column: 5;
+            grid-row: 1;
+        }
+
+        .coral::after {
+            content: '';
+            padding: 3px;
+            border-radius: 50px;
+            --bg: tomato;
+            background: var(--bg);
+            position: absolute;
+            transform: translate(29px, 5px);
+            box-shadow: 10px -2px var(--bg), 20px 0 var(--bg),
+            -12px 7px var(--bg), -1px 11px var(--bg), 10px 11px var(--bg), 21px 11px var(--bg), 32px 7px var(--bg),
+            -19px 17px var(--bg), -7px 21px var(--bg), 5px 24px var(--bg), 17px 24px var(--bg), 28px 21px var(--bg), 39px 17px var(--bg),
+            -22px 28px var(--bg), -11px 32px var(--bg), 0px 34px var(--bg), 11px 35px var(--bg), 22px 34px var(--bg), 33px 32px var(--bg), 44px 28px var(--bg);
         }
     </style>
 </head>
@@ -124,7 +166,8 @@
             <div class="beach">
                 <div class="crab">
                     <div class="shell"></div>
-                    <div class="body"></div>
+                    <div class="legs"></div>
+                    <div class="eyes"></div>
                 </div>
                 <div class="coral-group">
                     <div class="coral"></div>
