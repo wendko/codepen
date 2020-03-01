@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Named Colors (Beach)</title>
+    <style>
+        :root {
+            --c-sky: lightskyblue;
+            --c-beach-1: sandybrown;
+            --c-beach-2: peru;
+            --c-sea-1: lightseagreen;
+            --c-sea-2: aquamarine;
+            --c-sea-3: darkseagreen;
+            --c-cloud-1: mintcream;
+            --c-cloud-2: azure;
+            --c-cloud-3: papayawhip;
+            --c-cloud-4: blanchedalmond;
+            --c-cloud-5: snow;
+            --c-cloud-6: ivory;
+            --c-coral-1: coral;
+            --c-coral-2: tomato;
+            --c-crab-shadow: brown;
+            --c-shell-1: seashell;
+            --c-shell-2: peachpuff;
+            --c-shell-shadow: sienna;
+            --c-crab-body: maroon;
+            --c-crab-leg: red;
+            --c-crab-pupil: black;
+            --c-crab-eye: white;
+        }
+
+        body {
+            margin: 0;
+            width: 100vw;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        .scene {
+            display: grid;
+            grid-template-rows: 2fr 3fr;
+            --height: 98vh;
+            height: var(--height);
+            padding: calc((100vh - var(--height) ) / 2);
+        }
+        .sky {
+            padding: 20px;
+            background: var(--c-sky);
+            z-index: -1;
+        }
+        .earth {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+        }
+        .beach {
+            padding: 10px;
+            background: var(--c-beach-1);
+            z-index: -1;
+        }
+        .sea {
+            padding: 20px;
+            background: var(--c-sea-1);
+            border-radius: 0 59% 56% 0;
+            animation: tide 10s ease-in-out infinite;
+            box-shadow: 0 0 var(--c-sea-1),
+            0 0 var(--c-sea-1),
+            5vw 0 var(--c-sea-1),
+            10vw 0 var(--c-sea-2),
+            22vw 0 var(--c-sea-3),
+            30vw 0 var(--c-beach-2);
+        }
+        @keyframes tide {
+            50% {
+                box-shadow: 14vw 0 var(--c-sea-1),
+                10vw 0 var(--c-sea-1),
+                27vw 0 var(--c-sea-1),
+                28vw 0 var(--c-sea-2),
+                29vw 0 var(--c-sea-3),
+                30vw 0 var(--c-beach-2);
+            }
+        }
+
+        .cloud {
+            position: absolute;
+            border-radius: 80px 80px 50px 50px;
+            background: var(--bg-1);
+            opacity: 0;
+            height: var(--cloud-height);
+            width: var(--cloud-width);
+            box-shadow: var(--box-shadow);
+            animation: var(--cloud-dur) linear var(--cloud-delay) infinite cloudMove;
+        }
+
+        @keyframes cloudMove {
+            0% {
+                opacity: 0;
+            }
+            1% {
+                opacity: 1;
+                transform: translate(-20vw, var(--y-offset));
+            }
+            100% {
+                opacity: 1;
+                transform: translate(110vw, var(--y-offset));
+            }
+        }
+
+        .cloud:nth-child(1) {
+            --bg-1: var(--c-cloud-1);
+            --bg-2: var(--c-cloud-2);
+            --y-offset: 34px;
+            --cloud-dur: 50s;
+            --cloud-delay: 0s;
+            --cloud-height: 70px;
+            --cloud-width: 100px;
+            --box-shadow: 50px 16px 0 -16px var(--bg-2),
+            -48px 8px 0 -8px var(--bg-2),
+            -86px 19px 0 -19px var(--bg-1);
+        }
+
+        .cloud:nth-child(2) {
+            --bg-1: var(--c-cloud-3);
+            --bg-2: var(--c-cloud-4);
+            --y-offset: 10px;
+            --cloud-dur: 60s;
+            --cloud-delay: 10s;
+            --cloud-height: 60px;
+            --cloud-width: 100px;
+            --box-shadow: 45px 6px 0 -6px var(--bg-2),
+                -62px 12px 0 -12px var(--bg-2);
+
+        }
+        .cloud:nth-child(3) {
+            --bg-1: var(--c-cloud-5);
+            --bg-2: var(--c-cloud-6);
+            --y-offset: 60px;
+            --cloud-dur: 45s;
+            --cloud-delay: 20s;
+            --cloud-height: 70px;
+            --cloud-width: 100px;
+            --box-shadow: 52px 5px 0 -5px var(--bg-2),
+                93px 17px 0 -17px var(--bg-1),
+                -55px 10px 0 -10px var(--bg-2);
+        }
+        .coral-group {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .coral {
+            border-radius: 80px 80px 20px 20px;
+            background: var(--c-coral-1);
+            height: 50px;
+            width: 80px;
+        }
+
+        .coral:first-child {
+            margin: 1vw 1vw 0 0;
+        }
+
+        .coral:nth-child(2) {
+            margin: 3vw 1.5vw;
+        }
+
+        .coral::after {
+            content: '';
+            padding: 3px;
+            border-radius: 50px;
+            --bg: var(--c-coral-2);
+            background: var(--bg);
+            position: absolute;
+            transform: translate(29px, 5px);
+            box-shadow: 10px -2px var(--bg), 20px 0 var(--bg),
+            -12px 7px var(--bg), -1px 11px var(--bg), 10px 11px var(--bg), 21px 11px var(--bg), 32px 7px var(--bg),
+            -19px 17px var(--bg), -7px 21px var(--bg), 5px 24px var(--bg), 17px 24px var(--bg), 28px 21px var(--bg), 39px 17px var(--bg),
+            -22px 28px var(--bg), -11px 32px var(--bg), 0px 34px var(--bg), 11px 35px var(--bg), 22px 34px var(--bg), 33px 32px var(--bg), 44px 28px var(--bg);
+        }
+
+        #screen-rotate-message {
+            position: fixed;
+            padding: 5%;
+            height: 100vh;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000000d1;
+            z-index: 2;
+            color: white;
+            font-family: monospace;
+            font-size: 2.5rem;
+        }
+
+        @media only screen and (min-width: 460px) {
+            #screen-rotate-message {
+                display: none;
+            }
+        }
+
+        .crab {
+            position: absolute;
+            right: 0px;
+            bottom: 20%;
+            display: flex;
+            animation: crabMove 5s ease-in-out infinite;
+        }
+
+        .crab::after {
+            content: '';
+            padding: 14px 44px;
+            background: var(--c-crab-shadow);
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-9px, 55px);
+            z-index: -1;
+        }
+
+        @keyframes crabMove {
+            50% {
+                transform: translateX(-20vw);
+            }
+        }
+        
+        .crab > .shell {
+            padding: 30px;
+            border-radius: 20px 30px;
+            background: var(--c-shell-1);
+            margin-right: 6vw;
+            box-shadow: inset 3px -3px 9px var(--c-shell-shadow), 
+            4px -4px 5px -4px var(--c-shell-shadow), 14px -10px 0 -4px var(--c-shell-2),
+            20px -15px 5px -10px var(--c-shell-shadow), 25px -20px 0 -10px var(--c-shell-1),
+            31px -26px 5px -17px var(--c-shell-shadow), 35px -30px 0 -17px var(--c-shell-2);
+            z-index: 2;
+        }
+
+        .crab > .body {
+            padding: 22px;
+            background: var(--c-crab-body);
+            position: absolute;
+            border-radius: 30px 10px;
+            transform: translate(-10px, 25px);
+            box-shadow: inset 0px -2px 5px;
+        }
+
+        .crab > .body > .leg {
+            position: absolute;
+            background: var(--c-crab-leg);
+            border-radius: 50%;
+            box-shadow: inset -1px -1px 5px;
+            --leg-rotate: rotate(25deg);
+            transform: var(--leg-translate) var(--leg-rotate);
+            animation: crabLegMove 1s ease-in infinite;
+            animation-delay: var(--leg-delay);
+        }
+
+        @keyframes crabLegMove {
+            50% { transform: var(--leg-translate) rotate(10deg) }
+        }
+
+        .crab > .body > .leg:nth-child(1) {
+            padding: 16px 5px;
+            --leg-translate: translateX(11px);
+            --leg-delay: 0s;
+
+        }
+        .crab > .body > .leg:nth-child(2) {
+            padding: 16px 4px;
+            --leg-translate: translate(29px, -5px);
+            --leg-delay: 0.2s;
+        }
+        .crab > .body > .leg:nth-child(3) {
+            padding: 18px 4px;
+            --leg-translate: translate(47px, -19px);
+            --leg-delay: 0.4s;
+        }
+
+        .crab > .eyes {
+            position: absolute;
+            z-index: 2;
+            transform: translate(-12px, 38px);
+        }
+
+        .crab > .eyes > .eye {
+            padding: 6px;
+            background: var(--c-crab-pupil);
+            border-radius: 50%;
+            box-shadow: inset -4px -2px 0px 0px var(--c-crab-eye), 0 0 0 2px black;
+            position: absolute;
+        }
+
+        .crab > .eyes > .eye:last-child {
+            transform: translate(17px, 10px);
+        }
+
+        *::before {
+            position: absolute;
+            z-index: 3;
+        }
+
+        #color-toggle, label[for="color-toggle"] {
+            position: absolute;
+        }
+
+        #color-toggle {
+            right: 20px;
+            margin-top: 20px;
+        }
+
+        label[for="color-toggle"] {
+            right: 40px;
+            margin-top: 18px;
+        }
+
+        #color-toggle:checked ~ .scene > .color-toggle:checked ~ .sky::before { content: 'lightskyblue' }
+        #color-toggle:checked ~ .scene > .sky > .cloud:nth-child(1)::before { content: 'mintcream, azure' }
+        #color-toggle:checked ~ .scene > .sky > .cloud:nth-child(2)::before { content: 'papayawhip, blanchedalmond' }
+        #color-toggle:checked ~ .scene > .sky > .cloud:nth-child(3)::before { content: 'snow, ivory' }
+        #color-toggle:checked ~ .scene > .earth > .beach::before { content: 'sandybrown, peru'; right: 10px; bottom: 10px }
+        #color-toggle:checked ~ .scene > .earth > .sea::before { content: 'lightseagreen, aquamarine, darkseagreen' }
+        #color-toggle:checked ~ .scene > .earth > .beach > .coral-group > .coral:first-child::before { content: 'coral, tomato' }
+        #color-toggle:checked ~ .scene > .earth > .beach > .crab > .body::before { content: 'maroon, red, brown'; transform: translateY(30px) }
+        #color-toggle:checked ~ .scene > .earth > .beach > .crab > .eyes::before { content: 'black, white'; transform: translate(-41px, -19px) }
+        #color-toggle:checked ~ .scene > .earth > .beach > .crab > .shell::before { content: 'sienna, peachpuff, seashell'; transform: translateY(-30px) }
+    </style>
+</head>
+<body>
+    <div id="screen-rotate-message">
+        Whoops! Your screen is too narrow... This ain't gonna look good.
+        Please rotate your device.
+    </div>
+    <label for="color-toggle">Reveal Colors</label>
+    <input id="color-toggle" type="checkbox">
+    <div class="scene">
+        <div class="sky">
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+        </div>
+        <div class="earth">
+            <div class="sea"></div>
+            <div class="beach">
+                <div class="coral-group">
+                    <div class="coral"></div>
+                    <div class="coral"></div>
+                    <div class="coral"></div>
+                </div>
+                <div class="crab">
+                    <div class="body">
+                        <div class="leg"></div>
+                        <div class="leg"></div>
+                        <div class="leg"></div>
+                        <div class="leg"></div>
+                    </div>
+                    <div class="shell"></div>
+                    <div class="eyes">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</body>
+</html>
