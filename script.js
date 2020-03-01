@@ -11,6 +11,7 @@ const draftedPens = !!window.location.href.match(/draft/g) ? [
 ] : [];
 
 const completedPens = [
+    'css-named-beach',
     'css-named-colors',
     'snake',
     'cny-lion-2020',
