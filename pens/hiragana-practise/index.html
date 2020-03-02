@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiragana Practise</title>
+    <style>
+        :root {
+            --c-success: #a2ffa2;
+            --c-fail: #ff8b8b; 
+            --c-grey: #787878;
+            --progress: 0%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: 1px solid;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            font-family: monospace;
+        }
+
+        #hiragana, #score {
+            text-align: center;
+        }
+
+        #hiragana {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        #score {
+            font-size: 1.5rem;
+            font-weight: bolder;
+        }
+
+        #answer {
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 10px;
+            border: 3px dotted var(--c-grey);
+        }
+
+        #answer.correct {
+            animation: glow 0.8s linear 1;
+        }
+
+        @keyframes glow {
+            1% { 
+                background: var(--c-success);
+            }
+            100% {
+                background: transparent;
+            }
+        }
+
+        #answer.wrong {
+            animation: teeter 1s linear 1;
+        }
+
+        
+        @keyframes teeter {
+            1% {
+                background: var(--c-fail);
+            }
+            10%, 30% { 
+                transform: rotate(5deg);
+            }
+            20%, 40% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(0deg);
+            }
+            100% {
+                background:  transparent;
+            }
+        }
+
+        #progressBar {
+            background: var(--c-success);
+            width: var(--progress);
+            transition: width 0.2s ease-in;
+            transform: translateY(-20px);
+        }
+
+        #progressBarBg {
+            background: var(--c-grey);
+        }
+
+        #progressBar, #progressBarBg {
+            height: 20px;
+            border-radius: 5px;
+            display: block;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p id="hiragana">{{currentChar.char}}</p>
+        <input type="text" id="answer" v-on:keyup.enter="submit">
+        <p id="score">Progress: {{clearedChar}} / {{totalChar}}</p>
+        <span id="progressBarBg"></span>
+        <span id="progressBar"></span>
+    </div>
+    <script>
+        const hiraganaChars = [
+            { char: 'あ', pronunciation: 'a' },
+            { char: 'い', pronunciation: 'i' },
+            { char: 'う', pronunciation: 'u' },
+            { char: 'え', pronunciation: 'e' },
+            { char: 'お', pronunciation: 'o' },
+            { char: 'か', pronunciation: 'ka' },
+            { char: 'き', pronunciation: 'ki' },
+            { char: 'く', pronunciation: 'ku' },
+            { char: 'け', pronunciation: 'ke' },
+            { char: 'こ', pronunciation: 'ko' },
+            { char: 'が', pronunciation: 'ga' },
+            { char: 'ぎ', pronunciation: 'gi' },
+            { char: 'ぐ', pronunciation: 'gu' },
+            { char: 'げ', pronunciation: 'ge' },
+            { char: 'ご', pronunciation: 'go' },
+            { char: 'さ', pronunciation: 'sa' },
+            { char: 'し', pronunciation: 'shi' },
+            { char: 'す', pronunciation: 'su' },
+            { char: 'せ', pronunciation: 'se' },
+            { char: 'そ', pronunciation: 'so' },
+            { char: 'ざ', pronunciation: 'za' },
+            { char: 'じ', pronunciation: 'zi' },
+            { char: 'ず', pronunciation: 'zu' },
+            { char: 'ぜ', pronunciation: 'ze' },
+            { char: 'ぞ', pronunciation: 'zo' },
+            { char: 'た', pronunciation: 'ta' },
+            { char: 'ち', pronunciation: 'ti' },
+            { char: 'つ', pronunciation: 'tu' },
+            { char: 'て', pronunciation: 'te' },
+            { char: 'と', pronunciation: 'to' },
+            { char: 'だ', pronunciation: 'da' },
+            { char: 'ぢ', pronunciation: 'di' },
+            { char: 'づ', pronunciation: 'du' },
+            { char: 'で', pronunciation: 'de' },
+            { char: 'ど', pronunciation: 'do' },
+            { char: 'な', pronunciation: 'na' },
+            { char: 'に', pronunciation: 'ni' },
+            { char: 'ぬ', pronunciation: 'nu' },
+            { char: 'ね', pronunciation: 'ne' },
+            { char: 'の', pronunciation: 'no' },
+            { char: 'は', pronunciation: 'ha' },
+            { char: 'ひ', pronunciation: 'hi' },
+            { char: 'ふ', pronunciation: 'hu' },
+            { char: 'へ', pronunciation: 'he' },
+            { char: 'ほ', pronunciation: 'ho' },
+            { char: 'ば', pronunciation: 'ba' },
+            { char: 'び', pronunciation: 'bi' },
+            { char: 'ぶ', pronunciation: 'bu' },
+            { char: 'べ', pronunciation: 'be' },
+            { char: 'ぼ', pronunciation: 'bo' },
+            { char: 'ぱ', pronunciation: 'pa' },
+            { char: 'ぴ', pronunciation: 'pi' },
+            { char: 'ぷ', pronunciation: 'pu' },
+            { char: 'ぺ', pronunciation: 'pe' },
+            { char: 'ぽ', pronunciation: 'po' },
+            { char: 'ま', pronunciation: 'ma' },
+            { char: 'み', pronunciation: 'mi' },
+            { char: 'む', pronunciation: 'mu' },
+            { char: 'め', pronunciation: 'me' },
+            { char: 'も', pronunciation: 'mo' },
+            { char: 'ら', pronunciation: 'ra' },
+            { char: 'り', pronunciation: 'ri' },
+            { char: 'る', pronunciation: 'ru' },
+            { char: 'れ', pronunciation: 're' },
+            { char: 'ろ', pronunciation: 'ro' },
+            { char: 'や', pronunciation: 'ya' },
+            { char: 'ゆ', pronunciation: 'yu' },
+            { char: 'よ', pronunciation: 'yo' },
+            { char: 'わ', pronunciation: 'wa' },
+            { char: 'ゐ', pronunciation: 'wi' },
+            { char: 'ゑ', pronunciation: 'we' },
+            { char: 'を', pronunciation: 'wo' },
+        ];
+
+        const randomizedHiragana = hiraganaChars.sort(() => Math.random() - 0.5);
+
+        new Vue({
+            el: '#app', 
+            data: {
+                clearedChar: 0,
+                currentChar: randomizedHiragana[0],
+                totalChar: randomizedHiragana.length
+            },
+            methods: {
+                submit: function() {
+                    const answerEl = document.getElementById('answer');
+                    if (answerEl.value === this.currentChar.pronunciation) {
+                        answerEl.value = '';
+                        this.clearedChar += 1;
+                        this.currentChar = randomizedHiragana[this.clearedChar];
+                        answerEl.classList.add('correct');
+                        document.documentElement.style.setProperty('--progress', `${this.clearedChar / this.totalChar * 100}%`);
+                        setTimeout(() => {
+                            answerEl.classList.remove('correct');
+                        }, 1000);
+                    } else {
+                        answerEl.classList.add('wrong');
+                        setTimeout(() => {
+                            answerEl.classList.remove('wrong');
+                        }, 1000);
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
