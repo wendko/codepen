@@ -198,7 +198,8 @@
             methods: {
                 submit: function() {
                     const answerEl = document.getElementById('answer');
-                    if (answerEl.value === this.currentChar.pronunciation) {
+                    const answer = answerEl.value.toLowerCase().trim();
+                    if (answer === this.currentChar.pronunciation) {
                         answerEl.value = '';
                         this.clearedChar += 1;
                         this.currentChar = randomizedHiragana[this.clearedChar];
