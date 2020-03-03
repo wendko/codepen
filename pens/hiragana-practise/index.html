@@ -10,6 +10,7 @@
             --c-success: #a2ffa2;
             --c-fail: #ff8b8b; 
             --c-grey: #787878;
+            --c-focus: #ff52ae;
             --progress: 0%;
         }
 
@@ -44,6 +45,10 @@
             font-size: 1.5rem;
             padding: 10px;
             border: 3px dotted var(--c-grey);
+        }
+
+        #answer:focus {
+            border: 3.5px dotted var(--c-focus);
         }
 
         #answer.correct {
@@ -105,7 +110,15 @@
 <body>
     <div id="app">
         <p id="hiragana">{{currentChar.char}}</p>
-        <input type="text" id="answer" v-on:keyup.enter="submit" placeholder="enter/return">
+        <input type="text"
+            id="answer"
+            v-on:keyup.enter="submit"
+            placeholder="enter/return"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+        >
         <p id="score">Progress: {{clearedChar}} / {{totalChar}}</p>
         <span id="progressBarBg"></span>
         <span id="progressBar"></span>
