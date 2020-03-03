@@ -8,7 +8,7 @@
     <style>
         :root {
             --c-success: #a2ffa2;
-            --c-fail: #ff8b8b; 
+            --c-fail: #ff8b8b;
             --c-grey: #787878;
             --c-focus: #ff52ae;
             --progress: 0%;
@@ -25,7 +25,8 @@
             font-family: monospace;
         }
 
-        #hiragana, #score {
+        #hiragana,
+        #score {
             text-align: center;
         }
 
@@ -56,9 +57,10 @@
         }
 
         @keyframes glow {
-            1% { 
+            1% {
                 background: var(--c-success);
             }
+
             100% {
                 background: transparent;
             }
@@ -68,22 +70,28 @@
             animation: teeter 1s linear 1;
         }
 
-        
+
         @keyframes teeter {
             1% {
                 background: var(--c-fail);
             }
-            10%, 30% { 
+
+            10%,
+            30% {
                 transform: rotate(5deg);
             }
-            20%, 40% {
+
+            20%,
+            40% {
                 transform: rotate(-5deg);
             }
+
             50% {
                 transform: rotate(0deg);
             }
+
             100% {
-                background:  transparent;
+                background: transparent;
             }
         }
 
@@ -98,7 +106,8 @@
             background: var(--c-grey);
         }
 
-        #progressBar, #progressBarBg {
+        #progressBar,
+        #progressBarBg {
             height: 20px;
             border-radius: 5px;
             display: block;
@@ -110,15 +119,8 @@
 <body>
     <div id="app">
         <p id="hiragana">{{currentChar.char}}</p>
-        <input type="text"
-            id="answer"
-            v-on:keyup.enter="submit"
-            placeholder="enter/return"
-            autocomplete="off"
-            autocorrect="off"
-            autocapitalize="off"
-            spellcheck="false"
-        >
+        <input type="text" id="answer" v-on:keyup.enter="submit" placeholder="enter/return" autocomplete="off"
+            autocorrect="off" autocapitalize="off" spellcheck="false">
         <p id="score">Progress: {{clearedChar}} / {{totalChar}}</p>
         <span id="progressBarBg"></span>
         <span id="progressBar"></span>
@@ -135,31 +137,16 @@
             { char: 'く', pronunciation: 'ku' },
             { char: 'け', pronunciation: 'ke' },
             { char: 'こ', pronunciation: 'ko' },
-            { char: 'が', pronunciation: 'ga' },
-            { char: 'ぎ', pronunciation: 'gi' },
-            { char: 'ぐ', pronunciation: 'gu' },
-            { char: 'げ', pronunciation: 'ge' },
-            { char: 'ご', pronunciation: 'go' },
             { char: 'さ', pronunciation: 'sa' },
             { char: 'し', pronunciation: 'shi' },
             { char: 'す', pronunciation: 'su' },
             { char: 'せ', pronunciation: 'se' },
             { char: 'そ', pronunciation: 'so' },
-            { char: 'ざ', pronunciation: 'za' },
-            { char: 'じ', pronunciation: 'zi' },
-            { char: 'ず', pronunciation: 'zu' },
-            { char: 'ぜ', pronunciation: 'ze' },
-            { char: 'ぞ', pronunciation: 'zo' },
             { char: 'た', pronunciation: 'ta' },
-            { char: 'ち', pronunciation: 'ti' },
-            { char: 'つ', pronunciation: 'tu' },
+            { char: 'ち', pronunciation: 'chi' },
+            { char: 'つ', pronunciation: 'tsu' },
             { char: 'て', pronunciation: 'te' },
             { char: 'と', pronunciation: 'to' },
-            { char: 'だ', pronunciation: 'da' },
-            { char: 'ぢ', pronunciation: 'di' },
-            { char: 'づ', pronunciation: 'du' },
-            { char: 'で', pronunciation: 'de' },
-            { char: 'ど', pronunciation: 'do' },
             { char: 'な', pronunciation: 'na' },
             { char: 'に', pronunciation: 'ni' },
             { char: 'ぬ', pronunciation: 'nu' },
@@ -167,9 +154,42 @@
             { char: 'の', pronunciation: 'no' },
             { char: 'は', pronunciation: 'ha' },
             { char: 'ひ', pronunciation: 'hi' },
-            { char: 'ふ', pronunciation: 'hu' },
+            { char: 'ふ', pronunciation: 'fu' },
             { char: 'へ', pronunciation: 'he' },
             { char: 'ほ', pronunciation: 'ho' },
+            { char: 'ま', pronunciation: 'ma' },
+            { char: 'み', pronunciation: 'mi' },
+            { char: 'む', pronunciation: 'mu' },
+            { char: 'め', pronunciation: 'me' },
+            { char: 'も', pronunciation: 'mo' },
+            { char: 'や', pronunciation: 'ya' },
+            { char: 'ゆ', pronunciation: 'yu' },
+            { char: 'よ', pronunciation: 'yo' },
+            { char: 'ら', pronunciation: 'ra' },
+            { char: 'り', pronunciation: 'ri' },
+            { char: 'る', pronunciation: 'ru' },
+            { char: 'れ', pronunciation: 're' },
+            { char: 'ろ', pronunciation: 'ro' },
+            { char: 'わ', pronunciation: 'wa' },
+            { char: 'ゐ', pronunciation: 'wi' },
+            { char: 'ゑ', pronunciation: 'we' },
+            { char: 'を', pronunciation: 'wo' },
+            { char: 'ん', pronunciation: 'n' },
+            { char: 'が', pronunciation: 'ga' },
+            { char: 'ぎ', pronunciation: 'gi' },
+            { char: 'ぐ', pronunciation: 'gu' },
+            { char: 'げ', pronunciation: 'ge' },
+            { char: 'ご', pronunciation: 'go' },
+            { char: 'ざ', pronunciation: 'za' },
+            { char: 'じ', pronunciation: 'ji' },
+            { char: 'ず', pronunciation: 'zu' },
+            { char: 'ぜ', pronunciation: 'ze' },
+            { char: 'ぞ', pronunciation: 'zo' },
+            { char: 'だ', pronunciation: 'da' },
+            { char: 'ぢ', pronunciation: 'ji' },
+            { char: 'づ', pronunciation: 'zu' },
+            { char: 'で', pronunciation: 'de' },
+            { char: 'ど', pronunciation: 'do' },
             { char: 'ば', pronunciation: 'ba' },
             { char: 'び', pronunciation: 'bi' },
             { char: 'ぶ', pronunciation: 'bu' },
@@ -180,36 +200,52 @@
             { char: 'ぷ', pronunciation: 'pu' },
             { char: 'ぺ', pronunciation: 'pe' },
             { char: 'ぽ', pronunciation: 'po' },
-            { char: 'ま', pronunciation: 'ma' },
-            { char: 'み', pronunciation: 'mi' },
-            { char: 'む', pronunciation: 'mu' },
-            { char: 'め', pronunciation: 'me' },
-            { char: 'も', pronunciation: 'mo' },
-            { char: 'ら', pronunciation: 'ra' },
-            { char: 'り', pronunciation: 'ri' },
-            { char: 'る', pronunciation: 'ru' },
-            { char: 'れ', pronunciation: 're' },
-            { char: 'ろ', pronunciation: 'ro' },
-            { char: 'や', pronunciation: 'ya' },
-            { char: 'ゆ', pronunciation: 'yu' },
-            { char: 'よ', pronunciation: 'yo' },
-            { char: 'わ', pronunciation: 'wa' },
-            { char: 'ゐ', pronunciation: 'wi' },
-            { char: 'ゑ', pronunciation: 'we' },
-            { char: 'を', pronunciation: 'wo' },
+            { char: 'ぎゃ', pronunciation: 'kya' },
+            { char: 'ぎゅ', pronunciation: 'kyu' },
+            { char: 'ぎょ', pronunciation: 'kyo' },
+            { char: 'じゃ', pronunciation: 'sha' },
+            { char: 'じゅ', pronunciation: 'shu' },
+            { char: 'じょ', pronunciation: 'sho' },
+            { char: 'ぢゃ', pronunciation: 'cha' },
+            { char: 'ぢゅ', pronunciation: 'chu' },
+            { char: 'ぢょ', pronunciation: 'cho' },
+            { char: 'にゃ', pronunciation: 'nya' },
+            { char: 'にゅ', pronunciation: 'nyu' },
+            { char: 'にょ', pronunciation: 'nyo' },
+            { char: 'ひゃ', pronunciation: 'hya' },
+            { char: 'ひゅ', pronunciation: 'hyu' },
+            { char: 'ひょ', pronunciation: 'hyo' },
+            { char: 'みゃ', pronunciation: 'mya' },
+            { char: 'みゅ', pronunciation: 'myu' },
+            { char: 'みょ', pronunciation: 'myo' },
+            { char: 'りゃ', pronunciation: 'rya' },
+            { char: 'りゅ', pronunciation: 'ryu' },
+            { char: 'りょ', pronunciation: 'ryo' },
+            { char: 'りゃ', pronunciation: 'gya' },
+            { char: 'りゅ', pronunciation: 'gyu' },
+            { char: 'りょ', pronunciation: 'gyo' },
+            { char: 'じゃ', pronunciation: 'ja' },
+            { char: 'じゅ', pronunciation: 'ju' },
+            { char: 'じょ', pronunciation: 'jo' },
+            { char: 'びゃ', pronunciation: 'bya' },
+            { char: 'びゅ', pronunciation: 'byu' },
+            { char: 'びょ', pronunciation: 'byo' },
+            { char: 'ぴゃ', pronunciation: 'pya' },
+            { char: 'ぴゅ', pronunciation: 'pyu' },
+            { char: 'ぴょ', pronunciation: 'pyo' }
         ];
 
         const randomizedHiragana = hiraganaChars.sort(() => Math.random() - 0.5);
 
         new Vue({
-            el: '#app', 
+            el: '#app',
             data: {
                 clearedChar: 0,
                 currentChar: randomizedHiragana[0],
                 totalChar: randomizedHiragana.length
             },
             methods: {
-                submit: function() {
+                submit: function () {
                     const answerEl = document.getElementById('answer');
                     const answer = answerEl.value.toLowerCase().trim();
                     if (answer === this.currentChar.pronunciation) {
