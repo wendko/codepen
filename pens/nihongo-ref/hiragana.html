@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiragana Reference</title>
+    <style>
+        :root {
+            --font-size-l: 20px;
+            --font-size-s: 15px;
+            --font-color-title: #e24949;
+            --font-color-headers: #ff6969;
+            --font-color-chars: #6d4343;
+            --font-color-borders: #ffbaba;
+
+            --cell-color-focus: #ffdfe4;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            font-family: sans-serif;
+            font-size: var(--font-size-l);
+        }
+        table {
+            padding: 10px 0 20px 0;
+        }
+        thead > tr > th:not(:first-child),
+        tbody > tr:not(:first-child) > td:first-child {
+            padding: 5px 10px;
+            font-weight: bolder;
+            color: var(--font-color-headers);
+        }
+        thead > tr:first-child > th:nth-child(2) {
+            color: var(--font-color-title);
+            font-size: 20px;
+            letter-spacing: 8px;
+        }
+        td, th {
+            text-align: center;
+        }
+        tbody > tr > td > span {
+            margin-left: 10px;
+            font-size: var(--font-size-s);
+        }
+        tbody > tr > td:not(:first-child) {
+            font-weight: 600;
+            padding: 10px 0;
+            width: 100px;
+            outline: 1px dashed var(--font-color-borders);
+            color: var(--font-color-chars);
+            transition: background 0.1s linear;
+        }
+        tbody > tr > td:not(:first-child):hover,
+        tbody > tr > td:not(:first-child):focus {
+            background: var(--cell-color-focus);
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan="5">HIRAGANA ひらがな</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>a</th>
+                <th>i</th>
+                <th>u</th>
+                <th>e</th>
+                <th>o</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>あ<span>a</span></td>
+                <td>い<span>i</span></td>
+                <td>う<span>u</span></td>
+                <td>え<span>e</span></td>
+                <td>お<span>o</span></td>
+            </tr>
+            <tr>
+                <td>k</td>
+                <td>か<span>ka</span></td>
+                <td>き<span>ki</span></td>
+                <td>く<span>ku</span></td>
+                <td>け<span>ke</span></td>
+                <td>こ<span>ko</span></td>
+            </tr>
+            <tr>
+                <td>s</td>
+                <td>さ<span>sa</span></td>
+                <td>し<span>shi</span></td>
+                <td>す<span>su</span></td>
+                <td>せ<span>se</span></td>
+                <td>そ<span>so</span></td>
+            </tr>
+            <tr>
+                <td>t</td>
+                <td>た<span>ta</span></td>
+                <td>ち<span>chi</span></td>
+                <td>つ<span>tsu</span></td>
+                <td>て<span>te</span></td>
+                <td>と<span>to</span></td>
+            </tr>
+            <tr>
+                <td>n</td>
+                <td>な<span>na</span></td>
+                <td>に<span>ni</span></td>
+                <td>ぬ<span>nu</span></td>
+                <td>ね<span>ne</span></td>
+                <td>の<span>no</span></td>
+            </tr>
+            <tr>
+                <td>h</td>
+                <td>は<span>ha</span></td>
+                <td>ひ<span>hi</span></td>
+                <td>ふ<span>fu</span></td>
+                <td>へ<span>he</span></td>
+                <td>ほ<span>ho</span></td>
+            </tr>
+            <tr>
+                <td>m</td>
+                <td>ま<span>ma</span></td>
+                <td>み<span>mi</span></td>
+                <td>む<span>mu</span></td>
+                <td>め<span>me</span></td>
+                <td>も<span>mo</span></td>
+            </tr>
+            <tr>
+                <td>y</td>
+                <td>や<span>ya</span></td>
+                <td></td>
+                <td>ゆ<span>yu<span></td>
+                <td></td>
+                <td>よ<span>yo</span></td>
+            </tr>
+            <tr>
+                <td>r</td>
+                <td>ら<span>ra</span></td>
+                <td>り<span>ri</span></td>
+                <td>る<span>ru</span></td>
+                <td>れ<span>re</span></td>
+                <td>ろ<span>ro</span></td>
+            </tr>
+            <tr>
+                <td>w</td>
+                <td>わ<span>wa</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>を<span>o</span></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>ん<span>n</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>g</td>
+                <td>が<span>ga</span></td>
+                <td>ぎ<span>gi</span></td>
+                <td>ぐ<span>gu</span></td>
+                <td>げ<span>ge</span></td>
+                <td>ご<span>go</span></td>
+            </tr>
+            <tr>
+                <td>z</td>
+                <td>ざ<span>za</span></td>
+                <td>じ<span>ji</span></td>
+                <td>ず<span>zu</span></td>
+                <td>ぜ<span>ze</span></td>
+                <td>ぞ<span>zo</span></td>
+            </tr>
+            <tr>
+                <td>d</td>
+                <td>だ<span>da</span></td>
+                <td>ぢ<span>ji</span></td>
+                <td>づ<span>zu</span></td>
+                <td>で<span>de</span></td>
+                <td>ど<span>do</span></td>
+            </tr>
+            <tr>
+                <td>b</td>
+                <td>ば<span>ba</span></td>
+                <td>び<span>bi</span></td>
+                <td>ぶ<span>bu</span></td>
+                <td>べ<span>be</span></td>
+                <td>ぼ<span>bo</span></td>
+            </tr>
+            <tr>
+                <td>p</td>
+                <td>ぱ<span>pa</span></td>
+                <td>ぴ<span>pi</span></td>
+                <td>ぷ<span>pu</span></td>
+                <td>ぺ<span>pe</span></td>
+                <td>ぽ<span>po</span></td>
+            </tr>
+            <tr>
+                <td>ky</td>
+                <td>きゃ<span>kya</span></td><td></td>
+                <td>きゅ<span>kyu</span></td><td></td>
+                <td>きょ<span>kyo</span></td>
+            </tr>
+            <tr>
+                <td>sh</td>
+                <td>しゃ<span>sha</span></td><td></td>
+                <td>しゅ<span>shu</span></td><td></td>
+                <td>しょ<span>sho</span></td>
+            </tr>
+            <tr>
+                <td>ch</td>
+                <td>ちゃ<span>cha</span></td><td></td>
+                <td>ちゅ<span>chu</span></td><td></td>
+                <td>ちょ<span>cho</span></td>
+            </tr>
+            <tr>
+                <td>ny</td>
+                <td>にゃ<span>nya</span></td><td></td>
+                <td>にゅ<span>nyu</span></td><td></td>
+                <td>にょ<span>nyo</span></td>
+            </tr>
+            <tr>
+                <td>hy</td>
+                <td>ひゃ<span>hya</span></td><td></td>
+                <td>ひゅ<span>hyu</span></td><td></td>
+                <td>ひょ<span>hyo</span></td>
+            </tr>
+            <tr>
+                <td>my</td>
+                <td>みゃ<span>mya</span></td><td></td>
+                <td>みゅ<span>myu</span></td><td></td>
+                <td>みょ<span>myo</span></td>
+            </tr>
+            <tr>
+                <td>ry</td>
+                <td>りゃ<span>rya</span></td><td></td>
+                <td>りゅ<span>ryu</span></td><td></td>
+                <td>りょ<span>ryo</span></td>
+            </tr>
+            <tr>
+                <td>gy</td>
+                <td>ぎゃ<span>gya</span></td><td></td>
+                <td>ぎゅ<span>gyu</span></td><td></td>
+                <td>ぎょ<span>gyo</span></td>
+            </tr>
+            <tr>
+                <td>j</td>
+                <td>じゃ<span>ja</span></td><td></td>
+                <td>じゅ<span>ju</span></td><td></td>
+                <td>じょ<span>jo</span></td>
+            </tr>
+            <tr>
+                <td>by</td>
+                <td>びゃ<span>bya</span></td><td></td>
+                <td>びゅ<span>byu</span></td><td></td>
+                <td>びょ<span>byo</span></td>
+            </tr>
+            <tr>
+                <td>py</td>
+                <td>ぴゃ<span>pya</span></td><td></td>
+                <td>ぴゅ<span>pyu</span></td><td></td>
+                <td>ぴょ<span>pyo</span></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
