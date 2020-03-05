@@ -10,29 +10,56 @@
             --c-success: #a2ffa2;
             --c-fail: #ff8b8b;
             --c-grey: #787878;
-            --c-focus: #ff52ae;
+            --c-focus: sandybrown;
+            --c-bg-focus: bisque;
             --progress: 0%;
+            --c-bg: navajowhite;
+            --c-font: sienna;
         }
 
         body {
             display: flex;
             justify-content: center;
             align-items: center;
-            outline: 1px solid;
             width: 100vw;
             height: 100vh;
             margin: 0;
             font-family: monospace;
+            background: var(--c-bg);
         }
 
-        #hiragana,
+        #question,
         #score {
             text-align: center;
+            color: var(--c-font);
+            font-weight: bolder;
         }
 
-        #hiragana {
+        #question {
             font-size: 3rem;
             margin-bottom: 20px;
+        }
+
+        .appear {
+            animation: appear 0.3s ease-in;
+        }
+
+        @keyframes appear {
+            0% { 
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            50% { 
+                opacity: 1;
+                transform: translateY(-8px);
+            }
+            75% {
+                transform: translateY(5px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+
         }
 
         #score {
@@ -41,15 +68,17 @@
         }
 
         #answer {
-            border-radius: 5px;
             text-align: center;
             font-size: 1.5rem;
             padding: 10px;
-            border: 3px dotted var(--c-grey);
+            border: none;
+            outline: 3px dotted var(--c-grey);
+            color: var(--c-font);
         }
 
         #answer:focus {
-            border: 3.5px dotted var(--c-focus);
+            outline: 3px dotted var(--c-focus);
+            background: var(--c-bg-focus);
         }
 
         #answer.correct {
@@ -118,144 +147,158 @@
 
 <body>
     <div id="app">
-        <p id="hiragana">{{currentChar.char}}</p>
+        <p id="question">{{current.q}}</p>
         <input type="text" id="answer" v-on:keyup.enter="submit" placeholder="enter/return" autocomplete="off"
             autocorrect="off" autocapitalize="off" spellcheck="false">
-        <p id="score">Progress: {{clearedChar}} / {{totalChar}}</p>
+        <p id="score">Progress: {{cleared}} / {{total}}</p>
         <span id="progressBarBg"></span>
         <span id="progressBar"></span>
     </div>
     <script>
         const hiraganaChars = [
-            { char: 'あ', pronunciation: 'a' },
-            { char: 'い', pronunciation: 'i' },
-            { char: 'う', pronunciation: 'u' },
-            { char: 'え', pronunciation: 'e' },
-            { char: 'お', pronunciation: 'o' },
-            { char: 'か', pronunciation: 'ka' },
-            { char: 'き', pronunciation: 'ki' },
-            { char: 'く', pronunciation: 'ku' },
-            { char: 'け', pronunciation: 'ke' },
-            { char: 'こ', pronunciation: 'ko' },
-            { char: 'さ', pronunciation: 'sa' },
-            { char: 'し', pronunciation: 'shi' },
-            { char: 'す', pronunciation: 'su' },
-            { char: 'せ', pronunciation: 'se' },
-            { char: 'そ', pronunciation: 'so' },
-            { char: 'た', pronunciation: 'ta' },
-            { char: 'ち', pronunciation: 'chi' },
-            { char: 'つ', pronunciation: 'tsu' },
-            { char: 'て', pronunciation: 'te' },
-            { char: 'と', pronunciation: 'to' },
-            { char: 'な', pronunciation: 'na' },
-            { char: 'に', pronunciation: 'ni' },
-            { char: 'ぬ', pronunciation: 'nu' },
-            { char: 'ね', pronunciation: 'ne' },
-            { char: 'の', pronunciation: 'no' },
-            { char: 'は', pronunciation: 'ha' },
-            { char: 'ひ', pronunciation: 'hi' },
-            { char: 'ふ', pronunciation: 'fu' },
-            { char: 'へ', pronunciation: 'he' },
-            { char: 'ほ', pronunciation: 'ho' },
-            { char: 'ま', pronunciation: 'ma' },
-            { char: 'み', pronunciation: 'mi' },
-            { char: 'む', pronunciation: 'mu' },
-            { char: 'め', pronunciation: 'me' },
-            { char: 'も', pronunciation: 'mo' },
-            { char: 'や', pronunciation: 'ya' },
-            { char: 'ゆ', pronunciation: 'yu' },
-            { char: 'よ', pronunciation: 'yo' },
-            { char: 'ら', pronunciation: 'ra' },
-            { char: 'り', pronunciation: 'ri' },
-            { char: 'る', pronunciation: 'ru' },
-            { char: 'れ', pronunciation: 're' },
-            { char: 'ろ', pronunciation: 'ro' },
-            { char: 'わ', pronunciation: 'wa' },
-            { char: 'ゐ', pronunciation: 'wi' },
-            { char: 'ゑ', pronunciation: 'we' },
-            { char: 'を', pronunciation: 'wo' },
-            { char: 'ん', pronunciation: 'n' },
-            { char: 'が', pronunciation: 'ga' },
-            { char: 'ぎ', pronunciation: 'gi' },
-            { char: 'ぐ', pronunciation: 'gu' },
-            { char: 'げ', pronunciation: 'ge' },
-            { char: 'ご', pronunciation: 'go' },
-            { char: 'ざ', pronunciation: 'za' },
-            { char: 'じ', pronunciation: 'ji' },
-            { char: 'ず', pronunciation: 'zu' },
-            { char: 'ぜ', pronunciation: 'ze' },
-            { char: 'ぞ', pronunciation: 'zo' },
-            { char: 'だ', pronunciation: 'da' },
-            { char: 'ぢ', pronunciation: 'ji' },
-            { char: 'づ', pronunciation: 'zu' },
-            { char: 'で', pronunciation: 'de' },
-            { char: 'ど', pronunciation: 'do' },
-            { char: 'ば', pronunciation: 'ba' },
-            { char: 'び', pronunciation: 'bi' },
-            { char: 'ぶ', pronunciation: 'bu' },
-            { char: 'べ', pronunciation: 'be' },
-            { char: 'ぼ', pronunciation: 'bo' },
-            { char: 'ぱ', pronunciation: 'pa' },
-            { char: 'ぴ', pronunciation: 'pi' },
-            { char: 'ぷ', pronunciation: 'pu' },
-            { char: 'ぺ', pronunciation: 'pe' },
-            { char: 'ぽ', pronunciation: 'po' },
-            { char: 'ぎゃ', pronunciation: 'kya' },
-            { char: 'ぎゅ', pronunciation: 'kyu' },
-            { char: 'ぎょ', pronunciation: 'kyo' },
-            { char: 'じゃ', pronunciation: 'sha' },
-            { char: 'じゅ', pronunciation: 'shu' },
-            { char: 'じょ', pronunciation: 'sho' },
-            { char: 'ぢゃ', pronunciation: 'cha' },
-            { char: 'ぢゅ', pronunciation: 'chu' },
-            { char: 'ぢょ', pronunciation: 'cho' },
-            { char: 'にゃ', pronunciation: 'nya' },
-            { char: 'にゅ', pronunciation: 'nyu' },
-            { char: 'にょ', pronunciation: 'nyo' },
-            { char: 'ひゃ', pronunciation: 'hya' },
-            { char: 'ひゅ', pronunciation: 'hyu' },
-            { char: 'ひょ', pronunciation: 'hyo' },
-            { char: 'みゃ', pronunciation: 'mya' },
-            { char: 'みゅ', pronunciation: 'myu' },
-            { char: 'みょ', pronunciation: 'myo' },
-            { char: 'りゃ', pronunciation: 'rya' },
-            { char: 'りゅ', pronunciation: 'ryu' },
-            { char: 'りょ', pronunciation: 'ryo' },
-            { char: 'りゃ', pronunciation: 'gya' },
-            { char: 'りゅ', pronunciation: 'gyu' },
-            { char: 'りょ', pronunciation: 'gyo' },
-            { char: 'じゃ', pronunciation: 'ja' },
-            { char: 'じゅ', pronunciation: 'ju' },
-            { char: 'じょ', pronunciation: 'jo' },
-            { char: 'びゃ', pronunciation: 'bya' },
-            { char: 'びゅ', pronunciation: 'byu' },
-            { char: 'びょ', pronunciation: 'byo' },
-            { char: 'ぴゃ', pronunciation: 'pya' },
-            { char: 'ぴゅ', pronunciation: 'pyu' },
-            { char: 'ぴょ', pronunciation: 'pyo' }
+            { q: 'あ', a: 'a' },
+            { q: 'い', a: 'i' },
+            { q: 'う', a: 'u' },
+            { q: 'え', a: 'e' },
+            { q: 'お', a: 'o' },
+            { q: 'か', a: 'ka' },
+            { q: 'き', a: 'ki' },
+            { q: 'く', a: 'ku' },
+            { q: 'け', a: 'ke' },
+            { q: 'こ', a: 'ko' },
+            { q: 'さ', a: 'sa' },
+            { q: 'し', a: 'shi' },
+            { q: 'す', a: 'su' },
+            { q: 'せ', a: 'se' },
+            { q: 'そ', a: 'so' },
+            { q: 'た', a: 'ta' },
+            { q: 'ち', a: 'chi' },
+            { q: 'つ', a: 'tsu' },
+            { q: 'て', a: 'te' },
+            { q: 'と', a: 'to' },
+            { q: 'な', a: 'na' },
+            { q: 'に', a: 'ni' },
+            { q: 'ぬ', a: 'nu' },
+            { q: 'ね', a: 'ne' },
+            { q: 'の', a: 'no' },
+            { q: 'は', a: 'ha' },
+            { q: 'ひ', a: 'hi' },
+            { q: 'ふ', a: 'fu' },
+            { q: 'へ', a: 'he' },
+            { q: 'ほ', a: 'ho' },
+            { q: 'ま', a: 'ma' },
+            { q: 'み', a: 'mi' },
+            { q: 'む', a: 'mu' },
+            { q: 'め', a: 'me' },
+            { q: 'も', a: 'mo' },
+            { q: 'や', a: 'ya' },
+            { q: 'ゆ', a: 'yu' },
+            { q: 'よ', a: 'yo' },
+            { q: 'ら', a: 'ra' },
+            { q: 'り', a: 'ri' },
+            { q: 'る', a: 'ru' },
+            { q: 'れ', a: 're' },
+            { q: 'ろ', a: 'ro' },
+            { q: 'わ', a: 'wa' },
+            { q: 'ゐ', a: 'wi' },
+            { q: 'ゑ', a: 'we' },
+            { q: 'を', a: 'wo' },
+            { q: 'ん', a: 'n' },
+            { q: 'が', a: 'ga' },
+            { q: 'ぎ', a: 'gi' },
+            { q: 'ぐ', a: 'gu' },
+            { q: 'げ', a: 'ge' },
+            { q: 'ご', a: 'go' },
+            { q: 'ざ', a: 'za' },
+            { q: 'じ', a: 'ji' },
+            { q: 'ず', a: 'zu' },
+            { q: 'ぜ', a: 'ze' },
+            { q: 'ぞ', a: 'zo' },
+            { q: 'だ', a: 'da' },
+            { q: 'ぢ', a: 'ji' },
+            { q: 'づ', a: 'zu' },
+            { q: 'で', a: 'de' },
+            { q: 'ど', a: 'do' },
+            { q: 'ば', a: 'ba' },
+            { q: 'び', a: 'bi' },
+            { q: 'ぶ', a: 'bu' },
+            { q: 'べ', a: 'be' },
+            { q: 'ぼ', a: 'bo' },
+            { q: 'ぱ', a: 'pa' },
+            { q: 'ぴ', a: 'pi' },
+            { q: 'ぷ', a: 'pu' },
+            { q: 'ぺ', a: 'pe' },
+            { q: 'ぽ', a: 'po' },
+            { q: 'きゃ', a: 'kya' },
+            { q: 'きゅ', a: 'kyu' },
+            { q: 'きょ', a: 'kyo' },
+            { q: 'しゃ', a: 'sha' },
+            { q: 'しゅ', a: 'shu' },
+            { q: 'しょ', a: 'sho' },
+            { q: 'ちゃ', a: 'cha' },
+            { q: 'ちゅ', a: 'chu' },
+            { q: 'ちょ', a: 'cho' },
+            { q: 'にゃ', a: 'nya' },
+            { q: 'にゅ', a: 'nyu' },
+            { q: 'にょ', a: 'nyo' },
+            { q: 'ひゃ', a: 'hya' },
+            { q: 'ひゅ', a: 'hyu' },
+            { q: 'ひょ', a: 'hyo' },
+            { q: 'みゃ', a: 'mya' },
+            { q: 'みゅ', a: 'myu' },
+            { q: 'みょ', a: 'myo' },
+            { q: 'りゃ', a: 'rya' },
+            { q: 'りゅ', a: 'ryu' },
+            { q: 'りょ', a: 'ryo' },
+            { q: 'ぎゃ', a: 'gya' },
+            { q: 'ぎゅ', a: 'gyu' },
+            { q: 'ぎょ', a: 'gyo' },
+            { q: 'じゃ', a: 'ja' },
+            { q: 'じゅ', a: 'ju' },
+            { q: 'じょ', a: 'jo' },
+            { q: 'びゃ', a: 'bya' },
+            { q: 'びゅ', a: 'byu' },
+            { q: 'びょ', a: 'byo' },
+            { q: 'ぴゃ', a: 'pya' },
+            { q: 'ぴゅ', a: 'pyu' },
+            { q: 'ぴょ', a: 'pyo' }
         ];
 
-        const randomizedHiragana = hiraganaChars.sort(() => Math.random() - 0.5);
+        function randomize(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        const randomizedHiragana = randomize(hiraganaChars);
+
+        const modes = {
+            'hiragana': 0,
+            'katakana': 1,
+        }
 
         new Vue({
             el: '#app',
             data: {
-                clearedChar: 0,
-                currentChar: randomizedHiragana[0],
-                totalChar: randomizedHiragana.length
+                cleared: 0,
+                current: randomizedHiragana[0],
+                total: randomizedHiragana.length,
+                mode: modes.hiragana
             },
             methods: {
                 submit: function () {
                     const answerEl = document.getElementById('answer');
+                    const questionEl = document.getElementById('question');
+
                     const answer = answerEl.value.toLowerCase().trim();
-                    if (answer === this.currentChar.pronunciation) {
+                    if (answer === this.current.a) {
                         answerEl.value = '';
-                        this.clearedChar += 1;
-                        this.currentChar = randomizedHiragana[this.clearedChar];
+                        this.cleared += 1;
+                        this.current = randomizedHiragana[this.cleared];
                         answerEl.classList.add('correct');
-                        document.documentElement.style.setProperty('--progress', `${this.clearedChar / this.totalChar * 100}%`);
+                        questionEl.classList.add('appear');
+                        document.documentElement.style.setProperty('--progress', `${this.cleared / this.total * 100}%`);
                         setTimeout(() => {
                             answerEl.classList.remove('correct');
+                            questionEl.classList.remove('appear');
                         }, 1000);
                     } else {
                         answerEl.classList.add('wrong');
