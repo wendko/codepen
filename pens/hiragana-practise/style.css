@@ -1,0 +1,154 @@
+:root {
+    --c-success: #a2ffa2;
+    --c-fail: #ff8b8b;
+    --c-focus: sandybrown;
+    --c-bg-mode-select: #ffe9c1;
+    --progress: 0%;
+    --c-bg-progress: sandybrown;
+    --c-fg-progress: sienna;
+    --c-bg: #ffdead;
+    --c-font: sienna;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-family: monospace;
+    background: var(--c-bg);
+}
+
+#app {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;    
+}
+
+#modeSelect {
+    padding: 8px;
+    text-align: center;
+    font-size: 20px;
+    color: var(--c-font);
+    border: none;
+    background: var(--c-bg-mode-select);
+    font-weight: bold;
+}
+
+#modeSelect:focus {
+    outline: 2px solid var(--c-focus);
+}
+
+#question,
+#score {
+    text-align: center;
+    color: var(--c-font);
+    font-weight: bolder;
+}
+
+#question {
+    font-size: 3rem;
+    margin: 20px 0;
+}
+
+.appear {
+    animation: appear 0.3s ease-in;
+}
+
+@keyframes appear {
+    0% { 
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    50% { 
+        opacity: 1;
+        transform: translateY(-8px);
+    }
+    75% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+
+}
+
+#score {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+#answer {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 10px;
+    border: none;
+    color: var(--c-font);
+}
+
+#answer:focus {
+    outline: 3px solid var(--c-focus);
+}
+
+#answer.correct {
+    animation: glow 0.8s linear 1;
+}
+
+@keyframes glow {
+    1% {
+        background: var(--c-success);
+    }
+
+    100% {
+        background: transparent;
+    }
+}
+
+#answer.wrong {
+    animation: teeter 1s linear 1;
+}
+
+
+@keyframes teeter {
+    1% {
+        background: var(--c-fail);
+    }
+
+    10%,
+    30% {
+        transform: rotate(5deg);
+    }
+
+    20%,
+    40% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        background: transparent;
+    }
+}
+
+#progressBar {
+    background: var(--c-fg-progress);
+    width: var(--progress);
+    transition: width 0.2s ease-in;
+    transform: translateY(-20px);
+}
+
+#progressBarBg {
+    background: var(--c-bg-progress);
+}
+
+#progressBar,
+#progressBarBg {
+    height: 20px;
+    border-radius: 5px;
+    display: block;
+}

@@ -5,152 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hiragana Practise</title>
-    <style>
-        :root {
-            --c-success: #a2ffa2;
-            --c-fail: #ff8b8b;
-            --c-focus: sandybrown;
-            --c-bg-focus: bisque;
-            --progress: 0%;
-            --c-bg-progress: sandybrown;
-            --c-fg-progress: sienna;
-            --c-bg: navajowhite;
-            --c-font: sienna;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100vw;
-            height: 100vh;
-            margin: 0;
-            font-family: monospace;
-            background: var(--c-bg);
-        }
-
-        #question,
-        #score {
-            text-align: center;
-            color: var(--c-font);
-            font-weight: bolder;
-        }
-
-        #question {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .appear {
-            animation: appear 0.3s ease-in;
-        }
-
-        @keyframes appear {
-            0% { 
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            50% { 
-                opacity: 1;
-                transform: translateY(-8px);
-            }
-            75% {
-                transform: translateY(5px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-
-        }
-
-        #score {
-            font-size: 1.5rem;
-            font-weight: bolder;
-        }
-
-        #answer {
-            text-align: center;
-            font-size: 1.5rem;
-            padding: 10px;
-            border: none;
-            outline: 3px dotted var(--c-grey);
-            color: var(--c-font);
-        }
-
-        #answer:focus {
-            outline: 3px dotted var(--c-focus);
-            background: var(--c-bg-focus);
-        }
-
-        #answer.correct {
-            animation: glow 0.8s linear 1;
-        }
-
-        @keyframes glow {
-            1% {
-                background: var(--c-success);
-            }
-
-            100% {
-                background: transparent;
-            }
-        }
-
-        #answer.wrong {
-            animation: teeter 1s linear 1;
-        }
-
-
-        @keyframes teeter {
-            1% {
-                background: var(--c-fail);
-            }
-
-            10%,
-            30% {
-                transform: rotate(5deg);
-            }
-
-            20%,
-            40% {
-                transform: rotate(-5deg);
-            }
-
-            50% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                background: transparent;
-            }
-        }
-
-        #progressBar {
-            background: var(--c-fg-progress);
-            width: var(--progress);
-            transition: width 0.2s ease-in;
-            transform: translateY(-20px);
-        }
-
-        #progressBarBg {
-            background: var(--c-bg-progress);
-        }
-
-        #progressBar,
-        #progressBarBg {
-            height: 20px;
-            border-radius: 5px;
-            display: block;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="../../common/vue.js"></script>
 </head>
 
 <body>
     <div id="app">
+        <select id="modeSelect">
+            <option 
+                v-for="mode in modesKeys"
+                value="mode"
+                v-on:change="changeMode">
+            {{mode}}
+            </option>
+        </select>
         <p id="question">{{current.q}}</p>
-        <input type="text" id="answer" v-on:keyup.enter="submit" placeholder="enter/return" autocomplete="off"
-            autocorrect="off" autocapitalize="off" spellcheck="false">
+        <input 
+            type="text" 
+            id="answer" 
+            v-on:keyup.enter="submit" 
+            placeholder="enter/return" 
+            autocomplete="off"
+            autocorrect="off" 
+            autocapitalize="off" 
+            spellcheck="false">
         <p id="score">Progress: {{cleared}} / {{total}}</p>
         <span id="progressBarBg"></span>
         <span id="progressBar"></span>
@@ -282,7 +160,8 @@
                 cleared: 0,
                 current: randomizedHiragana[0],
                 total: randomizedHiragana.length,
-                mode: modes.hiragana
+                mode: modes.hiragana,
+                modesKeys: Object.keys(modes)
             },
             methods: {
                 submit: function () {
@@ -307,6 +186,9 @@
                             answerEl.classList.remove('wrong');
                         }, 1000);
                     }
+                },
+                changeMode: function() {
+                    console.log('changing mode!')
                 }
             }
         });
