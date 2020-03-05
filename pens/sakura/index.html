@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cherry blossoms</title>
+    <link rel="icon"
+        href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/237/cherry-blossom_1f338.png">
+    <style>
+        :root {
+            --petal-rotate: 72deg;
+            --bloom-delay-inc: 0.1s;
+        }
+
+        body {
+            margin: 0;
+            width: 100vw;
+            background: linen;
+            display: flex;
+            justify-content: center;
+        }
+
+        .blossom {
+            display: flex;
+            padding: 20px;
+            opacity: 0;
+            transform: var(--initial-translate) var(--initial-scale);
+            animation: var(--spin-fade-dur) ease-in both var(--spin-fade-delay) infinite spinAndFade;
+        }
+
+        .blossom:nth-child(1) {
+            --initial-translate: translate(0px, 180px);
+            --initial-scale: scale(0.5);
+            --spin-fade-dur: 2.5s;
+            --spin-fade-delay: 0s;
+        }
+
+        .blossom:nth-child(2) {
+            --initial-translate: translate(-100px, 250px);
+            --initial-scale: scale(1);
+            --spin-fade-dur: 2.3s;
+            --spin-fade-delay: 0.8s;
+        }
+
+        .blossom:nth-child(3) {
+            --initial-translate: translate(100px, 100px);
+            --initial-scale: scale(0.8);
+            --spin-fade-dur: 2.7s;
+            --spin-fade-delay: 0.3s;
+        }
+
+        .blossom:nth-child(4) {
+            --initial-translate: translate(50px, 100px);
+            --initial-scale: scale(0.8);
+            --spin-fade-dur: 2.7s;
+            --spin-fade-delay: 0.3s;
+            outline: 1ps dashed salmon;
+        }
+
+        /* .blossom:nth-child(4) {
+            --initial-translate: translate(100px, 100px);
+            --initial-scale: scale(0.8);
+            --spin-fade-dur: 2.7s;
+            --spin-fade-delay: 0.3s;
+        } */
+
+        @keyframes spinAndFade {
+
+            10%,
+            60% {
+                opacity: 1;
+            }
+
+            90%,
+            100% {
+                opacity: 0;
+                transform: var(--initial-translate) var(--initial-scale) translateY(10vh) rotate(30deg);
+            }
+        }
+
+        .petal {
+            padding: 25px 20px;
+            border-radius: 50%;
+            background: pink;
+            position: absolute;
+            opacity: 0;
+            transform-origin: bottom;
+            transform: rotate(var(--rotate)) scale(1);
+            animation: var(--spin-fade-dur) ease-in var(--bloom-delay) both infinite bloom;
+        }
+
+        @keyframes bloom {
+            0% {
+                opacity: 0;
+                transform: rotate(var(--rotate)) scale(0.1);
+            }
+
+            20% {
+                opacity: 1;
+                transform: rotate(var(--rotate)) scale(1);
+            }
+
+            90% {
+                opacity: 0;
+            }
+        }
+
+        .petal::after {
+            content: '';
+            position: absolute;
+            padding: 5px;
+            background: linen;
+            transform: translate(-5px, -30px) rotate(45deg);
+        }
+
+        .stem {
+            position: absolute;
+            background: salmon;
+            padding: 8px 1.2px;
+            transform: translate(-1px, -3px);
+            border-radius: 50%;
+        }
+
+        .stem::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            padding: 3px;
+            transform: translate(-3px, -13px);
+            background: salmon;
+        }
+
+        .petal:nth-child(1) {
+            --rotate: 0deg;
+            --bloom-delay: var(--spin-fade-delay);
+        }
+
+        .petal:nth-child(2) {
+            --rotate: var(--petal-rotate);
+            --bloom-delay: calc(var(--spin-fade-delay) + var(--bloom-delay-inc));
+        }
+
+        .petal:nth-child(3) {
+            --rotate: calc(2 * var(--petal-rotate));
+            --bloom-delay: calc(var(--spin-fade-delay) + (2 * var(--bloom-delay-inc)));
+        }
+
+        .petal:nth-child(4) {
+            --rotate: calc(3 * var(--petal-rotate));
+            --bloom-delay: calc(var(--spin-fade-delay) + (3 * var(--bloom-delay-inc)));
+        }
+
+        .petal:nth-child(5) {
+            --rotate: calc(4 * var(--petal-rotate));
+            --bloom-delay: calc(var(--spin-fade-delay) + (4 * var(--bloom-delay-inc)));
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blossom">
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+    </div>
+    <div class="blossom">
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+    </div>
+    <div class="blossom">
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+    </div>
+    <div class="blossom">
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+        <div class="petal"><span class="stem"></span></div>
+    </div>
+</body>
+
+</html>
