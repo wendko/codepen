@@ -9,10 +9,11 @@
         :root {
             --c-success: #a2ffa2;
             --c-fail: #ff8b8b;
-            --c-grey: #787878;
             --c-focus: sandybrown;
             --c-bg-focus: bisque;
             --progress: 0%;
+            --c-bg-progress: sandybrown;
+            --c-fg-progress: sienna;
             --c-bg: navajowhite;
             --c-font: sienna;
         }
@@ -125,14 +126,14 @@
         }
 
         #progressBar {
-            background: var(--c-success);
+            background: var(--c-fg-progress);
             width: var(--progress);
             transition: width 0.2s ease-in;
             transform: translateY(-20px);
         }
 
         #progressBarBg {
-            background: var(--c-grey);
+            background: var(--c-bg-progress);
         }
 
         #progressBar,
