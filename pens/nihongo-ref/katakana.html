@@ -15,47 +15,8 @@
 
             --cell-color-focus: #a9ebff;
         }
-        body {
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            font-family: sans-serif;
-            font-size: var(--font-size-l);
-        }
-        table {
-            padding: 10px 0 20px 0;
-        }
-        thead > tr > th:not(:first-child),
-        tbody > tr:not(:first-child) > td:first-child {
-            padding: 5px 10px;
-            font-weight: bolder;
-            color: var(--font-color-headers);
-        }
-        thead > tr:first-child > th:nth-child(2) {
-            color: var(--font-color-title);
-            font-size: 20px;
-            letter-spacing: 8px;
-        }
-        td, th {
-            text-align: center;
-        }
-        tbody > tr > td > span {
-            margin-left: 10px;
-            font-size: var(--font-size-s);
-        }
-        tbody > tr > td:not(:first-child) {
-            font-weight: 600;
-            padding: 10px 0;
-            width: 100px;
-            outline: 1px dashed var(--font-color-borders);
-            color: var(--font-color-chars);
-            transition: background 0.1s linear;
-        }
-        tbody > tr > td:not(:first-child):hover,
-        tbody > tr > td:not(:first-child):focus {
-            background: var(--cell-color-focus);
-        }
     </style>
+    <link rel="stylesheet" href="table.css">
 </head>
 <body>
     <table>
@@ -254,7 +215,7 @@
                 <td>j</td>
                 <td>ジャ<span>ja</span></td><td></td>
                 <td>ジュ<span>ju</span></td>
-                <td><span>je</span></td>
+                <td>ジェ<span>je</span></td>
                 <td>ジョ<span>jo</span></td>
             </tr>
             <tr>
@@ -269,54 +230,47 @@
                 <td>ピュ<span>pyu</span></td><td></td>
                 <td>ピョ<span>pyo</span></td>
             </tr>
-            <!-- <tr>
+            <tr>
                 <td>w</td>
                 <td></td>
-                <td>ぴゃ<span>wi</span></td>
-                <td></td>
-                <td>ぴゅ<span>we</span></td>
-                <td>ぴょ<span>wo</span></td>
+                <td>ウィ<span>wi</span></td><td></td>
+                <td>ウェ<span>we</span></td>
+                <td>ウォ<span>wo</span></td>
             </tr>
-            <tr>
+           <tr>
                 <td>ts</td>
-                <td>ぴゃ<span>tsa</span></td>
-                <td>ぴゃ<span>tsi</span></td>
-                <td></td>
-                <td>ぴゅ<span>tse</span></td>
-                <td>ぴょ<span>tso</span></td>
+                <td>ツァ<span>tsa</span></td>
+                <td>ツィ<span>tsi</span></td><td></td>
+                <td>ツェ<span>tse</span></td>
+                <td>ツォ<span>tso</span></td>
             </tr>
             <tr>
                 <td>t</td>
                 <td></td>
-                <td>ぴゃ<span>ti</span></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>ティ<span>ti</span></td><td></td><td></td><td></td>
             </tr>
             <tr>
                 <td>f</td>
-                <td>ぴゃ<span>fa</span></td>
-                <td>ぴゃ<span>fi</span></td>
-                <td>ぴゃ<span>fyu</span></td>
-                <td>ぴゃ<span>fe</span></td>
-                <td>ぴゃ<span>fo</span></td>
+                <td>ファ<span>fa</span></td>
+                <td>フィ<span>fi</span></td>
+                <td>フュ<span>fyu</span></td>
+                <td>フェ<span>fe</span></td>
+                <td>フォ<span>fo</span></td>
             </tr>
             <tr>
-                <td>f</td>
+                <td>d</td>
                 <td></td>
-                <td>ぴゃ<span>di</span></td>
-                <td>ぴゃ<span>dyu</span></td>
-                <td></td>
-                <td></td>
+                <td>ディ<span>di</span></td>
+                <td>デュ<span>dyu</span></td><td></td><td></td>
             </tr>
             <tr>
                 <td>v</td>
-                <td>ぴゃ<span>va</span></td>
-                <td>ぴゃ<span>vi</span></td>
-                <td>ぴゃ<span>vu</span></td>
-                <td>ぴゃ<span>ve</span></td>
-                <td>ぴゃ<span>vo</span></td>
-            </tr> -->
+                <td>ヴァ<span>va</span></td>
+                <td>ヴィ<span>vi</span></td>
+                <td>ヴュ<span>vu</span></td>
+                <td>ヴェ<span>ve</span></td>
+                <td>ヴォ<span>vo</span></td>
+            </tr>
         </tbody>
     </table>
 </body>

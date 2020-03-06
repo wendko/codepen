@@ -51,6 +51,33 @@ body {
 #question {
     font-size: 3rem;
     margin: 20px 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#question.won::after, #question.won::before {
+    content: '🥳';
+    position: absolute;
+    opacity: 0.7;
+    transform-origin: center center;
+    offset-rotate: 0deg;
+    offset-distance: 0%;
+    animation: winAnim 8s linear infinite;
+}
+
+#question.won::after {
+    offset-path: path('m -150,0 v -110 h370 v 390 h -370 Z');
+}
+
+#question.won::before {
+    offset-path: path('m 210,0 v 281 h -360 v -400 h 350 Z');
+}
+
+@keyframes winAnim {
+    to { offset-distance: 100% }
 }
 
 .appear {
