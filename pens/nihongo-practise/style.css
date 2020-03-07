@@ -80,6 +80,86 @@ body {
     to { offset-distance: 100% }
 }
 
+#hint {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    background: sienna;
+    color: white;
+    font-weight: bolder;
+    letter-spacing: 1.5px;
+    position: absolute;
+    width: 150px;
+    padding: 5px 0;
+    align-self: center;
+}
+
+#hintToggle, #hintText{
+    position: absolute;
+}
+
+#hintToggle {
+    z-index: 1;
+    width: inherit;
+    height: 23px;
+    transform: translateY(-7px);
+    cursor: pointer;
+    opacity: 0;
+}
+
+#hintText {
+    opacity: 0;
+    z-index: 0;
+}
+
+.timedHint {
+    animation: timedHint 3s linear;
+}
+
+@keyframes timedHint {
+    0% {
+        background: linear-gradient(to right, sienna 0%, 
+            sienna 100%);
+    }
+    20% {
+        --hint-progress: 80%;
+        background: linear-gradient(to right, sienna 0%, 
+            sienna var(--hint-progress), sandybrown var(--hint-progress), 
+            sandybrown 100%);
+    }
+    40% {
+        --hint-progress: 60%;
+        background: linear-gradient(to right, sienna 0%, 
+            sienna var(--hint-progress), sandybrown var(--hint-progress), 
+            sandybrown 100%);
+    }
+    60% {
+        --hint-progress: 40%;
+        background: linear-gradient(to right, sienna 0%, 
+        sienna var(--hint-progress), sandybrown var(--hint-progress), 
+        sandybrown 100%);
+    }
+    80% {
+        --hint-progress: 20%;
+        background: linear-gradient(to right, sienna 0%, 
+            sienna var(--hint-progress), sandybrown var(--hint-progress), 
+            sandybrown 100%);
+    }
+    100% {
+        background: linear-gradient(to right, sandybrown 0%, 
+            sandybrown 100%);
+    }
+}
+
+#hintToggle:checked ~ label {
+    opacity: 0;
+}
+
+#hintToggle:checked ~ label ~ #hintText {
+    opacity: 1;
+}
+
+
 .appear {
     animation: appear 0.3s ease-in;
 }

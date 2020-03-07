@@ -17,6 +17,11 @@
             </option>
         </select>
         <p id="question">{{current.q}}</p>
+        <span id="hint" v-if="current.hint">
+            <input id="hintToggle" type="checkbox" v-on:click="toggleHint">
+            <label for="hintToggle">show hint</label>
+            <span id="hintText">{{current.hint}}</span>
+        </span>
         <input type="text" id="answer" v-on:keyup.enter="submit" placeholder="enter/return" autocomplete="off"
             autocorrect="off" autocapitalize="off" spellcheck="false">
         <p id="score">Progress: {{cleared}} / {{questions.length}}</p>
@@ -28,7 +33,7 @@
             Hiragana: 0,
             Katakana: 1,
             Numbers: 2,
-            VocabLesson1: 3,
+            Vocab1: 3,
         }
 
         const questionBank = [
@@ -313,45 +318,60 @@
                 ]
             }
             , {
-                mode: Mode.VocabLesson1,
+                mode: Mode.Vocab1,
                 questions: [
                     { q: 'あの', a: 'um' },
                     { q: 'いま', a: 'now' },
-                    { q: 'あの', a: 'english' },
-                    { q: 'あの', a: 'yes' },
-                    { q: 'あの', a: 'student' },
-                    { q: 'あの', a: 'high school' },
-                    { q: 'あの', a: 'pm' },
-                    { q: 'あの', a: 'am' },
-                    { q: 'あの', a: 'major' },
-                    { q: 'あの', a: 'teacher' },
-                    { q: 'あの', a: `that's right` },
-                    { q: 'あの', a: 'i see' },
-                    { q: 'あの', a: 'university' },
-                    { q: 'あの', a: 'telephone' },
-                    { q: 'あの', a: 'friend' },
-                    { q: 'あの', a: 'name' },
-                    { q: 'あの', a: 'what' },
-                    { q: 'あの', a: 'japan' },
-                    { q: 'あの', a: 'yes' },
-                    { q: 'あの', a: 'number' },
-                    { q: 'あの', a: 'international student' },
-                    { q: 'あの', a: 'i' },
-                    { q: 'あの', a: 'america' },
-                    { q: 'あの', a: 'england' },
-                    { q: 'あの', a: 'australia' },
-                    { q: 'あの', a: 'korea' },
-                    { q: 'あの', a: 'china' },
-                    { q: 'あの', a: 'science' },
-                    { q: 'あの', a: 'asian studies' },
-                    { q: 'あの', a: 'economics' },
-                    { q: 'あの', a: 'international relations' },
-                    { q: 'あの', a: 'computer' },
-                    { q: 'あの', a: 'anthropology' },
-                    { q: 'あの', a: 'politics' },
-                    { q: 'あの', a: 'business' },
-                    { q: 'あの', a: 'literature' },
-                    { q: 'あの', a: 'history' },
+                    { q: 'えいご', a: 'english' },
+                    { q: 'ええ', a: 'yes' },
+                    { q: 'がくせい', a: 'student' },
+                    { q: 'こうこう', a: 'high school' },
+                    { q: 'ごご', a: 'pm' },
+                    { q: 'ごぜん', a: 'am' },
+                    { q: 'せんこう', a: 'major' },
+                    { q: 'せんせい', a: 'teacher' },
+                    { q: 'そおです', a: `that's right` },
+                    { q: 'そおですか', a: 'i see' },
+                    { q: 'だいがく', a: 'university' },
+                    { q: 'でんわ', a: 'telephone' },
+                    { q: 'ともだち', a: 'friend' },
+                    { q: 'なまえ', a: 'name' },
+                    { q: 'なに', a: 'what' },
+                    { q: 'にほん', a: 'japan' },
+                    { q: 'はい', a: 'yes' },
+                    { q: 'ばんごう', a: 'number' },
+                    { q: 'りゅうがくせい', a: 'international student', hint: '留学生' },
+                    { q: 'わたし', a: 'i' },
+                    // { q: 'あの', a: 'america' },
+                    // { q: 'あの', a: 'england' },
+                    // { q: 'あの', a: 'australia' },
+                    { q: 'かんこく', a: 'korea' },
+                    // { q: 'あの', a: 'sweden' },
+                    { q: 'ちゅうごく', a: 'china' },
+                    { q: 'かがく', a: 'science', hint: '科学' },
+                    // { q: 'あの', a: 'asian studies' },
+                    { q: 'けえざい', a: 'economics' },
+                    { q: 'こくさいかんけい', a: 'international relations', hint: '国際関係' },
+                    // { q: 'あの', a: 'computer' },
+                    // { q: 'あの', a: 'anthropology' },
+                    { q: 'せいじ', a: 'politics', hint: '政治'  },
+                    // { q: 'あの', a: 'business' },
+                    { q: 'ぶんがく', a: 'literature', hint: '文学'  },
+                    { q: 'れきし', a: 'history' },
+                    { q: 'しごと', a: 'job' },
+                    { q: 'いしゃ', a: 'doctor', hint: '医者' },
+                    { q: 'かいしゃいん', a: 'office worker', hint: '会社員' },
+                    { q: 'こうこうせい', a: 'high school student' },
+                    { q: 'しゅふ', a: 'housewife', hint: '主婦' },
+                    { q: 'だいがくいんせ', a: 'graduate student' },
+                    { q: 'だいがくせい', a: 'college student' },
+                    { q: 'べんごし', a: 'lawyer', hint: '弁護士' },
+                    { q: 'おかあさん', a: 'mother' },
+                    { q: 'おとうさん', a: 'father' },
+                    { q: 'おねえさん', a: 'older sister' },
+                    { q: 'おにいさん', a: 'older brother' },
+                    { q: 'いもおと', a: 'younger sister' },
+                    { q: 'おとうと', a: 'younger brother' }
                 ]
             }
         ];
@@ -396,18 +416,11 @@
                     this.cleared += 1;
                     this.current = this.questions[this.cleared];
                     document.documentElement.style.setProperty('--progress', `${this.cleared / this.questions.length * 100}%`);
-                    answerEl.classList.add('correct');
-                    questionEl.classList.add('appear');
-                    setTimeout(() => {
-                        answerEl.classList.remove('correct');
-                        questionEl.classList.remove('appear');
-                    }, 1000);
+                    this.addRemoveClass('answer', 'correct');
+                    this.addRemoveClass('question', 'appear');
                 },
                 handleIncorrectAnswer: function (answerEl) {
-                    answerEl.classList.add('wrong');
-                    setTimeout(() => {
-                        answerEl.classList.remove('wrong');
-                    }, 1000);
+                    this.addRemoveClass('answer', 'wrong');
                 },
                 winTransition: function (answerEl, questionEl) {
                     answerEl.value = '';
@@ -423,6 +436,22 @@
                     this.cleared = 0;
                     document.getElementById('question').classList.remove('won');
                     document.documentElement.style.setProperty('--progress', `0%`);
+                },
+                toggleHint: function(e) {
+                    if(e.target.checked) {
+                        e.target.disabled = true;
+                        this.addRemoveClass('hint', 'timedHint', 3000);
+                        setTimeout(() => { 
+                            e.target.checked = false;
+                            e.target.disabled = false;
+                        }, 3000);
+                    }
+                },
+                addRemoveClass: function(elId, cssClass, timeout = 1000) {
+                    document.getElementById(elId).classList.add(cssClass);
+                    setTimeout(() => {
+                        document.getElementById(elId).classList.remove(cssClass);
+                    }, timeout);
                 }
             }
         });
