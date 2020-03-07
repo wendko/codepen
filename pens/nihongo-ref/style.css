@@ -1,5 +1,5 @@
 body {
-    display: flex;
+    display: grid;
     justify-content: center;
     margin: 0;
     font-family: sans-serif;
