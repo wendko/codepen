@@ -11,8 +11,8 @@ const draftedPens = !!window.location.href.match(/draft/g) ? [
 ] : [];
 
 const completedPens = [
-    'hiragana-ref',
-    'hiragana-practise',
+    'nihongo-ref',
+    'nihongo-practise',
     'css-named-beach',
     'css-named-colors',
     'snake',

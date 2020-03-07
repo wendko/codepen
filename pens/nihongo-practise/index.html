@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nihongo Practise</title>
+    <link rel="icon"
+    href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/237/carp-streamer_1f38f.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="../../common/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <select id="modeSelect" v-on:change="changeMode">
+            <option v-for="mode in modes" v-bind:value="mode[1]">
+                {{mode[0]}}
+            </option>
+        </select>
+        <p id="question">{{current.q}}</p>
+        <span id="hint" v-if="current.hint">
+            <input id="hintToggle" type="checkbox" v-on:click="toggleHint">
+            <label for="hintToggle">show hint</label>
+            <span id="hintText">{{current.hint}}</span>
+        </span>
+        <input type="text" id="answer" v-on:keyup.enter="submit" placeholder="enter/return" autocomplete="off"
+            autocorrect="off" autocapitalize="off" spellcheck="false">
+        <p id="score">Progress: {{cleared}} / {{questions.length}}</p>
+        <span id="progressBarBg"></span>
+        <span id="progressBar"></span>
+    </div>
+    <script>
+        const Mode = {
+            Hiragana: 0,
+            Katakana: 1,
+            Numbers: 2,
+            Vocab1: 3,
+        }
+
+        const questionBank = [
+            {
+                mode: Mode.Hiragana,
+                questions: [
+                    { q: 'あ', a: 'a' },
+                    { q: 'い', a: 'i' },
+                    { q: 'う', a: 'u' },
+                    { q: 'え', a: 'e' },
+                    { q: 'お', a: 'o' },
+                    { q: 'か', a: 'ka' },
+                    { q: 'き', a: 'ki' },
+                    { q: 'く', a: 'ku' },
+                    { q: 'け', a: 'ke' },
+                    { q: 'こ', a: 'ko' },
+                    { q: 'さ', a: 'sa' },
+                    { q: 'し', a: 'shi' },
+                    { q: 'す', a: 'su' },
+                    { q: 'せ', a: 'se' },
+                    { q: 'そ', a: 'so' },
+                    { q: 'た', a: 'ta' },
+                    { q: 'ち', a: 'chi' },
+                    { q: 'つ', a: 'tsu' },
+                    { q: 'て', a: 'te' },
+                    { q: 'と', a: 'to' },
+                    { q: 'な', a: 'na' },
+                    { q: 'に', a: 'ni' },
+                    { q: 'ぬ', a: 'nu' },
+                    { q: 'ね', a: 'ne' },
+                    { q: 'の', a: 'no' },
+                    { q: 'は', a: 'ha' },
+                    { q: 'ひ', a: 'hi' },
+                    { q: 'ふ', a: 'fu' },
+                    { q: 'へ', a: 'he' },
+                    { q: 'ほ', a: 'ho' },
+                    { q: 'ま', a: 'ma' },
+                    { q: 'み', a: 'mi' },
+                    { q: 'む', a: 'mu' },
+                    { q: 'め', a: 'me' },
+                    { q: 'も', a: 'mo' },
+                    { q: 'や', a: 'ya' },
+                    { q: 'ゆ', a: 'yu' },
+                    { q: 'よ', a: 'yo' },
+                    { q: 'ら', a: 'ra' },
+                    { q: 'り', a: 'ri' },
+                    { q: 'る', a: 'ru' },
+                    { q: 'れ', a: 're' },
+                    { q: 'ろ', a: 'ro' },
+                    { q: 'わ', a: 'wa' },
+                    { q: 'ゐ', a: 'wi' },
+                    { q: 'ゑ', a: 'we' },
+                    { q: 'を', a: 'wo' },
+                    { q: 'ん', a: 'n' },
+                    { q: 'が', a: 'ga' },
+                    { q: 'ぎ', a: 'gi' },
+                    { q: 'ぐ', a: 'gu' },
+                    { q: 'げ', a: 'ge' },
+                    { q: 'ご', a: 'go' },
+                    { q: 'ざ', a: 'za' },
+                    { q: 'じ', a: 'ji' },
+                    { q: 'ず', a: 'zu' },
+                    { q: 'ぜ', a: 'ze' },
+                    { q: 'ぞ', a: 'zo' },
+                    { q: 'だ', a: 'da' },
+                    { q: 'ぢ', a: 'ji' },
+                    { q: 'づ', a: 'zu' },
+                    { q: 'で', a: 'de' },
+                    { q: 'ど', a: 'do' },
+                    { q: 'ば', a: 'ba' },
+                    { q: 'び', a: 'bi' },
+                    { q: 'ぶ', a: 'bu' },
+                    { q: 'べ', a: 'be' },
+                    { q: 'ぼ', a: 'bo' },
+                    { q: 'ぱ', a: 'pa' },
+                    { q: 'ぴ', a: 'pi' },
+                    { q: 'ぷ', a: 'pu' },
+                    { q: 'ぺ', a: 'pe' },
+                    { q: 'ぽ', a: 'po' },
+                    { q: 'きゃ', a: 'kya' },
+                    { q: 'きゅ', a: 'kyu' },
+                    { q: 'きょ', a: 'kyo' },
+                    { q: 'しゃ', a: 'sha' },
+                    { q: 'しゅ', a: 'shu' },
+                    { q: 'しょ', a: 'sho' },
+                    { q: 'ちゃ', a: 'cha' },
+                    { q: 'ちゅ', a: 'chu' },
+                    { q: 'ちょ', a: 'cho' },
+                    { q: 'にゃ', a: 'nya' },
+                    { q: 'にゅ', a: 'nyu' },
+                    { q: 'にょ', a: 'nyo' },
+                    { q: 'ひゃ', a: 'hya' },
+                    { q: 'ひゅ', a: 'hyu' },
+                    { q: 'ひょ', a: 'hyo' },
+                    { q: 'みゃ', a: 'mya' },
+                    { q: 'みゅ', a: 'myu' },
+                    { q: 'みょ', a: 'myo' },
+                    { q: 'りゃ', a: 'rya' },
+                    { q: 'りゅ', a: 'ryu' },
+                    { q: 'りょ', a: 'ryo' },
+                    { q: 'ぎゃ', a: 'gya' },
+                    { q: 'ぎゅ', a: 'gyu' },
+                    { q: 'ぎょ', a: 'gyo' },
+                    { q: 'じゃ', a: 'ja' },
+                    { q: 'じゅ', a: 'ju' },
+                    { q: 'じょ', a: 'jo' },
+                    { q: 'びゃ', a: 'bya' },
+                    { q: 'びゅ', a: 'byu' },
+                    { q: 'びょ', a: 'byo' },
+                    { q: 'ぴゃ', a: 'pya' },
+                    { q: 'ぴゅ', a: 'pyu' },
+                    { q: 'ぴょ', a: 'pyo' }
+                ]
+            }
+            , {
+                mode: Mode.Katakana,
+                questions: [
+                    { q: 'ア', a: 'a' },
+                    { q: 'イ', a: 'i' },
+                    { q: 'ウ', a: 'u' },
+                    { q: 'エ', a: 'e' },
+                    { q: 'オ', a: 'o' },
+                    { q: 'カ', a: 'ka' },
+                    { q: 'キ', a: 'ki' },
+                    { q: 'ク', a: 'ku' },
+                    { q: 'ケ', a: 'ke' },
+                    { q: 'コ', a: 'ko' },
+                    { q: 'サ', a: 'sa' },
+                    { q: 'シ', a: 'shi' },
+                    { q: 'ス', a: 'su' },
+                    { q: 'セ', a: 'se' },
+                    { q: 'ソ', a: 'so' },
+                    { q: 'タ', a: 'ta' },
+                    { q: 'チ', a: 'chi' },
+                    { q: 'ツ', a: 'tsu' },
+                    { q: 'テ', a: 'te' },
+                    { q: 'ト', a: 'to' },
+                    { q: 'ナ', a: 'na' },
+                    { q: 'ニ', a: 'ni' },
+                    { q: 'ヌ', a: 'nu' },
+                    { q: 'ネ', a: 'ne' },
+                    { q: 'ノ', a: 'no' },
+                    { q: 'ハ', a: 'ha' },
+                    { q: 'ヒ', a: 'hi' },
+                    { q: 'フ', a: 'fu' },
+                    { q: 'ヘ', a: 'he' },
+                    { q: 'ホ', a: 'ho' },
+                    { q: 'マ', a: 'ma' },
+                    { q: 'ミ', a: 'mi' },
+                    { q: 'ム', a: 'mu' },
+                    { q: 'メ', a: 'me' },
+                    { q: 'モ', a: 'mo' },
+                    { q: 'ヤ', a: 'ya' },
+                    { q: 'ユ', a: 'yu' },
+                    { q: 'ラ', a: 'ra' },
+                    { q: 'リ', a: 'ri' },
+                    { q: 'ル', a: 'ru' },
+                    { q: 'レ', a: 're' },
+                    { q: 'ロ', a: 'ro' },
+                    { q: 'ワ', a: 'wa' },
+                    { q: 'ヲ', a: 'o' },
+                    { q: 'ン', a: 'n' },
+                    { q: 'ガ', a: 'ga' },
+                    { q: 'ギ', a: 'gi' },
+                    { q: 'グ', a: 'gu' },
+                    { q: 'ゲ', a: 'ge' },
+                    { q: 'ゴ', a: 'go' },
+                    { q: 'ザ', a: 'za' },
+                    { q: 'ジ', a: 'ji' },
+                    { q: 'ズ', a: 'zu' },
+                    { q: 'ゼ', a: 'ze' },
+                    { q: 'ゾ', a: 'zo' },
+                    { q: 'ダ', a: 'da' },
+                    { q: 'ヂ', a: 'ji' },
+                    { q: 'ヅ', a: 'zu' },
+                    { q: 'デ', a: 'de' },
+                    { q: 'ド', a: 'do' },
+                    { q: 'バ', a: 'ba' },
+                    { q: 'ビ', a: 'bi' },
+                    { q: 'ブ', a: 'bu' },
+                    { q: 'ベ', a: 'be' },
+                    { q: 'ボ', a: 'bo' },
+                    { q: 'パ', a: 'pa' },
+                    { q: 'ピ', a: 'pi' },
+                    { q: 'プ', a: 'pu' },
+                    { q: 'ペ', a: 'pe' },
+                    { q: 'ポ', a: 'po' },
+                    { q: 'キャ', a: 'kya' },
+                    { q: 'キュ', a: 'kyu' },
+                    { q: 'キョ', a: 'kyo' },
+                    { q: 'シャ', a: 'sha' },
+                    { q: 'シュ', a: 'shu' },
+                    { q: '<', a: '/' },
+                    { q: 'チャ', a: 'cha' },
+                    { q: 'チュ', a: 'chu' },
+                    { q: 'チョ', a: 'cho' },
+                    { q: 'ニャ', a: 'nya' },
+                    { q: 'ニュ', a: 'nyu' },
+                    { q: 'ニョ', a: 'nyo' },
+                    { q: 'ヒャ', a: 'hya' },
+                    { q: 'ヒュ', a: 'hyu' },
+                    { q: 'ヒョ', a: 'hyo' },
+                    { q: 'ミャ', a: 'mya' },
+                    { q: 'ミュ', a: 'myu' },
+                    { q: 'ミョ', a: 'myo' },
+                    { q: 'リャ', a: 'rya' },
+                    { q: 'リュ', a: 'ryu' },
+                    { q: 'リョ', a: 'ryo' },
+                    { q: 'ギャ', a: 'gya' },
+                    { q: 'ギュ', a: 'gyu' },
+                    { q: 'ギョ', a: 'gyo' },
+                    { q: 'ジャ', a: 'ja' },
+                    { q: 'ジュ', a: 'ju' },
+                    { q: 'ジェ', a: 'je' },
+                    { q: 'ジョ', a: 'jo' },
+                    { q: 'ビャ', a: 'bya' },
+                    { q: 'ビュ', a: 'byu' },
+                    { q: 'ビョ', a: 'byo' },
+                    { q: 'ピャ', a: 'pya' },
+                    { q: 'ピュ', a: 'pyu' },
+                    { q: 'ピョ', a: 'pyo' },
+                    { q: 'ウィ', a: 'wi' },
+                    { q: 'ウェ', a: 'we' },
+                    { q: 'ウォ', a: 'wo' },
+                    { q: 'ツァ', a: 'tsa' },
+                    { q: 'ツィ', a: 'tsi' },
+                    { q: 'ツェ', a: 'tse' },
+                    { q: 'ツォ', a: 'tso' },
+                    { q: 'ティ', a: 'ti' },
+                    { q: 'ファ', a: 'fa' },
+                    { q: 'フィ', a: 'fi' },
+                    { q: 'フュ', a: 'fyu' },
+                    { q: 'フェ', a: 'fe' },
+                    { q: 'フォ', a: 'fo' },
+                    { q: 'ディ', a: 'di' },
+                    { q: 'デュ', a: 'dyu' },
+                    { q: 'ヴァ', a: 'va' },
+                    { q: 'ヴィ', a: 'vi' },
+                    { q: 'ヴュ', a: 'vu' },
+                    { q: 'ヴェ', a: 've' },
+                    { q: 'ヴォ', a: 'vo' }
+                ]
+            }
+            , {
+                mode: Mode.Numbers,
+                questions: [
+                    { q: 'れい', a: '0' },
+                    { q: 'ゼロ', a: '0' },
+                    { q: 'いち', a: '1' },
+                    { q: 'に', a: '2' },
+                    { q: 'さん', a: '3' },
+                    { q: 'よん', a: '4' },
+                    { q: 'ご', a: '5' },
+                    { q: 'ろく', a: '6' },
+                    { q: 'しち', a: '7' },
+                    { q: 'なな', a: '7' },
+                    { q: 'はち', a: '8' },
+                    { q: 'きゅう', a: '9' },
+                    { q: 'く', a: '9' },
+                    { q: 'じゅう', a: '10' },
+                    { q: 'じゅういち', a: '11' },
+                    { q: 'じゅうに', a: '12' },
+                    { q: 'じゅうさん', a: '13' },
+                    { q: 'じゅうよん', a: '14' },
+                    { q: 'じゅうし', a: '14' },
+                    { q: 'じゅうご', a: '15' },
+                    { q: 'じゅうろく', a: '16' },
+                    { q: 'じゅうなな', a: '17' },
+                    { q: 'じゅうしち', a: '17' },
+                    { q: 'じゅうはち', a: '18' },
+                    { q: 'じゅうきゅう', a: '19' },
+                    { q: 'じゅうく', a: '19' },
+                    { q: 'にじゅう', a: '20' },
+                    { q: 'さんじゅう', a: '30' },
+                    { q: 'よんじゅう', a: '40' },
+                    { q: 'ごじゅう', a: '50' },
+                    { q: 'ろくじゅう', a: '60' },
+                    { q: 'ななじゅう', a: '70' },
+                    { q: 'はちじゅう', a: '80' },
+                    { q: 'きゅうじゅう', a: '90' },
+                    { q: 'ひゃく', a: '100' },
+                ]
+            }
+            , {
+                mode: Mode.Vocab1,
+                questions: [
+                    { q: 'あの', a: 'um' },
+                    { q: 'いま', a: 'now' },
+                    { q: 'えいご', a: 'english' },
+                    { q: 'ええ', a: 'yes' },
+                    { q: 'がくせい', a: 'student' },
+                    { q: 'こうこう', a: 'high school' },
+                    { q: 'ごご', a: 'pm' },
+                    { q: 'ごぜん', a: 'am' },
+                    { q: 'せんこう', a: 'major' },
+                    { q: 'せんせい', a: 'teacher' },
+                    { q: 'そおです', a: `that's right` },
+                    { q: 'そおですか', a: 'i see' },
+                    { q: 'だいがく', a: 'university' },
+                    { q: 'でんわ', a: 'telephone' },
+                    { q: 'ともだち', a: 'friend' },
+                    { q: 'なまえ', a: 'name' },
+                    { q: 'なに', a: 'what' },
+                    { q: 'にほん', a: 'japan' },
+                    { q: 'はい', a: 'yes' },
+                    { q: 'ばんごう', a: 'number' },
+                    { q: 'りゅうがくせい', a: 'international student', hint: '留学生' },
+                    { q: 'わたし', a: 'i' },
+                    // { q: 'あの', a: 'america' },
+                    // { q: 'あの', a: 'england' },
+                    // { q: 'あの', a: 'australia' },
+                    { q: 'かんこく', a: 'korea' },
+                    // { q: 'あの', a: 'sweden' },
+                    { q: 'ちゅうごく', a: 'china' },
+                    { q: 'かがく', a: 'science', hint: '科学' },
+                    // { q: 'あの', a: 'asian studies' },
+                    { q: 'けえざい', a: 'economics' },
+                    { q: 'こくさいかんけい', a: 'international relations', hint: '国際関係' },
+                    // { q: 'あの', a: 'computer' },
+                    // { q: 'あの', a: 'anthropology' },
+                    { q: 'せいじ', a: 'politics', hint: '政治'  },
+                    // { q: 'あの', a: 'business' },
+                    { q: 'ぶんがく', a: 'literature', hint: '文学'  },
+                    { q: 'れきし', a: 'history' },
+                    { q: 'しごと', a: 'job' },
+                    { q: 'いしゃ', a: 'doctor', hint: '医者' },
+                    { q: 'かいしゃいん', a: 'office worker', hint: '会社員' },
+                    { q: 'こうこうせい', a: 'high school student' },
+                    { q: 'しゅふ', a: 'housewife', hint: '主婦' },
+                    { q: 'だいがくいんせ', a: 'graduate student' },
+                    { q: 'だいがくせい', a: 'college student' },
+                    { q: 'べんごし', a: 'lawyer', hint: '弁護士' },
+                    { q: 'おかあさん', a: 'mother' },
+                    { q: 'おとうさん', a: 'father' },
+                    { q: 'おねえさん', a: 'older sister' },
+                    { q: 'おにいさん', a: 'older brother' },
+                    { q: 'いもおと', a: 'younger sister' },
+                    { q: 'おとうと', a: 'younger brother' }
+                ]
+            }
+        ];
+
+        function randomize(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        new Vue({
+            el: '#app',
+            data: {
+                activeMode: Mode.Hiragana,
+                questions: [],
+                current: null,
+                cleared: 0,
+                modes: Object.entries(Mode),
+            },
+            created: function () {
+                this.questions = randomize(questionBank.find(x => x.mode == this.activeMode).questions);
+                this.current = this.questions[0];
+            },
+            methods: {
+                submit: function () {
+                    const answerEl = document.getElementById('answer');
+                    const answer = answerEl.value.toLowerCase().trim();
+
+                    if (answer !== this.current.a) {
+                        this.handleIncorrectAnswer(answerEl);
+                        return;
+                    }
+
+                    const questionEl = document.getElementById('question');
+
+                    if (this.cleared === this.questions.length - 1) {
+                        this.winTransition(answerEl, questionEl);
+                        return;
+                    }
+                    this.handleCorrectAnswer(answerEl, questionEl);
+                },
+                handleCorrectAnswer: function (answerEl, questionEl) {
+                    answerEl.value = '';
+                    this.cleared += 1;
+                    this.current = this.questions[this.cleared];
+                    document.documentElement.style.setProperty('--progress', `${this.cleared / this.questions.length * 100}%`);
+                    this.addRemoveClass('answer', 'correct');
+                    this.addRemoveClass('question', 'appear');
+                },
+                handleIncorrectAnswer: function (answerEl) {
+                    this.addRemoveClass('answer', 'wrong');
+                },
+                winTransition: function (answerEl, questionEl) {
+                    answerEl.value = '';
+                    this.current = { q: 'You win!' };
+                    this.cleared = this.questions.length;
+                    document.documentElement.style.setProperty('--progress', `100%`);
+                    questionEl.classList.add('won');
+                },
+                changeMode: function (e) {
+                    this.activeMode = e.target.value;
+                    this.questions = randomize(questionBank.find(x => x.mode == this.activeMode).questions);
+                    this.current = this.questions[0];
+                    this.cleared = 0;
+                    document.getElementById('question').classList.remove('won');
+                    document.documentElement.style.setProperty('--progress', `0%`);
+                },
+                toggleHint: function(e) {
+                    if(e.target.checked) {
+                        e.target.disabled = true;
+                        this.addRemoveClass('hint', 'timedHint', 3000);
+                        setTimeout(() => { 
+                            e.target.checked = false;
+                            e.target.disabled = false;
+                        }, 3000);
+                    }
+                },
+                addRemoveClass: function(elId, cssClass, timeout = 1000) {
+                    document.getElementById(elId).classList.add(cssClass);
+                    setTimeout(() => {
+                        document.getElementById(elId).classList.remove(cssClass);
+                    }, timeout);
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
