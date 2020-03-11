@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Radio</title>
+    <style>
+        body {
+            font-family: monospace;
+            font-size: 20px;
+            line-height: 3;
+        }
+        ul {
+            list-style: none;
+        }
+        li {
+            display: flex;
+            align-items: center;
+        }
+        .checkbox {
+            background: orange;
+            position: absolute;
+            transform: translateX(4px);
+            z-index: -1;
+            height: 45px;
+            width: 45px;
+            border-radius: 20px 20px 10px 10px;
+            box-shadow: 0 0 0 2px;
+        }
+        .checkbox::before, .checkbox::after {
+            position: absolute;
+            transition: all 0.1s linear;
+        }
+        .checkbox::before {
+            content: '';
+            padding: 8px 8px;
+            background: brown;
+            --translate-y-1: 9px;
+            --translate-y-2: 15px;
+            --ear-x: 3px;
+            transform: translate(var(--ear-x), var(--translate-y-1)) rotate(45deg);
+            border-radius: 0px 20px;
+            box-shadow: 16px -17px brown;
+            opacity: 0;
+        }
+        .checkbox::after {
+            content: ':o<';
+            background: brown;
+            border-radius: 50px 20px 20px 50px;
+            --translate-x-1: 8px;
+            --translate-x-2: 8px;
+            --body-y: -6px;
+            transform: rotate(90deg) translate(var(--translate-x-1), var(--body-y));
+            width: 34px;
+            height: 40px;
+            font-size: 14px;
+            opacity: 0;
+        }
+        input {
+            margin-right: 20px;
+            height: 45px;
+            width: 45px;
+            opacity: 0;
+            cursor: pointer;
+        }
+        input:checked ~ .checkbox::before, input:checked ~ .checkbox::after {
+            opacity: 1;
+        }
+        input:checked ~ .checkbox::before {
+            animation: dogEarAppear 0.2s both linear;
+        }
+        input:checked ~ .checkbox::after {
+            animation: dogFaceAppear 0.1s both linear;
+        }
+        @keyframes dogEarAppear {
+            from {
+                transform: translate(var(--ear-x), var(--translate-y-2)) rotate(45deg);
+            } to {
+                transform: translate(var(--ear-x), var(--translate-y-1)) rotate(45deg);
+            }
+        }
+        @keyframes dogFaceAppear {
+            from {
+                transform: rotate(90deg) translate(var(--translate-x-2), var(--body-y));
+            } to {
+                transform: rotate(90deg) translate(var(--translate-x-1), var(--body-y));
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul class="group">
+        <li>
+            <input type="radio" name="dog" value="meow" id="dog_meow">
+            <span class="checkbox"></span>
+            <label for="dog_meow">Chew toys!</label>
+        </li>
+        <li>
+            <input type="radio" name="dog" value="purr" id="dog_purr">
+            <span class="checkbox"></span>
+            <label for="dog_purr">Human!</label>
+        </li>
+        <li>
+            <input type="radio" name="dog" value="hiss" id="dog_hiss">
+            <span class="checkbox"></span>
+            <label for="dog_hiss">Kitty cat!</label>
+        </li>
+        <li>
+            <input type="radio" name="dog" value="hiss" id="dog_hiss">
+            <span class="checkbox"></span>
+            <label for="dog_hiss">Squirrel!</label>
+        </li>
+    </ul>
+</body>
+</html>
