@@ -1,0 +1,107 @@
+:root {
+    --c-bg: papayawhip;
+    --c-primary-text: #e96f87;
+    --c-secondary-text: #f37f96;
+    --c-link-text: #f79d5c;
+
+    --c-item-focus-1: navajowhite;
+    --c-item-text-1: chocolate;
+    --c-item-border-1: tomato;
+
+    --c-item-focus-2: pink;
+    --c-item-text-2: mediumvioletred;
+    --c-item-border-2: hotpink;
+    
+    --c-draft-label: bisque;
+}
+
+a {
+    color: var(--c-link-text);
+    font-weight: 900;
+}
+
+body {
+    background: var(--c-bg);
+    font-family: monospace;
+    text-align: center;
+}
+
+.content {
+    margin: 30px;
+}
+
+.title {
+    font-size: 50px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--c-primary-text);
+}
+
+.subtitle,
+.footer-text {
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 700;
+    color: var(--c-secondary-text);
+}
+
+.pen-list {
+    display: grid;
+    margin: 10px 0px;
+    padding: 0;
+    grid-gap: 15px;
+}
+
+.pen-item {
+    list-style: none;
+    transition-property: box-shadow;
+    transition: box-shadow 0.1s ease-in-out;
+    height: 50px;
+    --border-color: var(--c-item-border-1);
+    --color: var(--c-item-text-1);
+    --focus-color: var(--c-item-focus-1);
+    border: 2px solid var(--border-color); 
+    color: var(--color);
+}
+
+.pen-item:nth-child(2n) {
+    --border-color: var(--c-item-border-2);
+    --color: var(--c-item-text-2);
+    --focus-color: var(--c-item-focus-2);
+}
+
+.pen-item > a {
+    text-decoration: none;
+    font-size: 3.5vmax;
+    font-weight: 900;
+    color: currentColor;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (min-width: 450px) {
+    .pen-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .pen-item > a {
+        font-size: 3.5vmin;
+    }
+}
+
+.pen-item:hover, .pen-item:focus {
+    --inset-size: 10px;
+    box-shadow: inset var(--inset-size) var(--inset-size) var(--focus-color),
+        inset calc(var(--inset-size) * -1) calc(var(--inset-size) * -1) var(--focus-color);
+}
+
+.label-draft {
+    font-size: 12px;
+    margin-left: 5px;
+    background: var(--c-draft-label);
+    padding: 3px 5px;
+    border-radius: 5px;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS projects by wendko</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
+    <script src="common/vue.js"></script>
+</head>
+
+<body>
+    <div class="content" id="app">
+        <div class="title">CSS projects</div>
+        <div class="subtitle">by <a href="https://wendko.com">wendko</a></div>
+        <ol class="pen-list">
+            <li class="pen-item" v-for="pen in pens">
+                <a v-bind:href="pen.name | link">
+                    {{ pen.name | dekebab }}
+                    <span v-if="pen.draft" class="label-draft">draft</span>
+                </a>
+            </li>
+        </ol>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
