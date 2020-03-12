@@ -1,4 +1,5 @@
 const draftedPens = !!window.location.href.match(/draft/g) ? [
+    'sakura',
     'pokemon-badges',
     'async-defer-anim',
     'google',
@@ -59,30 +60,6 @@ Vue.filter('link', (name) => {
         : `${currentUrl}/pens/${name}`;
     return newUrl;
 })
-
-Vue.component('pen-list', {
-    props: ['pens'],
-    template: `<div id="penList" class="pen-list">
-        <a class="pen-item" v-for="pen in pens" v-bind:href="pen.name | link">
-            <div>{{ pen.name | dekebab }}</div>
-            <span v-if="pen.draft" class="label-draft">draft</span>
-        </a>
-    </div>`
-});
-
-Vue.component('footer-section', {
-    template: `<footer class="footer-text">
-    Built with
-    <a href="https://vuejs.org" target="_blank">Vue.js</a>, 
-    <a href="https://sass-lang.com" target="_blank">Sass</a>
-    & 
-    <a href="https://pugjs.org" target="_blank">Pug</a>
-    <br>
-    <a href="https://wendko.com">@wendko</a>
-    | <a href="https://twitter.com/wendko" target="_blank">twitter</a>
-    | <a href="https://github.com/wendko" target="_blank">github</a>
-</footer>`
-});
 
 new Vue({
     el: '#app',
