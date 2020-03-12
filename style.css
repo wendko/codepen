@@ -1,12 +1,17 @@
 :root {
-    --c-bg: #fdffd5;
-    --c-item-text-1: #05668d;
-    --c-item-border-1: #00a896;
-    --c-item-text-2: #e40e6e;
-    --c-item-border-2: #df6b7d;
-    --c-primary-text: #a93f55;
-    --c-secondary-text: #f52f57;
+    --c-bg: papayawhip;
+    --c-primary-text: #e96f87;
+    --c-secondary-text: #f37f96;
     --c-link-text: #f79d5c;
+
+    --c-item-focus-1: navajowhite;
+    --c-item-text-1: chocolate;
+    --c-item-border-1: tomato;
+
+    --c-item-focus-2: pink;
+    --c-item-text-2: mediumvioletred;
+    --c-item-border-2: hotpink;
+    
     --c-draft-label: bisque;
 }
 
@@ -17,18 +22,12 @@ a {
 
 body {
     background: var(--c-bg);
+    font-family: monospace;
+    text-align: center;
 }
 
 .content {
     margin: 30px;
-}
-
-.title,
-.subtitle,
-.pen-item,
-.footer-text {
-    font-family: 'Manjari', sans-serif;
-    text-align: center;
 }
 
 .title {
@@ -49,52 +48,50 @@ body {
 .pen-list {
     display: grid;
     margin: 10px 0px;
+    padding: 0;
+    grid-gap: 15px;
 }
 
 @media only screen and (min-width: 450px) {
     .pen-list {
         grid-template-columns: repeat(3, 1fr);
-        grid-column-gap: 15px;
     }
 }
 
 .pen-item {
-    display: grid;
-    place-items: center;
-    margin: 10px 0px 10px 0px;
-    padding: 15px 5px 15px 5px;
-    border-radius: 5px;
-    font-size: 22px;
-    font-weight: 900;
-    text-decoration: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
     transition-property: box-shadow;
     transition: box-shadow 0.1s ease-in-out;
-
-    color: var(--c-item-text-1);
-    border: 2px dashed var(--c-item-border-1); 
+    cursor: pointer;
+    height: 50px;
+    --border-color: var(--c-item-border-1);
+    --color: var(--c-item-text-1);
+    --focus-color: var(--c-item-focus-1);
+    border: 2px solid var(--border-color); 
+    color: var(--color);
 }
 
 .pen-item:nth-child(2n) {
-    color: var(--c-item-text-2);
-    border-color: var(--c-item-border-2);
+    --border-color: var(--c-item-border-2);
+    --color: var(--c-item-text-2);
+    --focus-color: var(--c-item-focus-2);
 }
 
-.pen-item::before {
-    content: "⭐";
-    position: absolute;
-    transform: translate(-10px, -10px) rotate(-10deg);
-    font-size: 50px;
-    opacity: 0;
-    transition: transform 0.2s ease-in, opacity 0.2s ease-in;
+.pen-item > a {
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 900;
+    color: currentColor;
 }
 
 .pen-item:hover, .pen-item:focus {
-    box-shadow: 0px 0px 8px 2px currentColor;
-}
-
-.pen-item:hover::before, .pen-item:focus::before {
-    opacity: 0.2;
-    transform: translate(0px, -18px) rotate(0deg);
+    --inset-size: 10px;
+    box-shadow: inset var(--inset-size) var(--inset-size) var(--focus-color),
+        inset calc(var(--inset-size) * -1) calc(var(--inset-size) * -1) var(--focus-color);
 }
 
 .label-draft {
@@ -103,85 +100,4 @@ body {
     background: var(--c-draft-label);
     padding: 3px 5px;
     border-radius: 5px;
-}
-
-@keyframes starry {
-    0%, 40%, 70%, 100% {opacity: 1}
-    50% {opacity: 0}
-}
-
-.star {
-    position: absolute;
-    --x-1: 10vw;
-    --x-2: 15vw;
-    --y-2: 10vh;
-    --x-3: 22vw;
-    --y-3: 7vh;
-    animation: starry 6s ease-in-out infinite;
-}
-
-.star:nth-child(1) {
-    left: calc(var(--x-1) - 5vw);
-    animation-delay: 2.8s;
-}
-
-.star:nth-child(2) {
-    left: calc(var(--x-2) - 5vw);
-    top: var(--y-2);
-    animation-delay: 5s;
-}
-
-.star:nth-child(3) {
-    left: calc(var(--x-3) - 5vw);
-    top: var(--y-3);
-}
-
-.star:nth-child(4) {
-    right: var(--x-3);
-    top: var(--y-3);
-    animation-delay: 3.2s;
-}
-
-.star:nth-child(5) {
-    right: var(--x-2);
-    top: var(--y-2);
-    animation-delay: 4.5s;
-}
-
-.star:nth-child(6) {
-    right: var(--x-1);
-    animation-delay: 1s;
-}
-
-.star::before {
-    content: "⭐";
-    position: absolute;
-    transform-origin: center;
-    transform: rotate(10deg);
-}
-
-@keyframes star1 {
-    50% { transform: rotate(0deg)}
-}
-
-@keyframes star2 {
-    50% { transform: scale(1.5) rotate(-60deg)}
-}
-
-@keyframes star3 {
-    50% { transform: scale(1.2) rotate(50deg)}
-}
-
-.star:nth-child(1)::before, .star:nth-child(6)::before {
-    animation: star1 2s linear infinite;
-}
-
-.star:nth-child(2)::before, .star:nth-child(5)::before {
-    transform: scale(1.5) rotate(-20deg);
-    animation: star2 5s linear infinite;
-}
-
-.star:nth-child(3)::before, .star:nth-child(4)::before {
-    transform: scale(1.2) rotate(-10deg);
-    animation: star3 4.5s linear infinite;
 }
