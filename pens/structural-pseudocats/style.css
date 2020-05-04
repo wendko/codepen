@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+:root {
+    --background-color: rgb(79, 73, 95);
+    --b-color: pink;
+    --b-content: "🐱";
+    --i-color: #ffd689;
+    --i-content: "🐯";
+    --q-color: #a6ffe1;
+    --q-content: "🦁";
+    --input-text-color: rgb(47, 43, 59);
+    --input-background-color: rgb(177, 172, 218);
+    --input-checked-text-color: rgb(255, 192, 234);
+    --input-checked-background-color: rgb(47, 43, 59);
+    --input-content: "🐟";
+    --highlight-outline-color: rgb(47, 43, 59);
+    --cats-outline: rgb(190, 177, 226);
+}
+
+body {
+  font-family: 'Nunito';
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-color);
+  margin: 30px 0;
+}
+
+*, *::before {
+  font-style: normal;
+}
+
+.cats {
+    margin: 20px 0;
+    border: 1px dashed var(--cats-outline);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+b, i, q {
+  background: var(--background);
+  border-radius: 10px;
+  padding: 10px 5px;
+  margin: 10px;
+  font-size: 50px;
+  display: inline-block;
+}
+
+b::before, i::before, q::before {
+  content: var(--content);
+}
+
+b {
+  --content: var(--b-content);
+  --background: var(--b-color);
+}
+
+i {
+  --content: var(--i-content);
+  --background: var(--i-color);
+}
+
+q {
+--content: var(--q-content);
+  --background: var(--q-color);
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+}
+
+.input-container {
+    display: flex;
+    margin: 0 5px;
+}
+
+.input-container.encapsulate {
+    background: var(--input-checked-background-color);
+    color: var(--input-checked-text-color);
+    align-items: center;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.input-container.w100 > * { width: 100px }
+.input-container.w150 > * { width: 150px }
+.input-container.w200 > * { width: 200px }
+
+.input-container > input[type="checkbox"] {
+    opacity: 0;
+    margin: 0;
+}
+
+.input-container > input[type="number"] {
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: inherit;
+    width: 45px;
+    margin: 0 5px;
+    height: 20px;
+    background: var(--input-background-color);
+    color: var(--input-text-color);
+}
+
+input, input + label {
+    height: 30px;
+}
+
+input + label {
+    position: absolute;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--input-text-color);
+    background: var(--input-background-color);
+    border-radius: 5px;
+    transition: all 0.1s ease-in;
+    user-select: none;
+}
+
+input:checked + label {
+    color: var(--input-checked-text-color);
+    background: var(--input-checked-background-color);
+}
+
+input + label::before {
+    content: var(--input-content);
+    position: absolute;
+    opacity: 0;
+    transition: transform 0.1s ease-in-out;
+    transform: translate(-23px, -18px) rotate(0deg);
+}
+
+input:checked + label::before {
+    opacity: 1;
+    transform: translate(-23px, -18px) rotate(24deg);
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+.highlight-first-child > :first-child, 
+.highlight-last-child > :last-child,
+.highlight-nth-child-even > :nth-child(even),
+.highlight-nth-child-odd > :nth-child(odd),
+.highlight-nth-child-1 > :nth-child(1),
+.highlight-nth-child-2 > :nth-child(2),
+.highlight-nth-child-3 > :nth-child(3),
+.highlight-nth-child-4 > :nth-child(4),
+.highlight-nth-child-5 > :nth-child(5),
+.highlight-nth-last-child-1 > :nth-last-child(1),
+.highlight-nth-last-child-2 > :nth-last-child(2),
+.highlight-nth-last-child-3 > :nth-last-child(3),
+.highlight-nth-last-child-4 > :nth-last-child(4),
+.highlight-nth-last-child-5 > :nth-last-child(5),
+.highlight-first-of-type > b:first-of-type,
+.highlight-last-of-type > b:last-of-type,
+.highlight-nth-of-type-even > b:nth-of-type(even),
+.highlight-nth-of-type-odd > b:nth-of-type(odd),
+.highlight-nth-of-type-1 > b:nth-of-type(1),
+.highlight-nth-of-type-2 > b:nth-of-type(2),
+.highlight-nth-of-type-3 > b:nth-of-type(3),
+.highlight-nth-of-type-4 > b:nth-of-type(4),
+.highlight-nth-of-type-5 > b:nth-of-type(5),
+.highlight-nth-last-of-type-1 > b:nth-last-of-type(1),
+.highlight-nth-last-of-type-2 > b:nth-last-of-type(2),
+.highlight-nth-last-of-type-3 > b:nth-last-of-type(3),
+.highlight-nth-last-of-type-4 > b:nth-last-of-type(4),
+.highlight-nth-last-of-type-5 > b:nth-last-of-type(5),
+.highlight-only-child > :only-child,
+.highlight-only-of-type > b:only-of-type
+{ box-shadow: 0 0 0 8px var(--highlight-outline-color) }

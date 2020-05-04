@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structural Pseudocats</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="first-last-child">
+        <div class="input-group">
+            <div class="input-container w100">
+                <input type="checkbox" value="first-child" id="first-child" name="first-last-child">
+                <label for="first-child">:first-child</label>
+            </div>
+            <div class="input-container w100">
+                <input type="checkbox" value="last-child" id="last-child" name="first-last-child">
+                <label for="last-child">:last-child</label>
+            </div>
+        </div>
+        <div id="first-last-child-container" class="cats">
+            <b></b>
+            <b></b>
+            <b></b>
+        </div>
+    </section>
+
+    <section id="nth-child-even-odd">
+        <div class="input-group">
+            <div class="input-container w150">
+                <input type="checkbox" value="nth-child-odd" id="nth-child-odd" name="nth-child-even-odd">
+                <label for="nth-child-odd">:nth-child(odd)</label>
+            </div>
+            <div class="input-container w150">
+                <input type="checkbox" value="nth-child-even" id="nth-child-even" name="nth-child-even-odd">
+                <label for="nth-child-even">:nth-child(even)</label>
+            </div>
+        </div>
+        <div id="nth-child-even-odd-container" class="cats">
+            <q></q>
+            <q></q>
+            <q></q>
+            <q></q>
+            <q></q>
+        </div>
+    </section>
+
+    <section id="nth-child">
+        <div class="input-group">
+            <div class="input-container w100 encapsulate">
+                <label for="nth-child">:nth-child</label>
+                (
+                    <input id="nth-child" type="number" name="nth-child" max=5 min=1 value=0 step=1>
+                )
+            </div>
+        </div>
+        <div id="nth-child-container" class="cats highlight-nth-child-1">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+    </section>
+
+    <section id="nth-last-child">
+        <div class="input-group">
+            <div class="input-container w150 encapsulate">
+                <label for="nth-last-child">:nth-last-child</label>
+                (
+                    <input id="nth-last-child" type="number" name="nth-last-child" max=5 min=1 value=0 step=1>
+                )
+            </div>
+        </div>
+        <div id="nth-last-child-container" class="cats highlight-nth-last-child-1">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+    </section>
+
+    <section id="first-last-of-type">
+        <div class="input-group">
+            <div class="input-container w150">
+                <input type="checkbox" value="first-of-type" id="first-of-type" name="first-last-of-type">
+                <label for="first-of-type">🐱:first-of-type</label>
+            </div>
+            <div class="input-container w150">
+                <input type="checkbox" value="last-of-type" id="last-of-type" name="first-last-of-type">
+                <label for="last-of-type">🐱:last-of-type</label>
+            </div>
+        </div>
+        <div id="first-last-of-type-container" class="cats">
+            <q></q>
+            <b></b>
+            <q></q>
+            <b></b>
+            <q></q>
+        </div>
+    </section>
+    
+    <section id="nth-of-type-even-odd">
+        <div class="input-group">
+            <div class="input-container w200">
+                <input type="checkbox" value="nth-of-type-odd" id="nth-of-type-odd" name="nth-of-type-even-odd">
+                <label for="nth-of-type-odd">🐱:nth-of-type(odd)</label>
+            </div>
+            <div class="input-container w200">
+                <input type="checkbox" value="nth-of-type-even" id="nth-of-type-even" name="nth-of-type-even-odd">
+                <label for="nth-of-type-even">🐱:nth-of-type(even)</label>
+            </div>
+        </div>
+        <div id="nth-of-type-even-odd-container" class="cats">
+            <b></b>
+            <i></i>
+            <b></b>
+            <i></i>
+            <b></b>
+        </div>
+    </section>
+
+    <section id="nth-of-type">
+        <div class="input-group">
+            <div class="input-container w150 encapsulate">
+                <label for="nth-of-type">🐱:nth-of-type</label>
+                (
+                    <input id="nth-of-type" type="number" name="nth-of-type" max=3 min=1 value=1 step=1>
+                )
+            </div>
+        </div>
+        <div id="nth-of-type-container" class="cats highlight-nth-of-type-1">
+            <b></b>
+            <q></q>
+            <b></b>
+            <q></q>
+            <b></b>
+        </div>
+    </section>
+
+    <section id="nth-last-of-type">
+        <div class="input-group">
+            <div class="input-container w200 encapsulate">
+                <label for="nth-last-of-type">🐱:nth-last-of-type</label>
+                (
+                    <input id="nth-last-of-type" type="number" name="nth-last-of-type" max=3 min=1 value=1 step=1>
+                )
+            </div>
+        </div>
+        <div id="nth-last-of-type-container" class="cats highlight-nth-last-of-type-1">
+            <b></b>
+            <i></i>
+            <b></b>
+            <i></i>
+            <b></b>
+        </div>
+    </section>
+
+    <section id="only-child-of-type">
+        <div class="input-group">
+            <div class="input-container w150">
+                <input type="checkbox" value="only-child" id="only-child" name="only-child-of-type">
+                <label for="only-child">:only-child</label>
+            </div>
+            <div class="input-container w150">
+                <input type="checkbox" value="only-of-type" id="only-of-type" name="only-child-of-type">
+                <label for="only-of-type">🐱:only-of-type</label>
+            </div>
+        </div>
+        <div id="only-child-container-1" class="cats highlight-only-of-type">
+            <i></i>
+        </div>
+        <div id="only-child-container-2" class="cats highlight-only-of-type">
+            <b></b>
+        </div>
+        <div id="only-child-container-3" class="cats highlight-only-of-type">
+            <i></i>
+            <b></b>
+            <i></i>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
