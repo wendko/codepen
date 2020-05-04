@@ -12,6 +12,7 @@ const draftedPens = !!window.location.href.match(/draft/g) ? [
 ] : [];
 
 const completedPens = [
+    'structural-pseudocats',
     'nihongo-ref',
     'nihongo-practise',
     'css-named-beach',
