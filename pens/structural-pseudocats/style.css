@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Pacifico&display=swap');
 
 :root {
     --background-color: rgb(79, 73, 95);
@@ -8,11 +8,13 @@
     --i-content: "🐯";
     --q-color: #a6ffe1;
     --q-content: "🦁";
+    --text-color: rgb(255, 192, 234);
     --input-text-color: rgb(47, 43, 59);
     --input-background-color: rgb(177, 172, 218);
     --input-checked-text-color: rgb(255, 192, 234);
     --input-checked-background-color: rgb(47, 43, 59);
     --input-content: "🐟";
+    --input-focus-color: rgb(255, 192, 234);
     --highlight-outline-color: rgb(47, 43, 59);
     --cats-outline: rgb(190, 177, 226);
 }
@@ -26,6 +28,16 @@ body {
   align-items: center;
   background: var(--background-color);
   margin: 30px 0;
+}
+
+header {
+    color: var(--text-color);
+    margin-bottom: 30px;
+}
+
+header > * {
+    margin: 0px;
+    letter-spacing: 0.2rem;
 }
 
 *, *::before {
@@ -110,6 +122,10 @@ q {
 
 input, input + label {
     height: 30px;
+}
+
+input:focus, input:hover, input:focus + label, input:hover + label {
+    box-shadow: 0 0 0 5px var(--input-focus-color);
 }
 
 input + label {

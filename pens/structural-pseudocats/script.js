@@ -1,4 +1,19 @@
+
+resetInput = (element) => {
+    switch (element.type) {
+        case 'checkbox':
+            element.checked = false;
+            break;
+        case 'number':
+            element.value = 1;
+            break;
+        default:
+            break;
+    }
+}
+
 document.querySelectorAll('input').forEach(el => {
+    resetInput(el);
     el.addEventListener('change', (e) => {
         const { id, value, checked, name } = e.target;
         switch (name) {
@@ -32,13 +47,5 @@ modifyClassList = (containerId, className, shouldAdd) => {
         document.querySelector(containerId).classList.add(className);
     } else {
         document.querySelector(containerId).classList.remove(className);
-    }
-}
-
-handleEvenOddChild = (value, isChecked) => {
-    if (isChecked) {
-        document.querySelector('#first-last-child-container').classList.add(`highlight-${value}`);
-    } else {
-        document.querySelector('#first-last-child-container').classList.remove(`highlight-${value}`);
     }
 }
