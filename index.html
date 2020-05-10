@@ -45,13 +45,13 @@
                                 class="pen__preview-image--static"
                                 loading="lazy"
                                 v-bind:src="'assets/preview-images/' + pen.name + '.png'"
-                                alt="tbc"
+                                v-bind:alt="'Image for ' + pen.name"
                             >
                             <img 
                                 class="pen__preview-image--gif"
                                 loading="lazy"
                                 v-bind:src="'assets/preview-images/' + pen.name + '.gif'"
-                                alt="tbc"
+                                v-bind:alt="'GIF for ' + pen.name"
                             >
                         </span>
                     </article>
