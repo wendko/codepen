@@ -24,17 +24,23 @@
         <label for="search">Search</label>
         <input type="text" id="search" v-on:keyup="onSearch" placeholder="eg. Pikachu">
         <div class="pens__overview">
-            {{ searchText.length ? 'Found' : 'Total' }} pens: {{getPens.length}}
+            <span class="pens__total">
+                {{ searchText.length ? 'Found' : 'Total' }} pens: {{getPens.length}}
+            </span>
+            <span class="pens__view-toggle">
+                <input type="checkbox" name="viewToggle" id="view-toggle-input" v-on:change="toggleView">
+                <label for="view-toggle-input">Hide Preview</label>
+            </span>
         </div>
         <ol class="pens">
             <li class="pen__list-item" v-for="pen in getPens">
                 <a class="pen__link" v-bind:href="pen.name | link">
-                    <article class="pen__container">
+                    <article class="pen__container" v-bind:class="isPreviewMode ? 'preview-mode' : 'list-mode'">
                         <span class="pen__description">
                             {{ pen.name | dekebab }}
                             <span v-if="pen.draft" class="label-draft">draft</span>
                         </span>
-                        <span class="pen__preview-image">
+                        <span class="pen__preview-image" v-if="isPreviewMode">
                             <img 
                                 class="pen__preview-image--static"
                                 loading="lazy"
