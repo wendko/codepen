@@ -2,7 +2,7 @@
     --background-color: #ffcccc;
 
     --list-item-color-1: #d3f6f3;
-    --list-item-color-2: #fcffd1;
+    --list-item-color-2: #ffb9e4;
 
     --header-link-color: #c01690;
     --header-link-visited-color: #610658;
@@ -14,10 +14,11 @@
     --search-label-color: #9d7391;
     
     --overview-text-color: #9d7391;
+    --overview-focus-background-color: #fcffd1;
     --text-color: #37323f;
     --list-item-outline-color: #494949;
     --list-item-shadow-color: #2e2e2e;
-    --list-item-focus-background-color: #ffa7dd;
+    --list-item-focus-background-color: #f9ffa0;
 }
 
 @font-face {
@@ -44,6 +45,16 @@ header > * {
 
 a {
     text-decoration: none;
+}
+
+.preview-mode {
+    --list-item-height: 350px;
+    --mb-pen-description: 10px;
+}
+
+.list-mode {
+    --list-item-height: auto;
+    --mb-pen-description: 0px;
 }
 
 .socials {
@@ -87,7 +98,7 @@ a {
 .pen__container {
     background: var(--list-item-color);
     width: 350px;
-    height: 350px;
+    height: var(--list-item-height);
     margin: 10px 0;
     padding: 15px;
     border-radius: 8px;
@@ -132,7 +143,7 @@ a {
 
 .pen__description {
     font-size: 1.4em;
-    margin-bottom: 15px;
+    margin-bottom: var(--mb-pen-description);
     color: var(--text-color);
     transition: all 0.2s linear;
 }
@@ -174,4 +185,23 @@ label[for="search"] {
     margin-top: 20px;
     font-weight: 600;
     color: var(--overview-text-color);
+}
+
+.pens__overview > * {
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.pens__view-toggle:focus-within {
+    background: var(--overview-focus-background-color);
+}
+
+.pens__overview > :nth-child(2) {
+    margin-left: 20px;
+}
+
+@media only screen and (max-width: 420px) {
+    .pen__container {
+        width: 85vw;
+    }
 }

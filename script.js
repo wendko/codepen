@@ -77,11 +77,15 @@ new Vue({
             ...(draftedPens.map(x => ({ name: x, draft: true }))),
         ],
         searchText: '',
+        isPreviewMode: true
     },
     methods: {
         onSearch: function (e) {
             this.searchText = e.target.value;
         },
+        toggleView: function (e) {
+            this.isPreviewMode = !e.target.checked;
+        }
     },
     computed: {
         getPens: function () {
