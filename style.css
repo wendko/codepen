@@ -1,107 +1,177 @@
 :root {
-    --c-bg: papayawhip;
-    --c-primary-text: #e96f87;
-    --c-secondary-text: #f37f96;
-    --c-link-text: #f79d5c;
+    --background-color: #ffcccc;
 
-    --c-item-focus-1: navajowhite;
-    --c-item-text-1: chocolate;
-    --c-item-border-1: tomato;
+    --list-item-color-1: #d3f6f3;
+    --list-item-color-2: #fcffd1;
 
-    --c-item-focus-2: pink;
-    --c-item-text-2: mediumvioletred;
-    --c-item-border-2: hotpink;
+    --header-link-color: #c01690;
+    --header-link-visited-color: #610658;
+    --header-link-focus-background-color: #fcffd1;
     
-    --c-draft-label: bisque;
+    --search-outline-color: #9d7391;
+    --search-background-color: #fcffd1;
+    --search-text-color: #c01690;
+    --search-label-color: #9d7391;
+    
+    --overview-text-color: #9d7391;
+    --text-color: #37323f;
+    --list-item-outline-color: #494949;
+    --list-item-shadow-color: #2e2e2e;
+    --list-item-focus-background-color: #ffa7dd;
 }
 
-a {
-    color: var(--c-link-text);
-    font-weight: 900;
+@font-face {
+    font-family: 'Ubuntu';
+    src: url(./assets/fonts/Ubuntu-Regular.ttf);
 }
 
 body {
-    background: var(--c-bg);
-    font-family: monospace;
+    background: var(--background-color);
     text-align: center;
+    color: var(--text-color);
+    font-family: 'Ubuntu';
+    scroll-behavior: smooth;
 }
 
-.content {
-    margin: 30px;
-}
-
-.title {
-    font-size: 50px;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: var(--c-primary-text);
-}
-
-.subtitle,
-.footer-text {
-    font-size: 18px;
-    line-height: 1.5;
-    font-weight: 700;
-    color: var(--c-secondary-text);
-}
-
-.pen-list {
-    display: grid;
-    margin: 10px 0px;
-    padding: 0;
-    grid-gap: 15px;
-}
-
-.pen-item {
+ol, ul {
     list-style: none;
-    transition-property: box-shadow;
-    transition: box-shadow 0.1s ease-in-out;
-    height: 50px;
-    --border-color: var(--c-item-border-1);
-    --color: var(--c-item-text-1);
-    --focus-color: var(--c-item-focus-1);
-    border: 2px solid var(--border-color); 
-    color: var(--color);
+    padding: 0;
 }
 
-.pen-item:nth-child(2n) {
-    --border-color: var(--c-item-border-2);
-    --color: var(--c-item-text-2);
-    --focus-color: var(--c-item-focus-2);
+header > * {
+    margin: 10px;
 }
 
-.pen-item > a {
+a {
     text-decoration: none;
-    font-size: 3.5vmax;
-    font-weight: 900;
-    color: currentColor;
-    cursor: pointer;
+}
+
+.socials {
+    display: inline-flex;
+}
+
+.socials__list-item, .socials__list-item-divider {
+    font-weight: bolder;
+}
+
+.socials__link {
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.2s linear;
+    color: var(--header-link-color);
+}
+
+.socials__link:hover,
+.socials__link:focus {
+    outline: none;
+    background: var(--header-link-focus-background-color);
+}
+
+.socials__link:visited {
+    color: var(--header-link-visited-color);
+}
+
+.pen__list-item {
+    display: flex;
+    justify-content: center;
+}
+
+.pen__list-item:nth-child(even) .pen__container {
+    --list-item-color: var(--list-item-color-1);
+}
+
+.pen__list-item:nth-child(odd) .pen__container {
+    --list-item-color: var(--list-item-color-2);
+}
+
+.pen__container {
+    background: var(--list-item-color);
+    width: 350px;
+    height: 350px;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
+    flex-direction: column;
+    border: 2px solid var(--list-item-outline-color);
+    box-shadow: 8px 8px var(--list-item-shadow-color);
+    transition: all 0.2s linear;
+}
+
+.pen__preview-image {
     height: 100%;
+    overflow-y: hidden;
+    border-radius: 8px;
 }
 
-@media only screen and (min-width: 450px) {
-    .pen-list {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .pen-item > a {
-        font-size: 3.5vmin;
-    }
+.pen__preview-image--static,
+.pen__preview-image--gif {
+    width: 100%;
 }
 
-.pen-item:hover, .pen-item:focus {
-    --inset-size: 10px;
-    box-shadow: inset var(--inset-size) var(--inset-size) var(--focus-color),
-        inset calc(var(--inset-size) * -1) calc(var(--inset-size) * -1) var(--focus-color);
+.pen__preview-image--static {
+    opacity: 80%;
+    display: block;
 }
 
-.label-draft {
-    font-size: 12px;
-    margin-left: 5px;
-    background: var(--c-draft-label);
-    padding: 3px 5px;
-    border-radius: 5px;
+.pen__preview-image--gif {
+    display: none;
+}
+
+.pen__link:focus .pen__preview-image--static,
+.pen__link:hover .pen__preview-image--static {
+    display: none;
+}
+
+.pen__link:focus .pen__preview-image--gif,
+.pen__link:hover .pen__preview-image--gif {
+    display: block;
+    opacity: 100%;
+}
+
+.pen__description {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    transition: all 0.2s linear;
+}
+
+.pen__link:focus {
+    outline: none;
+}
+
+.pen__link:focus > .pen__container,
+.pen__link:hover > .pen__container {
+    background: var(--list-item-focus-background-color);
+}
+
+label[for="search"] {
+    margin-right: 10px;
+    color: var(--search-label-color);
+}
+
+#search {
+    color: var(--text-color);
+    border: 2px dashed var(--search-outline-color);
+    background: var(--search-background-color);
+    opacity: 50%;
+    border-radius: 3px;
+    padding: 8px;
+    text-align: center;
+    margin-top: 10px;
+    transition: all 0.2s linear;
+}
+
+#search:hover,
+#search:focus {
+    outline: none;
+    opacity: 100%;
+    box-shadow: 0 0 0 5px var(--search-background-color);
+}
+
+.pens__overview {
+    margin-top: 20px;
+    font-weight: 600;
+    color: var(--overview-text-color);
 }

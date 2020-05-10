@@ -1,18 +1,6 @@
-const draftedPens = !!window.location.href.match(/draft/g) ? [
-    'sakura',
-    'pokemon-badges',
-    'async-defer-anim',
-    'google',
-    'malaysian-states',
-    'mamak',
-    'merdeka-2019',
-    'programming-logos',
-    'resizable-lantern',
-    'sunflower',
-] : [];
-
 const completedPens = [
     'structural-pseudocats',
+    'sakura',
     'nihongo-ref',
     'nihongo-practise',
     'css-named-beach',
@@ -46,6 +34,14 @@ const completedPens = [
     'slack',
 ];
 
+const draftedPens = !!window.location.href.match(/draft/g) ? [
+    'pokemon-badges',
+    'async-defer-anim',
+    'google',
+    'malaysian-states',
+    'mamak',
+] : [];
+
 Vue.filter('dekebab', (value) => {
     if (!value) return ''
     return value
@@ -63,11 +59,34 @@ Vue.filter('link', (name) => {
 })
 
 new Vue({
-    el: '#app',
+    el: 'header',
+    data: {
+        socials: [
+            { link: 'https://twitter.com/wendko', label: 'twitter' },
+            { link: 'https://github.com/wendko/codepen', label: 'github' },
+            { link: 'https://wendko.com', label: 'about' },
+        ]
+    }
+})
+
+new Vue({
+    el: 'main',
     data: {
         pens: [
             ...(completedPens.map(x => ({ name: x }))),
             ...(draftedPens.map(x => ({ name: x, draft: true }))),
-        ]
+        ],
+        searchText: '',
     },
+    methods: {
+        onSearch: function (e) {
+            this.searchText = e.target.value;
+        },
+    },
+    computed: {
+        getPens: function () {
+            return !this.searchText.length ? this.pens :
+                this.pens.filter(x => x.name.indexOf(this.searchText) > -1);
+        }
+    }
 });

@@ -7,23 +7,52 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CSS projects by wendko</title>
     <link href="style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
     <script src="common/vue.js"></script>
 </head>
 
 <body>
-    <div class="content" id="app">
-        <div class="title">CSS projects</div>
-        <div class="subtitle">by <a href="https://wendko.com">wendko</a></div>
-        <ol class="pen-list">
-            <li class="pen-item" v-for="pen in pens">
-                <a v-bind:href="pen.name | link">
-                    {{ pen.name | dekebab }}
-                    <span v-if="pen.draft" class="label-draft">draft</span>
+    <header>
+        <h1>CSS projects</h1>
+        <h2>by wendko</h2>
+        <ul class="socials">
+            <li class="socials__list-item" v-for="social in socials">
+                <a class="socials__link" v-bind:href="social.link">{{social.label}}</a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <label for="search">Search</label>
+        <input type="text" id="search" v-on:keyup="onSearch" placeholder="eg. Pikachu">
+        <div class="pens__overview">
+            {{ searchText.length ? 'Found' : 'Total' }} pens: {{getPens.length}}
+        </div>
+        <ol class="pens">
+            <li class="pen__list-item" v-for="pen in getPens">
+                <a class="pen__link" v-bind:href="pen.name | link">
+                    <article class="pen__container">
+                        <span class="pen__description">
+                            {{ pen.name | dekebab }}
+                            <span v-if="pen.draft" class="label-draft">draft</span>
+                        </span>
+                        <span class="pen__preview-image">
+                            <img 
+                                class="pen__preview-image--static"
+                                loading="lazy"
+                                v-bind:src="'assets/preview-images/' + pen.name + '.png'"
+                                alt="tbc"
+                            >
+                            <img 
+                                class="pen__preview-image--gif"
+                                loading="lazy"
+                                v-bind:src="'assets/preview-images/' + pen.name + '.gif'"
+                                alt="tbc"
+                            >
+                        </span>
+                    </article>
                 </a>
             </li>
         </ol>
-    </div>
+    </main>
     <script src="script.js"></script>
 </body>
 
