@@ -59,13 +59,24 @@ Vue.filter('link', (name) => {
 })
 
 new Vue({
+    el: 'header',
+    data: {
+        socials: [
+            { link: 'https://twitter.com/wendko', label: 'twitter' },
+            { link: 'https://github.com/wendko/codepen', label: 'github' },
+            { link: 'https://wendko.com', label: 'about' },
+        ]
+    }
+})
+
+new Vue({
     el: 'main',
     data: {
         pens: [
             ...(completedPens.map(x => ({ name: x }))),
             ...(draftedPens.map(x => ({ name: x, draft: true }))),
         ],
-        searchText: ''
+        searchText: '',
     },
     methods: {
         onSearch: function (e) {

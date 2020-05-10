@@ -15,23 +15,17 @@
         <h1>CSS projects</h1>
         <h2>by wendko</h2>
         <ul class="socials">
-            <li class="socials__list-item">
-                <a class="socials__link" href="https://twitter.com/wendko">twitter</a>
-            </li>
-            <li class="socials__list-item-divider">-</li>
-            <li class="socials__list-item">
-                <a class="socials__link" href="https://github.com/wendko/codepen">github</a>
-            </li>
-            <li class="socials__list-item-divider">-</li>
-            <li class="socials__list-item">
-                <a class="socials__link" href="https://wendko.com">about</a>
+            <li class="socials__list-item" v-for="social in socials">
+                <a class="socials__link" v-bind:href="social.link">{{social.label}}</a>
             </li>
         </ul>
     </header>
     <main>
         <label for="search">Search</label>
         <input type="text" id="search" v-on:keyup="onSearch" placeholder="eg. Pikachu">
-        <div class="pens__no-results" v-if="getPens.length === 0">There are no results :(</div>
+        <div class="pens__overview">
+            {{ searchText.length ? 'Found' : 'Total' }} pens: {{getPens.length}}
+        </div>
         <ol class="pens">
             <li class="pen__list-item" v-for="pen in getPens">
                 <a class="pen__link" v-bind:href="pen.name | link">
@@ -44,13 +38,13 @@
                             <img 
                                 class="pen__preview-image--static"
                                 loading="lazy"
-                                src="assets/preview-images/structural-pseudocats.png"
+                                v-bind:src="'assets/preview-images/' + pen.name + '.png'"
                                 alt="tbc"
                             >
                             <img 
                                 class="pen__preview-image--gif"
                                 loading="lazy"
-                                src="assets/preview-images/structural-pseudocats.gif"
+                                v-bind:src="'assets/preview-images/' + pen.name + '.gif'"
                                 alt="tbc"
                             >
                         </span>
