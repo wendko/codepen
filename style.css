@@ -61,8 +61,13 @@ a {
     display: inline-flex;
 }
 
-.socials__list-item, .socials__list-item-divider {
+.socials__list-item {
     font-weight: bolder;
+}
+
+.socials__list-item:not(:last-child)::after {
+    content: "-";
+    color: var(--text-color);
 }
 
 .socials__link {
