@@ -1,11 +1,3 @@
-const draftedPens = !!window.location.href.match(/draft/g) ? [
-    'pokemon-badges',
-    'async-defer-anim',
-    'google',
-    'malaysian-states',
-    'mamak',
-] : [];
-
 const completedPens = [
     'structural-pseudocats',
     'sakura',
@@ -42,6 +34,14 @@ const completedPens = [
     'slack',
 ];
 
+const draftedPens = !!window.location.href.match(/draft/g) ? [
+    'pokemon-badges',
+    'async-defer-anim',
+    'google',
+    'malaysian-states',
+    'mamak',
+] : [];
+
 Vue.filter('dekebab', (value) => {
     if (!value) return ''
     return value
@@ -59,11 +59,23 @@ Vue.filter('link', (name) => {
 })
 
 new Vue({
-    el: '#app',
+    el: 'main',
     data: {
         pens: [
             ...(completedPens.map(x => ({ name: x }))),
             ...(draftedPens.map(x => ({ name: x, draft: true }))),
-        ]
+        ],
+        searchText: ''
     },
+    methods: {
+        onSearch: function (e) {
+            this.searchText = e.target.value;
+        },
+    },
+    computed: {
+        getPens: function () {
+            return !this.searchText.length ? this.pens :
+                this.pens.filter(x => x.name.indexOf(this.searchText) > -1);
+        }
+    }
 });
