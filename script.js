@@ -1,18 +1,14 @@
 const draftedPens = !!window.location.href.match(/draft/g) ? [
-    'sakura',
     'pokemon-badges',
     'async-defer-anim',
     'google',
     'malaysian-states',
     'mamak',
-    'merdeka-2019',
-    'programming-logos',
-    'resizable-lantern',
-    'sunflower',
 ] : [];
 
 const completedPens = [
     'structural-pseudocats',
+    'sakura',
     'nihongo-ref',
     'nihongo-practise',
     'css-named-beach',
