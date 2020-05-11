@@ -24,11 +24,35 @@
 
             --deno__dino-eyes-width: calc(var(--base-size) * 0.9vw);
             --deno__dino-eyes-height: calc(var(--base-size) * 0.9vw);
-            --deno__dino-eyes-transform: calc(var(--base-size) * 6.7vw), calc(var(--base-size) * 4.6vw);
+            --deno__dino-eyes-transform: calc(var(--base-size) * 6.7vw), calc(var(--base-size) * 10.7vw);
             --deno__dino-eyes-box-shadow: calc(var(--base-size) * 2vw) calc(var(--base-size) * 0.3vw);
 
             --deno-ref-width: calc(var(--base-size) * 31vw);
             --deno-ref-translate: calc(var(--base-size) * -2.8vw);
+            
+            --deno__dino--neck-right-height: calc(var(--base-size) * 13.5vw);
+            --deno__dino--neck-right-width: calc(var(--base-size) * 4vw);
+            --deno__dino--neck-right-transform: calc(var(--base-size) * 14.3vw), calc(var(--base-size) * 10vw);
+         
+            --deno__dino--neck-right-before-height: calc(var(--base-size) * 1.5vw);
+            --deno__dino--neck-right-before-width: calc(var(--base-size) * 0.8vw);
+            --deno__dino--neck-right-before-transform: calc(var(--base-size) * -0.5vw), calc(var(--base-size) * 3.6vw);
+      
+            --deno__dino--neck-left-height: calc(var(--base-size) * 9.5vw);
+            --deno__dino--neck-left-width: calc(var(--base-size) * 3.5vw);
+            --deno__dino--neck-left-transform: calc(var(--base-size) * 12vw), calc(var(--base-size) * 14.3vw);
+            
+            --deno__dino--neck-left-before-height: calc(var(--base-size) * 5vw);
+            --deno__dino--neck-left-before-width: calc(var(--base-size) * 3.5vw);
+            --deno__dino--neck-left-before-transform: calc(var(--base-size) * -0.3vw), calc(var(--base-size) * 5.3vw);
+        
+            --deno__dino-neck-outline-width:  calc(var(--base-size) * 0.7vw);
+
+            --deno__dino--eye-color: black;
+            --deno__dino--outline-color: black;
+            --deno__dino--body-color: white;
+            --deno__background-color: darkgrey;
+            --deno__rain-color: white;
         }
 
         body {
@@ -45,10 +69,23 @@
         .deno {
             width: var(--deno-width);
             height: var(--deno-height);
-            background: pink;
-            border-radius: 50%;
-            box-shadow: inset 0 0 0 var(--deno-outline-weight) darkmagenta;
         }
+
+        .deno__background {
+            background: var(--deno__background-color);
+            background: red;
+            border-radius: 50%;
+            width: var(--deno-width);
+            height: var(--deno-width);
+        }
+
+        .deno__outline {
+            border-radius: 50%;
+            width: var(--deno-width);
+            height: var(--deno-height);
+            box-shadow: inset 0px 0px 0 var(--deno-outline-weight);
+        }
+
         .ref {
             width: var(--deno-ref-width);
             transform: translate(var(--deno-ref-translate), var(--deno-ref-translate));
@@ -60,18 +97,57 @@
             width: var(--deno__dino-head-width);
             height: var(--deno__dino-head-height);
             transform: translate(var(--deno__dino-head-translate)) rotate(-6deg);
-            background: yellow;
+            background: var(--deno__dino--body-color);
+            box-shadow: 0 0 0 var(--deno__dino-head-outline-weight) var(--deno__dino--outline-color);
             border-radius: 68% 49% 69% 41%;
-            box-shadow: 0 0 0 var(--deno__dino-head-outline-weight) darkmagenta;
         }
 
         .deno__dino--eyes {
-            background: green;
+            background: var(--deno__dino--eye-color);
             width: var(--deno__dino-eyes-width);
             height: var(--deno__dino-eyes-height);
             transform: translate(var(--deno__dino-eyes-transform));
-            box-shadow: var(--deno__dino-eyes-box-shadow) green;
+            box-shadow: var(--deno__dino-eyes-box-shadow) var(--deno__dino--eye-color);
             border-radius: 50%;
+        }
+
+        .deno > *, .deno > *::before, .deno > *::after {
+            position: absolute;
+        }
+
+        .deno__dino--neck-right {
+            background: var(--deno__dino--body-color);
+            height: var(--deno__dino--neck-right-height);
+            width: var(--deno__dino--neck-right-width);
+            transform: translate(var(--deno__dino--neck-right-transform)) skewX(5deg);
+            box-shadow: inset calc(var(--deno__dino-neck-outline-width) * -1) 0px var(--deno__dino--outline-color);
+            border-radius: 0 58% 1vw 0;
+        }
+
+        .deno__dino--neck-right::before {
+            content: "";
+            background: var(--deno__dino--outline-color);
+            transform: translate(var(--deno__dino--neck-right-before-transform)) rotate(57deg);
+            height: var(--deno__dino--neck-right-before-height);
+            width: var(--deno__dino--neck-right-before-width);
+            border-radius: 50%;
+        }
+
+        .deno__dino--neck-left {
+            background: var(--deno__dino--body-color);
+            height: var(--deno__dino--neck-left-height);
+            width: var(--deno__dino--neck-left-width);
+            transform: translate(var(--deno__dino--neck-left-transform)) skewX(4deg);
+            box-shadow: calc(var(--deno__dino-neck-outline-width) * -1) 0 var(--deno__dino--outline-color);
+        }
+
+        .deno__dino--neck-left::before {
+            content: "";
+            background: var(--deno__dino--body-color);
+            height: var(--deno__dino--neck-left-before-height);
+            width: var(--deno__dino--neck-left-before-width);
+            transform: translate(var(--deno__dino--neck-left-before-transform)) rotate(7deg);
+            box-shadow: calc(var(--deno__dino-neck-outline-width) * -1) 0 var(--deno__dino--outline-color);
         }
 
         #size-slider {
@@ -82,9 +158,13 @@
     <main>
         <input type="range" max="5" min="1" id="size-slider" value="3">
         <div class="deno">
+            <div class="deno__background"></div>
+            <div class="deno__rain"></div>
+            <div class="deno__dino--neck-left"></div>
             <div class="deno__dino--head"></div>
             <div class="deno__dino--eyes"></div>
-            <div class="deno__dino--neck"></div>
+            <div class="deno__dino--neck-right"></div>
+            <div class="deno__outline"></div>
         </div>
         <img class="ref" src="ref.png">
     </main>
