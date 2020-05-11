@@ -5,25 +5,15 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Deno</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
 </head>
 <body>
     <style>
         body {
-            height: 100vh;
+            height: 80vh;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0;
-        }
-        main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        main > * {
-            margin: 10px 0;
         }
         .ref {
             width: var(--deno-ref-width);
@@ -31,7 +21,32 @@
             position: absolute;
             opacity: 0%;
         }
+        .toggle-animation {
+            font-family: Arial, Helvetica, sans-serif;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            user-select: none;
+            z-index: 1;
+        }
+        #toggle-animation-input ~ label {
+            padding: 4px 8px;
+            border-radius: 5px;
+            transition: all 0.2s linear;
+        }
+        #toggle-animation-input:focus ~ label,
+        #toggle-animation-input:hover ~ label {
+            background: black;
+            color: white;
+        }
+        deno-logo[animated="false"] {
+            display: block;
+        }
+        deno-logo[animated="true"] {
+            display: none;
+        }
     </style>
+
     <template id="deno">
         <style>
             .deno {
@@ -78,6 +93,9 @@
                 --deno__background-color: black;
                 --deno__rain-color: white;
 
+                --deno_rainfall-duration: 3s;
+                --deno_blink-duration: 3s;
+
                 width: var(--deno-width);
                 height: var(--deno-height);
             }
@@ -95,6 +113,9 @@
                 .deno {
                     --base-size: 3;
                 }
+            }
+            .deno > *, .deno > *::before, .deno > *::after {
+                position: absolute;
             }
             .deno__background {
                 background: var(--deno__background-color);
@@ -116,6 +137,14 @@
                 box-shadow: 0 0 0 var(--deno__dino-head-outline-weight) var(--deno__dino--outline-color);
                 border-radius: 68% 49% 69% 41%;
             }
+            @keyframes blink {
+                10% {
+                    height: calc(var(--deno__dino-eyes-height) * 0.5);
+                }
+                5%, 15% {
+                    height: var(--deno__dino-eyes-height);
+                }
+            }
             .deno__dino--eyes {
                 background: var(--deno__dino--eye-color);
                 width: var(--deno__dino-eyes-width);
@@ -124,15 +153,15 @@
                 box-shadow: var(--deno__dino-eyes-box-shadow) var(--deno__dino--eye-color);
                 border-radius: 50%;
             }
-            .deno > *, .deno > *::before, .deno > *::after {
-                position: absolute;
+            .deno.animated .deno__dino--eyes {
+                animation: blink 2s linear infinite;
             }
             .deno__dino--neck-right {
                 background: var(--deno__dino--body-color);
                 height: var(--deno__dino--neck-right-height);
                 width: var(--deno__dino--neck-right-width);
                 transform: translate(var(--deno__dino--neck-right-transform)) skewX(5deg);
-                border-radius: 0 58% 3vw 0;
+                border-radius: 0 58% 0 0;
             }
             .deno__dino--neck-right::before {
                 content: "";
@@ -163,22 +192,23 @@
             }
             @keyframes rainFall {
                 0% {
-                    transform: var(--deno__rain-drop--transform) translateY(calc(var(--deno-height) * -1));
+                    transform: var(--deno__rain-drop--transform) translateY(calc(var(--deno-height) * -0.8));
                 }
                 100% {
-                    transform: var(--deno__rain-drop--transform) translateY(calc(var(--deno-height) * 1));
+                    transform: var(--deno__rain-drop--transform) translateY(calc(var(--deno-height) * 0.8));
                 }
             }
             .deno__rain-drop {
                 position: absolute;
                 height: var(--deno-height);
                 background: var(--deno__rain-color);
-                --deno__rain-background-gradient: transparent, var(--deno__rain-color);
+                transform: var(--deno__rain-drop--transform);
                 background: linear-gradient(to bottom, var(--deno__rain-background-gradient));
-                transform: var(--deno__rain-drop--transform) translateY(calc(var(--deno-height) * -1));
                 width: var(--deno__rain-drop--width);
                 opacity: 60%;
-                --deno_rainfall-duration: 3s;
+            }
+            .deno.animated .deno__rain-drop {
+                transform: var(--deno__rain-drop--transform) translateY(calc(var(--deno-height) * -1));
                 animation: rainFall var(--deno_rainfall-duration) linear infinite;
                 animation-delay: var(--deno_rainfall-delay);
             }
@@ -342,8 +372,15 @@
         </div>
     </template>
 
+    <header>
+        <div class="toggle-animation">
+            <input type="checkbox" id="toggle-animation-input">
+            <label for="toggle-animation-input">Turn on animation</label>
+        </div>
+    </header>
     <main>
-        <deno-logo></deno-logo>
+        <deno-logo animated="false"></deno-logo>
+        <deno-logo animated="true"></deno-logo>
     </main>
 
     <script>
@@ -353,9 +390,20 @@
                 const template = document.querySelector('#deno');
                 const cloned = template.content.cloneNode(true);
                 this.attachShadow({mode: 'open'}).appendChild(cloned);
+                if (this.animated === 'true') {
+                    this.shadowRoot.querySelector('.deno').classList.add('animated');
+                }
+            }
+            get animated() {
+                return this.getAttribute('animated');
             }
         }
-        customElements.define('deno-logo', DenoLogoElement)
+        customElements.define('deno-logo', DenoLogoElement);
+        document.querySelector('#toggle-animation-input').addEventListener('click', e => {
+            const onAnimation = e.target.checked;
+            document.querySelector('deno-logo[animated="true"]').style.display = onAnimation ? 'block' : 'none';
+            document.querySelector('deno-logo[animated="false"]').style.display = onAnimation ? 'none' : 'block';
+        })
     </script>
 </body>
 </html>
