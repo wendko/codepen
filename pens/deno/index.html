@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Deno</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <style>
+        :root {
+            --base-size: 1;
+
+            --deno-width: calc(var(--base-size) * 25vw);
+            --deno-height: calc(var(--base-size) * 25vw);
+            --deno-outline-weight: calc(var(--base-size) * 1vw);
+
+            --deno__dino-head-width:  calc(var(--base-size) * 10.6vw);
+            --deno__dino-head-height:  calc(var(--base-size) * 6vw);
+            --deno__dino-head-translate: calc(var(--base-size) * 5vw), calc(var(--base-size) * 9.3vw);
+            --deno__dino-head-outline-weight: calc(var(--base-size) * 0.7vw);
+
+            --deno__dino-eyes-width: calc(var(--base-size) * 0.9vw);
+            --deno__dino-eyes-height: calc(var(--base-size) * 0.9vw);
+            --deno__dino-eyes-transform: calc(var(--base-size) * 6.7vw), calc(var(--base-size) * 4.6vw);
+            --deno__dino-eyes-box-shadow: calc(var(--base-size) * 2vw) calc(var(--base-size) * 0.3vw);
+
+            --deno-ref-width: calc(var(--base-size) * 31vw);
+            --deno-ref-translate: calc(var(--base-size) * -2.8vw);
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            display: flex;
+        }
+
+        .deno {
+            width: var(--deno-width);
+            height: var(--deno-height);
+            background: pink;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 var(--deno-outline-weight) darkmagenta;
+        }
+        .ref {
+            width: var(--deno-ref-width);
+            transform: translate(var(--deno-ref-translate), var(--deno-ref-translate));
+            position: absolute;
+            opacity: 20%;
+        }
+
+        .deno__dino--head {
+            width: var(--deno__dino-head-width);
+            height: var(--deno__dino-head-height);
+            transform: translate(var(--deno__dino-head-translate)) rotate(-6deg);
+            background: yellow;
+            border-radius: 68% 49% 69% 41%;
+            box-shadow: 0 0 0 var(--deno__dino-head-outline-weight) darkmagenta;
+        }
+
+        .deno__dino--eyes {
+            background: green;
+            width: var(--deno__dino-eyes-width);
+            height: var(--deno__dino-eyes-height);
+            transform: translate(var(--deno__dino-eyes-transform));
+            box-shadow: var(--deno__dino-eyes-box-shadow) green;
+            border-radius: 50%;
+        }
+
+        #size-slider {
+            position: fixed;
+            top: 10vw;
+        }
+    </style>
+    <main>
+        <input type="range" max="5" min="1" id="size-slider" value="3">
+        <div class="deno">
+            <div class="deno__dino--head"></div>
+            <div class="deno__dino--eyes"></div>
+            <div class="deno__dino--neck"></div>
+        </div>
+        <img class="ref" src="ref.png">
+    </main>
+
+    <script>
+        const SIZE_FACTOR = [0.5, 0.8, 1, 1.2, 2];
+        document.querySelector('#size-slider').addEventListener('change', e => {
+            document.documentElement.style.setProperty('--base-size', SIZE_FACTOR[+e.target.value - 1]);
+        })
+    </script>
+</body>
+</html>
