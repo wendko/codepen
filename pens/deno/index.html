@@ -10,170 +10,352 @@
 </head>
 <body>
     <style>
-        :root {
-            --base-size: 1;
-
-            --deno-width: calc(var(--base-size) * 25vw);
-            --deno-height: calc(var(--base-size) * 25vw);
-            --deno-outline-weight: calc(var(--base-size) * 1vw);
-
-            --deno__dino-head-width:  calc(var(--base-size) * 10.6vw);
-            --deno__dino-head-height:  calc(var(--base-size) * 6vw);
-            --deno__dino-head-translate: calc(var(--base-size) * 5vw), calc(var(--base-size) * 9.3vw);
-            --deno__dino-head-outline-weight: calc(var(--base-size) * 0.7vw);
-
-            --deno__dino-eyes-width: calc(var(--base-size) * 0.9vw);
-            --deno__dino-eyes-height: calc(var(--base-size) * 0.9vw);
-            --deno__dino-eyes-transform: calc(var(--base-size) * 6.7vw), calc(var(--base-size) * 10.7vw);
-            --deno__dino-eyes-box-shadow: calc(var(--base-size) * 2vw) calc(var(--base-size) * 0.3vw);
-
-            --deno-ref-width: calc(var(--base-size) * 31vw);
-            --deno-ref-translate: calc(var(--base-size) * -2.8vw);
-            
-            --deno__dino--neck-right-height: calc(var(--base-size) * 13.5vw);
-            --deno__dino--neck-right-width: calc(var(--base-size) * 4vw);
-            --deno__dino--neck-right-transform: calc(var(--base-size) * 14.3vw), calc(var(--base-size) * 10vw);
-         
-            --deno__dino--neck-right-before-height: calc(var(--base-size) * 1.5vw);
-            --deno__dino--neck-right-before-width: calc(var(--base-size) * 0.8vw);
-            --deno__dino--neck-right-before-transform: calc(var(--base-size) * -0.5vw), calc(var(--base-size) * 3.6vw);
-      
-            --deno__dino--neck-left-height: calc(var(--base-size) * 9.5vw);
-            --deno__dino--neck-left-width: calc(var(--base-size) * 3.5vw);
-            --deno__dino--neck-left-transform: calc(var(--base-size) * 12vw), calc(var(--base-size) * 14.3vw);
-            
-            --deno__dino--neck-left-before-height: calc(var(--base-size) * 5vw);
-            --deno__dino--neck-left-before-width: calc(var(--base-size) * 3.5vw);
-            --deno__dino--neck-left-before-transform: calc(var(--base-size) * -0.3vw), calc(var(--base-size) * 5.3vw);
-        
-            --deno__dino-neck-outline-width:  calc(var(--base-size) * 0.7vw);
-
-            --deno__dino--eye-color: black;
-            --deno__dino--outline-color: black;
-            --deno__dino--body-color: white;
-            --deno__background-color: darkgrey;
-            --deno__rain-color: white;
-        }
-
         body {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: 0;
         }
-
         main {
             display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        .deno {
-            width: var(--deno-width);
-            height: var(--deno-height);
+        main > * {
+            margin: 10px 0;
         }
-
-        .deno__background {
-            background: var(--deno__background-color);
-            background: red;
-            border-radius: 50%;
-            width: var(--deno-width);
-            height: var(--deno-width);
-        }
-
-        .deno__outline {
-            border-radius: 50%;
-            width: var(--deno-width);
-            height: var(--deno-height);
-            box-shadow: inset 0px 0px 0 var(--deno-outline-weight);
-        }
-
         .ref {
             width: var(--deno-ref-width);
             transform: translate(var(--deno-ref-translate), var(--deno-ref-translate));
             position: absolute;
-            opacity: 20%;
-        }
-
-        .deno__dino--head {
-            width: var(--deno__dino-head-width);
-            height: var(--deno__dino-head-height);
-            transform: translate(var(--deno__dino-head-translate)) rotate(-6deg);
-            background: var(--deno__dino--body-color);
-            box-shadow: 0 0 0 var(--deno__dino-head-outline-weight) var(--deno__dino--outline-color);
-            border-radius: 68% 49% 69% 41%;
-        }
-
-        .deno__dino--eyes {
-            background: var(--deno__dino--eye-color);
-            width: var(--deno__dino-eyes-width);
-            height: var(--deno__dino-eyes-height);
-            transform: translate(var(--deno__dino-eyes-transform));
-            box-shadow: var(--deno__dino-eyes-box-shadow) var(--deno__dino--eye-color);
-            border-radius: 50%;
-        }
-
-        .deno > *, .deno > *::before, .deno > *::after {
-            position: absolute;
-        }
-
-        .deno__dino--neck-right {
-            background: var(--deno__dino--body-color);
-            height: var(--deno__dino--neck-right-height);
-            width: var(--deno__dino--neck-right-width);
-            transform: translate(var(--deno__dino--neck-right-transform)) skewX(5deg);
-            box-shadow: inset calc(var(--deno__dino-neck-outline-width) * -1) 0px var(--deno__dino--outline-color);
-            border-radius: 0 58% 1vw 0;
-        }
-
-        .deno__dino--neck-right::before {
-            content: "";
-            background: var(--deno__dino--outline-color);
-            transform: translate(var(--deno__dino--neck-right-before-transform)) rotate(57deg);
-            height: var(--deno__dino--neck-right-before-height);
-            width: var(--deno__dino--neck-right-before-width);
-            border-radius: 50%;
-        }
-
-        .deno__dino--neck-left {
-            background: var(--deno__dino--body-color);
-            height: var(--deno__dino--neck-left-height);
-            width: var(--deno__dino--neck-left-width);
-            transform: translate(var(--deno__dino--neck-left-transform)) skewX(4deg);
-            box-shadow: calc(var(--deno__dino-neck-outline-width) * -1) 0 var(--deno__dino--outline-color);
-        }
-
-        .deno__dino--neck-left::before {
-            content: "";
-            background: var(--deno__dino--body-color);
-            height: var(--deno__dino--neck-left-before-height);
-            width: var(--deno__dino--neck-left-before-width);
-            transform: translate(var(--deno__dino--neck-left-before-transform)) rotate(7deg);
-            box-shadow: calc(var(--deno__dino-neck-outline-width) * -1) 0 var(--deno__dino--outline-color);
-        }
-
-        #size-slider {
-            position: fixed;
-            top: 10vw;
+            opacity: 0%;
         }
     </style>
-    <main>
-        <input type="range" max="5" min="1" id="size-slider" value="3">
+    <template id="deno">
+        <style>
+            .deno {
+                --deno-width: calc(var(--base-size) * 25vw);
+                --deno-height: calc(var(--base-size) * 25vw);
+                --deno-outline-weight: calc(var(--base-size) * 1vw);
+
+                --deno__dino-head-width:  calc(var(--base-size) * 10.6vw);
+                --deno__dino-head-height:  calc(var(--base-size) * 6vw);
+                --deno__dino-head-translate: calc(var(--base-size) * 5vw), calc(var(--base-size) * 9.3vw);
+                --deno__dino-head-outline-weight: calc(var(--base-size) * 0.7vw);
+
+                --deno__dino-eyes-width: calc(var(--base-size) * 0.9vw);
+                --deno__dino-eyes-height: calc(var(--base-size) * 0.9vw);
+                --deno__dino-eyes-transform: calc(var(--base-size) * 6.7vw), calc(var(--base-size) * 10.7vw);
+                --deno__dino-eyes-box-shadow: calc(var(--base-size) * 2vw) calc(var(--base-size) * 0.3vw);
+
+                --deno-ref-width: calc(var(--base-size) * 31vw);
+                --deno-ref-translate: calc(var(--base-size) * -2.8vw);
+
+                --deno__dino--neck-right-height: calc(var(--base-size) * 13.5vw);
+                --deno__dino--neck-right-width: calc(var(--base-size) * 4vw);
+                --deno__dino--neck-right-transform: calc(var(--base-size) * 13.4vw), calc(var(--base-size) * 10vw);
+
+                --deno__dino--neck-right-before-height: calc(var(--base-size) * 1.5vw);
+                --deno__dino--neck-right-before-width: calc(var(--base-size) * 0.8vw);
+                --deno__dino--neck-right-before-transform: calc(var(--base-size) * -0.5vw), calc(var(--base-size) * 4vw);
+
+                --deno__dino--neck-left-height: calc(var(--base-size) * 9.5vw);
+                --deno__dino--neck-left-width: calc(var(--base-size) * 3.5vw);
+                --deno__dino--neck-left-transform: calc(var(--base-size) * 12vw), calc(var(--base-size) * 14.3vw);
+
+                --deno__dino--neck-left-before-height: calc(var(--base-size) * 5vw);
+                --deno__dino--neck-left-before-width: calc(var(--base-size) * 3.5vw);
+                --deno__dino--neck-left-before-transform: calc(var(--base-size) * -0.3vw), calc(var(--base-size) * 5.3vw);
+
+                --deno__dino-neck-outline-width:  calc(var(--base-size) * 0.7vw);
+
+                --deno__rain-drop--width: calc(var(--base-size) * 0.2vw);
+
+                --deno__dino--eye-color: black;
+                --deno__dino--outline-color: black;
+                --deno__dino--body-color: white;
+                --deno__background-color: black;
+                --deno__rain-color: white;
+
+                width: var(--deno-width);
+                height: var(--deno-height);
+            }
+            @media only screen and (min-width: 701px) {
+                .deno {
+                    --base-size: 1;
+                }
+            }
+            @media only screen and (max-width: 700px) and (min-width: 400px) {
+                .deno {
+                    --base-size: 2;
+                }
+            }
+            @media only screen and (max-width: 399px) {
+                .deno {
+                    --base-size: 3;
+                }
+            }
+            .deno__background {
+                background: var(--deno__background-color);
+                border-radius: 50%;
+                width: var(--deno-width);
+                height: var(--deno-width);
+            }
+            .deno__outline {
+                border-radius: 50%;
+                width: var(--deno-width);
+                height: var(--deno-height);
+                box-shadow: inset 0px 0px 0 var(--deno-outline-weight);
+            }
+            .deno__dino--head {
+                width: var(--deno__dino-head-width);
+                height: var(--deno__dino-head-height);
+                transform: translate(var(--deno__dino-head-translate)) rotate(-6deg);
+                background: var(--deno__dino--body-color);
+                box-shadow: 0 0 0 var(--deno__dino-head-outline-weight) var(--deno__dino--outline-color);
+                border-radius: 68% 49% 69% 41%;
+            }
+            .deno__dino--eyes {
+                background: var(--deno__dino--eye-color);
+                width: var(--deno__dino-eyes-width);
+                height: var(--deno__dino-eyes-height);
+                transform: translate(var(--deno__dino-eyes-transform));
+                box-shadow: var(--deno__dino-eyes-box-shadow) var(--deno__dino--eye-color);
+                border-radius: 50%;
+            }
+            .deno > *, .deno > *::before, .deno > *::after {
+                position: absolute;
+            }
+            .deno__dino--neck-right {
+                background: var(--deno__dino--body-color);
+                height: var(--deno__dino--neck-right-height);
+                width: var(--deno__dino--neck-right-width);
+                transform: translate(var(--deno__dino--neck-right-transform)) skewX(5deg);
+                border-radius: 0 58% 3vw 0;
+            }
+            .deno__dino--neck-right::before {
+                content: "";
+                background: var(--deno__dino--outline-color);
+                transform: translate(var(--deno__dino--neck-right-before-transform)) rotate(57deg);
+                height: var(--deno__dino--neck-right-before-height);
+                width: var(--deno__dino--neck-right-before-width);
+                border-radius: 50%;
+            }
+            .deno__dino--neck-left {
+                background: var(--deno__dino--body-color);
+                height: var(--deno__dino--neck-left-height);
+                width: var(--deno__dino--neck-left-width);
+                transform: translate(var(--deno__dino--neck-left-transform)) skewX(4deg);
+                box-shadow: calc(var(--deno__dino-neck-outline-width) * -1) 0 var(--deno__dino--outline-color);
+            }
+            .deno__dino--neck-left::before {
+                content: "";
+                background: var(--deno__dino--body-color);
+                height: var(--deno__dino--neck-left-before-height);
+                width: var(--deno__dino--neck-left-before-width);
+                transform: translate(var(--deno__dino--neck-left-before-transform)) rotate(7deg);
+                box-shadow: calc(var(--deno__dino-neck-outline-width) * -1) 0 var(--deno__dino--outline-color);
+            }
+            .deno__rain {
+                width: var(--deno-width);
+                height: var(--deno-height);
+            }
+            @keyframes rainFall {
+                0% {
+                    transform: var(--deno__rain-drop--transform) translateY(calc(var(--deno-height) * -1));
+                }
+                100% {
+                    transform: var(--deno__rain-drop--transform) translateY(calc(var(--deno-height) * 1));
+                }
+            }
+            .deno__rain-drop {
+                position: absolute;
+                height: var(--deno-height);
+                background: var(--deno__rain-color);
+                --deno__rain-background-gradient: transparent, var(--deno__rain-color);
+                background: linear-gradient(to bottom, var(--deno__rain-background-gradient));
+                transform: var(--deno__rain-drop--transform) translateY(calc(var(--deno-height) * -1));
+                width: var(--deno__rain-drop--width);
+                opacity: 60%;
+                --deno_rainfall-duration: 3s;
+                animation: rainFall var(--deno_rainfall-duration) linear infinite;
+                animation-delay: var(--deno_rainfall-delay);
+            }
+            .deno__rain-drop:nth-child(1) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 2.5vw)) rotate(-8deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 35%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 50%, 
+                    transparent 0%, transparent 54%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 71%, 
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(2) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 3.3vw)) rotate(-6deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 28%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 62%, 
+                    transparent 0%, transparent 67%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 81%, 
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(3) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 4.4vw)) rotate(-6deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 22%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 34%, 
+                    transparent 0%, transparent 47%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 65%, 
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(4) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 5.6vw)) rotate(-6deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 26%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 62%, 
+                    transparent 0%, transparent 80%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 90%, 
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(5) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 6.6vw)) rotate(-6deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 65%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 69%, 
+                    transparent 0%, transparent 88%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 95%, 
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(6) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 8.1vw)) rotate(-5deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 11%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 33%, 
+                    transparent 0%, transparent 75%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 83%, 
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(7) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 9.3vw)) rotate(-4deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 20%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 28%, 
+                    transparent 0%, transparent 65%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 76%, 
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(8) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 10.4vw)) rotate(-3deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 13%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 25%, 
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(9) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 11.9vw)) rotate(-3deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 6%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 35%,
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(10) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 13.3vw)) rotate(-3deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 17%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 28%,
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(11) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 14.5vw)) rotate(-2deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 7%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 25%,
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(12) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 15.8vw)) rotate(-1deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 13%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 21%, 
+                    transparent 0%, transparent 25%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 33%, 
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(13) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 17.3vw)) rotate(-1deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 20%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 41%,
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(14) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 18.7vw)) rotate(-1deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 15%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 24%, 
+                    transparent 0%, transparent 35%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 48%, 
+                    transparent 0%, transparent 73%, 
+                    var(--deno__rain-color) 73%;
+            }
+            .deno__rain-drop:nth-child(15) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 19.9vw)) rotate(-1deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 17%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 53%, 
+                    transparent 0%;
+            }
+            .deno__rain-drop:nth-child(16) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 21.4vw)) rotate(-1deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 38%, 
+                    var(--deno__rain-color) 0%, var(--deno__rain-color) 50%, 
+                    transparent 0%, transparent 67%, 
+                    var(--deno__rain-color) 0%;
+            }
+            .deno__rain-drop:nth-child(17) {
+                --deno__rain-drop--transform: translate(calc(var(--base-size) * 22.7vw)) rotate(0deg);
+                --deno__rain-background-gradient: transparent 0%, transparent 44%, 
+                    var(--deno__rain-color) 0%;
+            }
+            .deno__rain-drop:nth-child(n) {
+                --deno_rainfall-delay: calc(var(--deno_rainfall-duration) / 1);
+            }
+            .deno__rain-drop:nth-child(2n) {
+                --deno_rainfall-delay: calc(var(--deno_rainfall-duration) / 2);
+            }
+            .deno__rain-drop:nth-child(3n) {
+                --deno_rainfall-delay: calc(var(--deno_rainfall-duration) / 3);
+            }
+        </style>
         <div class="deno">
             <div class="deno__background"></div>
-            <div class="deno__rain"></div>
+            <div class="deno__rain">
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+                <span class="deno__rain-drop"></span>
+            </div>
             <div class="deno__dino--neck-left"></div>
             <div class="deno__dino--head"></div>
             <div class="deno__dino--eyes"></div>
             <div class="deno__dino--neck-right"></div>
             <div class="deno__outline"></div>
         </div>
-        <img class="ref" src="ref.png">
+    </template>
+
+    <main>
+        <deno-logo></deno-logo>
     </main>
 
     <script>
-        const SIZE_FACTOR = [0.5, 0.8, 1, 1.2, 2];
-        document.querySelector('#size-slider').addEventListener('change', e => {
-            document.documentElement.style.setProperty('--base-size', SIZE_FACTOR[+e.target.value - 1]);
-        })
+        class DenoLogoElement extends HTMLElement {
+            constructor() {
+                super();
+                const template = document.querySelector('#deno');
+                const cloned = template.content.cloneNode(true);
+                this.attachShadow({mode: 'open'}).appendChild(cloned);
+            }
+        }
+        customElements.define('deno-logo', DenoLogoElement)
     </script>
 </body>
 </html>
