@@ -1,4 +1,5 @@
 const completedPens = [
+    'deno',
     'structural-pseudocats',
     'sakura',
     'nihongo-ref',
