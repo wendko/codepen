@@ -16,6 +16,11 @@
             margin: 0;
             overflow: hidden;
         }
+        footer {
+            font-family: Arial, Helvetica, sans-serif;
+            position: fixed;
+            bottom: 20px;
+        }
         .ref {
             width: var(--deno-ref-width);
             transform: translate(var(--deno-ref-translate), var(--deno-ref-translate));
@@ -383,6 +388,9 @@
         <deno-logo animated="false"></deno-logo>
         <deno-logo animated="true"></deno-logo>
     </main>
+    <footer>
+        CSS Logo of <a href="https://github.com/denoland" target="_blank">Deno</a>
+    </footer>
 
     <script>
         class DenoLogoElement extends HTMLElement {
