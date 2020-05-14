@@ -3,71 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Breathing Loader</title>
+    <title>Pufferfish</title>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
     <style>
+        @keyframes bgColorAnimate {
+            40%, 60% {
+                background: rgb(36, 67, 155);
+            }
+            0%, 5%, 95%, 100% {
+                background: rgb(179, 201, 214);
+            }
+        }
         body {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            animation: bgColorAnimate 10s linear infinite;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Balsamiq Sans', cursive;
         }
-        .breathing-loader {
-            background: pink;
-            border-radius: 50%;
-            height: 100px;
-            width: 100px;
-        }
-        .breathing-loader > *, .breathing-loader > *::before {
-            position: absolute;
-        }
-        .breathing-loader__eye {
-            background: black;
-            border-radius: 50%;
-            height: 12px;
-            width: 10px;
-        }
-        .breathing-loader__eye--left {
-            transform: translate(25px, 30px);
-        }
-        .breathing-loader__eye--right {
-            transform: translate(65px, 30px);
-        }
-        @keyframes blink {
-            45%, 60% { transform: translateY(-12px); }
-            0%, 20%, 80%, 100% {  transform: translateY(-4px) }
-        }
-        .breathing-loader__eye::before {
-            content: "";
-            background: pink;
-            border-radius: 50%;
-            height: 12px;
-            width: 10px;
-            transform: translateY(-4px);
-            animation: blink 10s linear infinite;
-        }
-        @keyframes inhale {
-            50% {
-                height: 20px;
-                transform: translate(43px, 65px);
-                width: 12px;
-            }
-        }
-        .breathing-loader__mouth {
-            height: 12px;
-            width: 10px;
-            --translate: translate(45px, 65px);
-            transform: var(--translate);
-            border-radius: 50%;
-            background: black;
-            animation: inhale 10s linear infinite;
+        main {
+            display: flex;
+            flex-direction: column;
         }
         @keyframes expand {
             40%, 60% {
-                height: var(--pufferfish-height-2);
-                --pufferfish__eye-transform: translate(10px, 60px);;
+                transform: rotateX(0deg);
             }
             0%, 5%, 95%, 100% {
-                height: var(--pufferfish-height-1);
+                transform: rotateX(70deg);
             }
         }
         @keyframes organAdjust {
@@ -83,22 +49,31 @@
             --pufferfish-width: 200px;
             --pufferfish-height-1: calc(var(--pufferfish-width) / 4); 
             --pufferfish-height-2: var(--pufferfish-width);
-            height: var(--pufferfish-height-1);
+            --lips-color: #D58936;
+            --body-color-1: #f7d8c5;
+            --body-color-2: #8f552a;
+            --body-color-3: #bc9267;
+            --pufferfish-outline-color: #2a1f17;
+
+
+            height: var(--pufferfish-height-2);
             width: var(--pufferfish-width);
-            animation: expand var(--pufferfish-puff-duration) linear infinite;
+            /* animation: expand var(--pufferfish-puff-duration) linear infinite; */
         }
         .pufferfish > * {
             position: absolute;
         }
         .pufferfish__body {
             --pufferfish-color: rgb(201, 119, 81);
-            background: var(--pufferfish-color);
-            height: var(--pufferfish-height-1);
+            background: linear-gradient(to bottom, var(--body-color-2) 0%,
+                var(--body-color-2) 60%,
+                var(--body-color-1) 0%);
+            height: var(--pufferfish-height-2);
+            /* transform: rotateX(10deg); */
             width: var(--pufferfish-width);
             border-radius: 50%;
-            border: 5px solid black;
+            border: 5px solid var(--pufferfish-outline-color);
             animation: expand var(--pufferfish-puff-duration) linear infinite;
-            /* box-shadow: inset 0 45px 34px 5px brown; */
         }
         .pufferfish__eye, .pufferfish__fin-pectoral, 
         .pufferfish__tail, .pufferfish__lips {
@@ -112,10 +87,10 @@
             border-radius: 50%;
             height: var(--pufferfish-eye-size);
             width: var(--pufferfish-eye-size);
-            background: black;
-            border: 3px solid black;
+            background: var(--pufferfish-outline-color);
+            border: 3px solid var(--pufferfish-outline-color);
             box-shadow: inset -6px -2px 0 5px white;
-            --transform-1: translate(10px, 15px);
+            --transform-1: translate(10px, 90px);
             --transform-2: translate(10px, 70px);
         }
         @keyframes finPectoralAnim {
@@ -132,125 +107,128 @@
                 transform: var(--transform-1);
             }
         }
-        @keyframes tailAnim {
-            40%, 60% {
-                transform: var(--transform-2);
-            }
-            45%, 55% {
-                transform: var(--transform-2) rotate(10deg);
-            }
-            50% {
-                transform: var(--transform-2) rotate(-10deg);
-            }
-            97% {
-                transform: var(--transform-1) rotate(-5deg);
-            }
-            2% {
-                transform: var(--transform-1) rotate(5deg);
-            }
-            0%, 5%, 95%, 100% {
-                transform: var(--transform-1) rotate(0deg);
-            }
-        }
         .pufferfish__fin-pectoral {
-            --pufferfish-fin-pectoral-color: yellow;
+            --pufferfish-fin-pectoral-color: var(--body-color-3);
             --pufferfish-fin-pectoral-size: 25px;
             background: var(--pufferfish-fin-pectoral-color);
             width: var(--pufferfish-fin-pectoral-size);
             height: var(--pufferfish-fin-pectoral-size);
             border-radius: 80% 20% 20% 80% / 50%;
-            border: 3px solid black;
+            border: 3px solid var(--pufferfish-outline-color);
             transform-origin: center left;
-            --transform-1: translate(50px, 15px);
+            --transform-1: translate(50px, 90px);
             --transform-2: translate(50px, 80px);
             --custom-animation: finPectoralAnim 10s linear infinite;
         }
+        @keyframes tailAnim {
+            0%, 5%, 40%, 60%, 95%, 100% {
+                transform: var(--transform-1);
+            }
+            2%, 45%, 55%{
+                transform: var(--transform-1) rotate(10deg);
+            }
+            50%, 97% {
+                transform: var(--transform-1) rotate(-10deg);
+            }
+        }
         .pufferfish__tail {
-            --pufferfish-tail-color: yellow;
+            --pufferfish-tail-color: var(--body-color-3);
             --pufferfish-tail-size: 50px;
             background: var(--pufferfish-tail-color);
             width: var(--pufferfish-tail-size);
             height: var(--pufferfish-tail-size);
             border-radius: 80% 20% 20% 80% / 50%;
-            border: 3px solid black;
+            border: 3px solid var(--pufferfish-outline-color);
             transform-origin: center left;
-            --transform-1: translate(190px, 0px);
-            --transform-2: translate(190px, 80px);
+            --transform-1: translate(190px, 80px);
             --custom-animation: tailAnim 10s linear infinite;
         }
+        @keyframes lipsAnim {
+            40%, 41%, 50%, 60% {
+                transform: var(--translate-2);
+            }
+            98%, 2% {
+                transform: var(--translate-3);
+            }
+            0%, 5%, 95%, 100% {
+                transform: var(--translate-1);
+            }
+        }
         .pufferfish__lips {
-            background: magenta;
+            --lips-color: var(--body-color-3);
+            background: var(--lips-color);
             width: 20px;
             height: 10px;
             border-radius: 50%;
-            border: 3px solid black;
-            --transform-1: translate(-10px, 15px) rotate(20deg);
-            --transform-2: translate(-10px, 90px) rotate(20deg);
+            border: 3px solid var(--pufferfish-outline-color);
+            transform-origin: center right;
+            --translate-1: translate(-10px, 93px) rotate(20deg);
+            --translate-2: translate(-10px, 93px) rotate(20deg);
+            --translate-3: translate(-8px, 93px) rotate(20deg);
+            --custom-animation: lipsAnim 10s linear infinite;
         }
         .pufferfish__lips::after {
+            background: var(--lips-color);
             border-radius: 50%;
-            border: 3px solid black;
-
+            border: 3px solid var(--pufferfish-outline-color);
             content: "";
             position: absolute;
-            background: magenta;
             width: 20px;
             height: 10px;
-            transform: translate(4px, 11px) rotate(-40deg);
+            transform:  translate(0px, 11px) rotate(-40deg);
         }
         @keyframes spikeAnim {
-            0%, 20%, 80%, 100% {
+            0%, 30%, 65%, 100% {
                 opacity: 0;
             }
             40%, 60% {
                 opacity: 1;
+                transform: var(--transform-1);
             }
         }
         .pufferfish__spikes, .pufferfish__spikes::before, .pufferfish__spikes::after {
+            --spike-color: var(--body-color-3);
+            background: var(--spike-color);
+            width: 10px;
+            height: 10px;
+            border-radius: 100% 0% 30% 70% / 30% 0% 100% 70%;
             animation: spikeAnim 10s linear infinite;
+            transform: translate(var(--transform-1));
+        }
+        .pufferfish__spikes::before, .pufferfish__spikes::after {
+            content: "";
+            position: absolute;
         }
         .pufferfish__spikes {
-            background: green;
-            width: 10px;
-            height: 10px;
-            border-radius: 100% 0% 30% 70% / 30% 0% 100% 70%;
-            transform: translate(50px, 10px);
-            box-shadow: 50px 0, 100px 0;
+            --transform-1: translate(68px, 10px);
+            --transform-2: translate(68px, 30px);
+            box-shadow: 44px -10px var(--spike-color), 
+                81px 0px var(--spike-color), 
+                108px 20px var(--spike-color);
         }
         .pufferfish__spikes::before {
-            content: "";
-            position: absolute;
-            background: green;
-            width: 10px;
-            height: 10px;
-            border-radius: 100% 0% 30% 70% / 30% 0% 100% 70%;
-            transform: translate(6px, 23px) rotate(25deg);
-            box-shadow: 50px -24px, 100px -46px;
+            --transform-1: translate(26px, 18px) rotate(25deg);
+            --transform-2: translate(26px, 18px) rotate(25deg);
+            box-shadow: 45px -11px var(--spike-color), 
+                101px -16px var(--spike-color);
         }
         .pufferfish__spikes::after {
-            content: "";
-            position: absolute;
-            background: green;
-            width: 10px;
-            height: 10px;
-            border-radius: 100% 0% 30% 70% / 30% 0% 100% 70%;
-            transform: translate(0px, 46px) rotate(55deg);
-            box-shadow: 32px -39px, 64px -83px;
-        }
-        main {
-            display: flex;
-            flex-direction: column;
+            --transform-1: translate(46px, 48px) rotate(55deg);
+            --transform-2: translate(46px, 48px) rotate(55deg);
+            box-shadow: 33px -36px var(--spike-color), 
+                68px -55px var(--spike-color);
         }
         .breathe-text {
             text-align: center;
-            margin-bottom: 20px;
+            margin: 0 0 20px 0;
+            width: 240px;
         }
         @keyframes breatheText {
             60%, 100% {
-                content: "Breathe out"
+                content: "BREATHE OUT";
             }
             0%, 59% {
-                content: "Breathe in"
+                content: "BREATHE IN";
             }
             100%, 0%, 12%, 50%, 62% {
                 opacity: 0;
@@ -260,21 +238,16 @@
             }
         }
         .breathe-text::before {
-            content: "Breathe in";
-            width: 100%;
-            font-family: monospace;
-            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 8px;
+            content: "BREATHE IN";
+            font-size: 1.2rem;
             animation: breatheText 10s linear infinite;
         }
     </style>
 </head>
 <body>
     <main>
-<!-- todo -->
-<!-- animate lips -->
-<!-- animate fin -->
-<!-- animate tail -->
-<!-- position spikes -->
         <label class="breathe-text"></label>
         <div class="pufferfish">
             <div class="pufferfish__lips"></div>
