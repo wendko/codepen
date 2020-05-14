@@ -1,4 +1,5 @@
 const completedPens = [
+    'pufferfish',
     'deno',
     'structural-pseudocats',
     'sakura',
