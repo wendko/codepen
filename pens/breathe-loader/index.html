@@ -43,7 +43,7 @@
             height: 12px;
             width: 10px;
             transform: translateY(-4px);
-            animation: blink 5s linear infinite;
+            animation: blink 10s linear infinite;
         }
         @keyframes inhale {
             50% {
@@ -59,7 +59,7 @@
             transform: var(--translate);
             border-radius: 50%;
             background: black;
-            animation: inhale 5s linear infinite;
+            animation: inhale 10s linear infinite;
         }
         @keyframes expand {
             40%, 60% {
@@ -79,7 +79,7 @@
             }
         }
         .pufferfish {
-            --pufferfish-puff-duration: 5s;
+            --pufferfish-puff-duration: 10s;
             --pufferfish-width: 200px;
             --pufferfish-height-1: calc(var(--pufferfish-width) / 4); 
             --pufferfish-height-2: var(--pufferfish-width);
@@ -118,18 +118,38 @@
             --transform-1: translate(10px, 15px);
             --transform-2: translate(10px, 70px);
         }
-        @keyframes finPectoral {
-            40%, 60% {
+        @keyframes finPectoralAnim {
+            40%, 41%, 50%, 60% {
                 transform: var(--transform-2) rotate(0deg);
             }
-            44%, 52% {
+            42%, 46% {
                 transform: var(--transform-2) rotate(20deg);
             }
-            48%, 56% {
+            44%, 48% {
                 transform: var(--transform-2) rotate(-20deg);
             }
             0%, 5%, 95%, 100% {
                 transform: var(--transform-1);
+            }
+        }
+        @keyframes tailAnim {
+            40%, 60% {
+                transform: var(--transform-2);
+            }
+            45%, 55% {
+                transform: var(--transform-2) rotate(10deg);
+            }
+            50% {
+                transform: var(--transform-2) rotate(-10deg);
+            }
+            97% {
+                transform: var(--transform-1) rotate(-5deg);
+            }
+            2% {
+                transform: var(--transform-1) rotate(5deg);
+            }
+            0%, 5%, 95%, 100% {
+                transform: var(--transform-1) rotate(0deg);
             }
         }
         .pufferfish__fin-pectoral {
@@ -143,19 +163,20 @@
             transform-origin: center left;
             --transform-1: translate(50px, 15px);
             --transform-2: translate(50px, 80px);
-            --custom-animation: finPectoral 5s linear infinite;
+            --custom-animation: finPectoralAnim 10s linear infinite;
         }
         .pufferfish__tail {
             --pufferfish-tail-color: yellow;
-            --pufferfish-tail-size: 35px;
+            --pufferfish-tail-size: 50px;
             background: var(--pufferfish-tail-color);
             width: var(--pufferfish-tail-size);
             height: var(--pufferfish-tail-size);
             border-radius: 80% 20% 20% 80% / 50%;
             border: 3px solid black;
-
-            --transform-1: translate(190px, 10px);
-            --transform-2: translate(190px, 90px);
+            transform-origin: center left;
+            --transform-1: translate(190px, 0px);
+            --transform-2: translate(190px, 80px);
+            --custom-animation: tailAnim 10s linear infinite;
         }
         .pufferfish__lips {
             background: magenta;
@@ -186,7 +207,7 @@
             }
         }
         .pufferfish__spikes, .pufferfish__spikes::before, .pufferfish__spikes::after {
-            animation: spikeAnim 5s linear infinite;
+            animation: spikeAnim 10s linear infinite;
         }
         .pufferfish__spikes {
             background: green;
@@ -243,7 +264,7 @@
             width: 100%;
             font-family: monospace;
             text-transform: uppercase;
-            animation: breatheText 5s linear infinite;
+            animation: breatheText 10s linear infinite;
         }
     </style>
 </head>
