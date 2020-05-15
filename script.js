@@ -1,4 +1,5 @@
 const completedPens = [
+    'single-div-pikachu',
     'pufferfish',
     'deno',
     'structural-pseudocats',

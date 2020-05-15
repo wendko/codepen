@@ -4,8 +4,6 @@
     --r: red;
     --w: white;
     --o: brown;
-
-    --s: 9px;
 }
 body {
     height: 100vh;
@@ -14,24 +12,17 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    background: grey;
+    background: #83c3ff;
 }
 @keyframes run {
-    0%, 32% {
-        box-shadow: var(--box-shadow-1);
-    }
-    33%, 66% {
-        box-shadow: var(--box-shadow-2);
-    }
-    67%, 100% {
-        box-shadow: var(--box-shadow-3);
-    }
+    0%, 32% { box-shadow: var(--box-shadow-1) }
+    33%, 66% { box-shadow: var(--box-shadow-2) }
+    67%, 100% { box-shadow: var(--box-shadow-3) }
 }
 .pikachu {
     height: 9px;
     width: 9px;
-    background: yellow;
-    box-shadow: var(--box-shadow-3);
+    background: var(--y);
 
     --box-shadow-3: /* row -22 */ 18px -197px var(--b)
     ,27px -197px var(--b)
@@ -2334,23 +2325,5 @@ body {
     ,72px 225px var(--b)
     ,81px 225px var(--b)
     ;
-    /* animation: run 0.5s linear infinite; */
-}
-.ref {
-    position: absolute;
-    opacity: 0.5;
-}
-.ref__pic {
-    height: 425px;
-    width: 298px;
-    /* background-image: url(ref/pikachu_0.png);
-    background-image: url(ref/pikachu_1.png); */
-    background-image: url(ref/pikachu_2.png);
-    transform: translate(-6px, 22px);
-    /* animation: refAnim 5s steps(4) infinite; */
-}
-@keyframes refAnim {
-    0% { background-image: url(ref/pikachu_0.png) }
-    33% { background-image: url(ref/pikachu_1.png) }
-    66% { background-image: url(ref/pikachu_2.png) }
+    animation: run 0.25s linear infinite;
 }
