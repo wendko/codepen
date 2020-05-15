@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Div Pikachu</title>
+    <style>
+        :root {
+            --b: black;
+            --y: yellow;
+            --r: red;
+            --w: white;
+            --o: brown;
+
+            --s: 9px;
+        }
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background: grey;
+        }
+        @keyframes run {
+            0%, 32% {
+                box-shadow: 9px 9px;
+            }
+            33%, 66% {
+                box-shadow: 20px 20px;
+            }
+            67%, 100% {
+                box-shadow: 50px 20px;
+            }
+        }
+        .pikachu {
+            height: 9px;
+            width: 9px;
+            background: yellow;
+            box-shadow: /* row -18*/ -99px 0px var(--b)
+            /* row -3 */ 
+            ,108px -27px var(--b)
+            ,117px -27px var(--b)
+            ,126px -27px var(--b)
+            ,135px -27px var(--b)
+            /* row -2 */ 
+            ,81px -18px var(--b)
+            ,90px -18px var(--b)
+            ,99px -18px var(--b)
+            ,108px -18px var(--y)
+            ,117px -18px var(--b)
+            ,126px -18px var(--b)
+            ,135px -18px var(--b)
+            /* row -1 */ 
+            ,63px -9px var(--b)
+            ,72px -9px var(--b)
+            ,81px -9px var(--y)
+            ,90px -9px var(--y)
+            ,99px -9px var(--y)
+            ,108px -9px var(--y)
+            ,117px -9px var(--b)
+            ,126px -9px var(--b)
+            /* row 1 */ 
+            ,-117px 0px var(--b)
+            ,-108px 0px var(--b)
+            ,-99px 0px var(--b)
+            ,-90px 0px var(--y)
+            ,-81px 0px var(--y)
+            ,-72px 0px var(--y)
+            ,-63px 0px var(--y)
+            ,-54px 0px var(--y)
+            ,-45px 0px var(--b)
+            ,-36px 0px var(--b)
+            ,-27px 0px var(--b)
+            ,-18px 0px var(--b)
+            ,-9px 0px var(--b)
+            ,9px 0px var(--y)
+            ,18px 0px var(--b)
+            ,27px 0px var(--b)
+            ,36px 0px var(--b)
+            ,45px 0px var(--b)
+            ,54px 0px var(--b)
+            ,63px 0px var(--y)
+            ,72px 0px var(--y)
+            ,81px 0px var(--y)
+            ,90px 0px var(--y)
+            ,99px 0px var(--y)
+            ,108px 0px var(--b)
+            ,117px 0px var(--b)
+            ,126px 0px var(--b)
+            /* row 2 */
+            ,-99px 9px var(--b)
+            ,-90px 9px var(--y)
+            ,-81px 9px var(--y)
+            ,-72px 9px var(--y)
+            ,-63px 9px var(--y)
+            ,-54px 9px var(--y)
+            ,-45px 9px var(--y)
+            ,-36px 9px var(--b)
+            ,-36px 9px var(--b)
+            ,-27px 9px var(--y)
+            ,-18px 9px var(--y)
+            ,-9px 9px var(--y)
+            ,0px 9px var(--y)
+            ,9px 9px var(--y)
+            ,18px 9px var(--y)
+            ,27px 9px var(--y)
+            ,36px 9px var(--y)
+            ,45px 9px var(--y)
+            ,54px 9px var(--y)
+            ,63px 9px var(--y)
+            ,72px 9px var(--y)
+            ,81px 9px var(--y)
+            ,90px 9px var(--y)
+            ,99px 9px var(--y)
+            ,108px 9px var(--b)
+            /* row 3 */
+            ,-90px 18px var(--b)
+            ,-81px 18px var(--y)
+            ,-72px 18px var(--y)
+            ,-63px 18px var(--y)
+            ,-54px 18px var(--y)
+            ,-45px 18px var(--y)
+            ,-36px 18px var(--y)
+            ,-27px 18px var(--y)
+            ,-18px 18px var(--y)
+            ,-9px 18px var(--y)
+            ,0px 18px var(--y)
+            ,9px 18px var(--y)
+            ,18px 18px var(--y)
+            ,27px 18px var(--y)
+            ,36px 18px var(--y)
+            ,45px 18px var(--y)
+            ,54px 18px var(--y)
+            ,63px 18px var(--y)
+            ,72px 18px var(--y)
+            ,81px 18px var(--y)
+            ,90px 18px var(--y)
+            ,99px 18px var(--b)
+            /* row 4 */
+            ,-81px 27px var(--b)
+            ,-72px 27px var(--y)
+            ,-63px 27px var(--b)
+            ,-54px 27px var(--y)
+            ,-45px 27px var(--y)
+            ,-36px 27px var(--y)
+            ,-27px 27px var(--y)
+            ,-18px 27px var(--y)
+            ,-9px 27px var(--y)
+            ,0px 27px var(--y)
+            ,9px 27px var(--y)
+            ,18px 27px var(--y)
+            ,27px 27px var(--y)
+            ,36px 27px var(--y)
+            ,45px 27px var(--y)
+            ,54px 27px var(--y)
+            ,63px 27px var(--y)
+            ,72px 27px var(--b)
+            ,81px 27px var(--y)
+            ,90px 27px var(--b)
+            /* row 5 */
+            ,-72px 36px var(--b)
+            ,-63px 36px var(--y)
+            ,-54px 36px var(--y)
+            ,-45px 36px var(--y)
+            ,-36px 36px var(--y)
+            ,-27px 36px var(--y)
+            ,-18px 36px var(--y)
+            ,-9px 36px var(--y)
+            ,0px 36px var(--y)
+            ,9px 36px var(--y)
+            ,18px 36px var(--y)
+            ,27px 36px var(--y)
+            ,36px 36px var(--y)
+            ,45px 36px var(--y)
+            ,54px 36px var(--y)
+            ,63px 36px var(--y)
+            ,72px 36px var(--y)
+            ,81px 36px var(--b)
+            /* row 6 */
+            ,-71px 45px var(--b)
+            ,-63px 45px var(--y)
+            ,-54px 45px var(--b)
+            ,-45px 45px var(--b)
+            ,-36px 45px var(--b)
+            ,-27px 45px var(--y)
+            ,-18px 45px var(--y)
+            ,-9px 45px var(--y)
+            ,0px 45px var(--y)
+            ,9px 45px var(--y)
+            ,18px 45px var(--y)
+            ,27px 45px var(--y)
+            ,36px 45px var(--y)
+            ,45px 45px var(--b)
+            ,54px 45px var(--b)
+            ,63px 45px var(--b)
+            ,72px 45px var(--y)
+            ,81px 45px var(--b)
+            /* row 7 */
+            ,-81px 54px var(--b)
+            ,-72px 54px var(--y)
+            ,-63px 54px var(--y)
+            ,-54px 54px var(--b)
+            ,-45px 54px var(--w)
+            ,-36px 54px var(--b)
+            ,-27px 54px var(--y)
+            ,-18px 54px var(--y)
+            ,-9px 54px var(--y)
+            ,0px 54px var(--y)
+            ,9px 54px var(--y)
+            ,18px 54px var(--y)
+            ,27px 54px var(--y)
+            ,36px 54px var(--y)
+            ,45px 54px var(--b)
+            ,54px 54px var(--w)
+            ,63px 54px var(--b)
+            ,72px 54px var(--y)
+            ,81px 54px var(--y)
+            ,90px 54px var(--b)
+            /* row 8 */
+            ,-81px 63px var(--b)
+            ,-72px 63px var(--y)
+            ,-63px 63px var(--y)
+            ,-54px 63px var(--b)
+            ,-45px 63px var(--b)
+            ,-36px 63px var(--b)
+            ,-27px 63px var(--y)
+            ,-18px 63px var(--y)
+            ,-9px 63px var(--y)
+            ,0px 63px var(--y)
+            ,9px 63px var(--y)
+            ,18px 63px var(--y)
+            ,27px 63px var(--y)
+            ,36px 63px var(--y)
+            ,45px 63px var(--b)
+            ,54px 63px var(--b)
+            ,63px 63px var(--b)
+            ,72px 63px var(--y)
+            ,81px 63px var(--y)
+            ,90px 63px var(--b)
+            /* row 9 */
+            ,-81px 72px var(--b)
+            ,-72px 72px var(--y)
+            ,-63px 72px var(--y)
+            ,-54px 72px var(--y)
+            ,-45px 72px var(--y)
+            ,-36px 72px var(--y)
+            ,-27px 72px var(--y)
+            ,-18px 72px var(--y)
+            ,-9px 72px var(--y)
+            ,0px 72px var(--y)
+            ,9px 72px var(--y)
+            ,18px 72px var(--y)
+            ,27px 72px var(--y)
+            ,36px 72px var(--y)
+            ,45px 72px var(--y)
+            ,54px 72px var(--y)
+            ,63px 72px var(--y)
+            ,72px 72px var(--y)
+            ,81px 72px var(--y)
+            ,90px 72px var(--b)
+            /* row 10 */
+            ,-90px 81px var(--b)
+            ,-81px 81px var(--y)
+            ,-72px 81px var(--y)
+            ,-63px 81px var(--r)
+            ,-54px 81px var(--r)
+            ,-45px 81px var(--y)
+            ,-36px 81px var(--y)
+            ,-27px 81px var(--y)
+            ,-18px 81px var(--y)
+            ,-9px 81px var(--y)
+            ,0px 81px var(--y)
+            ,9px 81px var(--y)
+            ,18px 81px var(--y)
+            ,27px 81px var(--y)
+            ,36px 81px var(--y)
+            ,45px 81px var(--y)
+            ,54px 81px var(--y)
+            ,63px 81px var(--r)
+            ,72px 81px var(--r)
+            ,81px 81px var(--y)
+            ,90px 81px var(--y)
+            ,99px 81px var(--b)
+
+            ;
+            /* animation: run 2s linear infinite; */
+        }
+        .ref {
+            position: absolute;
+            opacity: 0.5;
+        }
+        .ref__pic-1 {
+            height: 425px;
+            width: 298px;
+            background-image: url(ref/pikachu_0.png);
+            /* background-image: url(ref/pikachu_1.png); */
+            /* background-image: url(ref/pikachu_2.png); */
+            transform: translate(6px, 23px);
+            /* animation: refAnim 1.2s steps(4) infinite; */
+        }
+        @keyframes refAnim {
+            0% { background-image: url(ref/pikachu_0.png) }
+            33% { background-image: url(ref/pikachu_1.png) }
+            66% { background-image: url(ref/pikachu_2.png) }
+        }
+    </style>
+</head>
+<body>
+    <div class="pikachu"></div>
+    <div class="ref">
+        <div class="ref__pic-1"></div>
+    </div>
+</body>
+</html>
