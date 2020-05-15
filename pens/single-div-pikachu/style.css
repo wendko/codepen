@@ -33,46 +33,136 @@ body {
     background: yellow;
     box-shadow: var(--box-shadow-2);
 
-    --box-shadow-2: /* row -19 */ 0px -171px var(--y)
+    --box-shadow-2: /* row -20 */ 9px -180px var(--b)
+    ,18px -180px var(--b)
+    /* row -19 */
+    ,0px -171px var(--b)
+    ,9px -171px var(--y)
+    ,18px -171px var(--y)
+    ,27px -171px var(--b)
     /* row -18 */ 
-    ,0px -162px var(--y)
+    ,0px -162px var(--b)
+    ,9px -162px var(--y)
+    ,18px -162px var(--y)
+    ,27px -162px var(--b)
     /* row -17 */ 
+    ,-9px -153px var(--b)
     ,0px -153px var(--y)
+    ,9px -153px var(--y)
+    ,18px -153px var(--y)
+    ,27px -153px var(--y)
+    ,36px -153px var(--b)
     /* row -16 */ 
+    ,-9px -144px var(--b)
     ,0px -144px var(--y)
+    ,9px -144px var(--y)
+    ,18px -144px var(--y)
+    ,27px -144px var(--y)
+    ,36px -144px var(--b)
     /* row -15 */ 
+    ,-18px -135px var(--b)
+    ,-9px -135px var(--y)
     ,0px -135px var(--y)
+    ,9px -135px var(--y)
+    ,18px -135px var(--y)
+    ,27px -135px var(--y)
+    ,36px -135px var(--y)
+    ,45px -135px var(--b)
     /* row -14 */ 
+    ,-18px -126px var(--b)
+    ,-9px -126px var(--y)
     ,0px -126px var(--y)
+    ,9px -126px var(--y)
+    ,18px -126px var(--y)
+    ,27px -126px var(--y)
+    ,36px -126px var(--y)
+    ,45px -126px var(--b)
     /* row -13 */ 
+    ,-27px -117px var(--b)
+    ,-18px -117px var(--y)
+    ,-9px -117px var(--y)
     ,0px -117px var(--y)
+    ,9px -117px var(--y)
+    ,18px -117px var(--y)
+    ,27px -117px var(--y)
+    ,36px -117px var(--b)
     /* row -12 */ 
+    ,-27px -108px var(--b)
+    ,-18px -108px var(--y)
+    ,-9px -108px var(--y)
     ,0px -108px var(--y)
+    ,9px -108px var(--y)
+    ,18px -108px var(--y)
+    ,27px -108px var(--b)
     /* row -11 */ 
+    ,-36px -99px var(--b)
+    ,-27px -99px var(--y)
+    ,-18px -99px var(--y)
+    ,-9px -99px var(--y)
     ,0px -99px var(--y)
+    ,9px -99px var(--y)
+    ,18px -99px var(--b)
     /* row -10 */ 
+    ,-36px -90px var(--b)
+    ,-27px -90px var(--y)
+    ,-18px -90px var(--y)
+    ,-9px -90px var(--y)
     ,0px -90px var(--y)
+    ,9px -90px var(--b)
     /* row -9 */ 
+    ,-27px -81px var(--b)
+    ,-18px -81px var(--b)
+    ,-9px -81px var(--y)
     ,0px -81px var(--y)
+    ,9px -81px var(--y)
+    ,18px -81px var(--b)
+    ,27px -81px var(--b)
     /* row -8 */ 
-    ,0px -72px var(--y)
+    ,-9px -72px var(--b)
+    ,0px -72px var(--b)
+    ,9px -72px var(--y)
+    ,18px -72px var(--y)
+    ,27px -72px var(--y)
+    ,36px -72px var(--b)
     /* row -7 */ 
-    ,0px -63px var(--y)
+    ,9px -63px var(--b)
+    ,18px -63px var(--y)
+    ,27px -63px var(--y)
+    ,36px -63px var(--y)
+    ,45px -63px var(--b)
+    ,54px -63px var(--b)
     /* row -6 */ 
-    ,0px -54px var(--y)
+    ,-9px -54px var(--b)
+    ,0px -54px var(--b)
+    ,9px -54px var(--y)
+    ,18px -54px var(--y)
+    ,27px -54px var(--y)
+    ,36px -54px var(--y)
+    ,45px -54px var(--y)
+    ,54px -54px var(--y)
+    ,63px -54px var(--b)
     /* row -5 */ 
+    ,-27px -45px var(--b)
+    ,-18px -45px var(--b)
+    ,-9px -45px var(--y)
     ,0px -45px var(--y)
-
-
-    ,126px -45px var(--b)
-    ,135px -45px var(--b)
+    ,9px -45px var(--y)
+    ,18px -45px var(--y)
+    ,27px -45px var(--y)
+    ,36px -45px var(--b)
+    ,45px -45px var(--b)
+    ,54px -45px var(--b)
     /* row -4 */ 
     ,-117px -36px var(--b)
     ,-108px -36px var(--b)
-
+    ,-36px -36px var(--b)
+    ,-27px -36px var(--y)
+    ,-18px -36px var(--y)
+    ,-9px -36px var(--y)
     ,0px -36px var(--y)
-
-
+    ,9px -36px var(--y)
+    ,18px -36px var(--b)
+    ,27px -36px var(--b)
     ,108px -36px var(--b)
     ,117px -36px var(--b)
     ,126px -36px var(--b)
@@ -82,10 +172,11 @@ body {
     ,-108px -27px var(--b)
     ,-99px -27px var(--b)
     ,-90px -27px var(--b)
-
-    ,0px -27px var(--y)
-
-
+    ,-27px -27px var(--b)
+    ,-18px -27px var(--y)
+    ,-9px -27px var(--y)
+    ,0px -27px var(--b)
+    ,9px -27px var(--b)
     ,99px -27px var(--b)
     ,108px -27px var(--y)
     ,117px -27px var(--b)
@@ -98,9 +189,10 @@ body {
     ,-90px -18px var(--y)
     ,-81px -18px var(--b)
     ,-72px -18px var(--b)
-
+    ,-18px -18px var(--b)
+    ,-9px -18px var(--y)
     ,0px -18px var(--y)
-
+    ,9px -18px var(--b)
     ,81px -18px var(--b)
     ,90px -18px var(--b)
     ,99px -18px var(--y)
@@ -1405,7 +1497,7 @@ body {
     background-image: url(ref/pikachu_0.png);
     background-image: url(ref/pikachu_1.png);
     /* background-image: url(ref/pikachu_2.png); */
-    transform: translate(0px, 23px);
+    transform: translate(2px, 16px);
     /* animation: refAnim 5s steps(4) infinite; */
 }
 @keyframes refAnim {
