@@ -1,0 +1,596 @@
+body {
+    margin: 0;
+    /* height: 100vh; */
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    columns: 2;
+}
+.pkmn {
+    outline: 1px dashed black;
+    width: 64px;
+    height: 64px;
+    opacity: 1;
+    --b: black;
+    --g: #bdbfbc;
+    --w: white;
+    animation: spriteAnim 0.5s steps(1) infinite;
+    --p: 4px;
+    
+}
+.pkmn-group {
+    margin: 20px;
+}
+@keyframes spriteAnim {
+    0% { box-shadow: var(--bs-1); background: var(--first-pixel-color-1) }
+    50% { box-shadow: var(--bs-2); background: var(--first-pixel-color-2) }
+}
+/* temp */ .wip::after, .done::after {
+    content: "";
+    outline: none;
+    position: absolute;
+    width: var(--p);
+    height: var(--p);
+    /* background: var(--first-pixel-color-2); */
+    transform: var(--first-pos);
+
+    box-shadow: var(--bs-1);
+    /* box-shadow: var(--box-shadow-2); */
+}
+/* temp */ .done::after {
+    animation: spriteAnim 0.5s steps(1) infinite;
+}
+.done {
+    background: rgb(161, 255, 161);
+}
+.wip {
+    background: rgb(255, 202, 103);
+}
+.ref {
+    background: url(4.png);
+    /* background: url(5.png); */
+    width: 100px;
+    height: 100px;
+    opacity: 0.2;
+    position: absolute;
+    /* background-position: -149px 135px;  aquatic*/
+    background-position: -8px 132px; /* flower */
+    background-position: -78px 132px; /* rhydon */
+    background-position: -219px 132px; /* bug */
+    background-position: -291px 132px; /* bird */
+    background-position: -361px 132px; /* quadruped */
+    background-position: -431px 132px; /* snake */
+    background-position: -8px 64px; /* clefairy */
+    background-position: -78px 59px; /* ball */
+    background-position: -147px 61px; /* fossil */
+    background-position: -219px 65px; /* pikachu */
+}
+.pkmn__pikachu::after {
+    --first-pixel-color-1: transparent;
+    --first-pixel-color-2: var(--b);
+    --first-pos: translate(calc(var(--p) * 1), calc(var(--p) * 1));
+    --bs-1: 0                       calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 6)     calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 7)     calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 11)    calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 12)    calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 13)    calc(var(--p) * 1)      var(--b)
+            ,0                      calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 6)     calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 7)     calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 10)    calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 11)    calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 13)    calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 5)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 6)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 7)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 8)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 9)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 10)    calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 4)      var(--b)
+            ,calc(var(--p) * 3)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 10)    calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 4)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 5)      var(--b)
+            ,calc(var(--p) * 3)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 5)      var(--b)
+            ,calc(var(--p) * 5)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 5)      var(--b)
+            ,calc(var(--p) * 10)    calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 5)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 3)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 7)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 8)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 10)    calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * 4)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * 6)     calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * 7)     calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * 8)     calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * 9)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 10)    calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * 11)    calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 8)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 10)    calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 8)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 9)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 9)      var(--b)
+            ,calc(var(--p) * 5)     calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 9)      var(--b)
+            ,calc(var(--p) * 10)    calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 9)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 10)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 10)      var(--b)
+            ,calc(var(--p) * 4)     calc(var(--p) * 10)      var(--b)
+            ,calc(var(--p) * 5)     calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 10)      var(--b)
+            ,calc(var(--p) * 10)    calc(var(--p) * 10)      var(--b)
+            ,calc(var(--p) * 11)    calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 10)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 11)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 10)    calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 11)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 12)      var(--b)
+            ,calc(var(--p) * 3)     calc(var(--p) * 12)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 12)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 12)      var(--b)
+            ,calc(var(--p) * 6)     calc(var(--p) * 12)      var(--b)
+            ,calc(var(--p) * 7)     calc(var(--p) * 12)      var(--b)
+            ,calc(var(--p) * 8)     calc(var(--p) * 12)      var(--b)
+            ,calc(var(--p) * 9)     calc(var(--p) * 12)      var(--w)
+            ,calc(var(--p) * 10)    calc(var(--p) * 12)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 12)      var(--b)
+            ,calc(var(--p) * 3)     calc(var(--p) * 13)      var(--b)
+            ,calc(var(--p) * 4)     calc(var(--p) * 13)      var(--b)
+            ,calc(var(--p) * 9)     calc(var(--p) * 13)      var(--b)
+            ,calc(var(--p) * 10)    calc(var(--p) * 13)      var(--b)
+            ;
+    --bs-2: calc(var(--p) * 1)      0                       var(--b)
+            ,calc(var(--p) * 2)     0                       var(--b)
+            ,calc(var(--p) * 11)    0                       var(--b)
+            ,calc(var(--p) * 12)    0                       var(--b)
+            ,calc(var(--p) * 13)    0                       var(--b)
+            ,calc(var(--p) * 0)     calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 1)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 10)    calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 11)    calc(var(--p) * 1)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 13)    calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 5)     calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 6)     calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 7)     calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 8)     calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 9)     calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 10)    calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 3)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 10)    calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 4)      var(--b)
+            ,calc(var(--p) * 3)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 4)      var(--b)
+            ,calc(var(--p) * 5)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 4)      var(--b)
+            ,calc(var(--p) * 10)    calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 4)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 5)      var(--b)
+            ,calc(var(--p) * 3)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 5)      var(--b)
+            ,calc(var(--p) * 7)     calc(var(--p) * 5)      var(--b)
+            ,calc(var(--p) * 8)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 10)    calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 5)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 4)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 6)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 7)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 8)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 9)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 10)    calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 11)    calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 10)    calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 8)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 8)      var(--b)
+            ,calc(var(--p) * 5)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 8)      var(--b)
+            ,calc(var(--p) * 10)    calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 8)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 9)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 9)      var(--b)
+            ,calc(var(--p) * 4)     calc(var(--p) * 9)      var(--b)
+            ,calc(var(--p) * 5)     calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 9)      var(--b)
+            ,calc(var(--p) * 10)    calc(var(--p) * 9)      var(--b)
+            ,calc(var(--p) * 11)    calc(var(--p) * 9)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 9)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 10)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 10)    calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 10)      var(--w)
+            ,calc(var(--p) * 12)    calc(var(--p) * 10)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 11)      var(--b)
+            ,calc(var(--p) * 3)     calc(var(--p) * 11)      var(--b)
+            ,calc(var(--p) * 4)     calc(var(--p) * 11)      var(--b)
+            ,calc(var(--p) * 5)     calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 11)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 11)      var(--b)
+            ,calc(var(--p) * 10)    calc(var(--p) * 11)      var(--b)
+            ,calc(var(--p) * 11)    calc(var(--p) * 11)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 12)      var(--b)
+            ,calc(var(--p) * 3)     calc(var(--p) * 12)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 12)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 12)      var(--b)
+            ,calc(var(--p) * 6)     calc(var(--p) * 12)      var(--b)
+            ,calc(var(--p) * 7)     calc(var(--p) * 12)      var(--b)
+            ,calc(var(--p) * 8)     calc(var(--p) * 12)      var(--b)
+            ,calc(var(--p) * 9)     calc(var(--p) * 12)      var(--w)
+            ,calc(var(--p) * 10)    calc(var(--p) * 12)      var(--w)
+            ,calc(var(--p) * 11)    calc(var(--p) * 12)      var(--b)
+            ,calc(var(--p) * 3)     calc(var(--p) * 13)      var(--b)
+            ,calc(var(--p) * 4)     calc(var(--p) * 13)      var(--b)
+            ,calc(var(--p) * 9)     calc(var(--p) * 13)      var(--b)
+            ,calc(var(--p) * 10)    calc(var(--p) * 13)      var(--b)
+            ;
+}
+.pkmn__aquatic::after {
+    --first-pixel-color-1: var(--g);
+    --first-pixel-color-2: var(--g);
+    --first-pos: translate(calc(var(--p) * 6), calc(var(--p) * 3));
+    --bs-2: calc(var(--p) * 1)      0                       var(--b)
+            ,calc(var(--p) * 2)     0                       var(--b)
+            ,calc(var(--p) * 3)     0                       var(--g)
+            ,calc(var(--p) * -1)    calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 0)     calc(var(--p) * 1)      var(--w)
+            ,calc(var(--p) * 1)     calc(var(--p) * 1)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 1)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 1)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * -3)    calc(var(--p) * 2)      var(--g)
+            ,calc(var(--p) * -2)    calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * -1)    calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 0)     calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 1)     calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * 6)     calc(var(--p) * 2)      var(--g)
+            ,calc(var(--p) * -3)    calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * -2)    calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * -1)    calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 0)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 4)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * -3)    calc(var(--p) * 4)      var(--g)
+            ,calc(var(--p) * -2)    calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * -1)    calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 0)     calc(var(--p) * 4)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 4)      var(--b)
+            ,calc(var(--p) * 4)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 4)      var(--g)
+            ,calc(var(--p) * -5)    calc(var(--p) * 5)      var(--b)
+            ,calc(var(--p) * -4)    calc(var(--p) * 5)      var(--g)
+            ,calc(var(--p) * -3)    calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * -2)    calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * -1)    calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 0)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 1)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 5)      var(--g)
+            ,calc(var(--p) * 8)     calc(var(--p) * 5)      var(--b)
+            ,calc(var(--p) * -6)    calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * -5)    calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * -4)    calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * -3)    calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * -2)    calc(var(--p) * 6)      var(--g)
+            ,calc(var(--p) * -1)    calc(var(--p) * 6)      var(--g)
+            ,calc(var(--p) * 0)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 1)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 3)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 6)      var(--g)
+            ,calc(var(--p) * 5)     calc(var(--p) * 6)      var(--g)
+            ,calc(var(--p) * 6)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 8)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 9)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * -6)    calc(var(--p) * 7)      var(--g)
+            ,calc(var(--p) * -5)    calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * -4)    calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * -3)    calc(var(--p) * 7)      var(--g)
+            ,calc(var(--p) * -2)    calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * -1)    calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 0)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 1)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 7)      var(--g)
+            ,calc(var(--p) * 7)     calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * 8)     calc(var(--p) * 7)      var(--b)
+            ,calc(var(--p) * 9)     calc(var(--p) * 7)      var(--g)
+            ,calc(var(--p) * -2)    calc(var(--p) * 8)      var(--g)
+            ,calc(var(--p) * -1)    calc(var(--p) * 8)      var(--g)
+            ,calc(var(--p) * 0)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 1)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 8)      var(--g)
+            ,calc(var(--p) * 5)     calc(var(--p) * 8)      var(--g)
+            ,calc(var(--p) * 0)     calc(var(--p) * 9)      var(--g)
+            ,calc(var(--p) * 1)     calc(var(--p) * 9)      var(--g)
+            ,calc(var(--p) * 2)     calc(var(--p) * 9)      var(--g)
+            ,calc(var(--p) * 3)     calc(var(--p) * 9)      var(--g)
+            ;
+    --bs-1: calc(var(--p) * 1)      0                       var(--b)
+            ,calc(var(--p) * 2)     0                       var(--b)
+            ,calc(var(--p) * 3)     0                       var(--g)
+            ,calc(var(--p) * -1)    calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * 0)     calc(var(--p) * 1)      var(--w)
+            ,calc(var(--p) * 1)     calc(var(--p) * 1)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 1)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 1)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 1)      var(--b)
+            ,calc(var(--p) * -2)    calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * -1)    calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 0)     calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 1)     calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 2)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 2)      var(--b)
+            ,calc(var(--p) * -3)    calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * -2)    calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * -1)    calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 0)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * 4)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 3)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 3)      var(--b)
+            ,calc(var(--p) * -3)    calc(var(--p) * 4)      var(--g)
+            ,calc(var(--p) * -2)    calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * -1)    calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 0)     calc(var(--p) * 4)      var(--b)
+            ,calc(var(--p) * 1)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 4)      var(--b)
+            ,calc(var(--p) * 4)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 4)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 4)      var(--g)
+            ,calc(var(--p) * -4)    calc(var(--p) * 5)      var(--g)
+            ,calc(var(--p) * -3)    calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * -2)    calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * -1)    calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 0)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 1)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 5)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 5)      var(--g)
+            ,calc(var(--p) * -4)    calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * -3)    calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * -2)    calc(var(--p) * 6)      var(--g)
+            ,calc(var(--p) * -1)    calc(var(--p) * 6)      var(--g)
+            ,calc(var(--p) * 0)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 1)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 2)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * 3)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 6)      var(--g)
+            ,calc(var(--p) * 5)     calc(var(--p) * 6)      var(--g)
+            ,calc(var(--p) * 6)     calc(var(--p) * 6)      var(--w)
+            ,calc(var(--p) * 7)     calc(var(--p) * 6)      var(--b)
+            ,calc(var(--p) * -3)    calc(var(--p) * 7)      var(--g)
+            ,calc(var(--p) * -2)    calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * -1)    calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 0)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 1)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 5)     calc(var(--p) * 7)      var(--w)
+            ,calc(var(--p) * 6)     calc(var(--p) * 7)      var(--g)
+            ,calc(var(--p) * -2)    calc(var(--p) * 8)      var(--g)
+            ,calc(var(--p) * -1)    calc(var(--p) * 8)      var(--g)
+            ,calc(var(--p) * 0)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 1)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 2)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 3)     calc(var(--p) * 8)      var(--w)
+            ,calc(var(--p) * 4)     calc(var(--p) * 8)      var(--g)
+            ,calc(var(--p) * 5)     calc(var(--p) * 8)      var(--g)
+            ,calc(var(--p) * 0)     calc(var(--p) * 9)      var(--g)
+            ,calc(var(--p) * 1)     calc(var(--p) * 9)      var(--g)
+            ,calc(var(--p) * 2)     calc(var(--p) * 9)      var(--g)
+            ,calc(var(--p) * 3)     calc(var(--p) * 9)      var(--g)
+        ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+.pkmn-selection {
+    display: flex;
+    flex-direction:row;
+}
+input:hover, input:focus {
+    background: pink;
+}
+input:focus ~ .pkmn-select__input {
+    background: indianred;
+}
+.pkmn-select__arrow::before {
+    content: "";
+    --p: 2px;
+    width: var(--p);
+    height: var(--p);
+    opacity: 0;
+    background: black;
+    box-shadow: calc(var(--p) * -1) calc(var(--p) * -1)
+        ,calc(var(--p) * -1) calc(var(--p) * 0)
+        ,calc(var(--p) * -1) calc(var(--p) * 1)
+        ,calc(var(--p) * -2) calc(var(--p) * -2)
+        ,calc(var(--p) * -2) calc(var(--p) * -1)
+        ,calc(var(--p) * -2) calc(var(--p) * 0)
+        ,calc(var(--p) * -2) calc(var(--p) * 1)
+        ,calc(var(--p) * -2) calc(var(--p) * 2)
+        ,calc(var(--p) * -3) calc(var(--p) * -3)
+        ,calc(var(--p) * -3) calc(var(--p) * -2)
+        ,calc(var(--p) * -3) calc(var(--p) * -1)
+        ,calc(var(--p) * -3) calc(var(--p) * 0)
+        ,calc(var(--p) * -3) calc(var(--p) * 1)
+        ,calc(var(--p) * -3) calc(var(--p) * 2)
+        ,calc(var(--p) * -3) calc(var(--p) * 3)
+        ,calc(var(--p) * -4) calc(var(--p) * -3)
+        ,calc(var(--p) * -4) calc(var(--p) * -2)
+        ,calc(var(--p) * -4) calc(var(--p) * -1)
+        ,calc(var(--p) * -4) calc(var(--p) * 0)
+        ,calc(var(--p) * -4) calc(var(--p) * 1)
+        ,calc(var(--p) * -4) calc(var(--p) * 2)
+        ,calc(var(--p) * -4) calc(var(--p) * 3)
+        ;
+}
+.pkmn-selection:focus-within::before {
+    opacity: 1;
+} */
