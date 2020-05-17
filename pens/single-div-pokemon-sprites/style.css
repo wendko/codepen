@@ -1,70 +1,62 @@
-body {
-    margin: 0;
-    /* height: 100vh; */
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    columns: 2;
-    background: pink;
-}
-.pkmn {
-    outline: 1px dashed black;
-    width: 64px;
-    height: 64px;
-    opacity: 1;
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
     --b: black;
     --g: #bdbfbc;
     --w: white;
-    animation: spriteAnim 0.5s steps(1) infinite;
-    --p: 4px;
-    
+    --p: 3px;
+    --container-size: 64px;
+}
+body, .pkmn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body {
+    margin: 0;
+    background: #ffbebe;
+    height: 100vh;
+    flex-direction: column;
+    font-family: 'Press Start 2P', cursive;
+}
+header {
+    position: fixed;
+    top: 10px;
+    text-align: center;
+    line-height: 1.5;
+}
+.pkmn-text {
+    letter-spacing: 2.5px;
+    font-size: 10px;
+    border: 6px double black;
+    padding: 8px 10px;
+    margin: 10px 10px 25px 10px;
+    border-radius: 5px;
+    background:white;
+    line-height: 1.8;
 }
 .pkmn-group {
-    margin: 20px;
+    flex-flow: wrap;
 }
-@keyframes spriteAnim {
-    0% { box-shadow: var(--bs-1); background: var(--first-pixel-color-1) }
-    50% { box-shadow: var(--bs-2); background: var(--first-pixel-color-2) }
+.pkmn {
+    width: var(--container-size);
+    height: var(--container-size);
+    margin: calc(var(--p) * 2);
 }
-/* temp */ .wip::after, .done::after {
+.pkmn::after {
     content: "";
     outline: none;
     position: absolute;
     width: var(--p);
     height: var(--p);
     transform: var(--first-pos);
-    
     background: var(--first-pixel-color-1);
     box-shadow: var(--bs-1);
-
-    /* background: var(--first-pixel-color-2);
-    box-shadow: var(--bs-2); */
-}
-/* temp */ .done::after {
     animation: spriteAnim 0.5s steps(1) infinite;
 }
-.ref {
-    background: url(4.png);
-    /* background: url(5.png); */
-    width: 100px;
-    height: 100px;
-    opacity: 0.2;
-    position: absolute;
-    /* background-position: -149px 135px;  aquatic*/
-    /* background-position: -219px 65px; pikachu */
-    /* background-position: -146px 61px;  fossil */
-    /* background-position: -78px 61px; ball */
-    /* background-position: -7px 65px;  clefairy */
-    /* background-position: -291px 134px;  bird */
-    /* background-position: -78px 136px; rhydon */
-    /* background-position: -8px 132px;  flower */
-    /* background-position: -219px 128px;  bug */
-    /*  background-position: -431px 132px; snake */
-    background-position: -361px 132px; /* quadruped */
+@keyframes spriteAnim {
+    0% { box-shadow: var(--bs-1); background: var(--first-pixel-color-1) }
+    50% { box-shadow: var(--bs-2); background: var(--first-pixel-color-2) }
 }
 .pkmn__quadruped::after {
     --first-pixel-color-1: var(--b);
@@ -187,18 +179,6 @@ body {
             ,calc(var(--p) * 5)     calc(var(--p) * 10)      var(--g)
             ,calc(var(--p) * 6)     calc(var(--p) * 10)      var(--g)
             ,calc(var(--p) * 7)     calc(var(--p) * 10)      var(--b)
-            /* ,calc(var(--p) * -4)    calc(var(--p) * 10)     var(--b)
-            ,calc(var(--p) * -3)    calc(var(--p) * 10)     var(--g)
-            ,calc(var(--p) * -2)    calc(var(--p) * 10)     var(--g)
-            ,calc(var(--p) * -1)    calc(var(--p) * 10)     var(--g)
-            ,0                      calc(var(--p) * 10)     var(--b)
-            ,calc(var(--p) * 1)     calc(var(--p) * 10)     var(--g)
-            ,calc(var(--p) * 2)     calc(var(--p) * 10)     var(--g)
-            ,calc(var(--p) * 3)     calc(var(--p) * 10)     var(--b)
-            ,calc(var(--p) * 4)     calc(var(--p) * 10)     var(--g)
-            ,calc(var(--p) * 5)     calc(var(--p) * 10)     var(--g)
-            ,calc(var(--p) * 6)     calc(var(--p) * 10)     var(--g)
-            ,calc(var(--p) * 7)     calc(var(--p) * 10)     var(--b) */
             ,calc(var(--p) * -3)    calc(var(--p) * 11)     var(--b)
             ,calc(var(--p) * -2)    calc(var(--p) * 11)     var(--g)
             ,calc(var(--p) * -1)    calc(var(--p) * 11)     var(--g)
@@ -601,7 +581,6 @@ body {
             ,calc(var(--p) * 2)     calc(var(--p) * 14)     var(--b)
             ;
 }
-
 .pkmn__rhydon::after {
     --first-pixel-color-1: transparent;
     --first-pixel-color-2: var(--b);
@@ -744,20 +723,6 @@ body {
             ,calc(var(--p) * 4)     calc(var(--p) * 11)      var(--g)
             ,calc(var(--p) * 5)     calc(var(--p) * 11)      var(--b)
             ,calc(var(--p) * 6)     calc(var(--p) * 11)      var(--b)
-            /* ,calc(var(--p) * -6)    calc(var(--p) * 11)      var(--b)
-            ,calc(var(--p) * -5)    calc(var(--p) * 11)      var(--b)
-            ,calc(var(--p) * -4)    calc(var(--p) * 11)      var(--b)
-            ,calc(var(--p) * -3)    calc(var(--p) * 11)      var(--g)
-            ,calc(var(--p) * -2)    calc(var(--p) * 11)      var(--w)
-            ,calc(var(--p) * -1)    calc(var(--p) * 11)      var(--w)
-            ,0                      calc(var(--p) * 11)      var(--w)
-            ,calc(var(--p) * 1)     calc(var(--p) * 11)      var(--w)
-            ,calc(var(--p) * 2)     calc(var(--p) * 11)      var(--w)
-            ,calc(var(--p) * 3)     calc(var(--p) * 11)      var(--w)
-            ,calc(var(--p) * 4)     calc(var(--p) * 11)      var(--g)
-            ,calc(var(--p) * 5)     calc(var(--p) * 11)      var(--b)
-            ,calc(var(--p) * 6)     calc(var(--p) * 11)      var(--b)
-            ,calc(var(--p) * 7)     calc(var(--p) * 11)      var(--b) */
             ,calc(var(--p) * -5)    calc(var(--p) * 12)      var(--b)
             ,calc(var(--p) * -4)    calc(var(--p) * 12)      var(--b)
             ,calc(var(--p) * -3)    calc(var(--p) * 12)      var(--g)
@@ -3114,61 +3079,3 @@ body {
             ,calc(var(--p) * 3)     calc(var(--p) * 9)      var(--g)
         ;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-.pkmn-selection {
-    display: flex;
-    flex-direction:row;
-}
-input:hover, input:focus {
-    background: pink;
-}
-input:focus ~ .pkmn-select__input {
-    background: indianred;
-}
-.pkmn-select__arrow::before {
-    content: "";
-    --p: 2px;
-    width: var(--p);
-    height: var(--p);
-    opacity: 0;
-    background: black;
-    box-shadow: calc(var(--p) * -1) calc(var(--p) * -1)
-        ,calc(var(--p) * -1) calc(var(--p) * 0)
-        ,calc(var(--p) * -1) calc(var(--p) * 1)
-        ,calc(var(--p) * -2) calc(var(--p) * -2)
-        ,calc(var(--p) * -2) calc(var(--p) * -1)
-        ,calc(var(--p) * -2) calc(var(--p) * 0)
-        ,calc(var(--p) * -2) calc(var(--p) * 1)
-        ,calc(var(--p) * -2) calc(var(--p) * 2)
-        ,calc(var(--p) * -3) calc(var(--p) * -3)
-        ,calc(var(--p) * -3) calc(var(--p) * -2)
-        ,calc(var(--p) * -3) calc(var(--p) * -1)
-        ,calc(var(--p) * -3) calc(var(--p) * 0)
-        ,calc(var(--p) * -3) calc(var(--p) * 1)
-        ,calc(var(--p) * -3) calc(var(--p) * 2)
-        ,calc(var(--p) * -3) calc(var(--p) * 3)
-        ,calc(var(--p) * -4) calc(var(--p) * -3)
-        ,calc(var(--p) * -4) calc(var(--p) * -2)
-        ,calc(var(--p) * -4) calc(var(--p) * -1)
-        ,calc(var(--p) * -4) calc(var(--p) * 0)
-        ,calc(var(--p) * -4) calc(var(--p) * 1)
-        ,calc(var(--p) * -4) calc(var(--p) * 2)
-        ,calc(var(--p) * -4) calc(var(--p) * 3)
-        ;
-}
-.pkmn-selection:focus-within::before {
-    opacity: 1;
-} */
