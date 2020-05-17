@@ -1,4 +1,5 @@
 const completedPens = [
+    'single-div-pokemon-sprites',
     'single-div-pikachu',
     'pufferfish',
     'deno',
