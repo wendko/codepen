@@ -5,7 +5,6 @@
     --g: #bdbfbc;
     --w: white;
     --p: 3px;
-    --container-size: 64px;
 }
 body, .pkmn-group {
     display: flex;
@@ -39,9 +38,10 @@ header {
     flex-flow: wrap;
 }
 .pkmn {
+    --container-size: calc(var(--p) * 16);
     width: var(--container-size);
     height: var(--container-size);
-    margin: calc(var(--p) * 2);
+    margin: 0.5rem;
 }
 .pkmn::after {
     content: "";
