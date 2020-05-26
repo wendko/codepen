@@ -26,6 +26,7 @@ select {
     border-radius: 6px;
     font-family: monospace;
     background: var(--select-color-idle);
+    height: 48px;
 }
 select:focus {
     background: var(--select-color-active);
