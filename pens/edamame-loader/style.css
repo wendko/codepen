@@ -1,103 +1,105 @@
+ :root {
+    --face-select-1: "•ᴥ•";
+    --face-select-2: "•ᴥ•";
+    --face-select-3: "•ᴥ•";
+    --background-color: #ffef91;
+    --select-color-idle: #d9ffa1;
+    --select-color-active:#b0ff7b;
+    --bean-skin-color: green;
+    --bean-color: greenyellow;
+    --bean-outline-color: #6c9e22;
+    --bean-face-color: #486819;
+ }
 body {
-    background: pink;
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
+    background: var(--background-color);
+    height: calc(100vh - 20px);
+    width: calc(100vw - 20px);
+    margin: 10px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
+select {
+    padding: 10px;
+    border-radius: 6px;
+    font-family: monospace;
+    background: var(--select-color-idle);
+}
+select:focus {
+    background: var(--select-color-active);
+}
+.face-select-group {
+    margin-bottom: 30px;
+    overflow: hidden;
+    height: 50px;
+}
 .edamame-loader {
-    width: 240px;
+    width: 242px;
     height: 150px;
-    outline: 2px dashed;
     display: flex;
 }
-
-.edamame-section:nth-child(1) {
-    order: 1;
-    outline: 1px solid red;
-}
-.edamame-section:nth-child(2) {
-    order: 3;
-    outline: 1px solid blue;
-    
-}
-.edamame-section:nth-child(3) {
-    order: 2;
-    outline: 1px solid green;
-}
-
-.edamame-section > .edamame-section__skin {
+/* Custom ordering because I wanted to do something with shadows. Ended up not doing it... */
+.edamame-section:nth-child(1) { order: 1 }
+.edamame-section:nth-child(2) { order: 3 }
+.edamame-section:nth-child(3) { order: 2 }
+.edamame-section__skin {
     width: 80px;
-    height: 90px;
-    background: green;
+    height: 100px;
+    background: var(--bean-skin-color);
     border-radius: 0% 100% 0% 100% / 20% 70% 30% 70%;
 }
-
 .edamame-section:nth-child(1) > .edamame-section__skin {
-    transform: rotate(-6deg);
+    transform: rotate(-11deg);
 }
 .edamame-section:nth-child(2) > .edamame-section__skin {
-    transform: rotate(90deg);
+    transform: rotate(91deg);
 }
 .edamame-section:nth-child(3) > .edamame-section__skin {
     width: 83px;
     height: 95px;
-    transform: rotate(-47deg) translate(-12px, 10px);
+    transform: rotate(-47deg) translate(-15px, 10px);
 }
 @keyframes beanAnim {
     0%, 15%, 95%, 100% { transform: var(--bean-transform-1) }
     30%, 70% { transform: var(--bean-transform-2) }
 }
 .edamame-section:nth-child(1) > .edamame-section__bean {
-    --bean-transform-1: rotate(30deg) translate(29px, 55px);
+    --bean-transform-1: rotate(30deg) translate(29px, 58px);
     --bean-transform-2: rotate(30deg) translate(29px, 8px);
     --bean-anim-delay: 0s;
 }
 .edamame-section:nth-child(2) > .edamame-section__bean {
-    --bean-transform-1: rotate(-30deg) translate(-15px, 61px);
+    --bean-transform-1: rotate(-30deg) translate(-15px, 70px);
     --bean-transform-2: rotate(-30deg) translate(-15px, 16px);
     --bean-anim-delay: calc(var(--bean-anim-duration) * 0.2);
 }
 .edamame-section:nth-child(3) > .edamame-section__bean {
-    --bean-transform-1: translate(10px, 85px);
+    --bean-transform-1: translate(10px, 88px);
     --bean-transform-2: translate(10px, 38px);
     --bean-anim-delay: calc(var(--bean-anim-duration) * 0.1);
 }
 .edamame-section__bean {
     width: 60px;
     height: 50px;
-    background: greenyellow;
+    background: var(--bean-color);
     border-radius: 50%;
-    border: 2px solid rgb(108, 158, 34);
+    border: 2px solid var(--bean-outline-color);
     transform: var(--bean-transform-1);
     --bean-anim-duration: 3s;
     animation: beanAnim var(--bean-anim-duration) linear infinite;
     animation-delay: var(--bean-anim-delay);
 }
 .edamame-section__bean::before {
-    content: "•ᴥ•";
-    content: "ಠ_ಠ";
-    content: "• ◡•";
-    content: "ᵔᴥᵔ";
-    content: "♥‿♥";
-    content: "⚆ _ ⚆";
-    content: "°ロ°";
-    content: "˘⌣˘";
-    content: "°Д°";
-    content: "◉_◉";
-    content: " ͡° ͜ʖ ͡°";
-    content: "•ᴥ•";
-    content: "˘▾˘";
-    content: "•◡•";
-    content: "⚆ _ ⚆";
-    content: "⇀‸↼";
-    color: rgb(72, 104, 25);
+    color: var(--bean-face-color);
     position: absolute;
     width: 60px;
     text-align: center;
     font-size: 20px;
+    font-family: monospace;
     padding-top: 10px;
 }
+.edamame-section:nth-child(1) > .edamame-section__bean::before { content: var(--face-select-1) }
+.edamame-section:nth-child(3) > .edamame-section__bean::before { content: var(--face-select-2) }
+.edamame-section:nth-child(2) > .edamame-section__bean::before { content: var(--face-select-3) }

@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>
+        <ruby>
+            枝豆 <rp>(</rp><rt>えだまめ</rt><rp>)</rp>
+        </ruby>
+        Edamame 
+        Loader
+    </h1>
+    <div class="face-select-group">
+        <select id="face-select-1"></select>
+        <select id="face-select-2"></select>
+        <select id="face-select-3"></select>
+    </div>    
     <div class="edamame-loader">
         <div class="edamame-section">
             <div class="edamame-section__bean"></div>
@@ -21,5 +33,19 @@
             <div class="edamame-section__skin"></div>
         </div>
     </div>
+    <script>
+        const faceOptions = ["•ᴥ•","ಠ_ಠ","ᵔᴥᵔ","♥‿♥","⚆_⚆","°ロ°","˘⌣˘","°Д°","◉_◉"," ͡° ͜ʖ ͡°","˘▾˘","•◡•","⇀‸↼"];
+        document.querySelectorAll('select').forEach(select=> {
+            faceOptions.forEach(option => {
+                const optionEl = document.createElement('option');
+                optionEl.setAttribute('value', option);
+                optionEl.innerText = option;
+                select.appendChild(optionEl);
+            });
+            select.addEventListener('change', (e) => {
+                document.documentElement.style.setProperty(`--${e.target.id}`, `'${e.target.value}'`);
+            });
+        })
+    </script>
 </body>
 </html>
