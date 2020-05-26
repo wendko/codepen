@@ -1,4 +1,5 @@
 const completedPens = [
+    'edamame-loader',
     'single-div-pokemon-sprites',
     'single-div-pikachu',
     'pufferfish',
