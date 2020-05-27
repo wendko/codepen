@@ -64,21 +64,26 @@ select:focus {
 }
 @keyframes beanAnim {
     0%, 15%, 95%, 100% { transform: var(--bean-transform-1) }
+    25% { transform: var(--bean-transform-3) rotateY(40deg) }
     30%, 70% { transform: var(--bean-transform-2) }
+    75% { transform: var(--bean-transform-3) }
 }
 .edamame-section:nth-child(1) > .edamame-section__bean {
     --bean-transform-1: rotate(30deg) translate(29px, 58px);
     --bean-transform-2: rotate(30deg) translate(29px, 8px);
+    --bean-transform-3: rotate(30deg) translate(29px, 3px);
     --bean-anim-delay: 0s;
 }
 .edamame-section:nth-child(2) > .edamame-section__bean {
     --bean-transform-1: rotate(-30deg) translate(-15px, 70px);
     --bean-transform-2: rotate(-30deg) translate(-15px, 16px);
+    --bean-transform-3: rotate(-30deg) translate(-15px, 11px);
     --bean-anim-delay: calc(var(--bean-anim-duration) * 0.2);
 }
 .edamame-section:nth-child(3) > .edamame-section__bean {
     --bean-transform-1: translate(10px, 88px);
     --bean-transform-2: translate(10px, 38px);
+    --bean-transform-3: translate(10px, 33px);
     --bean-anim-delay: calc(var(--bean-anim-duration) * 0.1);
 }
 .edamame-section__bean {
