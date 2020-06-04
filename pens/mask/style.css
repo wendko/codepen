@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    column-count: 3;
+    column-width: calc(100vw / 3);
+    column-gap: 0;
+}
+
+.section {
+    height: 100vh;
+    outline: 1px dashed;
+    break-inside: avoid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section * {
+    position: absolute;
+}
+
+.section-face-mask {
+    background: lightsalmon;
+}
+
+.section-face-mask__face {
+    border-radius: 50%;
+    width: 470px;
+    height: 480px;
+    background: blue;
+    padding-bottom: 0;
+    transform: translateY(-35px);
+}
+
+.section-face-mask__mask {
+    --color-layer-1: rgb(119, 119, 245);
+    --color-layer-2: rgb(103, 103, 226);
+    --color-layer-3: rgb(91, 91, 209);
+    --color-layer-4: rgb(76, 76, 184);
+
+    width: 450px;
+    height: 100px;
+    background: var(--color-layer-1);
+    margin-bottom: 30vh;
+    box-shadow: 0px 60px 0 -10px var(--color-layer-2),
+        0 120px 0 -20px var(--color-layer-3),
+        0 165px 0 -28px var(--color-layer-4)
+        ;
+}
+
+/* straps */
+.section-face-mask__mask::before {
+
+}
+
+.section-face-shield {
+    background: salmon;
+}
+
+.section-gas-mask {
+    background: indianred;
+}
+
+header {
+    position: fixed;
+    width: 110vw;
+    text-align: center;
+    letter-spacing: 10vw;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+header > h1 {
+    font-size: 10rem;
+    margin: 30px;
+}
