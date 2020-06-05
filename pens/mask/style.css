@@ -22,38 +22,83 @@ body {
     position: absolute;
 }
 
+.section *::before, .section *::after {
+    content: '';
+    position: absolute;
+}
+
 .section-face-mask {
     background: lightsalmon;
 }
 
 .section-face-mask__face {
+    --color-skin: rgb(151, 84, 40);
     border-radius: 50%;
     width: 470px;
-    height: 480px;
-    background: blue;
+    height: 510px;
+    background: var(--color-skin);
     padding-bottom: 0;
-    transform: translateY(-35px);
+    box-shadow:  -240px 0px 0 -170px var(--color-skin),
+        240px 0px 0 -170px var(--color-skin);
 }
 
 .section-face-mask__mask {
-    --color-layer-1: rgb(119, 119, 245);
-    --color-layer-2: rgb(103, 103, 226);
-    --color-layer-3: rgb(91, 91, 209);
-    --color-layer-4: rgb(76, 76, 184);
-
+    --color-layer-1: #7777f5;
+    --color-layer-2: #6767e2;
+    --color-layer-3: #5b5bd1;
+    --color-layer-4: #4c4cb8;
     width: 450px;
-    height: 100px;
+    height: 120px;
     background: var(--color-layer-1);
     margin-bottom: 30vh;
+    border-radius: 0 0 50% 50%;
     box-shadow: 0px 60px 0 -10px var(--color-layer-2),
-        0 120px 0 -20px var(--color-layer-3),
-        0 165px 0 -28px var(--color-layer-4)
-        ;
+        0 100px 0 -20px var(--color-layer-3),
+        0 135px 0 -27px var(--color-layer-4);
+    transform: translate(0px, 55px);
 }
 
-/* straps */
+.section-face-mask__mask::after, 
 .section-face-mask__mask::before {
+    --color-mask-string: #5b5bd1;
+    height: 100px;
+    width: 12px;
+    background: var(--color-mask-string);
+}
 
+.section-face-mask__mask::before {
+    transform: translate(-20px, -90px) rotate(-27deg);
+    box-shadow: -58px 165px var(--color-mask-string);
+}
+
+.section-face-mask__mask::after {
+    transform: translate(460px, -90px) rotate(27deg);
+    box-shadow: 55px 165px var(--color-mask-string);
+}
+
+.section-face-mask__hair--fringe {
+    --color-hair: black;
+    width: 170px;
+    height: 160px;
+    background: black;
+    border-radius: 130px 50px 160px 0px;
+    transform: translate(-167px, -210px);
+}
+
+.section-face-mask__hair--fringe::after {
+    width: 370px;
+    height: 170px;
+    background: var(--color-hair);
+    transform: translate(140px, -20px);
+    border-radius: 100px 200px 0px 200px;
+}
+
+.section-face-mask__hair--fringe::before {
+    background: var(--color-hair);
+    height: 100px;
+    width: 65px;
+    transform: translate(-1px, 109px);
+    box-shadow: 446px 0px;
 }
 
 .section-face-shield {
