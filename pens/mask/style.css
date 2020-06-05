@@ -1,123 +1,263 @@
+/* todo: responsive sizes
+animation */
+:root {
+    --base-size: 200px;
+}
+
 body {
     margin: 0;
-}
-
-.container {
-    width: 100vw;
-    column-count: 3;
-    column-width: calc(100vw / 3);
-    column-gap: 0;
-}
-
-.section {
-    height: 100vh;
-    outline: 1px dashed;
-    break-inside: avoid;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.section * {
-    position: absolute;
-}
-
-.section *::before, .section *::after {
-    content: '';
-    position: absolute;
-}
-
-.section-face-mask {
-    background: lightsalmon;
-}
-
-.section-face-mask__face {
-    --color-skin: rgb(151, 84, 40);
-    border-radius: 50%;
-    width: 470px;
-    height: 510px;
-    background: var(--color-skin);
-    padding-bottom: 0;
-    box-shadow:  -240px 0px 0 -170px var(--color-skin),
-        240px 0px 0 -170px var(--color-skin);
-}
-
-.section-face-mask__mask {
-    --color-layer-1: #7777f5;
-    --color-layer-2: #6767e2;
-    --color-layer-3: #5b5bd1;
-    --color-layer-4: #4c4cb8;
-    width: 450px;
-    height: 120px;
-    background: var(--color-layer-1);
-    margin-bottom: 30vh;
-    border-radius: 0 0 50% 50%;
-    box-shadow: 0px 60px 0 -10px var(--color-layer-2),
-        0 100px 0 -20px var(--color-layer-3),
-        0 135px 0 -27px var(--color-layer-4);
-    transform: translate(0px, 55px);
-}
-
-.section-face-mask__mask::after, 
-.section-face-mask__mask::before {
-    --color-mask-string: #5b5bd1;
-    height: 100px;
-    width: 12px;
-    background: var(--color-mask-string);
-}
-
-.section-face-mask__mask::before {
-    transform: translate(-20px, -90px) rotate(-27deg);
-    box-shadow: -58px 165px var(--color-mask-string);
-}
-
-.section-face-mask__mask::after {
-    transform: translate(460px, -90px) rotate(27deg);
-    box-shadow: 55px 165px var(--color-mask-string);
-}
-
-.section-face-mask__hair--fringe {
-    --color-hair: black;
-    width: 170px;
-    height: 160px;
-    background: black;
-    border-radius: 130px 50px 160px 0px;
-    transform: translate(-167px, -210px);
-}
-
-.section-face-mask__hair--fringe::after {
-    width: 370px;
-    height: 170px;
-    background: var(--color-hair);
-    transform: translate(140px, -20px);
-    border-radius: 100px 200px 0px 200px;
-}
-
-.section-face-mask__hair--fringe::before {
-    background: var(--color-hair);
-    height: 100px;
-    width: 65px;
-    transform: translate(-1px, 109px);
-    box-shadow: 446px 0px;
-}
-
-.section-face-shield {
-    background: salmon;
-}
-
-.section-gas-mask {
-    background: indianred;
+    background: rgb(160, 63, 63);
 }
 
 header {
     position: fixed;
     width: 110vw;
     text-align: center;
-    letter-spacing: 10vw;
-    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 15vw;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header > h1 {
-    font-size: 10rem;
-    margin: 30px;
+    font-size: 3rem;
+    margin: 10vh 0;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+}
+
+.section {
+    flex: 1;
+    width: calc(100vw / 3);
+    min-width: 300px;
+    height: 100vh;
+    break-inside: avoid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section *, .section *::before, .section *::after {
+    position: absolute;
+}
+
+.section-face-mask {
+    background: lightsalmon;
+    --color-mask-layer-1: #7777f5;
+    --color-mask-layer-2: #6767e2;
+    --color-mask-layer-3: #5b5bd1;
+    --color-mask-layer-4: #4c4cb8;
+    --color-mask-string: #5b5bd1;
+    --color-skin: #975428;
+    --ear-offset-x: calc(0.51 * var(--base-size));
+    --ear-size: calc(-0.36 * var(--base-size));
+    --box-shadow-face: calc(-1 * var(--ear-offset-x)) 0 0 var(--ear-size) var(--color-skin),
+        var(--ear-offset-x) 0 0 var(--ear-size) var(--color-skin);
+}
+
+.section-face-shield {
+    background: salmon;
+    --color-mask-layer-1: #fd9acc;
+    --color-mask-layer-2: #f577b6;
+    --color-mask-layer-3: #eb58a1;
+    --color-mask-layer-4: #d8418c;
+    --color-mask-string: #eb58a1;
+    --color-skin: #b17c40;
+    --box-shadow-face: 0 calc(-0.1 * var(--base-size)) 0 calc(0.17 * var(--base-size)) #7777f5;
+}
+
+.section-gas-mask {
+    background: indianred;
+    --color-skin: #e2ca7a;
+    --color-hair: black;
+    --box-shadow-face: calc(-0.51 * var(--base-size)) 0 0 calc(-0.36 * var(--base-size)) var(--color-skin),
+    calc(0.51 * var(--base-size)) 0 0 calc(-0.36 * var(--base-size)) var(--color-skin),
+    0 calc(-0.1 * var(--base-size)) 0 calc(0.08 * var(--base-size)) var(--color-hair);
+}
+
+.el__face {
+    border-radius: 50%;
+    width: var(--base-size);
+    height: calc(var(--base-size) * 1.08);
+    background: var(--color-skin);
+    padding-bottom: 0;
+    box-shadow: var(--box-shadow-face);
+}
+
+
+.el__hair {
+    --color-hair: black;
+    width: calc(0.36 * var(--base-size));
+    height: calc(0.34 * var(--base-size));
+    background: var(--color-hair);
+    border-radius: 130px 50px 160px 0px;
+    transform: translate(calc(-0.35 * var(--base-size)), calc(-0.46 * var(--base-size)));
+}
+
+.el__hair::after {
+    content: '';
+    width: calc(0.78 * var(--base-size));
+    height: calc(0.36 * var(--base-size));
+    background: var(--color-hair);
+    transform: translate(calc(0.3 * var(--base-size)), calc(-0.04 * var(--base-size)));
+    border-radius: 100px 200px 0px 200px;
+}
+
+.el__hair::before {
+    content: '';
+    background: var(--color-hair);
+    width: calc(0.14 * var(--base-size));
+    height: calc(0.21 * var(--base-size));
+    transform: translateY(calc(0.25 * var(--base-size)));
+    box-shadow: calc(0.94 * var(--base-size)) 0;
+}
+
+.el__mask {
+    width: calc(0.95 * var(--base-size));
+    height: calc(0.25 * var(--base-size));
+    background: var(--color-mask-layer-1);
+    border-radius: 0 0 50% 50%;
+    box-shadow: 0px calc(0.126 * var(--base-size)) 0 calc(-0.02 * var(--base-size)) var(--color-mask-layer-2),
+        0 calc(0.21 * var(--base-size)) 0 calc(-0.04 * var(--base-size)) var(--color-mask-layer-3),
+        0 calc(0.29 * var(--base-size)) 0 calc(-0.06 * var(--base-size)) var(--color-mask-layer-4);
+    transform: translate(0px, calc(0.12 * var(--base-size)));
+}
+
+.el__mask::after, 
+.el__mask::before {
+    content: '';
+    height: calc(0.21 * var(--base-size));
+    width: calc(0.03 * var(--base-size));
+    background: var(--color-mask-string);
+}
+
+.el__mask::before {
+    transform: translate(calc(-0.04 * var(--base-size)), calc(-0.19 * var(--base-size))) rotate(-27deg);
+    box-shadow: calc(-0.11 * var(--base-size)) calc(0.35 * var(--base-size)) var(--color-mask-string);
+}
+
+.el__mask::after {
+    transform: translate(calc(0.97 * var(--base-size)), calc(-0.19 * var(--base-size))) rotate(27deg);
+    box-shadow: calc(0.11 * var(--base-size)) calc(0.35 * var(--base-size)) var(--color-mask-string);
+}
+
+.el__shield-container {
+    width: calc(1.06 * var(--base-size));
+    height: calc(1.38 * var(--base-size));
+    perspective: calc(1.49 * var(--base-size));
+}
+
+.el__shield {
+    background: #0000ff41;
+    width: 100%;
+    height: 100%;
+    transform: rotateX(19deg);
+    border-radius: 0 0 20% 20%;
+}
+
+.el__shield::before {
+    content: '';
+    width: calc(1.06 * var(--base-size));
+    height: calc(0.15 * var(--base-size));
+    background: #ffee51;
+}
+
+.el__shield::after {
+    --color-shield-shine: white;
+    content: '';
+    width: calc(0.04 * var(--base-size));
+    height: calc(0.95 * var(--base-size));
+    background: var(--color-shield-shine);
+    border-radius: 50px;
+    transform: translate(calc(0.04 * var(--base-size)), calc(0.23 * var(--base-size)));
+    box-shadow: calc(0.92 * var(--base-size)) 0 var(--color-shield-shine);
+}
+
+.el__gas-mask {
+    width: calc(0.95 * var(--base-size));
+    height: calc(1.1 * var(--base-size));
+}
+
+.el__gas-mask--base {
+    border-radius: 50% 50% 40% 40%;
+    background: linear-gradient(to right, grey 0 50%, rgb(104, 103, 103) 50%);
+    width: 100%;
+    height: 100%;
+}
+
+.el__gas-mask--goggles {
+    width: 100%;
+    height: calc(0.42 * var(--base-size));
+    transform: translateY(calc(0.21 * var(--base-size)));
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.el__gas-mask--goggles-item {
+    border-radius: 50%;
+    background: rgb(99, 99, 255);
+    width: calc(0.25 * var(--base-size));
+    height: calc(0.25 * var(--base-size));
+    position: relative;
+    box-shadow: 0 0 0 calc(0.05 * var(--base-size)) rgb(44, 44, 44),
+        0 0 0 calc(0.1 * var(--base-size)) rgb(78, 78, 78);
+}
+
+.el__gas-mask--goggles-item::before {
+    content: '';
+    background: white;
+    width: calc(0.02 * var(--base-size));
+    height: calc(0.15 * var(--base-size));
+    border-radius: 50px;
+    transform: translate(calc(0.08 * var(--base-size)), calc(0.01 * var(--base-size))) rotate(40deg);
+    box-shadow: calc(0.06 * var(--base-size)) 0 0 2px white;
+}
+
+.el__gas-mask--snout {
+    background: rgb(44, 44, 44);
+    border-radius: 50% 50% 0 0;
+    height: calc(0.42 * var(--base-size));
+    width: calc(0.42 * var(--base-size));
+    transform: translate(calc(0.27 * var(--base-size)), calc(0.63 * var(--base-size)));
+}
+
+.el__gas-mask--snout::before {
+    content: '';
+    width: calc(0.38 * var(--base-size));
+    height: calc(0.38 * var(--base-size));
+    border-radius: 50%;
+    background: radial-gradient(grey 20%, black 30%);
+    background-size: calc(0.04 * var(--base-size)) calc(0.04 * var(--base-size));
+    box-shadow: 0 0 0 calc(0.03 * var(--base-size)) rgb(44, 44, 44),
+        0 0 0 calc(0.08 * var(--base-size)) rgb(78, 78, 78);
+    transform: translate(calc(0.02 * var(--base-size)), calc(0.25 * var(--base-size)));
+}
+
+.el__gas-mask--straps {
+    --color-straps: rgb(92, 92, 92);
+    width: calc(0.12 * var(--base-size));
+    height: calc(0.19 * var(--base-size));
+    background: var(--color-straps);
+    transform: translateY(calc(-0.63 * var(--base-size)));
+    box-shadow: calc(-0.11 * var(--base-size)) calc(1.22 * var(--base-size)) var(--color-straps);
+}
+
+.el__gas-mask--straps::before,
+.el__gas-mask--straps::after {
+    content: '';
+    width: calc(0.12 * var(--base-size));
+    height: calc(0.19 * var(--base-size));
+    background: var(--color-straps);
+    box-shadow: 0px calc(1.02 * var(--base-size)) var(--color-straps);
+}
+
+.el__gas-mask--straps::before {
+    transform: rotate(-57deg) translate(calc(-0.53 * var(--base-size)), calc(-0.21 * var(--base-size)));
+}
+
+.el__gas-mask--straps::after {
+    transform: rotate(57deg) translate(calc(0.53 * var(--base-size)), calc(-0.21 * var(--base-size)));
 }
