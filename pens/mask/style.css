@@ -1,12 +1,13 @@
-/* todo: responsive sizes
-animation */
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap');
+
 :root {
-    --base-size: 200px;
+    --base-size: 150px;
 }
 
 body {
     margin: 0;
     background: rgb(160, 63, 63);
+    font-family: 'Lexend Tera', Arial, Helvetica, sans-serif;
 }
 
 header {
@@ -14,12 +15,26 @@ header {
     width: 110vw;
     text-align: center;
     letter-spacing: 15vw;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 header > h1 {
     font-size: 3rem;
-    margin: 10vh 0;
+    font-weight: 900;
+    margin: 10px 0;
+}
+
+footer {
+    font-weight: 700;
+    position: fixed;
+    text-align: center;
+    bottom: 10px;
+    width: 100vw;
+}
+
+svg {
+    width: inherit;
+    height: inherit;
+    outline: 1px dashed;
 }
 
 .container {
@@ -77,6 +92,15 @@ header > h1 {
     0 calc(-0.1 * var(--base-size)) 0 calc(0.08 * var(--base-size)) var(--color-hair);
 }
 
+.el__background-circle {
+    width: calc(1.66 * var(--base-size));
+    height: calc(1.66 * var(--base-size));
+    background: transparent;
+    border-radius: 50%;
+    transform: translateY(calc(-0.08 * var(--base-size)));
+    box-shadow: 0px 0px 100px;
+}
+
 .el__face {
     border-radius: 50%;
     width: var(--base-size);
@@ -85,7 +109,6 @@ header > h1 {
     padding-bottom: 0;
     box-shadow: var(--box-shadow-face);
 }
-
 
 .el__hair {
     --color-hair: black;
@@ -260,4 +283,54 @@ header > h1 {
 
 .el__gas-mask--straps::after {
     transform: rotate(57deg) translate(calc(0.53 * var(--base-size)), calc(-0.21 * var(--base-size)));
+}
+
+@keyframes changeBackground {
+    0%, 27% { background-image: var(--bg-image-1) }
+    33%, 60% { background-image: var(--bg-image-2) }
+    66%, 93% { background-image: var(--bg-image-3) }
+    0%, 27%,
+    33%, 60%,
+    66%, 93% {
+        opacity: 1;
+    }
+    29%, 31%,
+    62%, 64%,
+    95%, 97% {
+        opacity: 0;
+    }
+}
+
+.section::before {
+    content: '';
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    filter: grayscale() opacity(0.4) brightness(70%);
+    transition: background 1s linear;
+    background-image: var(--bg-image-1);
+    animation: changeBackground 12s ease-in both infinite;
+    box-shadow:  0 0 100px;
+}
+
+.section-face-mask::before {
+    --bg-image-1: url(https://images.unsplash.com/photo-1584252331038-d4d09c9ebce3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80);
+    --bg-image-2: url(https://images.unsplash.com/photo-1580458072512-96ced1f43991?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80);
+    --bg-image-3: url(https://images.unsplash.com/photo-1584744982491-665216d95f8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+    background-position-x: -200px;
+}
+
+.section-face-shield::before {
+    --bg-image-1: url(https://images.unsplash.com/photo-1579165466949-3180a3d056d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80);
+    --bg-image-2: url(https://images.unsplash.com/photo-1584467735867-4297ae2ebcee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+    --bg-image-3: url(https://images.unsplash.com/photo-1549560976-cf6be881db29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+    animation-delay: 1.6s;
+}
+
+.section-gas-mask::before {
+    --bg-image-1: url(https://images.unsplash.com/photo-1590895763408-2788fce4a5be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+    --bg-image-2: url(https://images.unsplash.com/photo-1567669970294-11a7fdac67f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+    --bg-image-3: url(https://images.unsplash.com/photo-1560179429-5bdb77b931ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+    animation-delay: 0.8s;
 }
