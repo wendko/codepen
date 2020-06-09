@@ -12,35 +12,61 @@ body {
 
 header {
     position: fixed;
-    width: 110vw;
+    width: 104vw;
     text-align: center;
-    letter-spacing: 15vw;
+    letter-spacing: 4vw;
+}
+
+@keyframes textAppear {
+    from {opacity: 0} to {opacity: 1}
 }
 
 header > h1 {
-    font-size: 3rem;
-    font-weight: 900;
     margin: 10px 0;
 }
 
+header > h1 > span {
+    font-size: max(30px, 8vw);
+    font-weight: 900;
+    animation: 0.2s textAppear both;
+}
+
+header > h1 > span:nth-child(1) { animation-delay: 0.8s }
+header > h1 > span:nth-child(2) { animation-delay: 1.2s }
+header > h1 > span:nth-child(3) { animation-delay: 1.1s }
+header > h1 > span:nth-child(4) { animation-delay: 1.4s }
+
 footer {
-    font-weight: 700;
     position: fixed;
     text-align: center;
     bottom: 10px;
     width: 100vw;
+    animation: 0.5s textAppear 1.6s both;
 }
 
-svg {
-    width: inherit;
-    height: inherit;
-    outline: 1px dashed;
+footer, footer > a {
+    font-weight: 500;
+    color: black;
+    transition: background 0.2s ease-in;
+}
+
+footer > a:hover,
+footer > a:focus {
+    border: none;
+    outline: none;
+    background: #ffee51;
 }
 
 .container {
     display: flex;
     width: 100vw;
     flex-wrap: wrap;
+    overflow: hidden;
+}
+
+@keyframes slideIn {
+    0% {transform: translateY(100%)}
+    100% {transform: none}
 }
 
 .section {
@@ -52,6 +78,7 @@ svg {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: 1s slideIn ease-out both;
 }
 
 .section *, .section *::before, .section *::after {
@@ -74,6 +101,7 @@ svg {
 
 .section-face-shield {
     background: salmon;
+    animation-delay: 0.2s;
     --color-mask-layer-1: #fd9acc;
     --color-mask-layer-2: #f577b6;
     --color-mask-layer-3: #eb58a1;
@@ -85,6 +113,7 @@ svg {
 
 .section-gas-mask {
     background: indianred;
+    animation-delay: 0.4s;
     --color-skin: #e2ca7a;
     --color-hair: black;
     --box-shadow-face: calc(-0.51 * var(--base-size)) 0 0 calc(-0.36 * var(--base-size)) var(--color-skin),
@@ -175,7 +204,7 @@ svg {
 .el__shield {
     background: #0000ff41;
     width: 100%;
-    height: 100%;
+    height: 95%;
     transform: rotateX(19deg);
     border-radius: 0 0 20% 20%;
 }
@@ -191,7 +220,7 @@ svg {
     --color-shield-shine: white;
     content: '';
     width: calc(0.04 * var(--base-size));
-    height: calc(0.95 * var(--base-size));
+    height: calc(0.92 * var(--base-size));
     background: var(--color-shield-shine);
     border-radius: 50px;
     transform: translate(calc(0.04 * var(--base-size)), calc(0.23 * var(--base-size)));
@@ -316,13 +345,13 @@ svg {
 
 .section-face-mask::before {
     --bg-image-1: url(https://images.unsplash.com/photo-1584252331038-d4d09c9ebce3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80);
-    --bg-image-2: url(https://images.unsplash.com/photo-1580458072512-96ced1f43991?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80);
+    --bg-image-2: url(https://images.unsplash.com/photo-1580458072512-96ced1f43991?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
     --bg-image-3: url(https://images.unsplash.com/photo-1584744982491-665216d95f8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
     background-position-x: -200px;
 }
 
 .section-face-shield::before {
-    --bg-image-1: url(https://images.unsplash.com/photo-1579165466949-3180a3d056d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80);
+    --bg-image-1: url(https://images.unsplash.com/photo-1579165466949-3180a3d056d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80);
     --bg-image-2: url(https://images.unsplash.com/photo-1584467735867-4297ae2ebcee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
     --bg-image-3: url(https://images.unsplash.com/photo-1549560976-cf6be881db29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
     animation-delay: 1.6s;
