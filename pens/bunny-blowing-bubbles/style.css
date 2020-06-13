@@ -1,0 +1,176 @@
+:root {
+    --bunny-min-size: 300px;
+    --bunny-size: 20vw;
+}
+
+body {
+    margin: 0;
+    background: linen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.bunny-container {
+    width: var(--bunny-size);
+    height: var(--bunny-size);
+    min-width: var(--bunny-min-size);
+    min-height: var(--bunny-min-size);
+    outline: 1px dashed red;
+}
+
+.bunny {
+    outline: 1px dashed;
+    width: 230px;
+    height: 300px;
+    background: yellow;
+    transform: translateX(70px);
+}
+
+.bunny * {
+    position: absolute;
+}
+
+.bunny__body {
+    width: 200px;
+    height: 200px;
+    background: pink;
+    border-radius: 100px 100px 30px 0px;
+    transform: translateY(80px);
+}
+
+.bunny__eyes {
+    padding: 6px;
+    background: black;
+    border-radius: 50%;
+    box-shadow: 80px 0 black;
+    transform: translate(40px, 40px);
+}
+
+.bunny__nose {
+    padding: 5px 8px;
+    background: black;
+    border-radius: 50%;
+    transform: translate(70px, 50px);
+}
+
+.bunny__nose::after {
+    content: '|';
+    position: absolute;
+    font-size: 20px;
+    font-weight: bolder;
+    transform: translateX(-2px);
+}
+
+.bunny__cheeks {
+    padding: 18px;
+    background: red;
+    border-radius: 50%;
+    opacity: 0.5;
+    transform: translate(10px, 55px);
+    box-shadow: 110px 0 red;
+}
+
+.bunny__mouth {
+    padding: 8px 10px;
+    background: red;
+    border-radius: 50%;
+    transform: translate(65px, 70px); /* exhale */
+    transform: translate(70px, 80px) scale(3, 2.5); /* inhale */
+    box-shadow: inset 5px 8px black;
+}
+
+.bunny__ears {
+    width: 200px;
+    height: 100px;
+    outline: 1px solid red;
+}
+
+.bunny__ear {
+    width: 50px;
+    height: 100px;
+    border-radius: 50% 50% 0%;
+    background: red;
+}
+
+.bunny__ear--left {
+    transform: translateX(50px) rotate(10deg);
+}
+
+.bunny__ear--right {
+    transform: translateX(125px) rotate(10deg);
+}
+
+.bunny__feet {
+    height: 35px;
+    width: 200px;
+    outline: 1px solid blue;
+    transform: translateY(265px);
+}
+
+.bunny__foot {
+    height: 35px;
+    width: 65px;
+    background: blue;
+    border-radius: 0 0 25px 50%;
+}
+
+.bunny__tail {
+        height: 50px;
+    width: 40px;
+    background: green;
+    border-radius: 50% 50% 50%;
+    transform: translate(190px, 200px) rotate(8deg);
+}
+
+.bunny__foot--left {
+    transform: rotate(10deg) skewY(-20deg);
+}
+
+.bunny__foot--right {
+    transform: translateX(110px) rotate(10deg) skewY(-20deg);
+}
+
+.bunny__arm {
+    width: 80px;
+    height: 100px;
+    outline: 1px dashed indigo;
+    transform: translate(-70px, 140px);
+}
+
+.bunny__paw {
+    width: 50px;
+    height: 50px;
+    background: green;
+    border-radius: 50px 0 0 50px;
+    transform-origin: bottom right;
+    transform: translate(27px, 57px) rotate(-2deg); /* exhale */
+    transform: translate(27px, 57px) rotate(10deg); /* inhale */
+}
+
+.bunny__paw::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 45px;
+    border-radius: 0 0 20px 20px;
+    background: indigo;
+    transform: translate(8px, -5px);
+}
+
+.bunny__paw::after {
+    content: '';
+    position: absolute;
+    width: 19px;
+    height: 35px;
+    background: linear-gradient(-45deg,
+        blue 0% 30%,
+        white 30% 40%,
+        blue 40% 55%,
+        white 55% 60%,
+        blue 60% 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px indigo;
+    transform: translate(2px, -45px);
+}
