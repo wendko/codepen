@@ -1,4 +1,5 @@
 const completedPens = [
+    'bunny-blowing-bubbles',
     'mask',
     'edamame-loader',
     'single-div-pokemon-sprites',
