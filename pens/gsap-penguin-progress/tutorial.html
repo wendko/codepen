@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js"></script>
+    <title>GSAP tutorial</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .box {
+            height: 40px;
+            width: 40px;
+        }
+        .test {
+            background: pink;
+        }
+        .group {
+            display: flex;
+            justify-content: center;
+        }
+        .item {
+            margin: 10px;
+            background: #802323;
+        }
+        .item:nth-child(2) { background: #ad3b3b }
+        .item:nth-child(3) { background: indianred }
+        .item:nth-child(4) { background: #ad3b3b }
+        .item:nth-child(5) { background: #802323 }
+        .lifecycle {
+            background: aquamarine;
+        }
+        .tween {
+            background: #76ff76;
+        }
+        .position {
+            background: orange;
+        }
+        hr {
+            width: 100%;
+            border: 2px dotted;
+            border-bottom: 0;
+        }
+        code {
+            background: #b89090;
+            border-radius: 5px;
+            padding: 2px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1><a href="https://greensock.com/get-started/#loading-gsap" target="_blank">GSAP tutorial</a></h1>
+    <h2><code>from</code>, <code>to</code> and <code>fromTo</code></h2>
+    <div class="box test"></div>
+    <hr />
+    <h2><code>stagger</code> and <code>repeat</code></h2>
+    <div class="group group1">
+        <div class="box item"></div>
+        <div class="box item"></div>
+        <div class="box item"></div>
+        <div class="box item"></div>
+        <div class="box item"></div>
+    </div>
+    <div class="group group2">
+        <div class="box item"></div>
+        <div class="box item"></div>
+        <div class="box item"></div>
+        <div class="box item"></div>
+        <div class="box item"></div>
+    </div>
+    <hr />
+    <h2><code>onStart</code> and <code>onComplete</code></h2>
+    <div class="box lifecycle"></div>
+    <div class="lifecycle-output">hello</div>
+    <hr />
+    <h2>controlling <code>tween</code></h2>
+    <div class="box tween"></div>
+    <div class="group">
+        <button onclick="tween.play()">Play</button>
+        <button onclick="tween.pause()">Pause</button>
+        <button onclick="tween.resume()">Resume</button>
+        <button onclick="tween.reverse()">Reverse</button>
+        <button onclick="tween.seek(0.5)">Seek 0.5s</button>
+        <button onclick="tween.progress(0.2)">Progress 20%</button>
+        <button onclick="tween.timeScale(1.5)">Speed up 50%</button>
+    </div>
+    <hr />
+    <h2><code>timeline</code></h2>
+    <div class="group group3">
+        <div class="box item item1"></div>
+        <div class="box item item2"></div>
+        <div class="box item item3"></div>
+    </div>
+    <hr />
+    <h2><code>position</code></h2>
+    <div class="box position"></div>
+    <script>
+        // fromTo
+        // gsap.to(".test", {
+        //     duration: 1, 
+        //     x: 100,
+        //     rotation: 20,
+        //     scale: 1.5
+        // });
+        // gsap.from(".test", {
+        //     x: 100,
+        // });
+        gsap.fromTo('.test', {
+            x: 100,
+        }, {
+            x: 200,
+        })
+
+        // stagger
+        gsap.from(".group1 .item", {
+            duration: 1,
+            scale: 0.5, 
+            opacity: 0, 
+            delay: 0.5, 
+            ease: "elastic", 
+            yoyo: true, 
+            repeat: -1, 
+            stagger: {
+                amount: 0.2, 
+                from: "center"
+            }
+        });
+        gsap.from(".group2 .item", {
+            duration: 1,
+            scale: 0.5, 
+            opacity: 0, 
+            delay: 1.2, 
+            ease: "elastic", 
+            yoyo: true, 
+            repeat: -1, 
+            stagger: {
+                amount: 0.2, 
+                from: "left"
+            }
+        });
+
+        // onComplete and onStart
+        gsap.to(".lifecycle", {
+            duration: 2,
+            x: 300, 
+            onStart: showLifecycleMessage, 
+            onStartParams: ["the animation has begun!"], 
+            onComplete: showLifecycleMessage, 
+            onCompleteParams: ["the animation has ended."],
+        });
+
+        function showLifecycleMessage(message) {
+            document.querySelector('.lifecycle-output').innerHTML = message;
+        }
+
+
+        // control tween
+        var tween = gsap.to(".tween", {
+            duration: 5,
+            x: '90vw',
+            yoyo: true,
+            repeat: -1
+        });
+
+        // timeline
+        var tl = gsap.timeline({
+            repeat: 30,
+            repeatDelay: 1,
+            defaults: {
+                duration: 1 // will be shared with all timeline items
+            }});
+            
+        tl.to(".group3 .item1", { x: 200})
+        .to(".group3 .item2", { x: 200})
+        .to(".group3 .item3", { x: 200});
+
+
+        // position param
+        var tl2 = gsap.timeline();
+        tl2.to('.position', {x: 200})
+        .to('.position', {y: 200}, "+=0.2") //0.2 second after end of timeline
+        .to('.position', {rotation:90}, "-=0.5") //0.5 seconds before end of timeline
+        .to('.position', {scale: 4}, 1); //at exactly 3 seconds from the beginning of the timeline
+
+
+    </script>
+</body>
+</html>

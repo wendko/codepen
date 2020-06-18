@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+:root {
+    --input-width: 300px;
+    --penguin-size: 50px;
+}
+
+body {
+    font-family: 'Itim', cursive;
+    height: 100vh;
+    margin: 0;
+    background: #d8f3ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.textbox {
+    --padding: 8px;
+    padding: var(--padding);
+    width: calc(var(--input-width) - (2 * var(--padding)));
+    resize: none;
+    height: 100px;
+    border-radius: 2px;
+}
+
+.penguin-container {
+    width: var(--input-width);
+}
+
+.penguin {
+    width: var(--penguin-size);
+    height: var(--penguin-size);
+    background: aqua;
+}
+
+.penguin * {
+    position: absolute;
+}
+
+.penguin__body {
+    width: 35px;
+    height: 37px;
+    background: white;
+    box-shadow: inset 0px 6px 0px 5px black;
+    border-radius: 50% / 70% 70% 30% 30%;
+    transform: translate(5px, 10px);
+}
+
+.penguin__wings * {
+    width: 22px;
+    height: 6px;
+    border-radius: 50%;
+    background: black;
+}
+
+.penguin__wing--left {
+    transform: translate(-6px, 23px) rotate(-48deg);
+}
+
+.penguin__wing--right {
+    transform: translate(29px, 23px) rotate(48deg);
+}
+
+.penguin__feet {
+    width: 10px;
+    height: 10px;
+    background: #F5B23A;
+    border-radius: 0% 0% 50% 50%;
+    box-shadow: 15px 0 #f5b23a;
+    transform: translate(10px, 40px);
+}
+
+.penguin__head {
+    width: 20px;
+    height: 15px;
+    background: black;
+    border-radius: 50% 50% 0 0;
+    transform: translate(13px, 0px);
+}
+
+.penguin__head::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    transform: translate(10px, 5px);
+}
+
+.penguin__head::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 5px;
+    background: #f5b23a;
+    border-radius: 40% 50% 50% 40%;
+    transform: translate(18px, 5px);
+}
+
+.word-count {
+    --bubble-color: black;
+    --font-color: white;
+    transform: translateX(-10px);
+    width: max-content;
+    padding: 2px 8px;
+    background: var(--bubble-color);
+    border-radius: 2px;
+    margin-bottom: 15px;
+    color: var(--font-color);
+}
+
+.word-count::before {
+    content: '';
+    background: linear-gradient(-45deg, var(--bubble-color) 0 50%,transparent 50% 100%);
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    transform: translate(10px, 15px) rotate(45deg);
+}
+
+label[for="fav-animal-input"] {
+    font-size: 2rem;
+    margin: 20px;
+    text-align: center;
+}

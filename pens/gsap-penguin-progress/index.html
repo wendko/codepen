@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Penguin Progress</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js"></script>
+</head>
+<body>
+    <label for="fav-animal-input">What is your favourite animal and why is it penguins? 
+    </label>
+    <br/>
+    <div class="penguin-container">
+        <div class="word-count"></div>
+        <div class="penguin">
+            <div class="penguin__feet"></div>
+            <div class="penguin__body"></div>
+            <div class="penguin__head"></div>
+            <!-- incl beak and eye -->
+            <div class="penguin__wings">
+                <div class="penguin__wing--left"></div>
+                <div class="penguin__wing--right"></div>
+            </div>
+            <div class="penguin__tail"></div>
+        </div>
+    </div>
+    <textarea id="fav-animal-input" class="textbox" maxLength="10"></textarea>
+
+<script>
+    
+
+    function setWordCountLabel(text) {
+        document.querySelector('.word-count').innerHTML = text;
+    }
+    
+    const textboxMaxLength = document.querySelector('.textbox').maxLength;
+    setWordCountLabel(`max char: ${textboxMaxLength}`);
+
+    const textboxWidth = document.querySelector('.textbox').getBoundingClientRect()['width'];
+    const penguinWidth = document.querySelector('.penguin').getBoundingClientRect()['width'];
+    const penguinMaxOffsetX = textboxWidth - penguinWidth;
+
+    document.querySelector('.textbox').addEventListener('keyup', e => {
+        const wordCount = e.target.value.length;
+        setWordCountLabel(`${wordCount} / ${textboxMaxLength}`);
+
+        gsap.to('.penguin', {
+            x: wordCount / textboxMaxLength * penguinMaxOffsetX,
+        });
+        gsap.to('.word-count', {
+            x: (wordCount / textboxMaxLength * penguinMaxOffsetX) - 10,
+        });
+
+        switch(wordCount) {
+            case 0:
+                setWordCountLabel(`max char: ${textboxMaxLength}`);
+                break;
+            case textboxMaxLength:
+                setWordCountLabel(`maxed out!`);
+                break;
+            default:
+                break;
+        }
+    });
+
+    // todo
+        // --------------BASIC--------------
+        // - Submit button
+        
+        // --------------WORD COUNT--------------
+        // - word count min threshold
+        // - word count starting state ("max 50 words")
+        // - word count ending state ("50/50 words")
+        
+        // --------------PENGUIN ANIMATION--------------
+        // - animation of penguin arm, feet, head, eyes, tail
+        // - starting state: plopping down at beginning of animation
+        // - ending state: getting up after animation
+        // if (wordCount === 0) // starting state
+        // if (wordCount === textboxMaxLength) // ending state
+</script>
+</body>
+</html>

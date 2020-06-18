@@ -59,8 +59,10 @@ body {
 }
 
 @keyframes eyesAnim {
-    0%, 9%, 11%, 79%, 81% { transform: translate(40px, 40px) rotateZ(6deg) }
-    10%, 80% { transform: translate(40px, 40px) rotateZ(6deg) scaleY(0.3) }
+    0%, 15%, 17%,    79%, 81% { transform: translate(40px, 40px) rotateZ(6deg) }
+        16%,            80% { transform: translate(40px, 40px) rotateZ(6deg) scaleY(0.3) }
+    60% { transform: translate(40px, 30px) rotateZ(6deg) }
+    10%, 70%, 100% { transform: translate(40px, 40px) rotateZ(6deg) }
 }
 
 .bunny__eyes {
@@ -69,7 +71,12 @@ body {
     border-radius: 50%;
     box-shadow: 80px 0 var(--bunny-eye-color);
     transform: translate(40px, 40px) rotateZ(6deg);
-    animation: eyesAnim 5s linear infinite;
+    animation: eyesAnim var(--breathe-duration) linear infinite;
+}
+
+@keyframes noseAnim {
+    60% { transform: translate(70px, 40px) }
+    10%, 70%, 100% { transform: translate(70px, 50px) }
 }
 
 .bunny__nose {
@@ -77,6 +84,7 @@ body {
     background: var(--bunny-nose-color);
     border-radius: 50%;
     transform: translate(70px, 50px);
+    animation: noseAnim var(--breathe-duration) linear infinite;
 }
 
 .bunny__nose::after {
@@ -90,15 +98,14 @@ body {
 }
 
 @keyframes cheeksAnim {
-    60% { opacity: 0.5 }
-    0%, 100% { opacity: 0.2 }
+    60% { transform: translate(10px, 50px) rotateZ(5deg); opacity: 0.5 }
+    10%, 70%, 100%, 0% { transform: translate(10px, 55px) rotateZ(5deg); opacity: 0.2 }
 }
 
 .bunny__cheeks {
     padding: 18px;
     background: var(--bunny-cheek-color);
     border-radius: 50%;
-    opacity: 0.5;
     transform: translate(10px, 55px) rotateZ(5deg);
     box-shadow: 110px 0 var(--bunny-cheek-color);
     animation: cheeksAnim var(--breathe-duration) linear infinite;
@@ -108,7 +115,7 @@ body {
     0%, 10%, 75%,
     78%, 82%, 86%, 90%, 94%, 98%, 100%, 4%, 8%
     { transform: translate(68px, 70px) }
-    60% { transform: translate(70px, 80px) scale(3, 2.5) }
+    60% { transform: translate(70px, 70px) scale(3, 2.5) }
     76%, 80%, 84%, 88%, 92%, 96%, 2%, 6% { transform: translate(66px, 70px) }
 }
 
@@ -193,7 +200,7 @@ body {
 
 @keyframes tailAnim {
     0%, 15%, 25%,   75%, 85%, 95% { transform: translate(190px, 200px) rotate(8deg) }
-        20%,        80%, 90% { transform: translate(190px, 195px) rotate(8deg) }
+        20%,        80%, 90% { transform: translate(190px, 198px) rotate(-8deg) }
 }
 
 .bunny__tail {
@@ -202,7 +209,7 @@ body {
     background: var(--bunny-color-2);
     border-radius: 50% 50% 50%;
     transform: translate(190px, 200px) rotate(8deg);
-    animation: tailAnim 5s linear infinite;
+    animation: tailAnim 3s linear infinite;
 }
 
 .bunny__arm {
