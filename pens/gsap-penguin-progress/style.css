@@ -3,6 +3,9 @@
 :root {
     --input-width: 300px;
     --penguin-size: 50px;
+    --penguin-black: black;
+    --penguin-white: white;
+    --penguin-orange: #f5b23a;
 }
 
 body {
@@ -32,7 +35,7 @@ body {
 .penguin {
     width: var(--penguin-size);
     height: var(--penguin-size);
-    background: aqua;
+    /* background: aqua; */
 }
 
 .penguin * {
@@ -44,7 +47,7 @@ body {
     height: 37px;
     background: white;
     box-shadow: inset 0px 6px 0px 5px black;
-    border-radius: 50% / 70% 70% 30% 30%;
+    border-radius: 50% 50% 35% 35%;
     transform: translate(5px, 10px);
 }
 
@@ -70,6 +73,14 @@ body {
     border-radius: 0% 0% 50% 50%;
     box-shadow: 15px 0 #f5b23a;
     transform: translate(10px, 40px);
+}
+
+.penguin__tail {
+    width: 10px;
+    height: 10px;
+    background: black;
+    border-radius: 2px;
+    transform: translate(3px, 33px) rotate(27deg);
 }
 
 .penguin__head {
