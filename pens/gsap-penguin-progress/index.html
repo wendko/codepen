@@ -8,24 +8,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js"></script>
 </head>
 <body>
-    <label for="fav-animal-input">What is your favourite animal and why is it penguins? 
-    </label>
-    <br/>
-    <div class="penguin-container">
-        <div class="word-count"></div>
-        <div class="penguin">
-            <div class="penguin__tail"></div>
-            <div class="penguin__feet"></div>
-            <div class="penguin__body"></div>
-            <div class="penguin__head"></div>
-            <div class="penguin__wings">
-                <div class="penguin__wing--left"></div>
-                <div class="penguin__wing--right"></div>
+    <form id="form">
+        <label for="fav-animal-input" id="fav-animal-input-label">
+            Describe penguins in 20 characters or less.
+        </label>
+        <br/>
+        <div class="penguin-container">
+            <div class="word-count"></div>
+            <div class="penguin">
+                <div class="penguin__tail"></div>
+                <div class="penguin__feet"></div>
+                <div class="penguin__body"></div>
+                <div class="penguin__head"></div>
+                <div class="penguin__wings">
+                    <div class="penguin__wing--left"></div>
+                    <div class="penguin__wing--right"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <textarea id="fav-animal-input" class="textbox" maxLength="10"></textarea>
-
+        <input type="text" id="fav-animal-input" class="textbox" maxLength="20"></input>
+        <button class="btn-submit">Submit</button>
+    </form>
 <script>
     
 
@@ -34,7 +37,7 @@
     }
     
     const textboxMaxLength = document.querySelector('.textbox').maxLength;
-    setWordCountLabel(`Tell us in ${textboxMaxLength} words or less`);
+    setWordCountLabel(`Start typing`);
 
     const textboxWidth = document.querySelector('.textbox').getBoundingClientRect()['width'];
     const penguinWidth = document.querySelector('.penguin').getBoundingClientRect()['width'];
@@ -42,11 +45,19 @@
 
     const penguinAnimDur = 0.2;
 
+    document.querySelector('#form').addEventListener('submit', e => {
+        console.log(e.target.value);
+        e.preventDefault();
+        document.querySelector('.word-count').style.visibility = 'hidden';
+        document.querySelector('.btn-submit').style.visibility = 'hidden';
+        document.querySelector('#fav-animal-input').style.visibility = 'hidden';
+        document.querySelector('#fav-animal-input-label').innerHTML = 'Thank you for your input!';
+    });
+    
     document.querySelector('.textbox').addEventListener('keyup', e => {
         const wordCount = e.target.value.length;
         setWordCountLabel(`${wordCount} / ${textboxMaxLength}`);
-
-
+        
         const anim = gsap.timeline({
             defaults: {
                 duration: penguinAnimDur
@@ -65,7 +76,7 @@
         switch(wordCount) {
             case 0:
             case textboxMaxLength:
-                setWordCountLabel(wordCount === 0 ? `Tell us in ${textboxMaxLength} words or less`: `Reached word limit!`);
+                setWordCountLabel(wordCount === 0 ? `Start typing`: `That's 20!`);
                 anim
                 .to('.penguin__body', {
                     borderRadius: '50px 50px 35px 35px',
@@ -111,7 +122,7 @@
                 .to('.penguin__head', {
                     x: 28,
                     y: 20,
-                    rotate: 30,
+                    rotate: wordCount%2 > 0 ? 30 : 40,
                 }, `-=${penguinAnimDur}`)
                 .to('.penguin__wing--right', {
                     x: 18,
@@ -131,7 +142,7 @@
                 .to('.penguin__tail', {
                     x: 4,
                     y: 29,
-                    rotate: -10,
+                    rotate: wordCount%2 > 0 ? -10 : -20,
                 }, `-=${penguinAnimDur}`);
                 break;
         }
@@ -139,11 +150,10 @@
 
     // todo
         // --------------BASIC--------------
-        // - Submit button
-        
-        // --------------PENGUIN ANIMATION--------------
-        // if (wordCount === 0) // starting state
-        // if (wordCount === textboxMaxLength) // ending state
+        // after submit - happy penguin animation
+        // color scheme
+        // css cleanup
+
 </script>
 </body>
 </html>

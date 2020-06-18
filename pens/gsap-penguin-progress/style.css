@@ -9,23 +9,46 @@
 }
 
 body {
-    font-family: 'Itim', cursive;
     height: 100vh;
     margin: 0;
     background: #d8f3ff;
     display: flex;
+}
+
+body, button, .textbox {
+    font-family: 'Itim', cursive;
+}
+
+#form {
+    display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+button {
+    padding: 8px 10px;
+    margin: 20px;
+    border-radius: 2px;
+    border: none;
+    background: pink;
+    cursor: pointer;
+}
+
+button:focus, button:hover {
+    background: indianred;
 }
 
 .textbox {
-    --padding: 8px;
+    --padding: 10px;
     padding: var(--padding);
     width: calc(var(--input-width) - (2 * var(--padding)));
     resize: none;
-    height: 100px;
     border-radius: 2px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
 }
 
 .penguin-container {
@@ -133,8 +156,11 @@ body {
     transform: translate(10px, 15px) rotate(45deg);
 }
 
-label[for="fav-animal-input"] {
+#fav-animal-input-label {
     font-size: 2rem;
     margin: 20px;
     text-align: center;
+    height: 8rem;
+    display: flex;
+    align-items: center;
 }
