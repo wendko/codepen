@@ -1,4 +1,5 @@
 const completedPens = [
+    'gsap-penguin',
     'bunny-blowing-bubbles',
     'mask',
     'edamame-loader',
