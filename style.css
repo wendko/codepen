@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
 :root {
     --background-color: #ffcccc;
 
@@ -19,11 +21,6 @@
     --list-item-outline-color: #494949;
     --list-item-shadow-color: #2e2e2e;
     --list-item-focus-background-color: #f9ffa0;
-}
-
-@font-face {
-    font-family: 'Ubuntu';
-    src: url(./assets/fonts/Ubuntu-Regular.ttf);
 }
 
 body {
