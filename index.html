@@ -8,6 +8,7 @@
     <title>CSS projects by wendko</title>
     <link href="style.css" rel="stylesheet">
     <script src="common/vue.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍕</text></svg>">
 </head>
 
 <body>
@@ -41,14 +42,14 @@
                             <span v-if="pen.draft" class="label-draft">draft</span>
                         </span>
                         <span class="pen__preview-image" v-if="isPreviewMode">
-                            <picture class="pen__preview-image--static">
+                            <picture class="pen__preview-image--static" >
                                 <source v-bind:srcset="'./assets/preview-images/' + pen.name + '.webp'" type="image/webp">
                                 <source v-bind:srcset="'./assets/preview-images/' + pen.name + '.png'" type="image/png">
-                                <img v-bind:src="'./assets/preview-images/' + pen.name + '.png'" v-bind:alt="'Image for ' + pen.name">
+                                <img loading="lazy" v-bind:src="'./assets/preview-images/' + pen.name + '.png'" v-bind:alt="'Image for ' + pen.name">
                             </picture>
-                            <video autoplay loop muted playsinline class="pen__preview-image--gif">
+                            <video preload="none" autoplay loop muted playsinline class="pen__preview-image--gif">
                                 <source v-bind:src="'./assets/preview-images/' + pen.name + '.webm'" type="video/webm">
-                                    <source v-bind:src="'./assets/preview-images/' + pen.name + '.mp4'" type="video/mp4">
+                                <source v-bind:src="'./assets/preview-images/' + pen.name + '.mp4'" type="video/mp4">
                             </video>
                         </span>
                     </article>
