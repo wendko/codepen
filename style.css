@@ -136,6 +136,15 @@ a {
     display: none;
 }
 
+.pen__preview-image {
+    transition: all 0.1s linear;
+}
+
+.pen__link:focus .pen__preview-image,
+.pen__link:hover .pen__preview-image {
+    box-shadow: 0px 0px 0px 2px var(--list-item-outline-color);
+}
+
 .pen__link:focus .pen__preview-image--static,
 .pen__link:hover .pen__preview-image--static {
     display: none;
@@ -151,7 +160,7 @@ a {
     font-size: 1.4em;
     margin-bottom: var(--mb-pen-description);
     color: var(--text-color);
-    transition: all 0.2s linear;
+    transition: all 0.1s linear;
 }
 
 .pen__link:focus {

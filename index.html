@@ -47,8 +47,8 @@
                                 <img v-bind:src="'./assets/preview-images/' + pen.name + '.png'" v-bind:alt="'Image for ' + pen.name">
                             </picture>
                             <video autoplay loop muted playsinline class="pen__preview-image--gif">
-                                <source src="./assets/preview-images/gsap-penguin.webm" type="video/webm">
-                                <source src="./assets/preview-images/gsap-penguin.mp4" type="video/mp4">
+                                <source v-bind:src="'./assets/preview-images/' + pen.name + '.webm'" type="video/webm">
+                                    <source v-bind:src="'./assets/preview-images/' + pen.name + '.mp4'" type="video/mp4">
                             </video>
                         </span>
                     </article>
