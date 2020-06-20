@@ -41,18 +41,15 @@
                             <span v-if="pen.draft" class="label-draft">draft</span>
                         </span>
                         <span class="pen__preview-image" v-if="isPreviewMode">
-                            <img 
-                                class="pen__preview-image--static"
-                                loading="lazy"
-                                v-bind:src="'assets/preview-images/' + pen.name + '.png'"
-                                v-bind:alt="'Image for ' + pen.name"
-                            >
-                            <img 
-                                class="pen__preview-image--gif"
-                                loading="lazy"
-                                v-bind:src="'assets/preview-images/' + pen.name + '.gif'"
-                                v-bind:alt="'GIF for ' + pen.name"
-                            >
+                            <picture class="pen__preview-image--static">
+                                <source v-bind:srcset="'./assets/preview-images/' + pen.name + '.webp'" type="image/webp">
+                                <source v-bind:srcset="'./assets/preview-images/' + pen.name + '.png'" type="image/png">
+                                <img v-bind:src="'./assets/preview-images/' + pen.name + '.png'" v-bind:alt="'Image for ' + pen.name">
+                            </picture>
+                            <video autoplay loop muted playsinline class="pen__preview-image--gif">
+                                <source src="./assets/preview-images/gsap-penguin.webm" type="video/webm">
+                                <source src="./assets/preview-images/gsap-penguin.mp4" type="video/mp4">
+                            </video>
                         </span>
                     </article>
                 </a>
