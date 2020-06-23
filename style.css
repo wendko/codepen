@@ -98,7 +98,9 @@ a {
 }
 
 .pen__container {
-    background: var(--list-item-color);
+    background: var(--item-background);
+    background-size: cover;
+    background-repeat: no-repeat;
     height: var(--list-item-height);
     margin: 1.5vmin;
     padding: 2.5vmin 1vmin;
@@ -156,10 +158,10 @@ a {
 
 
 .pen__list-item:nth-child(even) .pen__container {
-    background: url(./assets/home/yellow.webp);
+    --item-background: url(./assets/home/yellow.webp);
 }
 .pen__list-item:nth-child(odd) .pen__container {
-    background: url(./assets/home/beige.webp);
+    --item-background: url(./assets/home/beige.webp);
 }
 
 .pen__preview {
