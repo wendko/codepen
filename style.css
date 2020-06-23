@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind&display=swap');
 
 :root {
     --background-color: #ffcccc;
@@ -10,11 +10,6 @@
     --header-link-visited-color: #610658;
     --header-link-focus-background-color: #fcffd1;
     
-    --search-outline-color: #9d7391;
-    --search-background-color: #fcffd1;
-    --search-text-color: #c01690;
-    --search-label-color: #9d7391;
-    
     --overview-text-color: #9d7391;
     --overview-focus-background-color: #fcffd1;
     --text-color: #37323f;
@@ -24,10 +19,11 @@
 }
 
 body {
-    background: var(--background-color);
+    background: repeating-radial-gradient(white 0% 28%, #ffddaa 20% 30%);
+    background-size: 10vmin 10vmin;
     text-align: center;
     color: var(--text-color);
-    font-family: 'Ubuntu';
+    font-family: 'Hind', sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -36,22 +32,17 @@ ol, ul {
     padding: 0;
 }
 
-header > * {
-    margin: 10px;
+header {
+    margin: 5vh;
+}
+
+header > h1 {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
 }
 
 a {
     text-decoration: none;
-}
-
-.preview-mode {
-    --list-item-height: 350px;
-    --mb-pen-description: 10px;
-}
-
-.list-mode {
-    --list-item-height: auto;
-    --mb-pen-description: 0px;
 }
 
 .socials {
@@ -69,7 +60,6 @@ a {
 
 .socials__link {
     padding: 8px;
-    border-radius: 8px;
     transition: all 0.2s linear;
     color: var(--header-link-color);
 }
@@ -84,9 +74,53 @@ a {
     color: var(--header-link-visited-color);
 }
 
+.pens__list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 80vw;
+    margin: auto;
+}
+
 .pen__list-item {
     display: flex;
     justify-content: center;
+    max-width: 30vmin;
+    min-width: 200px;
+    margin: 5vmin;
+}
+
+
+@media only screen and (max-width: 420px) {
+    .pen__list-item {
+        max-width: 100%;
+    }
+}
+
+.pen__container {
+    background: var(--list-item-color);
+    height: var(--list-item-height);
+    margin: 1.5vmin;
+    padding: 2.5vmin 1vmin;
+    border: 0.3vmin solid var(--list-item-outline-color);
+    box-shadow: 0.3vmin 0.3vmin var(--list-item-shadow-color), 1vmin 1vmin 2.5vmin black;
+    transition: all 0.1s linear;
+    transform: var(--item-transform);
+    transform-origin: top center;
+}
+
+.pen__container:focus,
+.pen__container:hover {
+    transform: var(--item-focus);
+}
+
+.pen__container::before {
+    content: '';
+    position: absolute;
+    border-radius: 20%;
+    background: black;
+    padding: 2vmin 0.4vmin;
+    transform: translate(12.5vmin, -5vmin);
 }
 
 .pen__list-item:nth-child(even) .pen__container {
@@ -97,67 +131,49 @@ a {
     --list-item-color: var(--list-item-color-2);
 }
 
-.pen__container {
-    background: var(--list-item-color);
-    width: 350px;
-    height: var(--list-item-height);
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    border: 2px solid var(--list-item-outline-color);
-    box-shadow: 8px 8px var(--list-item-shadow-color);
-    transition: all 0.2s linear;
+.pen__list-item:nth-child(n) .pen__container {
+    --item-transform: rotate(1deg);
+    --item-focus: rotate(2deg);
+}
+.pen__list-item:nth-child(2n) .pen__container {
+    --item-transform: rotate(-2deg);
+    --item-focus: rotate(-3deg);
+}
+.pen__list-item:nth-child(3n) .pen__container {
+    --item-transform: rotate(2deg);
+    --item-focus: rotate(1deg);
+}
+.pen__list-item:nth-child(4n) .pen__container {
+    --item-transform: rotate(-3deg);
+    --item-focus: rotate(-2deg);
+}
+.pen__list-item:nth-child(5n) .pen__container {
+    --item-transform: rotate(-1deg);
+    --item-focus: rotate(1deg);
 }
 
-.pen__preview-image {
+
+
+
+.pen__list-item:nth-child(even) .pen__container {
+    background: url(./assets/home/yellow.webp);
+}
+.pen__list-item:nth-child(odd) .pen__container {
+    background: url(./assets/home/beige.webp);
+}
+
+.pen__preview {
     height: 100%;
     overflow-y: hidden;
-    border-radius: 8px;
-}
-
-.pen__preview-image--static,
-.pen__preview-image--static > img,
-.pen__preview-image--gif {
     width: 100%;
-}
-
-.pen__preview-image--static {
-    opacity: 80%;
-    display: block;
-}
-
-.pen__preview-image--gif {
-    display: none;
-}
-
-.pen__preview-image {
     transition: all 0.1s linear;
 }
 
-.pen__link:focus .pen__preview-image,
-.pen__link:hover .pen__preview-image {
-    box-shadow: 0px 0px 0px 2px var(--list-item-outline-color);
-}
-
-.pen__link:focus .pen__preview-image--static,
-.pen__link:hover .pen__preview-image--static {
-    display: none;
-}
-
-.pen__link:focus .pen__preview-image--gif,
-.pen__link:hover .pen__preview-image--gif {
-    display: block;
-    opacity: 100%;
-}
-
-.pen__description {
-    font-size: 1.4em;
-    margin-bottom: var(--mb-pen-description);
-    color: var(--text-color);
-    transition: all 0.1s linear;
+.pen__caption {
+    text-transform: uppercase;
+    color: black;
+    font-weight: 900;
+    letter-spacing: 0.1rem;
 }
 
 .pen__link:focus {
@@ -166,54 +182,5 @@ a {
 
 .pen__link:focus > .pen__container,
 .pen__link:hover > .pen__container {
-    background: var(--list-item-focus-background-color);
-}
-
-label[for="search"] {
-    margin-right: 10px;
-    color: var(--search-label-color);
-}
-
-#search {
-    color: var(--text-color);
-    border: 2px dashed var(--search-outline-color);
-    background: var(--search-background-color);
-    opacity: 50%;
-    border-radius: 3px;
-    padding: 8px;
-    text-align: center;
-    margin-top: 10px;
-    transition: all 0.2s linear;
-}
-
-#search:hover,
-#search:focus {
-    outline: none;
-    opacity: 100%;
-    box-shadow: 0 0 0 5px var(--search-background-color);
-}
-
-.pens__overview {
-    margin-top: 20px;
-    font-weight: 600;
-    color: var(--overview-text-color);
-}
-
-.pens__overview > * {
-    padding: 8px;
-    border-radius: 8px;
-}
-
-.pens__view-toggle:focus-within {
-    background: var(--overview-focus-background-color);
-}
-
-.pens__overview > :nth-child(2) {
-    margin-left: 20px;
-}
-
-@media only screen and (max-width: 420px) {
-    .pen__container {
-        width: 85vw;
-    }
+    /* background: var(--list-item-focus-background-color); */
 }

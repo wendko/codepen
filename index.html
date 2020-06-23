@@ -7,57 +7,123 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CSS projects by wendko</title>
     <link href="style.css" rel="stylesheet">
-    <script src="common/vue.min.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍕</text></svg>">
 </head>
 
 <body>
     <header>
-        <h1>CSS projects</h1>
-        <h2>by wendko</h2>
-        <ul class="socials">
-            <li class="socials__list-item" v-for="social in socials">
-                <a class="socials__link" v-bind:href="social.link">{{social.label}}</a>
-            </li>
-        </ul>
+        <h1>Wendy's CSS projects</h1>
+        <ul id="socials" class="socials"></ul>
     </header>
     <main>
-        <label for="search">Search</label>
-        <input type="text" id="search" v-on:keyup="onSearch" placeholder="eg. Pikachu">
-        <div class="pens__overview">
-            <span class="pens__total">
-                {{ searchText.length ? 'Found' : 'Total' }} pens: {{getPens.length}}
-            </span>
-            <span class="pens__view-toggle">
-                <input type="checkbox" name="viewToggle" id="view-toggle-input" v-on:change="toggleView">
-                <label for="view-toggle-input">Hide Preview</label>
-            </span>
-        </div>
-        <ol class="pens">
-            <li class="pen__list-item" v-for="pen in getPens">
-                <a class="pen__link" v-bind:href="pen.name | link">
-                    <article class="pen__container" v-bind:class="isPreviewMode ? 'preview-mode' : 'list-mode'">
-                        <span class="pen__description">
-                            {{ pen.name | dekebab }}
-                            <span v-if="pen.draft" class="label-draft">draft</span>
-                        </span>
-                        <span class="pen__preview-image" v-if="isPreviewMode">
-                            <picture class="pen__preview-image--static" >
-                                <source v-bind:srcset="'./assets/preview-images/' + pen.name + '.webp'" type="image/webp">
-                                <source v-bind:srcset="'./assets/preview-images/' + pen.name + '.png'" type="image/png">
-                                <img loading="lazy" v-bind:src="'./assets/preview-images/' + pen.name + '.png'" v-bind:alt="'Image for ' + pen.name">
-                            </picture>
-                            <video preload="none" autoplay loop muted playsinline class="pen__preview-image--gif">
-                                <source v-bind:src="'./assets/preview-images/' + pen.name + '.webm'" type="video/webm">
-                                <source v-bind:src="'./assets/preview-images/' + pen.name + '.mp4'" type="video/mp4">
-                            </video>
-                        </span>
-                    </article>
-                </a>
-            </li>
-        </ol>
+        <div id="collection"></div>
     </main>
-    <script src="script.js"></script>
+
+    <script type="module">
+        import { html, render } from 'https://unpkg.com/htm/preact/standalone.module.js';
+
+        // data
+        const collection = [
+            'gsap-penguin',
+            'bunny-blowing-bubbles',
+            'mask',
+            'edamame-loader',
+            'single-div-pokemon-sprites',
+            'single-div-pikachu',
+            'pufferfish',
+            'deno',
+            'structural-pseudocats',
+            'sakura',
+            'nihongo-ref',
+            'nihongo-practise',
+            'css-named-beach',
+            'css-named-colors',
+            'snake',
+            'cny-lion-2020',
+            'inktober-2019',
+            'drink-more-water',
+            'durian-radio',
+            'toggle-day-night',
+            'durian-react',
+            'durian',
+            'tapir',
+            'awkward-pikachu',
+            'background-gradient',
+            'avatar',
+            '100-dots',
+            'async-defer',
+            'KLCC',
+            'dancing-macaron',
+            'box-shadow-sketch',
+            'css-masonry',
+            'dad-joke',
+            'dev-doctor',
+            'emoji-selector',
+            'fruit-veggies-spectrum',
+            'gameboy-color',
+            'gravity-planets',
+            'kl-react-centered',
+            'kl-react-right',
+            'slack',
+        ];
+
+        const drafts = [
+            'pokemon-badges',
+            'async-defer-anim',
+            'google',
+            'malaysian-states',
+            'mamak',
+        ]
+
+        const socials = [
+            { link: 'https://twitter.com/wendko', label: 'twitter' },
+            { link: 'https://github.com/wendko/codepen', label: 'github' },
+            { link: 'https://wendko.com', label: 'about' },
+        ]
+
+        const getLink = (item) => {
+            const currentUrl = window.location.href;
+            return currentUrl.match('/index.html') ? currentUrl.replace('/index.html', `/pens/${item}/index.html`)
+                    : `${currentUrl}/pens/${item}`;
+        }
+
+        const dekebab = (item) => {
+            if (!item) return ''
+            return item
+                .split('-')
+                .map(x => `${x.charAt(0).toUpperCase()}${x.slice(1)}`)
+                .join(' ');
+        }
+
+        const assetsPath = './assets/preview-images';
+
+        const PenItem = (item) => html`
+            <a class="pen__link" href="${getLink(item)}">
+                <figure class="pen__container">
+                    <video loop muted playsinline class="pen__preview" 
+                        onmouseleave=${(e) => e.target.pause()}
+                        onmouseover=${(e) => e.target.play()}>
+                        <source src="${assetsPath}/${item}.webm" type="video/webm" />
+                        <source src="${assetsPath}/${item}.mp4" type="video/mp4" />
+                    </video>
+                    <figcaption class="pen__caption">${dekebab(item)}</figcaption>
+                </figure>
+            </a>
+        `
+
+        const PenList = (collection) => html`<ol class="pens__list">
+            ${collection.map(item => html`<li class="pen__list-item">${PenItem(item)}</li>`)}
+        </ol>`;
+
+        const renderCollectionHtml = PenList(collection);
+        render(renderCollectionHtml, document.getElementById('collection'));
+        
+        const renderSocialsHtml = socials.map(s => html`<li class="socials__list-item" tabindex="0">
+            <a class="socials__link" href="${s.link}">${s.label}</a>
+        </li>`);
+        render(renderSocialsHtml, document.getElementById('socials'));
+        
+    </script>
 </body>
 
 </html>
