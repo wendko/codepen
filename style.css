@@ -98,6 +98,7 @@ a {
 }
 
 .pen__container {
+    --item-background: var(--background-color);
     background: var(--item-background);
     background-size: cover;
     background-repeat: no-repeat;
