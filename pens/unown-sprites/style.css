@@ -17,8 +17,7 @@
 }
 
 body {
-    background: linen;
-    min-height: 100vh;
+    background: #ffdd9d;
     margin: 1vmin;
     font-family: 'Press Start 2P', cursive;
     text-align: center;
@@ -67,14 +66,13 @@ body {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    margin: calc(var(--s) * 0.2);
     padding-right: var(--s);
 }
 
 .unown {
     margin: calc(var(--s) * 0.2);
     width: calc(var(--s) / 2); 
-    height: var(--s);
+    height: calc(var(--s) / 1.8); 
 }
 
 @keyframes spriteAnim {
