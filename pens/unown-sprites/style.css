@@ -8,16 +8,16 @@
     --c-bl2: #404858; 
     --c-dbl: #283040;
 
+    --c-text-input: #cfc1b6;
+    --c-text-input-error: rgb(255, 109, 109);
+    --c-input-info-error: red;
+
     --s: 80px;
     --u: calc(var(--s) / 20);
 }
 
 body {
     background: linen;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
     min-height: 100vh;
     margin: 1vmin;
     font-family: 'Press Start 2P', cursive;
@@ -29,22 +29,38 @@ body {
 .header-title {
     font-size: 2rem;
     text-transform: uppercase;
+    line-height: 1.5;
+    color: var(--c-b);
+}
+
+#input-info {
+    color: var(--c-bl2);
+    transition: color 0.1s ease-in;
 }
 
 .text-input {
     font-family: 'Press Start 2P', cursive;
-    padding: 10px;
+    padding: 20px 10px;
+    margin: 20px;
     border: none;
     border-radius: 2px;
     letter-spacing: 0.1rem;
     font-size: 1rem;
-    background: #cfc1b6;
+    background: var(--c-text-input);
     transition: all 0.2s ease-in;
+    width: 90%;
+    text-align: center;
 }
 
 .text-input:hover,
 .text-input:focus {
-    background: #ffb67d;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 0 5px black;
+}
+
+.text-input::after {
+    content: 'Only A-Z are accepted'
 }
 
 .unown-container {
@@ -76,7 +92,9 @@ body {
     box-shadow: var(--bs2);
     animation: spriteAnim 0.5s steps(1) infinite;
 }
-
+.unown__space::after {
+    content: none;
+}
 .unown__a::after {
     --t: translate(calc(var(--u) * 5), calc(var(--u) * 18));
     --bs1:  var(--u)                0                         var(--c-b),
