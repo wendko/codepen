@@ -12,8 +12,11 @@
 
 <body>
     <header>
-        <h1>Wendy's CSS projects</h1>
+        <h1>wendko's CSS projects</h1>
         <ul id="socials" class="socials"></ul>
+        <br/>
+        <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
+        <script type='text/javascript'>kofiwidget2.init('Support Me on Ko-fi', '#c01690', 'H2H31LGQ1');kofiwidget2.draw();</script> 
     </header>
     <main>
         <div id="collection"></div>
@@ -24,6 +27,7 @@
 
         // data
         const collection = [
+            'tortoise-loader',
             'unown-sprites',
             'gsap-penguin',
             'bunny-blowing-bubbles',
@@ -77,6 +81,7 @@
         ]
 
         const socials = [
+            { link: 'https://codepen.io/wendko', label: 'codepen' },
             { link: 'https://twitter.com/wendko', label: 'twitter' },
             { link: 'https://github.com/wendko/codepen', label: 'github' },
             { link: 'https://wendko.com', label: 'about' },
@@ -119,7 +124,7 @@
         const renderCollectionHtml = PenList(collection);
         render(renderCollectionHtml, document.getElementById('collection'));
         
-        const renderSocialsHtml = socials.map(s => html`<li class="socials__list-item" tabindex="0">
+        const renderSocialsHtml = socials.map(s => html`<li class="socials__list-item">
             <a class="socials__link" href="${s.link}">${s.label}</a>
         </li>`);
         render(renderSocialsHtml, document.getElementById('socials'));

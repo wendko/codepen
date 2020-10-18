@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starter Database</title>
+    <style>
+        .ref {
+            opacity: 0.5;
+            position: absolute;
+        }
+        .group {
+            width: 180px;
+            height: 200px;
+            outline: 1px solid pink;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* text-align: center; */
+        }
+        .db {
+            width: 180px;
+            height: 180px;
+            outline: 1px solid cyan;
+        }
+        /* .db::after, .db::before {
+            content: "";
+            position: absolute;
+        } */
+         /* .db__fire::after {
+            width: 100px;
+            height: 100px;
+            background: orange;
+        }
+        */
+        /* .db__fire::before {
+            width: 100px;
+            height: 100px;
+            background: orangered;
+        }  */
+        .db > * {
+            position: absolute;
+        }
+        .db__fire--1 {
+            clip-path: polygon(21% 0%, 0% 100%, 100% 100%);
+            width: 109px;
+            height: 133px;
+            background: rgba(255, 166, 0, 0.205);
+            transform: translate(30px, 6px);
+        }
+        .db__fire--2 {
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            width: 120px;
+            height: 110px;
+            background: rgba(255, 166, 0, 0.205);
+            transform: translate(30px, 31px);
+        }
+        .db__fire--3 {
+            clip-path: polygon(85% 0%, 0% 100%, 100% 100%);
+            width: 120px;
+            height: 100px;
+            background: rgba(255, 166, 0, 0.205);
+            background: pink;
+            transform: translate(30px, 40px);
+            opacity: 0.5;
+        }
+        .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .row > * {
+            margin: 10px;
+        }
+        .label {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to developer land! Please choose your starter database.</h1>
+    <div class="row">
+        <div class="group">
+            <img class="ref" src="https://www.gstatic.com/devrel-devsite/prod/v024eef4ea86c0379222e27415e1e58a21ab1695c99975204bbd5279577b49303/firebase/images/touchicon-180.png"/>
+            <div class="db db__fire">
+                <div class="db__fire--1"></div>
+                <div class="db__fire--2"></div>
+                <div class="db__fire--3"></div>
+            </div>
+            <div class="label"><a href="https://firebase.google.com/">Firebase</a> by Google</div>
+        </div>
+        <div class="group">
+            <div class="db db__water"></div>
+            <div class="label">Waterbase (fake)</div>
+        </div>    
+        <div class="group">
+            <div class="db db__grass"></div>
+            <div class="label">Grassbase (fake)</div>
+        </div>    
+    </div>
+
+</body>
+</html>
